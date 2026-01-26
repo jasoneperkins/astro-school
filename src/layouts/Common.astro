@@ -1,0 +1,18 @@
+---
+import Head from '../landmarks/common/Head.astro'
+import Header from '../landmarks/common/Header.astro'
+import Footer from '../landmarks/common/Footer.astro'
+
+const { title } = Astro.props
+---
+
+<html lang="en-US">
+	<Head {title} />
+	<body>
+		<Header />
+		<main>
+			<slot />
+		</main>
+		<Footer />
+	</body>
+</html>

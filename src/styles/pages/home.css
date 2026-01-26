@@ -1,0 +1,9 @@
+@reference "tailwindcss";
+
+.course {
+	@apply relative space-y-2 rounded-md border border-gray-200 bg-white px-6 py-12 transition-all duration-250 ease-in hover:-translate-y-4 hover:border-t-4 hover:shadow-2xl hover:shadow-gray-200;
+}
+
+.highlight {
+	@apply relative flex-auto basis-3xs space-y-2 rounded-md border border-gray-100 bg-white px-6 py-12 shadow-2xl shadow-gray-200 transition-all duration-250 ease-in hover:-translate-y-4;
+}

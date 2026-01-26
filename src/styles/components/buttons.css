@@ -1,0 +1,4 @@
+button,
+.btn {
+	@apply bg-lochmara-500 flex w-fit rounded-4xl px-10 py-4 text-white;
+}

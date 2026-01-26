@@ -1,0 +1,55 @@
+body {
+	@apply leading-[1.25];
+}
+
+h1 {
+	font-size: calc(1rem * pow(var(--font-scale), 6));
+	font-family: 'Love Ya Like A Sister', system-ui;
+	font-weight: 500;
+}
+
+h2 {
+	font-size: calc(1rem * pow(var(--font-scale), 5));
+}
+
+h3 {
+	font-size: calc(1rem * pow(var(--font-scale), 4));
+}
+
+h4 {
+	font-size: calc(1rem * pow(var(--font-scale), 3));
+}
+
+h5 {
+	font-size: calc(1rem * pow(var(--font-scale), 2));
+}
+
+h6 {
+	font-size: calc(1rem * pow(var(--font-scale), 1));
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: #39375b;
+}
+
+p {
+	font-size: calc(1rem * pow(var(--font-scale), 0));
+}
+
+.small {
+	font-size: calc(1rem * pow(var(--font-scale), -1));
+}
+
+.tiny {
+	font-size: calc(1rem * pow(var(--font-scale), -2));
+}
+
+p,
+.small,
+.tiny {
+	@apply leading-relaxed;
+}

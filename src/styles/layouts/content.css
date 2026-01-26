@@ -1,0 +1,91 @@
+@import 'tailwindcss';
+
+@utility grid-cols-content {
+	grid-template-columns:
+		[screen-start]
+		0px
+		[fullwidth-start]
+		1fr
+		[breakout-start]
+		minmax(0px, calc(var(--breakout-width-max) + var(--gap-width)))
+		[content-start]
+		min(
+			0.5 * (var(--content-width-max) - var(--gap-width)),
+			0.5 * (100% - var(--gap-total))
+		)
+		[center]
+		min(
+			0.5 * (var(--content-width-max) - var(--gap-width)),
+			0.5 * (100% - var(--gap-total))
+		)
+		[content-end]
+		minmax(0px, calc(var(--breakout-width-max) + var(--gap-width)))
+		[breakout-end]
+		1fr
+		[fullwidth-end]
+		0px
+		[screen-end];
+
+	& > * {
+		grid-column: content;
+	}
+}
+
+@utility gap-content {
+	@apply gap-(--gap-width);
+}
+
+.content,
+section {
+	@apply grid-cols-content gap-content grid;
+}
+
+@utility grid-cols-content-* {
+	--split: --value(--aspect-ratio-*, ratio, [ratio]);
+	grid-template-columns:
+		[screen-start]
+		0px
+		[fullwidth-start]
+		1fr
+		[breakout-start]
+		minmax(0px, calc(var(--breakout-width-max) + var(--gap-width)))
+		[content-start]
+		min(
+			var(--split) * (var(--content-width-max) - var(--gap-width)),
+			var(--split) * (100% - var(--gap-total))
+		)
+		[center]
+		min(
+			(1 - var(--split)) * (var(--content-width-max) - var(--gap-width)),
+			(1 - var(--split)) * (100% - var(--gap-total))
+		)
+		[content-end]
+		minmax(0px, calc(var(--breakout-width-max) + var(--gap-width)))
+		[breakout-end]
+		1fr
+		[fullwidth-end]
+		0px
+		[screen-end] !important;
+
+	& > * {
+		grid-column: content;
+	}
+}
+
+.breakout * {
+	grid-column: breakout;
+}
+
+.fullwidth > * {
+	grid-column: fullwidth;
+}
+
+@variant lg {
+	:nth-child(1 of .half) {
+		grid-column-end: center;
+	}
+
+	:nth-child(2 of .half) {
+		grid-column-start: center;
+	}
+}

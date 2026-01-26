@@ -1,0 +1,9 @@
+{
+	"htmlWhitespaceSensitivity": "ignore",
+	"printWidth": 80,
+	"plugins": ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
+	"semi": false,
+	"singleQuote": true,
+	"trailingComma": "none",
+	"useTabs": true
+}
