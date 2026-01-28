@@ -9,12 +9,24 @@
 		"astro": "astro"
 	},
 	"dependencies": {
-		"@astrojs/cloudflare": "^12.6.12",
+		"@astrojs/cloudflare": "^12.6.5",
+		"@astrojs/react": "^4.4.2",
 		"@fontsource/love-ya-like-a-sister": "^5.2.8",
 		"@fontsource/poppins": "^5.2.7",
+		"@sanity/astro": "^3.2.11",
+		"@sanity/client": "^7.14.1",
+		"@sanity/image-url": "^2.0.3",
 		"@tailwindcss/vite": "^4.1.18",
+		"@types/react": "^19.2.10",
+		"@types/react-dom": "^19.2.3",
 		"astro": "^5.16.15",
 		"astro-icon": "^1.1.5",
+		"astro-portabletext": "^0.13.0",
+		"react": "^19.2.4",
+		"react-dom": "^19.2.4",
+		"react-is": "^19.2.4",
+		"sanity": "^5.7.0",
+		"styled-components": "^6.3.8",
 		"tailwindcss": "^4.1.18"
 	},
 	"devDependencies": {

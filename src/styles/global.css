@@ -7,7 +7,7 @@
 
 @import './layouts/content.css';
 
-@import './landmarks/hgroup.css';
+@import './landmarks/headers.css';
 @import './landmarks/sections.css';
 
 @import './components/buttons.css';

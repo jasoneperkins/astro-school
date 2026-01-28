@@ -1,0 +1,40 @@
+---
+import Layout from '@layouts/Common.astro'
+import {Image} from 'astro:assets'
+import {sanityClient} from 'sanity:client'
+
+import mainImage from '@images/woman-kids-board-globe-table.webp'
+
+const newsletters = await sanityClient.fetch(
+	`*[_type == "newsletter"] | order(publishedAt desc)`
+)
+const title = 'Newsletters'
+---
+
+<Layout {title}>
+	<header>
+		<header
+			class="content relative bg-cover bg-top bg-no-repeat pt-100"
+			style=`background-image: linear-gradient(to top, #fff, rgba(255, 255, 255, 0.5)), url('${mainImage.src}');`>
+			<hgroup>
+				<h1 class="mt-2 text-4xl font-bold">{title}</h1>
+			</hgroup>
+		</header>
+		<section>
+			<ul>
+				{
+					newsletters.map(newsletter => (
+						<li>
+							<a href={`/newsletters/${newsletter.slug.current}`}>
+								<h2 class="!text-lg">{newsletter.title}</h2>
+								<p class="text-gray-500">
+									{new Date(newsletter.publishedAt).toLocaleDateString()}
+								</p>
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</section>
+	</header>
+</Layout>

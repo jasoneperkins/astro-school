@@ -1,0 +1,84 @@
+---
+import {sanityClient} from 'sanity:client'
+import {PortableText} from 'astro-portabletext'
+import {urlFor} from '../../lib/urlFor'
+
+import Layout from '@layouts/Common.astro'
+import '@styles/pages/newsletters.css'
+
+// 1. Generate paths for all newsletter documents
+export async function getStaticPaths() {
+	const newsletters = await sanityClient.fetch(
+		`*[_type == "newsletter"]{ "slug": slug.current }`
+	)
+
+	return newsletters.map(newsletter => ({
+		params: {slug: newsletter.slug}
+	}))
+}
+
+// 2. Fetch the specific newsletter data
+const {slug} = Astro.params
+const newsletter = await sanityClient.fetch(
+	`*[_type == "newsletter" && slug.current == $slug][0]`,
+	{slug}
+)
+const mainImage = newsletter?.mainImage
+	? urlFor(newsletter.mainImage).width(1600).height(900).url()
+	: null
+
+// Redirect if the newsletter doesn't exist
+if (!newsletter) {
+	return Astro.redirect('/404')
+}
+---
+
+<Layout title={newsletter.title}>
+	<header
+		class="content relative bg-cover bg-center bg-no-repeat pt-100"
+		style={mainImage
+			? `background-image: linear-gradient(to top, #fff, rgba(255, 255, 255, 0.5)), url('${mainImage}');`
+			: ''}>
+		<hgroup>
+			<h1 class="mt-2 text-4xl font-bold">{newsletter.title}</h1>
+			<time class="text-sm text-gray-600">
+				{
+					new Date(newsletter.publishedAt).toLocaleDateString('en-US', {
+						year: 'numeric',
+						month: 'long',
+						day: 'numeric'
+					})
+				}
+			</time>
+		</hgroup>
+	</header>
+	<div class="prose prose-slate lg:prose-xl content py-content-block">
+		<PortableText value={newsletter.body} />
+	</div>
+	{
+		newsletter.vocabularyList && newsletter.vocabularyList.length > 0 && (
+			<div class="content">
+				<header>
+					<h2>Jewish Vocabulary</h2>
+				</header>
+				<dl class="grid grid-cols-1 gap-x-12 gap-y-6 md:grid-cols-3">
+					{newsletter.vocabularyList.map(item => (
+						<div class="flex flex-col border-l-4 border-blue-400 pl-4">
+							<dt class="text-lg font-bold tracking-tight text-slate-900">
+								{item.term}
+							</dt>
+							<dd class="mt-1 leading-relaxed text-slate-700">
+								{item.definition}
+							</dd>
+						</div>
+					))}
+				</dl>
+			</div>
+		)
+	}
+	<footer class="content py-8">
+		<a href="/newsletters" class="font-medium text-blue-600 hover:underline">
+			← Back to all newsletters
+		</a>
+	</footer>
+</Layout>

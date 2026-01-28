@@ -1,9 +1,17 @@
 ---
-import Head from '../landmarks/common/Head.astro'
-import Header from '../landmarks/common/Header.astro'
-import Footer from '../landmarks/common/Footer.astro'
+import {VisualEditing} from '@sanity/astro/visual-editing'
+
+import Head from '@landmarks/common/Head.astro'
+import Header from '@landmarks/common/Header.astro'
+import Footer from '@landmarks/common/Footer.astro'
 
 import '@styles/layouts/common.css'
+
+export type props = {
+	title: string
+}
+const visualEditingEnabled =
+	import.meta.env.PUBLIC_SANITY_VISUAL_EDITING_ENABLED == 'true'
 
 const {title} = Astro.props
 ---
@@ -14,7 +22,16 @@ const {title} = Astro.props
 		<Header />
 		<main>
 			<slot />
+			<VisualEditing enabled={visualEditingEnabled} zIndex={1000} />
 		</main>
 		<Footer />
 	</body>
 </html>
+
+<style>
+	main {
+		margin-top: calc(
+			-1 * (var(--spacing-body-gap) + var(--spacing-header-height))
+		);
+	}
+</style>

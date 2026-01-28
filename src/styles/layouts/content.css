@@ -32,7 +32,7 @@
 }
 
 @utility gap-content {
-	@apply gap-(--gap-width);
+	@apply gap-x-(--gap-width);
 }
 
 .content,

@@ -5,7 +5,7 @@
 	--gap-width: clamp(0.5rem, -1rem + 3.75vw, 2rem);
 	--gap-total: var(--gap-count) * var(--gap-width);
 
-	--font-scale: 1.2;
+	--font-scale: 1.15;
 	--font-sans: 'Poppins', 'sans-serif';
 
 	--color-lochmara-50: #f2f8fd;
@@ -22,5 +22,8 @@
 	--color-indigo: #39375b;
 	--color-gray: #39375b;
 
-	--spacing-content-block: clamp(2rem, -1rem + 7.5vw, 5rem);
+	--spacing-body-gap: 5rem;
+	/* --spacing-content-block: clamp(2rem, -1rem + 7.5vw, 5rem); */
+	--spacing-content-block: clamp(2rem, 0.5rem + 3.75vw, 3.5rem);
+	--spacing-header-height: 132px;
 }

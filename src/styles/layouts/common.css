@@ -1,5 +1,20 @@
 body {
 	@apply grid min-h-screen;
 	grid-template-rows: auto 1fr auto;
+	grid-template-columns: 1fr;
+	grid-template-areas: 'hd' 'mn' 'ft';
 	scroll-behavior: smooth;
+	row-gap: var(--spacing-body-gap);
+}
+
+body > header {
+	grid-area: hd;
+}
+
+body > main {
+	grid-area: mn;
+}
+
+body > footer {
+	grid-area: ft;
 }

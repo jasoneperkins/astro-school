@@ -9,6 +9,7 @@
 			"@layouts/*": ["./src/layouts/*"],
 			"@masks/*": ["./src/assets/masks/*"],
 			"@public/*": ["./public/*"],
+			"@schemas/*": ["./studio/schemas/*"],
 			"@styles/*": ["./src/styles/*"]
 		}
 	},

@@ -1,7 +1,11 @@
 @reference "tailwindcss";
 
+@theme {
+	--spacing-content-block: clamp(2rem, -1rem + 7.5vw, 5rem);
+}
+
 .course {
-	@apply relative space-y-2 rounded-md border border-gray-200 bg-white px-6 py-12 transition-all duration-250 ease-in hover:-translate-y-4 hover:border-t-4 hover:shadow-2xl hover:shadow-gray-200;
+	@apply relative space-y-2 rounded-md border border-gray-200 bg-white p-6 transition-all duration-250 ease-in hover:-translate-y-4 hover:border-t-4 hover:shadow-2xl hover:shadow-gray-200;
 }
 
 .highlight {

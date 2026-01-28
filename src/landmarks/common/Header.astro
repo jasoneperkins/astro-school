@@ -5,8 +5,8 @@ import {Icon} from 'astro-icon/components'
 import Logo from '@images/temple-beit-hayam.png'
 ---
 
-<header class="content absolute sticky top-0 z-50 bg-white py-4">
-	<address class="flex items-center justify-between not-italic">
+<header class="content absolute sticky top-0 z-50 bg-transparent">
+	<address class="flex items-center justify-between py-3 not-italic">
 		<div class="flex items-center gap-4">
 			<a href="tel:7722864374" class="flex items-center gap-x-1">
 				<Icon
@@ -23,13 +23,10 @@ import Logo from '@images/temple-beit-hayam.png'
 			<a href="">
 				<Icon name="line-md:facebook" class="text-[#1877F2]" size={20} />
 			</a>
-			<a href="">
-				<Icon name="line-md:twitter-twotone" class="text-[#1DA1F2]" size={20} />
-			</a>
 		</div>
 	</address>
-	<nav class="flex items-center justify-between">
-		<a href="">
+	<nav class="flex items-center justify-between py-3">
+		<a href="/">
 			<Image
 				src={Logo}
 				alt="Go to Temple Beit Hayam Homepage"
@@ -39,7 +36,7 @@ import Logo from '@images/temple-beit-hayam.png'
 		<ul class="flex max-w-2xs items-center justify-between gap-x-8">
 			<li><a href="/">Home</a></li>
 			<li><a href="/about">About</a></li>
-			<li><a href="/newsletter">Newsletters</a></li>
+			<li><a href="/newsletters">Newsletters</a></li>
 		</ul>
 		<a href="/contact" class="btn">Contact Us</a>
 	</nav>
@@ -47,6 +44,7 @@ import Logo from '@images/temple-beit-hayam.png'
 	<style>
 		@keyframes add-shadow {
 			to {
+				background-color: white;
 				box-shadow: 0 15px 10px -3px rgba(25, 25, 25, 0.06);
 			}
 		}
