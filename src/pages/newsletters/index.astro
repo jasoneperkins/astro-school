@@ -1,5 +1,6 @@
 ---
 import Layout from '@layouts/Common.astro'
+import Header from '@landmarks/Header.astro'
 import {Image} from 'astro:assets'
 import {sanityClient} from 'sanity:client'
 
@@ -12,13 +13,7 @@ const title = 'Newsletters'
 ---
 
 <Layout {title}>
-	<header
-		class="content relative bg-cover bg-top bg-no-repeat pt-100"
-		style=`background-image: linear-gradient(to top, #fff, rgba(255, 255, 255, 0.5)), url('${mainImage.src}');`>
-		<hgroup>
-			<h1 class="mt-2 text-4xl font-bold">{title}</h1>
-		</hgroup>
-	</header>
+	<Header {title} {mainImage} />
 	<section>
 		<ul>
 			{
