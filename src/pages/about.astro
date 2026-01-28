@@ -1,22 +1,19 @@
 ---
 import Layout from '@layouts/Common.astro'
+import Header from '@landmarks/Header.astro'
 import {Image} from 'astro:assets'
 
 import OurStory01 from '@images/man-kids-books.jpg'
 import HowWeLearn01 from '@images/woman-kids-board-globe-table.webp'
 import HowWeLearn02 from '@masks/sketch.svg'
 
+import mainImage from '@images/woman-kids-board-globe-table.webp'
+
 const title = 'About Us'
 ---
 
 <Layout {title}>
-	<header
-		class="content relative bg-cover bg-top bg-no-repeat pt-100"
-		style=`background-image: linear-gradient(to top, #fff, rgba(255, 255, 255, 0.5)), url('${mainImage.src}');`>
-		<hgroup>
-			<h1 class="mt-2 text-4xl font-bold">{title}</h1>
-		</hgroup>
-	</header>
+	<Header {title} {mainImage} />
 	<section class="items-center">
 		<div class="half relative">
 			<Image src={OurStory01} alt="" class="rounded-full" />
