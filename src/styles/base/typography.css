@@ -3,7 +3,7 @@ body {
 }
 
 h1 {
-	font-size: calc(1rem * pow(var(--font-scale), 6));
+	font-size: calc(1rem * pow(var(--font-scale), 9));
 	font-family: 'Love Ya Like A Sister', system-ui;
 	font-weight: 500;
 }
