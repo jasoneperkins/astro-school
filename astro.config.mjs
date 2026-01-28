@@ -1,15 +1,25 @@
 // @ts-check
 import { defineConfig } from 'astro/config'
 
+import cloudflare from '@astrojs/cloudflare'
+import icon from 'astro-icon'
 import tailwindcss from '@tailwindcss/vite'
 
-import cloudflare from '@astrojs/cloudflare';
-
-// https://astro.build/config
 export default defineConfig({
-  vite: {
-      plugins: [tailwindcss()]
-	},
-
-  adapter: cloudflare()
+	adapter: cloudflare(),
+	integrations: [
+		icon({
+			include: {
+				'line-md': [
+					'email-filled',
+					'facebook',
+					'phone-twotone-loop',
+					'twitter-twotone'
+				]
+			}
+		})
+	],
+	vite: {
+		plugins: [tailwindcss()]
+	}
 })

@@ -1,9 +1,11 @@
 ---
+import {ClientRouter} from 'astro:transitions'
+
 import '@fontsource/poppins'
 import '@fontsource/love-ya-like-a-sister'
 import '@styles/global.css'
 
-const { title = 'No Title Found' } = Astro.props
+const {title = 'No Title Found'} = Astro.props
 ---
 
 <head>
@@ -25,4 +27,5 @@ const { title = 'No Title Found' } = Astro.props
 	<link rel="manifest" href="site.webmanifest" />
 	<meta name="theme-color" content="#fafafa" />
 	<meta name="generator" content={Astro.generator} />
+	<ClientRouter />
 </head>

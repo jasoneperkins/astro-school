@@ -1,5 +1,60 @@
 ---
+import {Image} from 'astro:assets'
+import {Icon} from 'astro-icon/components'
 
+import Logo from '@images/temple-beit-hayam.png'
 ---
 
-<header class="content"></header>
+<header class="content absolute sticky top-0 z-50 bg-white py-4">
+	<address class="flex items-center justify-between not-italic">
+		<div class="flex items-center gap-4">
+			<a href="tel:7722864374" class="flex items-center gap-x-1">
+				<Icon
+					name="line-md:phone-twotone-loop"
+					class="text-red-400"
+					size={20}
+				/> 772-286-4374
+			</a>
+			<a href="mailto:misscindy@tbhfl.org" class="flex items-center gap-x-1">
+				<Icon name="line-md:email-filled" class="text-green-500" size={20} /> misscindy@tbhfl.org
+			</a>
+		</div>
+		<div class="flex items-center gap-2">
+			<a href="">
+				<Icon name="line-md:facebook" class="text-[#1877F2]" size={20} />
+			</a>
+			<a href="">
+				<Icon name="line-md:twitter-twotone" class="text-[#1DA1F2]" size={20} />
+			</a>
+		</div>
+	</address>
+	<nav class="flex items-center justify-between">
+		<a href="">
+			<Image
+				src={Logo}
+				alt="Go to Temple Beit Hayam Homepage"
+				class="h-16 w-auto"
+			/>
+		</a>
+		<ul class="flex max-w-2xs items-center justify-between gap-x-8">
+			<li><a href="/">Home</a></li>
+			<li><a href="/about">About</a></li>
+			<li><a href="/newsletter">Newsletters</a></li>
+		</ul>
+		<a href="/contact" class="btn">Contact Us</a>
+	</nav>
+
+	<style>
+		@keyframes add-shadow {
+			to {
+				box-shadow: 0 15px 10px -3px rgba(25, 25, 25, 0.06);
+			}
+		}
+
+		header {
+			animation: add-shadow linear both;
+			animation-timeline: scroll();
+			animation-range: 0 150px;
+		}
+	</style>
+</header>

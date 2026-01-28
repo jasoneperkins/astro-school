@@ -1,6 +1,107 @@
 ---
 import Layout from '@layouts/Common.astro'
 import {Image} from 'astro:assets'
+
+import OurStory01 from '@images/boy-glasses-book.webp'
+import HowWeLearn01 from '@images/woman-kids-board-globe-table.webp'
+import HowWeLearn02 from '@masks/sketch.svg'
 ---
 
-<Layout />
+<Layout>
+	<section class="items-center">
+		<div class="half">
+			<Image src={OurStory01} alt="" />
+		</div>
+		<div class="half">
+			<hgroup class="flex flex-col-reverse">
+				<h2>Our Story</h2>
+				<p>A Community Built on Love</p>
+			</hgroup>
+			<p>
+				Our school began in 2007. We wanted to create a place where every child
+				feels loved and special. For nearly 20 years, we have helped families
+				give their children a great start. We are proud to be a part of your
+				child's journey.
+			</p>
+		</div>
+	</section>
+	<section class="breakout text-center">
+		<hgroup>
+			<h2>Our Core Values</h2>
+			<p>Our Activities</p>
+		</hgroup>
+		<div
+			class="grid grid-cols-1 justify-center gap-2 md:grid-cols-2 lg:grid-cols-4">
+			<div class="px-4 py-6 hover:!border-t-red-500">
+				<img
+					loading="lazy"
+					decoding="async"
+					width="60"
+					height="52"
+					src="https://backtheme.com/university/wp-content/uploads/2023/04/cat_img_h_1_3.png"
+					alt=""
+				/>
+				<h3 class="!text-lg">Business &amp; Management</h3>
+				<p>01 Course</p>
+			</div>
+			<div class="px-4 py-6 hover:!border-t-blue-500">
+				<img
+					loading="lazy"
+					decoding="async"
+					width="60"
+					height="52"
+					src="https://backtheme.com/university/wp-content/uploads/2023/04/cat_img_h_1_3.png"
+					alt=""
+					5
+				/>
+				<h3 class="!text-lg">Business &amp; Management</h3>
+				<p>01 Course</p>
+			</div>
+			<div class="px-4 py-6 hover:!border-t-green-500">
+				<img
+					loading="lazy"
+					decoding="async"
+					width="60"
+					height="52"
+					src="https://backtheme.com/university/wp-content/uploads/2023/04/cat_img_h_1_3.png"
+					alt=""
+				/>
+				<h3 class="!text-lg">Business &amp; Management</h3>
+				<p>01 Course</p>
+			</div>
+			<div class="px-4 py-6 hover:!border-t-orange-500">
+				<img
+					loading="lazy"
+					decoding="async"
+					width="60"
+					height="52"
+					src="https://backtheme.com/university/wp-content/uploads/2023/04/cat_img_h_1_3.png"
+					alt=""
+				/>
+				<h3 class="!text-lg">Business &amp; Management</h3>
+				<p>01 Course</p>
+			</div>
+		</div>
+	</section>
+	<section class="items-center">
+		<div class="half">
+			<hgroup class="flex flex-col-reverse">
+				<h2>How We Learn</h2>
+				<p>Play is a Child's Work</p>
+			</hgroup>
+			<p>
+				At the ECLC, we know that kids learn best when they are having fun.
+				Every game, song, and art project is a chance to learn something new. We
+				help children become curious thinkers and kind friends through hands-on
+				activities that make school exciting.
+			</p>
+		</div>
+		<div class="half">
+			<Image
+				src={HowWeLearn01}
+				alt=""
+				class="rounded-tr-4xl rounded-bl-4xl mask-contain mask-no-repeat"
+			/>
+		</div>
+	</section>
+</Layout>

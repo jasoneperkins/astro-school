@@ -72,7 +72,7 @@ section {
 	}
 }
 
-.breakout * {
+.breakout > * {
 	grid-column: breakout;
 }
 
