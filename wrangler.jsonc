@@ -1,6 +1,6 @@
 {
 	"main": "dist/_worker.js/index.js",
-	"name": "school",
+	"name": "astro-school",
   "compatibility_date": "2026-01-25",
   "compatibility_flags": [
     "nodejs_compat",
