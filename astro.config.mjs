@@ -1,11 +1,17 @@
 // @ts-check
-import { defineConfig } from 'astro/config'
+import { defineConfig, loadEnv } from 'astro/config'
 
 import cloudflare from '@astrojs/cloudflare'
 import icon from 'astro-icon'
 import react from '@astrojs/react'
 import sanity from '@sanity/astro'
 import tailwindcss from '@tailwindcss/vite'
+
+const { PUBLIC_SANITY_STUDIO_URL } = loadEnv(
+	process.env.NODE_ENV,
+	process.cwd(),
+	''
+)
 
 export default defineConfig({
 	adapter: cloudflare(),
@@ -15,6 +21,7 @@ export default defineConfig({
 				'line-md': [
 					'email-filled',
 					'facebook',
+					'map-marker-twotone-loop',
 					'phone-twotone-loop',
 					'twitter-twotone'
 				]
@@ -25,7 +32,11 @@ export default defineConfig({
 			dataset: 'production',
 			studioBasePath: '/admin',
 			// Set useCdn to false if you're building statically.
-			useCdn: false
+			useCdn: false,
+			stega: {
+				enabled: true,
+				studioUrl: PUBLIC_SANITY_STUDIO_URL
+			}
 		}),
 		react()
 	],

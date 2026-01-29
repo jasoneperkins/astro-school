@@ -1,5 +1,5 @@
 ---
-
+import {Icon} from 'astro-icon/components'
 ---
 
 <footer class="grid-cols-content bg-lochmara-600 gap-content grid text-white">
@@ -10,7 +10,7 @@
 		<div>
 			<h2 class="mb-4 !text-lg !text-white">Quick Links</h2>
 			<nav>
-				<ul class="flex flex-col gap-y-3 text-sm">
+				<ul class="space-y-3 text-sm">
 					<li><a href="">About Us</a></li>
 					<li><a href="">Courses</a></li>
 					<li><a href="">Blog</a></li>
@@ -19,10 +19,31 @@
 			</nav>
 		</div>
 		<div>
-			<h2 class="!text-lg !text-white">About Us</h2>
-		</div>
-		<div>
-			<h2 class="!text-lg !text-white">About Us</h2>
+			<h2 class="mb-4 !text-lg !text-white lg:col-span-2">Contact Us</h2>
+			<address>
+				<ul class="space-y-3 text-sm">
+					<li>
+						<a href="tel:7722864374" class="flex gap-x-1">
+							<Icon name="line-md:phone-twotone-loop" class="text-lg" />
+							<span class="hidden lg:block">772-286-4374</span>
+						</a>
+					</li>
+					<li>
+						<a href="mailto:misscindy@tbhfl.org" class="flex gap-x-1">
+							<Icon name="line-md:email-filled" class="text-lg" />
+							<span class="hidden lg:block">misscindy@tbhfl.org</span>
+						</a>
+					</li>
+					<li>
+						<a href="" class="flex gap-x-1">
+							<Icon name="line-md:map-marker-twotone-loop" class="text-3xl" />
+							<span class="hidden lg:block">
+								951 SE Monterey Commons Blvd Stuart, Fl 34996
+							</span>
+						</a>
+					</li>
+				</ul>
+			</address>
 		</div>
 	</div>
 	<address class="flex border-t border-t-white/30 py-4"></address>

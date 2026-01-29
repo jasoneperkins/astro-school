@@ -1,5 +1,6 @@
 ---
 import {VisualEditing} from '@sanity/astro/visual-editing'
+import PreviewBanner from '@components/PreviewBanner.astro'
 
 import Head from '@landmarks/common/Head.astro'
 import Header from '@landmarks/common/Header.astro'
@@ -11,7 +12,10 @@ export type props = {
 	title: string
 }
 const visualEditingEnabled =
-	import.meta.env.PUBLIC_SANITY_VISUAL_EDITING_ENABLED == 'true'
+	import.meta.env.PUBLIC_SANITY_VISUAL_EDITING === 'true'
+const isDraftMode =
+	Astro.cookies.has('__prerender_bypass') ||
+	Astro.url.searchParams.has('preview')
 
 const {title} = Astro.props
 ---
@@ -22,7 +26,13 @@ const {title} = Astro.props
 		<Header />
 		<main>
 			<slot />
-			<VisualEditing enabled={visualEditingEnabled} zIndex={1000} />
+			<PreviewBanner />
+			{visualEditingEnabled && <VisualEditing client:idle />}
+			<!-- {
+				isDraftMode && (
+					<VisualEditing enabled={visualEditingEnabled} zIndex={1000} />
+				)
+			} -->
 		</main>
 		<Footer />
 	</body>

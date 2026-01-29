@@ -4,6 +4,7 @@ import {PortableText} from 'astro-portabletext'
 import {urlFor} from '../../lib/urlFor'
 
 import Layout from '@layouts/Common.astro'
+import Header from '@landmarks/Header.astro'
 import '@styles/pages/newsletters.css'
 
 // 1. Generate paths for all newsletter documents
@@ -27,14 +28,17 @@ const mainImage = newsletter?.mainImage
 	? urlFor(newsletter.mainImage).width(1600).height(900).url()
 	: null
 
+const title = newsletter?.title || 'No Title'
+
 // Redirect if the newsletter doesn't exist
 if (!newsletter) {
 	return Astro.redirect('/404')
 }
 ---
 
-<Layout title={newsletter.title}>
-	<header
+<Layout {title}>
+	<Header {title} {mainImage} />
+	<!-- <header
 		class="content relative bg-cover bg-center bg-no-repeat pt-100"
 		style={mainImage
 			? `background-image: linear-gradient(to top, #fff, rgba(255, 255, 255, 0.5)), url('${mainImage}');`
@@ -51,7 +55,7 @@ if (!newsletter) {
 				}
 			</time>
 		</hgroup>
-	</header>
+	</header> -->
 	<div class="prose prose-slate lg:prose-xl content py-content-block">
 		<PortableText value={newsletter.body} />
 	</div>

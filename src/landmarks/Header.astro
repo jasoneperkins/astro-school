@@ -4,6 +4,6 @@ const {title, mainImage} = Astro.props
 
 <header
 	class="content relative bg-cover bg-top bg-no-repeat pt-100"
-	style=`background-image: linear-gradient(to top, #fff, rgba(255, 255, 255, 0.5)), url('${mainImage.src}');`>
+	style=`background-image: linear-gradient(to top, #fff, rgba(255, 255, 255, 0.5)), url('${mainImage.src || mainImage}');`>
 	<h1>{title}</h1>
 </header>

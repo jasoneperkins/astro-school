@@ -38,7 +38,14 @@ h6 {
 }
 
 p {
+	@apply mb-6 leading-relaxed;
 	font-size: calc(1rem * pow(var(--font-scale), 0));
+}
+
+header p,
+hgroup p,
+p:last-child {
+	@apply mb-0;
 }
 
 .small {

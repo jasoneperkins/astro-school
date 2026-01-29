@@ -1,0 +1,75 @@
+---
+
+---
+
+<form action="https://api.web3forms.com/submit" method="POST">
+	<input
+		type="hidden"
+		name="access_key"
+		value="ff1dce2e-dc26-4b91-96bb-d5ed1896af2d"
+	/><input
+		type="hidden"
+		name="subject"
+		value="New Contact from Temple Beit HaYam Website"
+	/>
+
+	<input type="hidden" name="redirect" value="https://jasoneperkins.com/" />
+	<div class="grid grid-cols-1 gap-6">
+		<div>
+			<label for="name" class="mb-1 block text-sm font-medium text-slate-700">
+				Full Name
+			</label>
+			<input
+				type="text"
+				name="name"
+				id="name"
+				required
+				placeholder="John Doe"
+				class="w-full rounded-lg border border-slate-300 px-4 py-3 transition outline-none focus:border-transparent focus:ring-2 focus:ring-blue-600"
+			/>
+		</div>
+
+		<div>
+			<label for="email" class="mb-1 block text-sm font-medium text-slate-700">
+				Email Address
+			</label>
+			<input
+				type="email"
+				name="email"
+				id="email"
+				required
+				placeholder="name@example.com"
+				class="w-full rounded-lg border border-slate-300 px-4 py-3 transition outline-none focus:border-transparent focus:ring-2 focus:ring-blue-600"
+			/>
+		</div>
+
+		<div>
+			<label
+				for="message"
+				class="mb-1 block text-sm font-medium text-slate-700">
+				Message
+			</label>
+			<textarea
+				name="message"
+				id="message"
+				rows="5"
+				required
+				placeholder="How can we help you?"
+				class="w-full resize-none rounded-lg border border-slate-300 px-4 py-3 transition outline-none focus:border-transparent focus:ring-2 focus:ring-blue-600">
+			</textarea>
+		</div>
+	</div>
+
+	<input
+		type="checkbox"
+		name="botcheck"
+		class="hidden"
+		style="display: none;"
+	/>
+
+	<button
+		type="submit"
+		class="w-full rounded-lg bg-blue-900 px-6 py-4 font-bold text-white shadow-lg transition-colors hover:bg-blue-800">
+		Send Message
+	</button>
+</form>

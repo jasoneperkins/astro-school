@@ -27,10 +27,6 @@ const title = 'Temple Beit HaYam'
 				and discover the world. Join our family-centered program designed for
 				children ages 1 to 5.
 			</p>
-			<script
-				src="https://www.hebcal.com/etc/hdate-en.js"
-				crossorigin="anonymous">
-			</script>
 			<button class="bg-lochmara-500">Contact Us</button>
 		</header>
 		<div
@@ -72,10 +68,12 @@ const title = 'Temple Beit HaYam'
 	<section
 		aria-labelledby="classrooms-label"
 		class="bg-[url('/images/background-01.jpg')]">
-		<hgroup class="flex flex-col-reverse items-center">
-			<h2 id="classrooms-label">Lorem Ipsum.</h2>
-			<p>Lorem ipsum dolor sit amet.</p>
-		</hgroup>
+		<header class="flex flex-col-reverse items-center">
+			<hgroup>
+				<h2 id="classrooms-label">Lorem Ipsum.</h2>
+				<p>Lorem ipsum dolor sit amet.</p>
+			</hgroup>
+		</header>
 		<div
 			class="grid grid-cols-1 justify-center gap-2 md:grid-cols-2 lg:grid-cols-4">
 			<div class="course hover:!border-t-red-500">
@@ -136,10 +134,12 @@ const title = 'Temple Beit HaYam'
 			<Image src={homeAboutUsImage01} alt="" class="rounded-3xl" />
 		</div>
 		<div class="half">
-			<hgroup>
-				<p>A Loving Start for Every Child</p>
-				<h2>Our Mission</h2>
-			</hgroup>
+			<header>
+				<hgroup>
+					<p>A Loving Start for Every Child</p>
+					<h2>Our Mission</h2>
+				</hgroup>
+			</header>
 			<p>
 				At the ECLC, we treat every child like family. Our mission is to provide
 				a safe, happy place where children ages 1 to 5 can learn through play
@@ -150,13 +150,15 @@ const title = 'Temple Beit HaYam'
 	</section>
 	<section
 		class="from-lochmara-700/90 bg-linear-to-b from-70% via-white via-70%">
-		<hgroup class="text-center">
-			<h2 class="!text-white">How We Help Your Child Bloom</h2>
-			<p class="text-white">
-				We provide the tools and space for your child to explore their unique
-				talents
-			</p>
-		</hgroup>
+		<header>
+			<hgroup class="text-center">
+				<h2 class="!text-white">How We Help Your Child Bloom</h2>
+				<p class="text-white">
+					We provide the tools and space for your child to explore their unique
+					talents
+				</p>
+			</hgroup>
+		</header>
 		<div class="flex flex-wrap justify-center gap-2">
 			<div class="highlight">
 				<img

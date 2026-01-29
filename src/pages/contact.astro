@@ -1,6 +1,121 @@
 ---
 import Layout from '@layouts/Common.astro'
+import Header from '@landmarks/Header.astro'
 import {Image} from 'astro:assets'
+
+import mainImage from '@images/woman-kids-board-globe-table.webp'
+
+const title = 'Contact Us'
 ---
 
-<Layout />
+<Layout {title}>
+	<Header {title} {mainImage} />
+	<section>
+		<div class="half">
+			<header>
+				<h2>Visit Us</h2>
+			</header>
+			<p class="text-lg leading-relaxed text-gray-700">
+				We would love to welcome you to our spiritual home. Whether you are
+				joining us for Shabbat services, an educational program, or a community
+				event, our doors are open to you.
+			</p>
+			<div class="space-y-2 border-l-4 border-blue-600 pl-4">
+				<p class="!mb-2 font-semibold text-gray-900">Temple Beit HaYam</p>
+				<p class="text-gray-600">
+					951 SE Monterey Reef Way<br />Stuart, FL 34994
+				</p>
+			</div>
+			<a
+				href="https://www.google.com/maps/dir/?api=1&destination=Temple+Beit+HaYam+Stuart+FL"
+				target="_blank"
+				class="btn mt-8">
+				Get Directions
+			</a>
+		</div>
+		<div class="half">
+			<form action="https://api.web3forms.com/submit" method="POST">
+				<input
+					type="hidden"
+					name="access_key"
+					value="ff1dce2e-dc26-4b91-96bb-d5ed1896af2d"
+				/>
+				<input
+					type="hidden"
+					name="subject"
+					value="New Contact from Temple Beit HaYam Website"
+				/>
+				<input
+					type="hidden"
+					name="redirect"
+					value="https://jasoneperkins.com/"
+				/>
+				<div class="space-y-6">
+					<div>
+						<label
+							for="name"
+							class="mb-1 block text-sm font-medium text-slate-700">
+							Full Name
+						</label>
+						<input
+							type="text"
+							name="name"
+							id="name"
+							required
+							placeholder="John Doe"
+							class="w-full rounded-lg border border-slate-300 px-4 py-3 transition outline-none focus:border-transparent focus:ring-2 focus:ring-blue-600"
+						/>
+					</div>
+					<div>
+						<label
+							for="email"
+							class="mb-1 block text-sm font-medium text-slate-700">
+							Email Address
+						</label>
+						<input
+							type="email"
+							name="email"
+							id="email"
+							required
+							placeholder="name@example.com"
+							class="w-full rounded-lg border border-slate-300 px-4 py-3 transition outline-none focus:border-transparent focus:ring-2 focus:ring-blue-600"
+						/>
+					</div>
+					<div>
+						<label
+							for="message"
+							class="mb-1 block text-sm font-medium text-slate-700">
+							Message
+						</label>
+						<textarea
+							name="message"
+							id="message"
+							rows="5"
+							required
+							placeholder="How can we help you?"
+							class="w-full resize-none rounded-lg border border-slate-300 px-4 py-3 transition outline-none focus:border-transparent focus:ring-2 focus:ring-blue-600">
+						</textarea>
+					</div>
+				</div>
+				<input
+					type="checkbox"
+					name="botcheck"
+					class="hidden"
+					style="display: none;"
+				/>
+				<button type="submit" class="mt-6">Send Message</button>
+			</form>
+		</div>
+	</section>
+	<section>
+		<iframe
+			src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3548.808007653033!2d-80.22421092420284!3d27.19377044795511!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88dedd9a976322d1%3A0xf15d64231fbc707a!2sTemple%20Beit%20HaYam!5e0!3m2!1sen!2sus!4v1769640905935!5m2!1sen!2sus"
+			width="100%"
+			height="300"
+			style="border:0;"
+			allowfullscreen=""
+			loading="lazy"
+			referrerpolicy="no-referrer-when-downgrade">
+		</iframe>
+	</section>
+</Layout>

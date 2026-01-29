@@ -1,8 +1,10 @@
 ---
 import Layout from '@layouts/Common.astro'
 import Header from '@landmarks/Header.astro'
+
 import {Image} from 'astro:assets'
 import {sanityClient} from 'sanity:client'
+import {urlFor} from '../../lib/urlFor'
 
 import mainImage from '@images/woman-kids-board-globe-table.webp'
 
@@ -15,15 +17,33 @@ const title = 'Newsletters'
 <Layout {title}>
 	<Header {title} {mainImage} />
 	<section>
-		<ul>
+		<ul class="grid grid-cols-1 gap-4 md:grid-cols-3">
 			{
 				newsletters.map(newsletter => (
-					<li>
+					<li class="overflow-clip rounded-2xl border border-gray-100">
 						<a href={`/newsletters/${newsletter.slug.current}`}>
-							<h2 class="!text-lg">{newsletter.title}</h2>
-							<p class="text-gray-500">
-								{new Date(newsletter.publishedAt).toLocaleDateString()}
-							</p>
+							{newsletter.mainImage ? (
+								<img
+									src={urlFor(newsletter.mainImage)
+										.width(587)
+										.height(330)
+										.url()}
+									alt={newsletter.title}
+									class="aspect-video w-full object-cover transition duration-500"
+									loading="lazy"
+								/>
+							) : (
+								/* Fallback for when no image is uploaded */
+								<div class="flex h-full w-full items-center justify-center bg-slate-100 text-slate-400">
+									TBH Logo or Placeholder
+								</div>
+							)}
+							<div class="p-4">
+								<h2 class="!text-lg">{newsletter.title}</h2>
+								<p class="text-gray-500">
+									{new Date(newsletter.publishedAt).toLocaleDateString()}
+								</p>
+							</div>
 						</a>
 					</li>
 				))
