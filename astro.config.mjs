@@ -1,5 +1,6 @@
 // @ts-check
-import { defineConfig, loadEnv } from 'astro/config'
+import { defineConfig } from 'astro/config'
+import { loadEnv } from 'vite'
 
 import cloudflare from '@astrojs/cloudflare'
 import icon from 'astro-icon'

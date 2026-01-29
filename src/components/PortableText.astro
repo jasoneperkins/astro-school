@@ -4,20 +4,21 @@ import Code from './Code.astro'
 import Debug from './Debug.astro'
 import YouTube from './YouTube.astro'
 import {PortableText as PortableTextInternal} from 'astro-portabletext'
+import PortableTextImage from './PortableTextImage.astro'
 import SanityImage from './SanityImage.astro'
 import InternalLink from './InternalLink.astro'
 
+const {value} = Astro.props
 const components = {
-  type: {
-    youtube: YouTube,
-    callToActionBox: CallToActionBox,
-    image: SanityImage,
-    code: Code,
-  },
-  mark: {
-    internalLink: InternalLink,
-  },
+	type: {
+		image: PortableTextImage
+	},
+	// You can also add custom styling for links, lists, etc. here
+	mark: {
+		link: ({value, slots}: any) =>
+			`<a href="${value.href}" class="text-blue-600 underline">${slots.default()}</a>`
+	}
 }
 ---
 
-<PortableTextInternal value={Astro.props.value} components={components} />
+<PortableTextInternal value={value} components={components} />

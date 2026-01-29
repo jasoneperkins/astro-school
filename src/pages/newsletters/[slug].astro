@@ -27,7 +27,14 @@ const newsletter = await sanityClient.fetch(
 const mainImage = newsletter?.mainImage
 	? urlFor(newsletter.mainImage).width(1600).height(900).url()
 	: null
-
+const publishedDate = new Date(newsletter.publishedAt).toLocaleDateString(
+	'en-US',
+	{
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric'
+	}
+)
 const title = newsletter?.title || 'No Title'
 
 // Redirect if the newsletter doesn't exist
@@ -37,7 +44,7 @@ if (!newsletter) {
 ---
 
 <Layout {title}>
-	<Header {title} {mainImage} />
+	<Header {title} {mainImage} {publishedDate} />
 	<!-- <header
 		class="content relative bg-cover bg-center bg-no-repeat pt-100"
 		style={mainImage

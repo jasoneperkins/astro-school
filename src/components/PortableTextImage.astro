@@ -1,0 +1,24 @@
+---
+import {Image} from 'astro:assets'
+import {urlFor} from '../lib/sanityImage'
+
+const {node} = Astro.props
+const url = urlFor(node).width(800).format('webp').url()
+---
+
+<figure class="my-8">
+	<Image
+		src={url}
+		alt={node.alt || 'Learning Center Image'}
+		width={800}
+		height={450}
+		class="rounded-xl shadow-md"
+	/>
+	{
+		node.caption && (
+			<figcaption class="mt-2 text-center text-sm text-slate-500 italic">
+				{node.caption}
+			</figcaption>
+		)
+	}
+</figure>
