@@ -46,7 +46,7 @@ export const newsletter = defineType({
 			name: 'body',
 			title: 'Content',
 			type: 'array',
-			of: [{ type: 'block' }, { type: 'image' }] // Allows rich text and images
+			of: [{ type: 'block' }, { type: 'image' }, { type: 'cta' }] // Allows rich text and images
 		}),
 		defineField({
 			name: 'vocabularyList',
@@ -63,6 +63,12 @@ export const newsletter = defineType({
 					]
 				}
 			]
+		}),
+		defineField({
+			name: 'featuredCarousel',
+			title: 'Featured Carousel',
+			type: 'carousel',
+			description: 'A swipeable gallery for this specific newsletter issue.'
 		})
 	]
 })

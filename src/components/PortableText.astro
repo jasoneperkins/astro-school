@@ -1,17 +1,21 @@
 ---
-import CallToActionBox from './CallToActionBox.astro'
-import Code from './Code.astro'
-import Debug from './Debug.astro'
-import YouTube from './YouTube.astro'
 import {PortableText as PortableTextInternal} from 'astro-portabletext'
 import PortableTextImage from './PortableTextImage.astro'
-import SanityImage from './SanityImage.astro'
-import InternalLink from './InternalLink.astro'
+import PortableTextCarousel from './PortableTextCarousel.astro'
+import CallToActionBox from './CallToActionBox.astro'
+// import CallToActionBox from './CallToActionBox.astro'
+// import Code from './Code.astro'
+// import Debug from './Debug.astro'
+// import YouTube from './YouTube.astro'
+// import SanityImage from './SanityImage.astro'
+// import InternalLink from './InternalLink.astro'
 
 const {value} = Astro.props
 const components = {
 	type: {
-		image: PortableTextImage
+		image: PortableTextImage,
+		carousel: PortableTextCarousel, // Add this
+		cta: CallToActionBox // Link your CTA schema to this component
 	},
 	// You can also add custom styling for links, lists, etc. here
 	mark: {

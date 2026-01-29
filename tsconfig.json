@@ -10,7 +10,10 @@
 			"@masks/*": ["./src/assets/masks/*"],
 			"@public/*": ["./public/*"],
 			"@schemas/*": ["./studio/schemas/*"],
-			"@styles/*": ["./src/styles/*"]
+			"@styles/*": ["./src/styles/*"],
+			"@lib/*": ["./src/lib/*"],
+			"@utils/*": ["./src/utils/*"],
+			"@types/*": ["./src/types/*"]
 		}
 	},
 	"extends": "astro/tsconfigs/strict",

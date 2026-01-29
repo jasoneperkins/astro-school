@@ -1,0 +1,33 @@
+---
+interface Props {
+	items: Array<{
+		term: string
+		definition: string
+	}>
+}
+
+const {items} = Astro.props
+---
+
+<section class="vocabulary-spotlight my-12 border-t border-slate-200 pt-8">
+	<h2 class="mb-8 flex items-center gap-2 text-3xl font-bold text-slate-900">
+		<span class="text-4xl">📚</span> Vocabulary Spotlight
+	</h2>
+
+	<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+		{
+			items.map(item => (
+				<div class="vocab-card rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition-shadow duration-300 hover:shadow-md">
+					<dt class="mb-2 text-xl font-bold text-blue-700">{item.term}</dt>
+					<dd class="leading-relaxed text-slate-600">{item.definition}</dd>
+				</div>
+			))
+		}
+	</div>
+</section>
+
+<style>
+	.vocab-card {
+		break-inside: avoid;
+	}
+</style>

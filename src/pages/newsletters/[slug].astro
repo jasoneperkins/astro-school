@@ -1,13 +1,16 @@
 ---
 import {sanityClient} from 'sanity:client'
 import {PortableText} from 'astro-portabletext'
-import {urlFor} from '../../lib/urlFor'
+import {urlFor} from '@lib/urlFor'
+import {formatDate} from '@utils/formatDate'
 
 import Layout from '@layouts/Common.astro'
 import Header from '@landmarks/Header.astro'
+import PortableTextCarousel from '@components/PortableTextCarousel.astro'
+import VocabularyList from '@components/VocabularyList.astro'
+
 import '@styles/pages/newsletters.css'
 
-// 1. Generate paths for all newsletter documents
 export async function getStaticPaths() {
 	const newsletters = await sanityClient.fetch(
 		`*[_type == "newsletter"]{ "slug": slug.current }`
@@ -18,16 +21,24 @@ export async function getStaticPaths() {
 	}))
 }
 
-// 2. Fetch the specific newsletter data
 const {slug} = Astro.params
 const newsletter = await sanityClient.fetch(
-	`*[_type == "newsletter" && slug.current == $slug][0]`,
+	`*[_type == "newsletter" && slug.current == $slug][0]{
+    ...,
+    featuredCarousel,
+		vocabularyList
+  }`,
 	{slug}
 )
+
+if (!newsletter) {
+	return Astro.redirect('/404')
+}
+
 const mainImage = newsletter?.mainImage
 	? urlFor(newsletter.mainImage).width(1600).height(900).url()
 	: null
-const publishedDate = new Date(newsletter.publishedAt).toLocaleDateString(
+const publishedDate = new Date(newsletter?.publishedAt).toLocaleDateString(
 	'en-US',
 	{
 		year: 'numeric',
@@ -36,33 +47,10 @@ const publishedDate = new Date(newsletter.publishedAt).toLocaleDateString(
 	}
 )
 const title = newsletter?.title || 'No Title'
-
-// Redirect if the newsletter doesn't exist
-if (!newsletter) {
-	return Astro.redirect('/404')
-}
 ---
 
 <Layout {title}>
 	<Header {title} {mainImage} {publishedDate} />
-	<!-- <header
-		class="content relative bg-cover bg-center bg-no-repeat pt-100"
-		style={mainImage
-			? `background-image: linear-gradient(to top, #fff, rgba(255, 255, 255, 0.5)), url('${mainImage}');`
-			: ''}>
-		<hgroup>
-			<h1 class="mt-2 text-4xl font-bold">{newsletter.title}</h1>
-			<time class="text-sm text-gray-600">
-				{
-					new Date(newsletter.publishedAt).toLocaleDateString('en-US', {
-						year: 'numeric',
-						month: 'long',
-						day: 'numeric'
-					})
-				}
-			</time>
-		</hgroup>
-	</header> -->
 	<div class="prose prose-slate lg:prose-xl content py-content-block">
 		<PortableText value={newsletter.body} />
 	</div>
@@ -73,16 +61,10 @@ if (!newsletter) {
 					<h2>Jewish Vocabulary</h2>
 				</header>
 				<dl class="grid grid-cols-1 gap-x-12 gap-y-6 md:grid-cols-3">
-					{newsletter.vocabularyList.map(item => (
-						<div class="flex flex-col border-l-4 border-blue-400 pl-4">
-							<dt class="text-lg font-bold tracking-tight text-slate-900">
-								{item.term}
-							</dt>
-							<dd class="mt-1 leading-relaxed text-slate-700">
-								{item.definition}
-							</dd>
-						</div>
-					))}
+					{newsletter.vocabularyList &&
+						newsletter.vocabularyList.length > 0 && (
+							<VocabularyList items={newsletter.vocabularyList} />
+						)}
 				</dl>
 			</div>
 		)

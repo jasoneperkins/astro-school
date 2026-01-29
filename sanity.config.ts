@@ -3,6 +3,7 @@ import { structureTool } from 'sanity/structure'
 import { presentationTool } from 'sanity/presentation'
 
 import { newsletter } from '@schemas/newsletter'
+import { carousel } from '@schemas/carousel'
 
 export default defineConfig({
 	name: 'temple-beit-hayam',
@@ -21,7 +22,7 @@ export default defineConfig({
 		structureTool()
 	],
 	schema: {
-		types: [newsletter]
+		types: [newsletter, carousel]
 	},
 	useCdn: false,
 	stega: {
