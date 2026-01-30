@@ -2,10 +2,7 @@ import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
 import { presentationTool } from 'sanity/presentation'
 
-import { carousel } from '@schemas/carousel'
-import { classroom } from '@schemas/classroom'
-import { newsletter } from '@schemas/newsletter'
-import { cta } from '@schemas/cta'
+import { schemaTypes } from './studio/schemas'
 
 import {
 	PUBLIC_SANITY_PROJECT_ID,
@@ -29,7 +26,7 @@ export default defineConfig({
 		structureTool()
 	],
 	schema: {
-		types: [newsletter, carousel, classroom, cta]
+		types: schemaTypes
 	},
 	useCdn: false,
 	stega: {
