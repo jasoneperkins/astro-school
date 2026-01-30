@@ -12,12 +12,12 @@ import {portableTextComponents} from '@lib/portableTextComponents'
 import '@styles/layouts/content.css'
 
 export async function getStaticPaths() {
-	const classes = await sanityClient.fetch(
-		`*[_type == "classroom"]{ "slug": slug.current }`
+	const classrooms = await sanityClient.fetch(
+		`*[_type == "classroom" && defined(slug.current)]{ "slug": slug.current }`
 	)
 
-	return classes.map(class => ({
-		params: {class.slug}
+	return classrooms.map(({slug}) => ({
+		params: {slug}
 	}))
 }
 
@@ -52,7 +52,7 @@ const mainImage = classroom.classImage
 			classroom.featuredCarousel && (
 				<div class="my-12">
 					<PortableTextCarousel
-						value={newsletter.body}
+						value={classroom.body}
 						components={portableTextComponents}
 					/>
 				</div>

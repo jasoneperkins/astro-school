@@ -65,13 +65,18 @@ export default defineConfig({
 			}
 		}),
 		sanity({
-			projectId: env.PUBLIC_SANITY_PROJECT_ID,
-			dataset: env.PUBLIC_SANITY_DATASET,
+			projectId:
+				env.PUBLIC_SANITY_PROJECT_ID || process.env.PUBLIC_SANITY_PROJECT_ID,
+			dataset:
+				env.PUBLIC_SANITY_DATASET ||
+				process.env.PUBLIC_SANITY_DATASET ||
+				'production',
 			studioBasePath: '/admin',
 			useCdn: false,
 			stega: {
 				enabled: true,
-				studioUrl: env.PUBLIC_SANITY_STUDIO_URL
+				studioUrl:
+					env.PUBLIC_SANITY_STUDIO_URL || process.env.PUBLIC_SANITY_STUDIO_URL
 			}
 		}),
 		react()
