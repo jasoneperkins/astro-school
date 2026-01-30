@@ -8,6 +8,7 @@
 	--font-scale: 1.1;
 	--font-sans: 'Poppins', 'sans-serif';
 
+<<<<<<< HEAD
 	/* Lochmara Blue Palette */
 	--color-lochmara-50: #f0f7fc;
 	--color-lochmara-100: #dff0f9;
@@ -20,6 +21,14 @@
 	--color-lochmara-800: #004a75;
 	--color-lochmara-900: #063e61;
 
+=======
+	--color-lochmara-50: #e6f2f9;
+	--color-lochmara-100: #b3d8ee;
+	--color-lochmara-500: #007ec7;
+	--color-lochmara-600: #00659f;
+	--color-lochmara-700: #00588b;
+	--color-lochmara-900: #000d14;
+>>>>>>> 674bc3f5b1e99c011bf76c0e837b910ddc3282fe
 	--color-indigo: #39375b;
 	--color-gray: #39375b;
 
