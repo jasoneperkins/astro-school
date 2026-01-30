@@ -1,0 +1,11 @@
+---
+const {node} = Astro.props
+const {title, url, style = 'primary'} = node
+const buttonClass = style === 'secondary' ? 'btn-secondary' : 'btn'
+---
+
+<div class="portable-text-cta my-10 flex justify-center">
+	<a href={url} class={buttonClass}>
+		{title}
+	</a>
+</div>

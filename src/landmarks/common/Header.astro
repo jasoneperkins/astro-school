@@ -1,11 +1,19 @@
 ---
 import {Image} from 'astro:assets'
 import {Icon} from 'astro-icon/components'
+import {sanityClient} from 'sanity:client'
 
 import Logo from '@images/temple-beit-hayam.png'
+
+const classrooms = await sanityClient.fetch(
+	`*[_type == "classroom"] | order(title asc) { 
+		title, 
+		"slug": slug.current 
+	}`
+)
 ---
 
-<header class="content absolute sticky top-0 z-50 bg-transparent">
+<header class="content sticky top-0 z-50 bg-transparent">
 	<address class="flex items-center justify-between py-3 not-italic">
 		<div class="flex items-center gap-4">
 			<a href="tel:7722864374" class="flex items-center gap-x-1">
@@ -20,7 +28,9 @@ import Logo from '@images/temple-beit-hayam.png'
 				<Icon name="line-md:email-filled" class="text-green-500" size={20} />
 				<span class="hidden lg:block">misscindy@tbhfl.org</span>
 			</a>
-			<a href="" class="flex items-center gap-x-1">
+			<a
+				href="https://maps.app.goo.gl/YourMapLink"
+				class="flex items-center gap-x-1">
 				<Icon
 					name="line-md:map-marker-twotone-loop"
 					class="text-orange-500"
@@ -32,39 +42,97 @@ import Logo from '@images/temple-beit-hayam.png'
 			</a>
 		</div>
 		<div class="flex items-center gap-2">
-			<a href="">
+			<a href="https://facebook.com/YourPage">
 				<Icon name="line-md:facebook" class="text-[#1877F2]" size={20} />
 			</a>
 		</div>
 	</address>
-	<nav class="flex items-center justify-between py-3">
-		<a href="/">
-			<Image
-				src={Logo}
-				alt="Go to Temple Beit Hayam Homepage"
-				class="h-16 w-auto"
-			/>
+
+	<nav
+		class="flex items-center justify-between py-3"
+		aria-label="Main Navigation">
+		<a href="/" aria-label="Temple Beit Hayam Home">
+			<Image src={Logo} alt="" class="h-16 w-auto" aria-hidden="true" />
 		</a>
-		<ul class="flex max-w-2xs items-center justify-between gap-x-8">
-			<li><a href="/">Home</a></li>
-			<li><a href="/about">About</a></li>
-			<li><a href="/newsletters">Newsletters</a></li>
+
+		<ul class="flex items-center gap-x-8">
+			<li>
+				<a href="/" class="transition-colors hover:text-blue-600">Home</a>
+			</li>
+			<li>
+				<a href="/about" class="transition-colors hover:text-blue-600">About</a>
+			</li>
+
+			<li class="nav-dropdown-group">
+				<button
+					type="button"
+					class="nav-dropdown-trigger"
+					aria-expanded="false"
+					aria-haspopup="true"
+					aria-controls="classes-menu"
+					id="classes-button">
+					Classes <Icon name="line-md:chevron-small-down" size={16} />
+				</button>
+				<ul
+					id="classes-menu"
+					class="nav-dropdown-menu"
+					aria-labelledby="classes-button"
+					role="menu">
+					{
+						classrooms.map(cls => (
+							<li role="none">
+								<a
+									href={`/classes/${cls.slug}`}
+									class="nav-dropdown-item"
+									role="menuitem">
+									{cls.title}
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</li>
+			<li>
+				<a href="/newsletters" class="transition-colors hover:text-blue-600">
+					Newsletters
+				</a>
+			</li>
 		</ul>
 		<a href="/contact" class="btn">Contact Us</a>
 	</nav>
-
-	<style>
-		@keyframes add-shadow {
-			to {
-				background-color: white;
-				box-shadow: 0 15px 10px -3px rgba(25, 25, 25, 0.06);
-			}
-		}
-
-		header {
-			animation: add-shadow linear both;
-			animation-timeline: scroll();
-			animation-range: 0 150px;
-		}
-	</style>
 </header>
+
+<script>
+	// Accessibility Script for Dropdown
+	const trigger = document.getElementById('classes-button')
+	const menu = document.getElementById('classes-menu')
+
+	function toggleMenu(open: boolean) {
+		trigger?.setAttribute('aria-expanded', open.toString())
+	}
+
+	// Toggle on click (for mobile/keyboard)
+	trigger?.addEventListener('click', e => {
+		const isOpen = trigger.getAttribute('aria-expanded') === 'true'
+		toggleMenu(!isOpen)
+	})
+
+	// Close when clicking outside
+	document.addEventListener('click', e => {
+		if (
+			!trigger?.contains(e.target as Node) &&
+			!menu?.contains(e.target as Node)
+		) {
+			toggleMenu(false)
+		}
+	})
+
+	// Handle Escape key to close
+	document.addEventListener('keydown', e => {
+		if (e.key === 'Escape') toggleMenu(false)
+	})
+</script>
+
+<style>
+	@import '@styles/landmarks/common/header.css';
+</style>

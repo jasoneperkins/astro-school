@@ -1,0 +1,9 @@
+name = "astro-school"
+pages_build_output_dir = "./dist"
+compatibility_date = "2024-04-03"
+
+[vars]
+PUBLIC_SANITY_DATASET = "production"
+PUBLIC_SANITY_PROJECT_ID = "nn95ygkm"
+PUBLIC_SANITY_STUDIO_URL = "https://astro-school.jason-c11.workers.dev"
+PUBLIC_SANITY_VISUAL_EDITING = false

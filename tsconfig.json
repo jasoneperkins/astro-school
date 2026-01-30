@@ -7,13 +7,14 @@
 			"@images/*": ["./src/assets/images/*"],
 			"@landmarks/*": ["./src/landmarks/*"],
 			"@layouts/*": ["./src/layouts/*"],
+			"@lib/*": ["./src/lib/*"],
 			"@masks/*": ["./src/assets/masks/*"],
 			"@public/*": ["./public/*"],
+			"@queries/*": ["./src/lib/queries/*"],
 			"@schemas/*": ["./studio/schemas/*"],
 			"@styles/*": ["./src/styles/*"],
-			"@lib/*": ["./src/lib/*"],
-			"@utils/*": ["./src/utils/*"],
-			"@types/*": ["./src/types/*"]
+			"@sanity-types/*": ["./src/types/*"],
+			"@utils/*": ["./src/utils/*"]
 		}
 	},
 	"extends": "astro/tsconfigs/strict",

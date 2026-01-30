@@ -1,6 +1,7 @@
 ---
 import Layout from '@layouts/Common.astro'
 import {Image} from 'astro:assets'
+import {Icon} from 'astro-icon/components'
 
 import '@styles/pages/home.css'
 
@@ -14,19 +15,17 @@ const title = 'Temple Beit HaYam'
 ---
 
 <Layout {title}>
-	<div class="grid-cols-content-2/5 pb-content-block gap-content grid pt-50">
+	<div class="grid-cols-content-1/2 pb-content-block gap-content grid pt-50">
 		<header class="half grid content-center gap-y-4 py-16">
 			<hgroup class="flex flex-col-reverse">
 				<h1 class="text-blue !text-6xl text-balance">
-					Temple Beit HaYam Early Childhood Learning Center
+					Early Childhood Learning Center
 				</h1>
-				<p class="text-gray text-lg">Your Child's Home Away From Home</p>
+				<p class="text-gray text-lg">Temple Beit HaYam</p>
 			</hgroup>
 			<p>
-				At the ECLC, we treat every child with the love, respect, and
-				understanding they deserve. We provide a nurturing environment that
-				fosters cognitive, emotional, and physical development, ensuring a
-				joyful start to your child's educational journey.
+				A warm, safe environment for children ages 1 to 5 to discover the world
+				and build lasting friendships.
 			</p>
 			<button class="bg-lochmara-500">Contact Us</button>
 		</header>
@@ -69,66 +68,37 @@ const title = 'Temple Beit HaYam'
 	<section
 		aria-labelledby="classrooms-label"
 		class="bg-[url('/images/background-01.jpg')]">
-		<header class="flex flex-col-reverse items-center">
-			<hgroup>
-				<h2 id="classrooms-label">Lorem Ipsum.</h2>
-				<p>Lorem ipsum dolor sit amet.</p>
+		<header>
+			<hgroup class="text-center">
+				<h2 id="classrooms-label">A Place for Every Stage</h2>
+				<p>Tailored learning environments for your child's growing needs.</p>
 			</hgroup>
 		</header>
 		<div
 			class="grid grid-cols-1 justify-center gap-2 md:grid-cols-2 lg:grid-cols-4">
 			<div class="course hover:!border-t-red-500">
-				<img
-					loading="lazy"
-					decoding="async"
-					width="60"
-					height="52"
-					src="https://backtheme.com/university/wp-content/uploads/2023/04/cat_img_h_1_3.png"
-					alt=""
-				/>
+				<Icon name="ph:baby-duotone" class="size-10" />
 				<h3 class="!text-lg">Toddlers</h3>
 				<p class="tiny text-gray-500">
 					A gentle introduction to social play and discovery.
 				</p>
 			</div>
 			<div class="course hover:!border-t-blue-500">
-				<img
-					loading="lazy"
-					decoding="async"
-					width="60"
-					height="52"
-					src="https://backtheme.com/university/wp-content/uploads/2023/04/cat_img_h_1_3.png"
-					alt=""
-					5
-				/>
+				<Icon name="lucide:blocks" class="size-10" />
 				<h3 class="!text-lg">Terrific Twos</h3>
 				<p class="tiny text-gray-500">
 					Building independence through curiosity and hands-on learning.
 				</p>
 			</div>
 			<div class="course hover:!border-t-green-500">
-				<img
-					loading="lazy"
-					decoding="async"
-					width="60"
-					height="52"
-					src="https://backtheme.com/university/wp-content/uploads/2023/04/cat_img_h_1_3.png"
-					alt=""
-				/>
+				<Icon name="lucide:palette" class="size-10" />
 				<h3 class="!text-lg">Preschool 3's</h3>
 				<p class="tiny text-gray-500">
 					Developing confidence and early academic foundations.
 				</p>
 			</div>
 			<div class="course hover:!border-t-orange-500">
-				<img
-					loading="lazy"
-					decoding="async"
-					width="60"
-					height="52"
-					src="https://backtheme.com/university/wp-content/uploads/2023/04/cat_img_h_1_3.png"
-					alt=""
-				/>
+				<Icon name="lucide:graduation-cap" class="size-10" />
 				<h3 class="!text-lg">VPK</h3>
 				<p class="tiny text-gray-500">
 					Preparing our oldest students for a successful transition to

@@ -2,14 +2,21 @@ import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
 import { presentationTool } from 'sanity/presentation'
 
-import { newsletter } from '@schemas/newsletter'
 import { carousel } from '@schemas/carousel'
+import { classroom } from '@schemas/classroom'
+import { newsletter } from '@schemas/newsletter'
+import { cta } from '@schemas/cta'
+
+import {
+	PUBLIC_SANITY_PROJECT_ID,
+	PUBLIC_SANITY_DATASET
+} from 'astro:env/client'
 
 export default defineConfig({
 	name: 'temple-beit-hayam',
 	title: 'Temple Beit HaYam',
-	projectId: 'nn95ygkm',
-	dataset: 'production',
+	projectId: PUBLIC_SANITY_PROJECT_ID,
+	dataset: PUBLIC_SANITY_DATASET,
 	plugins: [
 		presentationTool({
 			previewUrl: {
@@ -22,7 +29,7 @@ export default defineConfig({
 		structureTool()
 	],
 	schema: {
-		types: [newsletter, carousel]
+		types: [newsletter, carousel, classroom, cta]
 	},
 	useCdn: false,
 	stega: {

@@ -1,35 +1,29 @@
 ---
-import {sanityClient} from 'sanity:client'
-import {PortableText} from 'astro-portabletext'
-import {urlFor} from '@lib/urlFor'
-import {formatDate} from '@utils/formatDate'
-
 import Layout from '@layouts/Common.astro'
 import Header from '@landmarks/Header.astro'
-import PortableTextCarousel from '@components/PortableTextCarousel.astro'
+
+import {sanityClient} from 'sanity:client'
+import {PortableText} from 'astro-portabletext'
+import {portableTextComponents} from '@lib/portableTextComponents'
+import {urlFor} from '@lib/urlFor'
+import {formatDate} from '@utils/formatDate'
+import {
+	getNewsletter,
+	getAllNewsletters,
+	getNewsletterSlugs
+} from '@queries/newsletter'
+
 import VocabularyList from '@components/VocabularyList.astro'
 
 import '@styles/pages/newsletters.css'
 
 export async function getStaticPaths() {
-	const newsletters = await sanityClient.fetch(
-		`*[_type == "newsletter"]{ "slug": slug.current }`
-	)
-
-	return newsletters.map(newsletter => ({
-		params: {slug: newsletter.slug}
-	}))
+	const newsletters = await getNewsletterSlugs()
+	return newsletters.map(n => ({params: {slug: n.slug}}))
 }
 
 const {slug} = Astro.params
-const newsletter = await sanityClient.fetch(
-	`*[_type == "newsletter" && slug.current == $slug][0]{
-    ...,
-    featuredCarousel,
-		vocabularyList
-  }`,
-	{slug}
-)
+const newsletter = await getNewsletter(slug)
 
 if (!newsletter) {
 	return Astro.redirect('/404')
@@ -47,12 +41,13 @@ const publishedDate = new Date(newsletter?.publishedAt).toLocaleDateString(
 	}
 )
 const title = newsletter?.title || 'No Title'
+export const prerender = true
 ---
 
 <Layout {title}>
 	<Header {title} {mainImage} {publishedDate} />
 	<div class="prose prose-slate lg:prose-xl content py-content-block">
-		<PortableText value={newsletter.body} />
+		<PortableText value={newsletter.body} components={portableTextComponents} />
 	</div>
 	{
 		newsletter.vocabularyList && newsletter.vocabularyList.length > 0 && (
