@@ -3,11 +3,11 @@ import Layout from '@layouts/Common.astro'
 import Header from '@landmarks/Header.astro'
 import NewsletterCard from '@components/NewsletterCard.astro'
 
-import {getAllNewsletters} from '@queries/newsletter'
+import {fetchAllNewsletters} from '@lib/queries/newsletter'
 
 import mainImage from '@images/woman-kids-board-globe-table.webp'
 
-const newsletters = await getAllNewsletters()
+const newsletters = await fetchAllNewsletters()
 const title = 'Newsletters'
 ---
 

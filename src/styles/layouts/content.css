@@ -89,3 +89,7 @@ section {
 		grid-column-start: center;
 	}
 }
+
+:has(> .half) {
+	@apply gap-y-4;
+}

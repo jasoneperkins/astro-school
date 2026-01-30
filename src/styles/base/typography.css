@@ -3,9 +3,9 @@ body {
 }
 
 h1 {
+	@apply font-medium text-balance;
 	font-size: calc(1rem * pow(var(--font-scale), 9));
 	font-family: 'Love Ya Like A Sister', system-ui;
-	font-weight: 500;
 }
 
 h2 {
@@ -33,6 +33,7 @@ h3,
 h4,
 h5,
 h6 {
+	@apply text-balance;
 	color: #39375b;
 }
 

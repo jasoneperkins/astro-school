@@ -2,12 +2,12 @@ import { defineType, defineField } from 'sanity'
 
 export const classroom = defineType({
 	name: 'classroom',
-	title: 'Classroom Pages',
+	title: 'Classroom',
 	type: 'document',
 	fields: [
 		defineField({
 			name: 'title',
-			title: 'Class Name',
+			title: 'Classroom Name',
 			type: 'string',
 			validation: (Rule) => Rule.required()
 		}),
@@ -20,10 +20,9 @@ export const classroom = defineType({
 		}),
 		defineField({
 			name: 'philosophy',
-			title: 'Class Philosophy',
+			title: 'Classroom Philosophy',
 			type: 'text'
 		}),
-		// Integrate the carousel here
 		defineField({
 			name: 'featuredCarousel',
 			title: 'Classroom Gallery',

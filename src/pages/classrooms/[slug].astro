@@ -2,7 +2,7 @@
 export const prerender = true
 
 import {sanityClient} from 'sanity:client'
-import {classroomQuery} from '@queries/classroom'
+import {fetchAllClassrooms, fetchClassroomBySlug} from '@lib/queries/classroom'
 import {urlFor} from '@lib/urlFor'
 import {formatDate} from '@utils/formatDate'
 import Layout from '@layouts/Common.astro'
@@ -14,17 +14,14 @@ import {portableTextComponents} from '@lib/portableTextComponents'
 import '@styles/layouts/content.css'
 
 export async function getStaticPaths() {
-	const classrooms = await sanityClient.fetch(
-		`*[_type == "classroom" && defined(slug.current)]{ "slug": slug.current }`
-	)
-
-	return classrooms.map(({slug}) => ({
-		params: {slug}
+	const classrooms = await fetchAllClassrooms() // Updated call
+	return classrooms.map(classroom => ({
+		params: {slug: classroom.slug}
 	}))
 }
 
 const {slug} = Astro.params
-const classroom = await sanityClient.fetch(classroomQuery, {slug})
+const classroom = await fetchClassroomBySlug(slug)
 
 if (!classroom) {
 	return Astro.redirect('/404')

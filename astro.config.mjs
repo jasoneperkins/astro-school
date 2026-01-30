@@ -63,8 +63,10 @@ export default defineConfig({
 					'baby-duotone',
 					'book-open-duotone',
 					'compass-duotone',
+					'list-bold',
 					'paint-brush-household-duotone',
-					'shapes-duotone'
+					'shapes-duotone',
+					'x-bold'
 				]
 			}
 		}),

@@ -1,13 +1,9 @@
 import { loadQuery } from '@lib/sanity.service'
 import type { Newsletter } from '@sanity-types/sanity'
 
-export async function getNewsletterSlugs() {
-	const query = `*[_type == "newsletter"]{ "slug": slug.current }`
-	return await loadQuery<Array<{ slug: string }>>(query)
-}
+export const newsletterSlugsQuery = `*[_type == "newsletter"]{ "slug": slug.current }`
 
-export async function getNewsletter(slug: string) {
-	const query = `*[_type == "newsletter" && slug.current == $slug][0]{
+export const newsletterBySlugQuery = `*[_type == "newsletter" && slug.current == $slug][0]{
     ...,
     "slug": slug.current,
     "publishedAt": coalesce(publishedAt, _createdAt),
@@ -21,16 +17,23 @@ export async function getNewsletter(slug: string) {
       }
     }
   }`
-	return await loadQuery<Newsletter>(query, { slug })
-}
 
-export async function getAllNewsletters() {
-	const query = `*[_type == "newsletter"] | order(publishedAt desc) {
+export const allNewslettersQuery = `*[_type == "newsletter"] | order(publishedAt desc) {
     title,
     "slug": slug.current,
     publishedAt,
     mainImage,
     excerpt
   }`
-	return await loadQuery<Newsletter[]>(query)
+
+export async function fetchNewsletterSlugs() {
+	return await loadQuery<Array<{ slug: string }>>(newsletterSlugsQuery)
+}
+
+export async function fetchNewsletterBySlug(slug: string) {
+	return await loadQuery<Newsletter>(newsletterBySlugQuery, { slug })
+}
+
+export async function fetchAllNewsletters() {
+	return await loadQuery<Newsletter[]>(allNewslettersQuery)
 }
