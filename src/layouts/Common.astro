@@ -12,7 +12,7 @@ export type props = {
 	title: string
 }
 const visualEditingEnabled =
-	import.meta.env.PUBLIC_SANITY_VISUAL_EDITING === 'true'
+	import.meta.env.PUBLIC_SANITY_VISUAL_EDITING === true
 const isDraftMode =
 	Astro.cookies.has('__prerender_bypass') ||
 	Astro.url.searchParams.has('preview')

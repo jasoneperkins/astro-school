@@ -27,7 +27,7 @@ export default defineConfig({
 			PUBLIC_SANITY_STUDIO_URL: envField.string({
 				context: 'client',
 				access: 'public',
-				default: 'https://astro-school.jason-c11.workers.dev'
+				default: 'http://localhost:3333'
 			}),
 			PUBLIC_SANITY_VISUAL_EDITING: envField.boolean({
 				context: 'client',
@@ -86,7 +86,7 @@ export default defineConfig({
 				studioUrl:
 					env.PUBLIC_SANITY_STUDIO_URL ||
 					process.env.PUBLIC_SANITY_STUDIO_URL ||
-					'https://astro-school.jason-c11.workers.dev'
+					'http://localhost:3333'
 			}
 		}),
 		react()

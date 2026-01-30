@@ -8,7 +8,7 @@ import {
 
 const usePreview = !!SANITY_API_TOKEN && PUBLIC_SANITY_VISUAL_EDITING
 
-const client = usePreview
+export const client = usePreview
 	? sanityClient.withConfig({
 			token: SANITY_API_TOKEN,
 			useCdn: false,
