@@ -55,6 +55,7 @@ export default defineConfig({
 					'facebook',
 					'map-marker-twotone-loop',
 					'phone-twotone-loop',
+					'sunny-twotone-loop',
 					'twitter-twotone'
 				],
 				lucide: ['baby', 'blocks', 'graduation-cap', 'palette'],
