@@ -6,9 +6,14 @@ export default defineType({
 	type: 'object',
 	fields: [
 		defineField({
+			name: 'time',
+			type: 'string',
+			title: 'Time (e.g., 9:00 AM)'
+		}),
+		defineField({
 			name: 'activity',
 			type: 'string',
-			title: 'Activity Name (e.g., Morning Circle)'
+			title: 'Activity Name'
 		}),
 		defineField({
 			name: 'description',

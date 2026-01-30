@@ -35,19 +35,16 @@ if (!newsletter) {
 const mainImage = newsletter?.mainImage
 	? urlFor(newsletter.mainImage).width(1600).height(900).url()
 	: null
-const publishedDate = new Date(newsletter?.publishedAt).toLocaleDateString(
-	'en-US',
-	{
-		year: 'numeric',
-		month: 'long',
-		day: 'numeric'
-	}
-)
 const title = newsletter?.title || 'No Title'
+const subtitle = new Date(newsletter?.publishedAt).toLocaleDateString('en-US', {
+	year: 'numeric',
+	month: 'long',
+	day: 'numeric'
+})
 ---
 
 <Layout {title}>
-	<Header {title} {mainImage} {publishedDate} />
+	<Header {title} {mainImage} {subtitle} />
 	<div class="prose prose-slate lg:prose-xl content py-content-block">
 		<PortableText value={newsletter.body} components={portableTextComponents} />
 	</div>

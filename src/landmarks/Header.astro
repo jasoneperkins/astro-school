@@ -1,10 +1,10 @@
 ---
-const {title, mainImage, publishedDate} = Astro.props
+const {title, mainImage, subtitle} = Astro.props
 ---
 
 <header
 	class="content pt-header-padding-top relative bg-cover bg-top bg-no-repeat"
 	style=`background-image: linear-gradient(to top, #fff, rgba(255, 255, 255, 0.5)), url('${mainImage.src || mainImage}');`>
 	<h1>{title}</h1>
-	{publishedDate && <p>{publishedDate}</p>}
+	{subtitle && <p>{subtitle}</p>}
 </header>

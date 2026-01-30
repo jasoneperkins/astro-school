@@ -19,9 +19,15 @@ export default defineType({
 			validation: (Rule) => Rule.required()
 		}),
 		defineField({
+			name: 'ageRange',
+			title: 'Age Range',
+			type: 'string',
+			description: 'e.g., 18 - 30 Months'
+		}),
+		defineField({
 			name: 'philosophy',
 			title: 'Classroom Philosophy',
-			type: 'text'
+			type: 'text' // Using 'text' for a simple paragraph
 		}),
 		defineField({
 			name: 'featuredCarousel',

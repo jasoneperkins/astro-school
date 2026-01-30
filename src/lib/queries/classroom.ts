@@ -9,6 +9,7 @@ export const classroomBySlugQuery = `
         current
       }
       ageRange
+      philosophy
       descriptionRaw
       mainImage {
         asset {
@@ -16,6 +17,7 @@ export const classroomBySlugQuery = `
         }
       }
       dayInTheLife {
+        time
         activity
         description
       }

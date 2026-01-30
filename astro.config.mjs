@@ -84,9 +84,9 @@ export default defineConfig({
 			stega: {
 				enabled: true,
 				studioUrl:
-					env.PUBLIC_SANITY_STUDIO_URL ||
-					process.env.PUBLIC_SANITY_STUDIO_URL ||
-					'http://localhost:3333'
+					process.env.NODE_ENV === 'development'
+						? 'http://localhost:3333'
+						: 'https://astro-school.jason-c11.workers.dev'
 			}
 		}),
 		react()
