@@ -14,7 +14,7 @@ const config: ClientConfig = {
 	useCdn: process.env.NODE_ENV === 'production',
 	stega: {
 		enabled: true,
-		studioUrl: 'https://localhost:4321'
+		studioUrl: 'https://localhost:3333'
 	},
 	token: isDev ? import.meta.env.SANITY_API_TOKEN : undefined
 }

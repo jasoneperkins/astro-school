@@ -21,11 +21,13 @@ export default defineConfig({
 			}),
 			PUBLIC_SANITY_PROJECT_ID: envField.string({
 				context: 'client',
-				access: 'public'
+				access: 'public',
+				default: 'nn95ygkm'
 			}),
 			PUBLIC_SANITY_STUDIO_URL: envField.string({
 				context: 'client',
-				access: 'public'
+				access: 'public',
+				default: 'https://astro-school.jason-c11.workers.dev'
 			}),
 			PUBLIC_SANITY_VISUAL_EDITING: envField.boolean({
 				context: 'client',
