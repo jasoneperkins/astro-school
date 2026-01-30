@@ -1,4 +1,6 @@
 ---
+export const prerender = true
+
 import Layout from '@layouts/Common.astro'
 import Header from '@landmarks/Header.astro'
 
@@ -41,7 +43,6 @@ const publishedDate = new Date(newsletter?.publishedAt).toLocaleDateString(
 	}
 )
 const title = newsletter?.title || 'No Title'
-export const prerender = true
 ---
 
 <Layout {title}>

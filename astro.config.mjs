@@ -68,7 +68,9 @@ export default defineConfig({
 		}),
 		sanity({
 			projectId:
-				env.PUBLIC_SANITY_PROJECT_ID || process.env.PUBLIC_SANITY_PROJECT_ID,
+				env.PUBLIC_SANITY_PROJECT_ID ||
+				process.env.PUBLIC_SANITY_PROJECT_ID ||
+				'nn95ygkm',
 			dataset:
 				env.PUBLIC_SANITY_DATASET ||
 				process.env.PUBLIC_SANITY_DATASET ||
@@ -78,7 +80,9 @@ export default defineConfig({
 			stega: {
 				enabled: true,
 				studioUrl:
-					env.PUBLIC_SANITY_STUDIO_URL || process.env.PUBLIC_SANITY_STUDIO_URL
+					env.PUBLIC_SANITY_STUDIO_URL ||
+					process.env.PUBLIC_SANITY_STUDIO_URL ||
+					'https://astro-school.jason-c11.workers.dev'
 			}
 		}),
 		react()
