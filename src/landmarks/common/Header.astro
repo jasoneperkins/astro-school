@@ -55,11 +55,7 @@ const classrooms = await sanityClient.fetch(
 			<Image src={Logo} alt="" class="h-16 w-auto" aria-hidden="true" />
 		</a>
 
-<<<<<<< HEAD
 		<ul class="hidden shrink basis-100 items-center justify-between md:flex">
-=======
-		<ul class="hidden items-center gap-x-8 md:flex">
->>>>>>> 674bc3f5b1e99c011bf76c0e837b910ddc3282fe
 			<li>
 				<a href="/" class="hover:text-lochmara-600 transition-colors">Home</a>
 			</li>
@@ -105,11 +101,7 @@ const classrooms = await sanityClient.fetch(
 				</a>
 			</li>
 		</ul>
-<<<<<<< HEAD
 		<a href="/contact" class="btn text-nowrap max-md:!hidden">Contact Us</a>
-=======
-		<a href="/contact" class="btn max-md:!hidden">Contact Us</a>
->>>>>>> 674bc3f5b1e99c011bf76c0e837b910ddc3282fe
 		<button
 			id="menu-toggle"
 			class="text-lochmara-900 p-2 text-3xl md:hidden"
@@ -138,11 +130,7 @@ const classrooms = await sanityClient.fetch(
 			<nav>
 				<ul class="text-lochmara-900 flex flex-col gap-6 text-xl font-bold">
 					<li><a href="/about">About</a></li>
-<<<<<<< HEAD
 					<li><a href="/classrooms">Classrooms</a></li>
-=======
-					<li><a href="/classes/vpk">VPK</a></li>
->>>>>>> 674bc3f5b1e99c011bf76c0e837b910ddc3282fe
 					<li><a href="/newsletters">Newsletters</a></li>
 					<li><a href="/contact" class="text-lochmara-600">Contact Us</a></li>
 				</ul>
@@ -152,19 +140,11 @@ const classrooms = await sanityClient.fetch(
 </header>
 
 <script>
-<<<<<<< HEAD
-=======
-	// Drawer (Mobile Navigation) Logic
->>>>>>> 674bc3f5b1e99c011bf76c0e837b910ddc3282fe
 	const menuToggle = document.getElementById('menu-toggle')
 	const closeToggle = document.getElementById('close-toggle')
 	const overlay = document.getElementById('drawer-overlay')
 	const drawer = document.getElementById('mobile-drawer')
 
-<<<<<<< HEAD
-=======
-	// Renamed the drawer function for clarity
->>>>>>> 674bc3f5b1e99c011bf76c0e837b910ddc3282fe
 	function toggleMobileDrawer(isOpen) {
 		if (isOpen) {
 			drawer?.classList.remove('translate-x-full')
@@ -181,7 +161,6 @@ const classrooms = await sanityClient.fetch(
 	closeToggle?.addEventListener('click', () => toggleMobileDrawer(false))
 	overlay?.addEventListener('click', () => toggleMobileDrawer(false))
 
-<<<<<<< HEAD
 	const dropdownButtons = document.querySelectorAll('.dropdown-trigger')
 
 	dropdownButtons.forEach(button => {
@@ -202,27 +181,6 @@ const classrooms = await sanityClient.fetch(
 		} else {
 			button.classList.remove('text-lochmara-600')
 		}
-=======
-	// ---
-
-	// Existing Dropdown (Sub-menu) Logic
-	// Rename your old 'toggleMenu' to 'toggleSubNav' or similar
-	const subMenuButtons = document.querySelectorAll('.dropdown-trigger')
-
-	subMenuButtons.forEach(button => {
-		button.addEventListener('click', e => {
-			const targetId = button.getAttribute('data-target')
-			const targetMenu = document.getElementById(targetId)
-
-			// Use a distinct name for the dropdown toggle
-			toggleSubNav(targetMenu)
-		})
-	})
-
-	function toggleSubNav(menuElement) {
-		menuElement?.classList.toggle('hidden')
-		// ... add any lochmara color shift logic here
->>>>>>> 674bc3f5b1e99c011bf76c0e837b910ddc3282fe
 	}
 </script>
 
