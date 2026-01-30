@@ -6,7 +6,9 @@
 		"dev": "astro dev",
 		"build": "astro build",
 		"preview": "astro preview",
-		"astro": "astro"
+		"astro": "astro",
+		"graphql-deploy": "sanity graphql deploy --workdir studio",
+		"studio": "sanity dev --workdir studio"
 	},
 	"dependencies": {
 		"@astrojs/cloudflare": "^12.6.12",

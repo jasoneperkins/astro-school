@@ -12,7 +12,7 @@ const client = usePreview
 	? sanityClient.withConfig({
 			token: SANITY_API_TOKEN,
 			useCdn: false,
-			perspective: 'previewDrafts'
+			perspective: 'drafts'
 		})
 	: sanityClient
 
@@ -33,7 +33,7 @@ export async function fetchGraphQL<T>(
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
-			// Include token if your dataset is private
+			perspective: 'drafts',
 			...(SANITY_API_TOKEN && { Authorization: `Bearer ${SANITY_API_TOKEN}` })
 		},
 		body: JSON.stringify({
