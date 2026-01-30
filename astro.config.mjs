@@ -36,11 +36,13 @@ export default defineConfig({
 			}),
 			SANITY_API_TOKEN: envField.string({
 				context: 'server',
-				access: 'secret'
+				access: 'secret',
+				default: ''
 			}),
 			SANITY_PREVIEW_SECRET: envField.string({
 				context: 'server',
-				access: 'secret'
+				access: 'secret',
+				default: ''
 			})
 		}
 	},
