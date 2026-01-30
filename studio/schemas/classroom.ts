@@ -1,6 +1,6 @@
 import { defineType, defineField } from 'sanity'
 
-export const classroom = defineType({
+export default defineType({
 	name: 'classroom',
 	title: 'Classroom',
 	type: 'document',
@@ -33,16 +33,7 @@ export const classroom = defineType({
 			name: 'dayInTheLife',
 			title: 'A Day in the Life',
 			type: 'array',
-			of: [
-				{
-					type: 'object',
-					name: 'scheduleItem',
-					fields: [
-						{ name: 'activity', type: 'string', title: 'Activity Name' },
-						{ name: 'description', type: 'text', title: 'Description' }
-					]
-				}
-			]
+			of: [{ type: 'scheduleItem' }]
 		}),
 		defineField({
 			name: 'curriculumHighlights',

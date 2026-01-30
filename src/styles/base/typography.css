@@ -61,3 +61,7 @@ p,
 .tiny {
 	@apply leading-relaxed;
 }
+
+.tagline {
+	@apply text-lochmara-600 mb-2 block text-sm font-bold tracking-widest uppercase;
+}

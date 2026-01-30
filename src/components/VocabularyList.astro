@@ -1,33 +1,31 @@
 ---
 interface Props {
-	items: Array<{
-		term: string
+	items: {
+		word: string
 		definition: string
-	}>
+	}[]
 }
 
-const {items} = Astro.props
+const {items = []} = Astro.params
 ---
 
-<section class="vocabulary-spotlight my-12 border-t border-slate-200 pt-8">
-	<h2 class="mb-8 flex items-center gap-2 text-3xl font-bold text-slate-900">
-		<span class="text-4xl">📚</span> Vocabulary Spotlight
-	</h2>
-
-	<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-		{
-			items.map(item => (
-				<div class="vocab-card rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition-shadow duration-300 hover:shadow-md">
-					<dt class="mb-2 text-xl font-bold text-blue-700">{item.term}</dt>
-					<dd class="leading-relaxed text-slate-600">{item.definition}</dd>
-				</div>
-			))
-		}
-	</div>
-</section>
-
-<style>
-	.vocab-card {
-		break-inside: avoid;
+<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+	{
+		items.map(item => (
+			<div class="hover:border-lochmara-300 rounded-xl border border-slate-200 bg-stone-50 p-6 transition-colors duration-200">
+				<dt class="text-lochmara-700 mb-2 text-lg font-black tracking-wide uppercase">
+					{item.word}
+				</dt>
+				<dd class="text-sm leading-relaxed text-stone-600">
+					{item.definition}
+				</dd>
+			</div>
+		))
 	}
-</style>
+</div>
+
+{
+	!items.length && (
+		<p class="text-stone-400 italic">No vocabulary terms added yet.</p>
+	)
+}

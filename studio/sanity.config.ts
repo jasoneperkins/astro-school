@@ -2,24 +2,22 @@ import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
 import { presentationTool } from 'sanity/presentation'
 
-import { schemaTypes } from './studio/schemas'
+import { schemaTypes } from './schemas'
 
-import {
-	PUBLIC_SANITY_PROJECT_ID,
-	PUBLIC_SANITY_DATASET
-} from 'astro:env/client'
+const projectId = process.env.SANITY_STUDIO_PROJECT_ID || 'nn95ygkm'
+const dataset = process.env.PUBLIC_SANITY_DATASET || 'production'
 
 export default defineConfig({
 	name: 'temple-beit-hayam',
 	title: 'Temple Beit HaYam',
-	projectId: PUBLIC_SANITY_PROJECT_ID,
-	dataset: PUBLIC_SANITY_DATASET,
+	projectId: projectId,
+	dataset: dataset,
 	plugins: [
 		presentationTool({
 			previewUrl: {
 				origin: 'http://localhost:4321',
 				previewMode: {
-					enable: '/api/preview'
+					enable: '/api/draft'
 				}
 			}
 		}),

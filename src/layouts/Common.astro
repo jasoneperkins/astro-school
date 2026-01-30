@@ -27,7 +27,7 @@ const {title} = Astro.props
 		<main>
 			<slot />
 			<PreviewBanner />
-			{visualEditingEnabled && <VisualEditing />}
+			{visualEditingEnabled && <VisualEditing enabled={visualEditingEnabled} />}
 			<!-- {
 				isDraftMode && (
 					<VisualEditing enabled={visualEditingEnabled} zIndex={1000} />

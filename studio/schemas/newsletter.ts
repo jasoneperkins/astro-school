@@ -1,6 +1,6 @@
 import { defineType, defineField } from 'sanity'
 
-export const newsletter = defineType({
+export default defineType({
 	name: 'newsletter',
 	title: 'Newsletters',
 	type: 'document',
@@ -53,16 +53,7 @@ export const newsletter = defineType({
 			title: 'Vocabulary List',
 			type: 'array',
 			description: 'Add key terms and their definitions for this issue',
-			of: [
-				{
-					type: 'object',
-					name: 'vocabItem',
-					fields: [
-						{ name: 'term', type: 'string', title: 'Term' },
-						{ name: 'definition', type: 'string', title: 'Definition' }
-					]
-				}
-			]
+			of: [{ type: 'vocabItem' }]
 		}),
 		defineField({
 			name: 'featuredCarousel',
