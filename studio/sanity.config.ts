@@ -3,8 +3,8 @@ import { structureTool } from 'sanity/structure'
 import { presentationTool } from 'sanity/presentation'
 import { schemaTypes } from './schemas/index'
 
-const projectId = process.env.SANITY_STUDIO_PROJECT_ID || 'nn95ygkm'
-const dataset = process.env.PUBLIC_SANITY_DATASET || 'production'
+const projectId = import.meta.env.SANITY_STUDIO_PROJECT_ID || 'nn95ygkm'
+const dataset = import.meta.env.PUBLIC_SANITY_DATASET || 'production'
 
 export default defineConfig({
 	name: 'temple-beit-hayam',
@@ -15,7 +15,7 @@ export default defineConfig({
 		presentationTool({
 			previewUrl: {
 				origin:
-					process.env.SANITY_STUDIO_PREVIEW_URL || 'http://localhost:4321',
+					import.meta.env.SANITY_STUDIO_PREVIEW_URL || 'http://localhost:4321',
 				previewMode: {
 					enable: '/api/preview'
 				}
