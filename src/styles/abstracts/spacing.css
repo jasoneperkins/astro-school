@@ -1,0 +1,18 @@
+@theme {
+  --spacing-content-block: clamp(2rem, -1rem + 7.5vw, 5rem);
+  --spacing-hero: clamp(12.5rem, 0rem + 31.25vw, 25rem);
+  --spacing-header-height: 132px;
+
+  --gap-count: 7;
+  --gap-width: clamp(0.5rem, -1rem + 3.75vw, 2rem);
+  --gap-total: var(--gap-count) * var(--gap-width);
+
+  --content-max: 62.5rem;
+  --content-width: min(
+    calc(100% - var(--gap-total)),
+    calc(var(--content-max) - var(--gap-width))
+  );
+
+  --breakout-max: 6.25rem;
+  --breakout-width: minmax(0, var(--breakout-max));
+}

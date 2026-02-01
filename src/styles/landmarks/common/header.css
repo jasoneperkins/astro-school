@@ -1,0 +1,26 @@
+@reference "tailwindcss";
+
+#commonHeader {
+  @apply fixed top-0 z-100 w-full;
+  grid-area: hd;
+  animation:
+    add-shadow linear both,
+    add-background linear forwards;
+  animation-timeline: scroll();
+  animation-range: 0 50px;
+}
+
+@keyframes add-shadow {
+  to {
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.26);
+  }
+}
+
+@keyframes add-background {
+  to {
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+  }
+}

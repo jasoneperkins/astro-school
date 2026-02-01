@@ -1,0 +1,5 @@
+@reference "tailwindcss";
+
+#commonFooter {
+  grid-area: ft;
+}

@@ -9,6 +9,29 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.17.1"
+    "@astrojs/cloudflare": "^12.6.12",
+    "@astrojs/react": "^4.4.2",
+    "@fontsource/poppins": "^5.2.7",
+    "@iconify-json/lucide": "^1.2.87",
+    "@sanity/astro": "^3.2.11",
+    "@sanity/client": "^7.14.1",
+    "@tailwindcss/vite": "^4.1.18",
+    "@types/react": "^19.2.10",
+    "@types/react-dom": "^19.2.3",
+    "astro": "^5.17.1",
+    "astro-icon": "^1.1.5",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-is": "^19.2.4",
+    "sanity": "^5.7.0",
+    "styled-components": "^6.3.8",
+    "tailwindcss": "^4.1.18"
+  },
+  "devDependencies": {
+    "@iconify-json/line-md": "^1.2.14",
+    "@tailwindcss/forms": "^0.5.11",
+    "prettier": "^3.8.1",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.7.2"
   }
 }

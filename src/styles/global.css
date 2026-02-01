@@ -1,0 +1,28 @@
+/* vendors */
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@import '@fontsource/poppins';
+
+/* abstracts */
+@import './abstracts/colors.css';
+@import './abstracts/fonts.css';
+@import './abstracts/spacing.css';
+
+/* base */
+@import './base/backgrounds.css';
+@import './base/content.css';
+@import './base/typography.css';
+
+/* themes */
+
+/* layout */
+
+/* landmarks */
+@import './landmarks/hgroups.css';
+@import './landmarks/sections.css';
+
+/* pages */
+
+/* components */
+@import './components/buttons.css';
+@import './components/forms.css';

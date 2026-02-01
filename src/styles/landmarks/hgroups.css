@@ -1,0 +1,7 @@
+hgroup {
+  @apply grid gap-1;
+
+  &:has(h2, h3) {
+    @apply mb-4;
+  }
+}

@@ -1,0 +1,66 @@
+@reference "tailwindcss";
+
+body {
+  @apply leading-relaxed;
+}
+
+h1 {
+  @apply font-medium;
+  font-size: calc(1rem * pow(var(--font-scale), 9));
+  /* font-family: 'Love Ya Like A Sister', system-ui; */
+}
+
+h2 {
+  font-size: calc(1rem * pow(var(--font-scale), 5));
+}
+
+h3 {
+  font-size: calc(1rem * pow(var(--font-scale), 4));
+}
+
+h4 {
+  font-size: calc(1rem * pow(var(--font-scale), 3));
+}
+
+h5 {
+  font-size: calc(1rem * pow(var(--font-scale), 2));
+}
+
+h6 {
+  font-size: calc(1rem * pow(var(--font-scale), 1));
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply leading-tight text-balance;
+}
+
+:not:is(header, hgroup) p:not(:last-child) {
+  @apply mb-6;
+}
+
+p:last-child {
+  @apply leading-relaxed mb-0;
+}
+
+.small {
+  font-size: calc(1rem * pow(var(--font-scale), -1));
+}
+
+.tiny {
+  font-size: calc(1rem * pow(var(--font-scale), -2));
+}
+
+p,
+.small,
+.tiny {
+  @apply leading-relaxed;
+}
+
+.tagline {
+  @apply text-blue-600 block text-sm font-bold tracking-widest uppercase;
+}
