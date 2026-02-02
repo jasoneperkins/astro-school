@@ -11,7 +11,11 @@ import tailwindcss from '@tailwindcss/vite'
 const env = loadEnv(process.env.NODE_ENV || 'development', process.cwd(), '')
 
 export default defineConfig({
-  adapter: cloudflare(),
+  adapter: cloudflare({
+    platformProxy: {
+      enabled: true
+    }
+  }),
   env: {
     schema: {
       PUBLIC_SANITY_DATASET: envField.string({

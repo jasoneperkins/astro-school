@@ -1,8 +1,13 @@
 {
-  "main": "dist/_worker.js/index.js",
   "name": "astro-school",
+  "main": "dist/_worker.js",
   "compatibility_date": "2026-01-31",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "vars": {
+    "PUBLIC_SANITY_PROJECT_ID": "nn95ygkm",
+    "PUBLIC_SANITY_DATASET": "production",
+    "PUBLIC_SANITY_API_VERSION": "2024-03-15"
+  },
   "assets": {
     "binding": "ASSETS",
     "directory": "./dist"

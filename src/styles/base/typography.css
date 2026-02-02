@@ -39,12 +39,15 @@ h6 {
   @apply leading-tight text-balance;
 }
 
-:not:is(header, hgroup) p:not(:last-child) {
+p:not(:last-child):not:is(
+    header p:not(:last-child),
+    hgroup p:not(:last-child)
+  ) {
   @apply mb-6;
 }
 
 p:last-child {
-  @apply leading-relaxed mb-0;
+  @apply mb-0 leading-relaxed;
 }
 
 .small {
@@ -62,5 +65,5 @@ p,
 }
 
 .tagline {
-  @apply text-blue-600 block text-sm font-bold tracking-widest uppercase;
+  @apply block text-sm font-bold tracking-widest text-blue-600 uppercase;
 }
