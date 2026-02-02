@@ -39,15 +39,19 @@ h6 {
   @apply leading-tight text-balance;
 }
 
-p:not(:last-child):not:is(
-    header p:not(:last-child),
-    hgroup p:not(:last-child)
-  ) {
+p:not(:last-child) {
   @apply mb-6;
 }
 
-p:last-child {
-  @apply mb-0 leading-relaxed;
+p:last-child,
+header p,
+hgroup p {
+  @apply mb-0;
+}
+
+header p,
+hgroup p {
+  @apply leading-relaxed;
 }
 
 .small {
