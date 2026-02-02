@@ -1,3 +1,36 @@
+@reference "tailwindcss";
+
 .btn {
-  @apply flex w-fit rounded-full border border-gray-400 px-6 py-3 leading-tight;
+  /* Base styles: Shared across all buttons */
+  @apply flex w-fit rounded-full border px-6 py-3 leading-tight font-medium;
+  @apply cursor-pointer;
+  @apply transition-all duration-300 ease-out;
+  @apply hover:scale-102 hover:shadow-md hover:brightness-110;
+  @apply active:scale-98;
+}
+
+/* Primary Blue */
+.btn-blue {
+  @apply border-blue-700 bg-blue-700 text-white;
+}
+
+/* Growth Green */
+.btn-green {
+  @apply border-green-700 bg-green-700 text-white;
+}
+
+/* Alert Red */
+.btn-red {
+  @apply border-red-700 bg-red-700 text-white;
+}
+
+/* Warm Orange */
+.btn-orange {
+  @apply border-orange-700 bg-orange-700 text-white;
+}
+
+/* Secondary / Outline Style */
+.btn-outline {
+  @apply border-gray-400 bg-transparent text-gray-700;
+  @apply hover:border-gray-500 hover:bg-gray-50;
 }

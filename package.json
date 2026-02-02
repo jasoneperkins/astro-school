@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "shipit": "npx rimraf dist && npm run build && npx wrangler deploy"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.12",
