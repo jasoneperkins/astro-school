@@ -1,0 +1,12 @@
+form {
+  @apply grid gap-4;
+
+  > div:has(input, textarea) {
+    @apply grid;
+  }
+
+  input,
+  textarea {
+    @apply rounded-md border border-gray-100;
+  }
+}

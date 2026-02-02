@@ -1,0 +1,12 @@
+@reference "tailwindcss";
+
+body {
+  @apply grid min-h-screen w-full;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas: 'hd' 'mn' 'ft';
+}
+
+body > main {
+  grid-area: mn;
+}

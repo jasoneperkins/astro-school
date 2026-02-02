@@ -1,0 +1,59 @@
+---
+import {actions} from 'astro:actions'
+
+import '@styles/components/contactForm.css'
+
+interface Props {
+  formTitle?: string
+  context?: string // e.g., "Registration Page" or "Summer Camp"
+  submitText?: string
+}
+
+const {formTitle = 'Contact Us', context = 'General', submitText = 'Contact Us'} = Astro.props
+const result = Astro.getActionResult(actions.contactForm)
+---
+
+{
+  result?.data?.success ? (
+    <div class="success-state" role="alert">
+      <h3>Message Sent!</h3>
+      <p>
+        Shalom! Your message has been sent to Miss Cindy. We'll be in touch
+        soon.
+      </p>
+    </div>
+  ) : (
+    <hgroup>
+      <h3>{formTitle}</h3>
+    </hgroup>
+    <form method="POST" action={actions.contactForm} class="contactForm w-xl max-w-full">
+      {/* Hidden field to let Miss Cindy know where the email came from */}
+      <input type="hidden" name="sourceContext" value={context} />
+
+      <div>
+        <label for="parentName">Parent Name</label>
+        <input type="text" id="parentName" name="parentName" required />
+      </div>
+
+      <div>
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+
+      <div class="col-span-full">
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" rows="4" required />
+      </div>
+
+      <button type="submit" class="btn">
+        {submitText}
+      </button>
+
+      {result?.error && (
+        <p class="error-text">
+          Sorry, there was an error. Please try again or call the office.
+        </p>
+      )}
+    </form>
+  )
+}

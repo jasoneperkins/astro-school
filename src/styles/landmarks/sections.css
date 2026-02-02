@@ -1,0 +1,35 @@
+@reference 'tailwindcss';
+
+:is(section, main > header, .content) {
+  @apply gap-content relative grid overflow-y-clip;
+
+  &:not([class*='grid-cols-content-']) {
+    @apply grid-cols-content;
+  }
+
+  > * {
+    @apply col-[content];
+  }
+
+  &.breakout > * {
+    @apply col-[breakout];
+  }
+
+  &.fullwidth > * {
+    @apply col-[fullwidth];
+  }
+
+  @variant lg {
+    :nth-child(1 of .half) {
+      grid-column-end: center;
+    }
+
+    :nth-child(2 of .half) {
+      grid-column-start: center;
+    }
+  }
+}
+
+section {
+  @apply py-content-block;
+}

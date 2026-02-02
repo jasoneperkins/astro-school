@@ -1,0 +1,77 @@
+---
+import {Image} from 'astro:assets'
+
+import homeHeroImage01 from '@images/girl-teacher-decorations.jpg'
+import homeHeroImage02 from '@images/girls-faces-tongues.jpg'
+import homeHeroImage03 from '@images/girl-woman-carry.jpg'
+import homeHeroImage04 from '@images/girl-smile-books.jpg'
+import homeAboutUsImage01 from '@images/woman-kids-abacus.jpg'
+
+const {pathname} = Astro.url
+const {title, mainImage} = Astro.props
+const backgroundUrl = `linear-gradient(0deg, #fff, rgba(255, 255, 255, 0.6)), url("${mainImage?.src}")`
+---
+
+{
+  pathname == '/' ? (
+    <header class="min-h-[760px] !items-center !py-10">
+      <div class="half space-y-4">
+        <hgroup>
+          <h1 class="tagline">Header 1</h1>
+          <p class="font-sister text-5xl !leading-[1.125] text-balance">
+            Headline explaining your value proposition or transformation
+          </p>
+        </hgroup>
+        <p>
+          Sub headline that explains how you help and what your unique method
+          for getting results
+        </p>
+        <button class="btn mt-4">Call to Action</button>
+      </div>
+      <div class="half relative !col-end-[breakout-end] hidden content-center self-stretch lg:grid">
+        <Image
+          src={homeHeroImage01}
+          alt=""
+          class="animate-in fade-in slide-in-from-left-4 absolute top-20 left-0 z-2 size-60 rounded-full duration-1000"
+        />
+        <Image
+          src={homeHeroImage03}
+          alt=""
+          class="animate-in fade-in slide-in-from-top-4 absolute top-45 right-0 z-2 size-45 rounded-full duration-1000"
+        />
+        <Image
+          src={homeHeroImage02}
+          alt=""
+          class="animate-in fade-in slide-in-from-bottom-4 absolute top-100 left-30 z-2 size-30 rounded-full duration-1000"
+        />
+        <>
+          <Image
+            src={homeHeroImage04}
+            alt=""
+            class="animate-in fade-in slide-in-from-right-4 absolute top-120 right-10 z-2 size-40 rounded-full duration-1000"
+          />
+          <div class="absolute top-22 right-0 size-33 rounded-full bg-orange-300" />
+        </>
+        <div class="absolute top-70 left-50 size-15 rounded-full bg-orange-100" />
+        <div class="absolute top-90 left-100 size-20 rounded-full bg-orange-200" />
+        <div class="absolute top-140 left-60 size-10 rounded-full bg-orange-400" />
+      </div>
+    </header>
+  ) : (
+    <header
+      class:list={[
+        mainImage ? 'bg-image' : 'bg-mesh',
+        'pt-hero items-end bg-cover bg-center bg-no-repeat pb-2'
+      ]}>
+      <hgroup>
+        <h1>{title}</h1>
+      </hgroup>
+    </header>
+  )
+}
+
+<style define:vars={{backgroundUrl}}>
+  .bg-image {
+    background-image: var(--backgroundUrl);
+  }
+</style>

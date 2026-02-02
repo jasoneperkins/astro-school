@@ -1,0 +1,55 @@
+@reference 'tailwindcss';
+
+@utility grid-cols-content {
+  --split: 0.5;
+
+  grid-template-columns:
+    [screen-start]
+    0px
+    [fullwidth-start]
+    1fr
+    [breakout-start]
+    var(--breakout-width)
+    [content-start]
+    calc(var(--split) * var(--content-width))
+    [center]
+    calc((1 - var(--split)) * var(--content-width))
+    [content-end]
+    var(--breakout-width)
+    [breakout-end]
+    1fr
+    [fullwidth-end]
+    0px
+    [screen-end];
+}
+
+@utility grid-cols-content-* {
+  --split: --value(--aspect-ratio-*, ratio, [ratio]);
+
+  grid-template-columns:
+    [screen-start]
+    0px
+    [fullwidth-start]
+    1fr
+    [breakout-start]
+    var(--breakout-width)
+    [content-start]
+    calc(var(--split) * var(--content-width))
+    [center]
+    calc((1 - var(--split)) * var(--content-width))
+    [content-end]
+    var(--breakout-width)
+    [breakout-end]
+    1fr
+    [fullwidth-end]
+    0px
+    [screen-end];
+}
+
+@utility gap-content {
+  column-gap: var(--gap-width);
+
+  &:has(> .half + .half) {
+    row-gap: 1.5rem;
+  }
+}

@@ -1,0 +1,133 @@
+---
+import Layout from '@layouts/Common.astro'
+import ContactForm from '@components/ContactForm.astro'
+import ItemCard from '@components/ItemCard.astro'
+
+import {Image} from 'astro:assets'
+import {Icon} from 'astro-icon/components'
+
+import '@fontsource/love-ya-like-a-sister'
+import '@styles/pages/home.css'
+
+import homeHeroImage01 from '@images/girl-teacher-decorations.jpg'
+import homeHeroImage02 from '@images/girls-faces-tongues.jpg'
+import homeHeroImage03 from '@images/girl-woman-carry.jpg'
+import homeHeroImage04 from '@images/girl-smile-books.jpg'
+import homeAboutUsImage01 from '@images/woman-kids-abacus.jpg'
+import giraffeImage from '@images/giraffe.png'
+import bgContactUs from '@images/children-hands.jpg'
+
+const title = 'Temple Beit HaYam'
+---
+
+<Layout {title}>
+  <!-- class="bg-[url('/images/background-01.jpg')]" -->
+  <section aria-labelledby="classrooms-label">
+    <header>
+      <hgroup class="text-center">
+        <h2 id="classrooms-label">A Place for Every Stage</h2>
+        <p>Tailored learning environments for your child's growing needs.</p>
+      </hgroup>
+    </header>
+    <div
+      class="grid grid-cols-1 justify-center gap-2 md:grid-cols-2 lg:grid-cols-4">
+      <ItemCard
+        title="Toddlers"
+        description="A gentle introduction to social play and discovery."
+        icon="lucide:baby"
+        color="red"
+      />
+      <ItemCard
+        title="Terrific Twos"
+        description="Building independence through curiosity and hands-on learning."
+        icon="lucide:blocks"
+        color="blue"
+      />
+      <ItemCard
+        title={"Preschool 3's"}
+        description="Developing confidence and early academic foundations."
+        icon="lucide:palette"
+        color="green"
+      />
+      <ItemCard
+        title="VPK"
+        description="Preparing our oldest students for a successful transition to Kindergarten."
+        icon="lucide:graduation-cap"
+        color="orange"
+      />
+    </div>
+  </section>
+  <!-- About/Introduction Section: A brief overview of who you are, what you do, and your mission. -->
+  <section class="items-center bg-gray-50">
+    <div class="half">
+      <Image
+        src={homeAboutUsImage01}
+        alt=""
+        class="aspect-square w-full max-w-md rounded-full object-cover shadow-lg"
+      />
+    </div>
+    <div class="half">
+      <hgroup>
+        <p class="tagline">
+          Big steps start here with play, music, and skills.
+        </p>
+        <h2>A Strong Start for Your Child</h2>
+      </hgroup>
+      <p>
+        We help your child get ready for the road ahead. Our teachers make
+        learning fun with reading, math, and art. We also have yoga, gardening,
+        and music every week! From our tiny toddlers to our VPK stars, we help
+        every child grow strong and smart in a caring Jewish setting.
+      </p>
+    </div>
+    <Image
+      src={giraffeImage}
+      alt=""
+      class="animate-in slide-in-from-top-8 absolute bottom-0 left-[48%] hidden h-50 w-auto duration-1500 lg:block"
+    />
+  </section>
+  <!-- Services/Products Overview: A highlighted section showcasing what you offer, often with visual elements. -->
+
+  <section>
+    <header>
+      <hgroup class="text-center">
+        <h2>How We Help Your Child Bloom</h2>
+        <p>
+          We provide the tools and space for your child to explore their unique
+          talents
+        </p>
+      </hgroup>
+    </header>
+    <div class="grid grid-cols-1 justify-center gap-2 md:grid-cols-3">
+      <ItemCard
+        title="Expressing Creativity"
+        description="Kids express themselves through fun art, music, and dance."
+        icon="lucide:graduation-cap"
+        color="green"
+      />
+      <ItemCard
+        title="Growing Strong & Healthy"
+        description="Safe outdoor play helps children grow strong and healthy."
+        icon="lucide:graduation-cap"
+        color="orange"
+      />
+      <ItemCard
+        title="Kind Hearts & Good Friends"
+        description="Children learn to be kind and make good friends."
+        icon="lucide:graduation-cap"
+        color="blue"
+      />
+    </div>
+  </section>
+  <!-- Social Proof/Trust Signals: Testimonials, client logos, reviews, or case studies to build credibility. -->
+  <!-- Features -->
+  <!-- Call to Action (CTA) Section: A clear, repeated instruction for what the user should do next (e.g., "Contact Us," "Buy Now"). -->
+  <section
+    class="border-image-gradient bg-cover bg-fixed bg-center bg-no-repeat text-white"
+    style=`background-image: url(${bgContactUs.src})`>
+    <div class="mx-auto max-w-prose">
+      <ContactForm submitText="Send us a message" />
+    </div>
+  </section>
+  <!-- FAQs -->
+</Layout>
