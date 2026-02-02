@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig, envField } from 'astro/config'
+import { defineConfig, envField, passthroughImageService } from 'astro/config'
 import { loadEnv } from 'vite'
 
 import cloudflare from '@astrojs/cloudflare'
@@ -52,6 +52,9 @@ export default defineConfig({
         default: ''
       })
     }
+  },
+  image: {
+    service: passthroughImageService()
   },
   integrations: [
     icon({
