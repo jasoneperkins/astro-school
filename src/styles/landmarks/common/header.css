@@ -1,41 +1,33 @@
 @reference "tailwindcss";
 
-/* Ensure the scroll container is explicitly defined */
-:root {
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-}
-
 #commonHeader {
   @apply fixed top-0 z-100 w-full;
   grid-area: hd;
+  animation:
+    add-shadow linear both,
+    add-background linear both;
+  animation-timeline: scroll();
+  animation-range: 2px 50px;
+}
 
-  /* Hard-coded initial state to prevent "flash" */
-  background-color: rgba(255, 255, 255, 0);
-  backdrop-filter: blur(0px);
-  -webkit-backdrop-filter: blur(0px);
-
-  /* Force a hardware-accelerated layer */
-  will-change: background-color, backdrop-filter;
-
-  /* Explicitly target the viewport's vertical scroll */
-  animation: add-background linear both;
-  animation-timeline: scroll(nearest);
-  animation-range: 20px 150px;
+@keyframes add-shadow {
+  from {
+    box-shadow: none;
+  }
+  to {
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.1);
+  }
 }
 
 @keyframes add-background {
   from {
-    background-color: rgba(255, 255, 255, 0);
-    backdrop-filter: blur(0px);
-    -webkit-backdrop-filter: blur(0px);
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
   to {
-    /* High-intensity glass effect */
-    background-color: rgba(255, 255, 255, 0.92) !important;
-    backdrop-filter: blur(24px) !important;
-    -webkit-backdrop-filter: blur(24px) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
   }
 }

@@ -9,17 +9,15 @@ import homeAboutUsImage01 from '@images/woman-kids-abacus.webp'
 
 const {pathname} = Astro.url
 const {title, mainImage} = Astro.props
-const backgroundUrl = `linear-gradient(0deg, #fff, rgba(255, 255, 255, 0.6)), url("${mainImage?.src}")`
+const backgroundUrl = `url("${mainImage?.src}")`
 ---
 
 {
   pathname == '/' ? (
-    <header class="min-h-[760px] !items-center !py-10">
+    <header class="bg-gradient-white min-h-[760px] !items-center !py-10">
       <div class="half space-y-4">
         <hgroup>
-          <h1 class="tagline">
-            Early Childhood Learning Center • Stuart, Florida
-          </h1>
+          <h1 class="tagline">{title}</h1>
           <p class="font-sister text-5xl !leading-[1.125] text-balance">
             Building a foundation for a lifetime of discovery.
           </p>
@@ -63,7 +61,7 @@ const backgroundUrl = `linear-gradient(0deg, #fff, rgba(255, 255, 255, 0.6)), ur
     <header
       class:list={[
         mainImage ? 'bg-image' : 'bg-mesh',
-        'pt-hero items-end bg-cover bg-center bg-no-repeat pb-2'
+        'pt-hero bg-gradient-white items-end bg-cover bg-center bg-no-repeat pb-2'
       ]}>
       <hgroup>
         <h1>{title}</h1>

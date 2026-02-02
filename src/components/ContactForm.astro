@@ -26,7 +26,7 @@ const result = Astro.getActionResult(actions.contactForm)
     <hgroup>
       <h3>{formTitle}</h3>
     </hgroup>
-    <form method="POST" action={actions.contactForm} class="contactForm w-xl max-w-full">
+    <form method="POST" action={actions.contactForm} class="contactForm w-xs md:w-xl max-w-full">
       {/* Hidden field to let Miss Cindy know where the email came from */}
       <input type="hidden" name="sourceContext" value={context} />
 

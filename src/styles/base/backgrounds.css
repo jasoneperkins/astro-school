@@ -4,7 +4,7 @@
   /* background-color: hsla(0, 100%, 50%, 1); */
   /* background-color: #00659f; */
   background-image:
-    linear-gradient(0deg, #fff, rgba(255, 255, 255, 0.25)),
+    /* linear-gradient(0deg, #fff, rgba(255, 255, 255, 0.25)), */
     radial-gradient(at 80% 0%, hsla(155, 59%, 80%, 1) 0px, transparent 50%),
     radial-gradient(at 13% 59%, hsla(347, 100%, 89%, 1) 0px, transparent 50%),
     radial-gradient(at 60% 51%, hsla(222, 60%, 61%, 1) 0px, transparent 50%),
@@ -13,7 +13,16 @@
     radial-gradient(at 23% 5%, hsla(343, 100%, 76%, 1) 0px, transparent 50%);
 }
 
-.border-image-gradient {
+@utility bg-gradient-white {
+  border-image: linear-gradient(
+      to top,
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0.5)
+    )
+    fill 1;
+}
+
+@utility bg-gradient-blue {
   border-image: linear-gradient(
       to right,
       rgba(0, 74, 117, 0.65) 0%,
