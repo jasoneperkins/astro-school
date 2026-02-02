@@ -68,9 +68,15 @@ export default defineConfig({
     }),
     react(),
     sanity({
-      projectId: env.PUBLIC_SANITY_PROJECT_ID,
-      dataset: env.PUBLIC_SANITY_DATASET,
-      useCdn: false
+      projectId: 'nn95ygkm',
+      dataset: 'production',
+      useCdn: false,
+      // If studioPath continues to error, comment it out temporarily
+      // to see if the site handles the request.
+      studioPath: '/admin',
+      visualEditing: {
+        enabled: false
+      }
     })
   ],
   output: 'server',
