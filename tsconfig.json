@@ -6,7 +6,11 @@
       "@images/*": ["./src/assets/images/*"],
       "@landmarks/*": ["./src/landmarks/*"],
       "@layouts/*": ["./src/layouts/*"],
-      "@styles/*": ["./src/styles/*"]
+      "@queries/*": ["./src/utilities/queries/*"],
+      "@schemas/*": ["./src/utilities/schemas/*"],
+      "@services/*": ["./src/utilities/services/*"],
+      "@styles/*": ["./src/styles/*"],
+      "@types/*": ["./src/utilities/types/*"]
     }
   },
   "extends": "astro/tsconfigs/strict",
