@@ -3,13 +3,24 @@ export default {
   type: 'document',
   title: 'Page',
   fields: [
-    { name: 'title', type: 'string', title: 'Title' },
-    { name: 'slug', type: 'slug', title: 'Slug', options: { source: 'title' } },
     {
-      name: 'heroImage',
-      type: 'image',
-      title: 'Hero Image',
-      options: { hotspot: true }
+      name: 'pageInfo',
+      title: 'Page Information',
+      type: 'pageInfo'
+    },
+    {
+      name: 'slug',
+      type: 'slug',
+      title: 'Slug',
+      options: {
+        source: (doc: any) => doc.pageInfo?.title
+      }
+    },
+    {
+      name: 'content',
+      title: 'Page Sections',
+      type: 'array',
+      of: [{ type: 'heroSection' }, { type: 'contentSection' }]
     }
   ]
 }

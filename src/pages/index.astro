@@ -9,6 +9,8 @@ import '@styles/pages/home.css'
 import {Image} from 'astro:assets'
 import {Icon} from 'astro-icon/components'
 
+import {homepageQuery} from '@queries/home'
+
 import homeHeroImage01 from '@images/girl-teacher-decorations.webp'
 import homeHeroImage02 from '@images/girls-faces-tongues.webp'
 import homeHeroImage03 from '@images/girl-woman-carry.webp'
@@ -17,7 +19,8 @@ import homeAboutUsImage01 from '@images/woman-kids-abacus.webp'
 import giraffeImage from '@images/giraffe.webp'
 import bgContactUs from '@images/children-hands.webp'
 
-const title = 'Early Childhood Learning Center • Stuart, Florida'
+// const title = 'Early Childhood Learning Center • Stuart, Florida'
+const {pageData} = Astro.props
 ---
 
 <Layout {title}>

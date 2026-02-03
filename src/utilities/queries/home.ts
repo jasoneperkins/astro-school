@@ -1,27 +1,38 @@
-<<<<<<< HEAD
-export const GET_HOMEPAGE = `
-  query GetHomePage {
-    allPage(where: { slug: { current: { eq: "home" } } }) {
-      title
-      heroImages {
-        asset {
-          _id
-          url
+import { fetchGraphQL } from '@services/sanity'
+
+export const homepageQuery = `
+  query GetHomepage {
+    allPage(where: { slug: { current: { eq: "index" } } }) {
+      pageInfo {
+        title
+        description
+        author
+        mainImage {
+          asset {
+            url
+          }
+          alt
         }
       }
-      aboutImage {
-=======
-export const HOME_PAGE_QUERY = `
-  query GetHomePage {
-    allPage(where: { slug: { current: { eq: "home" } } }) {
-      title
-      heroImage {
->>>>>>> 4fd0223847f8a683432f8d55c1dc7179851a95ad
-        asset {
-          _id
-          url
+      content {
+        __typename
+        ... on HeroSection {
+          _type
+          title
+          subheading
+          body
+          heroImages {
+            asset {
+              url
+            }
+          }
         }
       }
     }
   }
 `
+
+export async function fetchHomepage() {
+  const data = await fetchGraphQL<{ allPage: any[] }>(homepageQuery)
+  return data.allPage[0]
+}
