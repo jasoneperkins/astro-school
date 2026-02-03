@@ -39,6 +39,11 @@ export default defineConfig({
         access: 'public',
         default: false
       }),
+      PUBLIC_SANITY_GRAPHQL_URL: envField.string({
+        context: 'client',
+        access: 'public',
+        default: 'https://nn95ygkm.api.sanity.io/v1/graphql/production/default'
+      }),
       SANITY_API_TOKEN: envField.string({
         context: 'server',
         access: 'secret',
@@ -74,13 +79,7 @@ export default defineConfig({
     sanity({
       projectId: 'nn95ygkm',
       dataset: 'production',
-      useCdn: false,
-      // If studioPath continues to error, comment it out temporarily
-      // to see if the site handles the request.
-      studioPath: '/admin',
-      visualEditing: {
-        enabled: false
-      }
+      useCdn: false
     })
   ],
   output: 'server',

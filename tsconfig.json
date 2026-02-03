@@ -1,11 +1,20 @@
 {
   "compilerOptions": {
+    "jsx": "preserve",
+    "skipLibCheck": true,
     "paths": {
       "@assets/*": ["./src/assets/*"],
       "@components/*": ["./src/components/*"],
+      "@documents/*": ["./src/utilities/documents/*"],
       "@images/*": ["./src/assets/images/*"],
+      "@interfaces/*": ["./src/utilities/interfaces/*"],
       "@landmarks/*": ["./src/landmarks/*"],
       "@layouts/*": ["./src/layouts/*"],
+      "@objects/*": ["./src/utilities/objects/*"],
+      "@queries/*": ["./src/utilities/queries/*"],
+      "@registry/*": ["./src/utilities/registry/*"],
+      "@schemas/*": ["./src/utilities/schemas/*"],
+      "@services/*": ["./src/utilities/services/*"],
       "@styles/*": ["./src/styles/*"]
     }
   },

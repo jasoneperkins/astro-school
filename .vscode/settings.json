@@ -1,0 +1,13 @@
+{
+  "[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode",
+    "editor.formatOnSave": false
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "files.exclude": {
+    "**/*.d.ts": {
+      "when": "(resource) =~ /\\.astro\\/"
+    }
+  }
+}

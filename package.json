@@ -7,7 +7,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "shipit": "npx rimraf dist && npm run build && npx wrangler deploy"
+    "shipit": "npx rimraf dist && npx sanity graphql deploy --yes && npm run build && npx wrangler deploy"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.12",
@@ -17,11 +17,13 @@
     "@iconify-json/lucide": "^1.2.87",
     "@sanity/astro": "^3.2.11",
     "@sanity/client": "^7.14.1",
+    "@sanity/image-url": "^2.0.3",
     "@tailwindcss/vite": "^4.1.18",
     "@types/react": "^19.2.10",
     "@types/react-dom": "^19.2.3",
     "astro": "^5.17.1",
     "astro-icon": "^1.1.5",
+    "framer-motion": "^12.30.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-is": "^19.2.4",

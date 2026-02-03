@@ -1,11 +1,7 @@
 ---
 import {Image} from 'astro:assets'
 
-import homeHeroImage01 from '@images/girl-teacher-decorations.webp'
-import homeHeroImage02 from '@images/girls-faces-tongues.webp'
-import homeHeroImage03 from '@images/girl-woman-carry.webp'
-import homeHeroImage04 from '@images/girl-smile-books.webp'
-import homeAboutUsImage01 from '@images/woman-kids-abacus.webp'
+import {urlFor} from '@services/sanity'
 
 const {pathname} = Astro.url
 const {title, mainImage} = Astro.props
