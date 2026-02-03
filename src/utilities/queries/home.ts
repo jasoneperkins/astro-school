@@ -11,7 +11,6 @@ export const homepageQuery = `
           asset {
             url
           }
-          alt
         }
       }
       content {
