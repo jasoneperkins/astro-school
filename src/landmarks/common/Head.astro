@@ -2,19 +2,21 @@
 import {SEO} from 'astro-seo'
 import {urlFor} from '@services/sanity'
 import type {PageInfo} from '@interfaces/pageInfo'
+import type {Identity} from '@interfaces/identity'
 
 interface Props {
   pageInfo: PageInfo
+  identity: Identity
 }
 
 const {href} = Astro.url
-const siteName = 'Early Childhood Learning Center'
-const {pageInfo} = Astro.props
+const {pageInfo, identity} = Astro.props
+const {name: siteName} = identity as Identity
 const {
   title = 'Temple Beit HaYam',
   description = 'A nurturing preschool environment in Stuart, Florida.',
   mainImage,
-  author = 'ECLC Staff'
+  author = siteName || 'Temple Beit HaYam'
 } = pageInfo || {}
 
 const ogImageUrl = mainImage

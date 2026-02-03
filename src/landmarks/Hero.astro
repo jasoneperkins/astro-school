@@ -5,7 +5,8 @@ import {urlFor} from '@services/sanity'
 import type {HeroSection} from '@registry/sanity'
 
 const {pathname} = Astro.url
-const {title, subheading, description, mainImage, extraHeroImages} = Astro.props
+const {pageInfo} = Astro.props
+const {title, subheading, description, mainImage} = pageInfo as HeroSection
 const backgroundUrl = `url("${mainImage?.src}")`
 ---
 

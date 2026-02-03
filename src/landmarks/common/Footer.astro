@@ -1,24 +1,17 @@
 ---
 import {Icon} from 'astro-icon/components'
 
-import '@styles/landmarks/common/footer.css'
-
 import {fetchGraphQL} from '@services/sanity'
-import {identityQuery} from '@queries/identity'
 import type {Identity} from '@interfaces/identity'
 
-const response = await fetchGraphQL<{Identity: Identity}>(identityQuery)
-const identity = response.Identity
-const {
-  name,
-  email,
-  address,
-  officeHours,
-  phone,
-  licenseNumber,
-  socials
-} = identity
+import '@styles/landmarks/common/footer.css'
 
+interface Props {
+  identity: Identity
+}
+
+const {identity} = Astro.props
+const {name, phone, email, address, officeHours} = identity as Identity
 const currentYear = new Date().getFullYear()
 ---
 

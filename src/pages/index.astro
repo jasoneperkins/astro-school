@@ -12,9 +12,9 @@ import {Icon} from 'astro-icon/components'
 import {fetchGraphQL} from '@services/sanity'
 import {homepageQuery} from '@queries/home'
 
-// const title = 'Early Childhood Learning Center • Stuart, Florida'
 const response = await fetchGraphQL<any>(homepageQuery)
 const pageData = response.allPage[0]
+const identityData = response.Identity
 
 const {pageInfo} = pageData
 ---
@@ -58,11 +58,11 @@ const {pageInfo} = pageData
   <!-- About/Introduction Section: A brief overview of who you are, what you do, and your mission. -->
   <section class="items-center bg-gray-50">
     <div class="half">
-      <Image
+      <!-- <Image
         src={homeAboutUsImage01}
         alt=""
         class="aspect-square w-full max-w-md rounded-full object-cover shadow-lg"
-      />
+      /> -->
     </div>
     <div class="half">
       <hgroup>
@@ -78,11 +78,11 @@ const {pageInfo} = pageData
         every child grow strong and smart in a caring Jewish setting.
       </p>
     </div>
-    <Image
+    <!-- <Image
       src={giraffeImage}
       alt=""
       class="animate-in slide-in-from-top-8 absolute bottom-0 left-[48%] hidden h-50 w-auto duration-1500 lg:block"
-    />
+    /> -->
   </section>
   <!-- Services/Products Overview: A highlighted section showcasing what you offer, often with visual elements. -->
 
@@ -121,8 +121,8 @@ const {pageInfo} = pageData
   <!-- Features -->
   <!-- Call to Action (CTA) Section: A clear, repeated instruction for what the user should do next (e.g., "Contact Us," "Buy Now"). -->
   <section
-    class="bg-gradient-blue bg-cover bg-fixed bg-center bg-no-repeat text-white"
-    style=`background-image: url(${bgContactUs.src})`>
+    class="bg-gradient-blue bg-cover bg-fixed bg-center bg-no-repeat text-white">
+    <!-- style=`background-image: url(${bgContactUs.src})` -->
     <div class="mx-auto max-w-prose">
       <ContactForm submitText="Send us a message" />
     </div>

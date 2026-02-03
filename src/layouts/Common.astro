@@ -4,20 +4,32 @@ import Header from '@landmarks/common/Header.astro'
 import Footer from '@landmarks/common/Footer.astro'
 import Hero from '@landmarks/Hero.astro'
 
+import {fetchGraphQL} from '@services/sanity'
+import {identityQuery} from '@queries/identity'
+import type {Identity} from '@interfaces/identity'
+import type {PageInfo} from '@interfaces/pageInfo'
+
 import '@styles/global.css'
 import '@styles/layouts/common.css'
+
+interface Props {
+  pageInfo: PageInfo
+}
+
+const response = await fetchGraphQL<{Identity: Identity}>(identityQuery)
+const identity: Identity = response.Identity
 
 const {pageInfo} = Astro.props
 ---
 
 <html lang="en-US">
-  <Head {pageInfo} />
+  <Head {pageInfo} {identity} />
   <body>
-    <Header />
+    <Header {identity} />
     <main>
       <Hero {pageInfo} />
       <slot />
     </main>
-    <Footer />
+    <Footer {identity} />
   </body>
 </html>
