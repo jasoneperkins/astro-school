@@ -62,7 +62,7 @@ export default {
       name: 'author',
       title: 'Content Creator',
       type: 'string',
-      initialValue: 'Cindy Brown'
+      initialValue: 'ECLC Staff'
     }
   ]
 }

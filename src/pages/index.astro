@@ -16,10 +16,10 @@ import {homepageQuery} from '@queries/home'
 const response = await fetchGraphQL<any>(homepageQuery)
 const pageData = response.allPage[0]
 
-const {pageInfo, heroSection} = pageData
+const {pageInfo} = pageData
 ---
 
-<Layout {pageData}>
+<Layout {pageInfo}>
   <section aria-labelledby="classrooms-label">
     <header>
       <hgroup class="text-center">

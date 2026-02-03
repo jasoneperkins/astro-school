@@ -7,15 +7,15 @@ import Hero from '@landmarks/Hero.astro'
 import '@styles/global.css'
 import '@styles/layouts/common.css'
 
-const {pageData} = Astro.props
+const {pageInfo} = Astro.props
 ---
 
 <html lang="en-US">
-  <Head {title} />
+  <Head {pageInfo} />
   <body>
     <Header />
     <main>
-      <Hero {title} {mainImage} />
+      <Hero {pageInfo} />
       <slot />
     </main>
     <Footer />

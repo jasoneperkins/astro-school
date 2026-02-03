@@ -3,6 +3,22 @@ import {Icon} from 'astro-icon/components'
 
 import '@styles/landmarks/common/footer.css'
 
+import {fetchGraphQL} from '@services/sanity'
+import {identityQuery} from '@queries/identity'
+import type {Identity} from '@interfaces/identity'
+
+const response = await fetchGraphQL<{Identity: Identity}>(identityQuery)
+const identity = response.Identity
+const {
+  name,
+  email,
+  address,
+  officeHours,
+  phone,
+  licenseNumber,
+  socials
+} = identity
+
 const currentYear = new Date().getFullYear()
 ---
 
@@ -53,17 +69,19 @@ const currentYear = new Date().getFullYear()
           <div class="space-y-4">
             <li>
               <a href="tel:7722864374" class="flex gap-x-1">
-                <Icon name="line-md:phone-twotone-loop" class="text-lg" /> 772-286-4374
+                <Icon name="line-md:phone-twotone-loop" class="text-lg" />
+                {phone}
               </a>
             </li>
             <li>
-              <a href="mailto:misscindy@tbhfl.org" class="flex gap-x-1">
-                <Icon name="line-md:email-filled" class="text-lg" /> misscindy@tbhfl.org
+              <a href={`mailto:${email}`} class="flex gap-x-1">
+                <Icon name="line-md:email-filled" class="text-lg" />
+                {email}
               </a>
             </li>
             <li class="flex gap-x-1">
               <Icon name="line-md:sunny-twotone-loop" class="text-lg" />
-              Mon-Fri: 8:00 AM - 5:30 PM
+              {officeHours}
             </li>
             <li class="flex gap-x-1">
               <a href="mailto:misscindy@tbhfl.org" class="flex gap-x-1">
@@ -71,7 +89,7 @@ const currentYear = new Date().getFullYear()
                   name="line-md:map-marker-twotone-loop"
                   class="text-lg lg:text-2xl"
                 />
-                951 SE Monterey Commons Blvd Stuart, Fl 34996
+                {address}
               </a>
             </li>
           </div>
@@ -81,8 +99,8 @@ const currentYear = new Date().getFullYear()
   </div>
   <address class="tiny flex justify-between border-t border-t-white/30 py-4">
     <p>
-      &copy; {currentYear} Temple Beit HaYam Early Childhood Learning Center. All
-      rights reserved.
+      &copy; {currentYear}
+      {name}. All rights reserved.
     </p>
     <p>Licensed by the State of Florida.</p>
   </address>

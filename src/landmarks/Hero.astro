@@ -4,17 +4,9 @@ import {Image} from 'astro:assets'
 import {urlFor} from '@services/sanity'
 import type {HeroSection} from '@registry/sanity'
 
-interface Props {
-  title: string
-  mainImage?: any
-  heroSection?: HeroSection
-}
-
 const {pathname} = Astro.url
-const {hero} = Astro.props
-const {heading, subheading, body, heroImages = []} = hero
-
-// const backgroundUrl = `url("${mainImage?.src}")`
+const {title, subheading, description, mainImage, extraHeroImages} = Astro.props
+const backgroundUrl = `url("${mainImage?.src}")`
 ---
 
 {
@@ -24,17 +16,14 @@ const {heading, subheading, body, heroImages = []} = hero
         <hgroup>
           <h1 class="tagline">{title}</h1>
           <p class="font-sister text-5xl !leading-[1.125] text-balance">
-            Building a foundation for a lifetime of discovery.
+            {subheading}
           </p>
         </hgroup>
-        <p>
-          A nurturing, play-based preschool where young hearts and minds grow
-          through curiosity and Jewish values.
-        </p>
+        <p>{description}</p>
         <button class="btn btn-blue mt-4">Schedule a Tour</button>
       </div>
       <div class="half relative !col-end-[breakout-end] hidden content-center self-stretch lg:grid">
-        <Image
+        {/* <Image
           src={homeHeroImage01}
           alt=""
           class="animate-in fade-in slide-in-from-left-4 absolute top-20 left-0 z-2 size-60 rounded-full duration-1000"
@@ -49,14 +38,12 @@ const {heading, subheading, body, heroImages = []} = hero
           alt=""
           class="animate-in fade-in slide-in-from-bottom-4 absolute top-100 left-30 z-2 size-30 rounded-full duration-1000"
         />
-        <>
           <Image
             src={homeHeroImage04}
             alt=""
             class="animate-in fade-in slide-in-from-right-4 absolute top-120 right-10 z-2 size-40 rounded-full duration-1000"
-          />
-          <div class="absolute top-22 right-0 size-33 rounded-full bg-orange-300" />
-        </>
+          /> */}
+        <div class="absolute top-22 right-0 size-33 rounded-full bg-orange-300" />
         <div class="absolute top-70 left-50 size-15 rounded-full bg-orange-100" />
         <div class="absolute top-90 left-100 size-20 rounded-full bg-orange-200" />
         <div class="absolute top-140 left-60 size-10 rounded-full bg-orange-400" />

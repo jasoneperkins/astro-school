@@ -1,12 +1,13 @@
 ---
 import {SEO} from 'astro-seo'
 import {urlFor} from '@services/sanity'
-import type {PageInfo} from '@registry/sanity'
+import type {PageInfo} from '@interfaces/pageInfo'
 
 interface Props {
   pageInfo: PageInfo
 }
 
+const {href} = Astro.url
 const siteName = 'Early Childhood Learning Center'
 const {pageInfo} = Astro.props
 const {
@@ -24,11 +25,12 @@ const ogImageUrl = mainImage
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  
+
   <SEO
     title={title}
     titleTemplate={`%s | ${siteName}`}
     description={description}
+    canonical={href}
     openGraph={{
       basic: {
         title: title,
