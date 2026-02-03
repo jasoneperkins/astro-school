@@ -1,4 +1,7 @@
 {
+  "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"],
   "compilerOptions": {
     "jsx": "preserve",
     "skipLibCheck": true,
@@ -17,8 +20,5 @@
       "@services/*": ["./src/utilities/services/*"],
       "@styles/*": ["./src/styles/*"]
     }
-  },
-  "extends": "astro/tsconfigs/strict",
-  "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist"]
+  }
 }

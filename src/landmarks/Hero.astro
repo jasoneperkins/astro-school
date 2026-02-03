@@ -2,9 +2,25 @@
 import {Image} from 'astro:assets'
 
 import {urlFor} from '@services/sanity'
+import type {HeroSection} from '@registry/sanity'
+
+interface Props {
+  title: string
+  mainImage?: any
+  heroSection?: HeroSection
+}
 
 const {pathname} = Astro.url
-const {title, mainImage} = Astro.props
+const {title, mainImage, heroSection} = Astro.props
+
+// This logic allows Sanity to override your hardcoded defaults
+const displayTitle = heroSection?.title || title
+const subheading =
+  heroSection?.subheading ||
+  'Building a foundation for a lifetime of discovery.'
+const bodyText = heroSection?.body || 'A nurturing, play-based preschool...'
+const images = heroSection?.heroImages || []
+
 const backgroundUrl = `url("${mainImage?.src}")`
 ---
 
