@@ -1,17 +1,23 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "Preserve",
-    "moduleDetection": "force",
-    "isolatedModules": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "jsx": "preserve",
-    "incremental": true
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "@constants/*": ["../src/utilities/constants/*"],
+      "@documents/*": ["../src/utilities/documents/*"],
+      "@interfaces/*": ["../src/utilities/interfaces/*"],
+      "@objects/*": ["../src/utilities/objects/*"],
+      "@queries/*": ["../src/utilities/queries/*"]
+    },
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx", "../src/utilities/**/*"],
   "exclude": ["node_modules"]
 }

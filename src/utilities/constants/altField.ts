@@ -4,6 +4,6 @@ export const altField = {
   name: 'alt',
   type: 'string',
   title: 'Alternative Text',
-  description: 'Describe the image for screen readers.',
-  validation: (Rule: Rule) => Rule.required()
+  validation: (Rule: Rule) =>
+    Rule.warning('Should be empty for decorative images')
 }

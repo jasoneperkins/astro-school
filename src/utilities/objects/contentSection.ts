@@ -1,4 +1,4 @@
-import { altField } from '@constants/altField'
+import { altField } from '../constants/altField'
 import { type Rule } from 'sanity'
 
 export default {

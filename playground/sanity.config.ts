@@ -1,6 +1,6 @@
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
-import {schemaTypes} from './schemaTypes'
+import {schemaTypes} from './schemaTypes' // Import the unified array
 
 export default defineConfig({
   name: 'default',
@@ -9,5 +9,7 @@ export default defineConfig({
   dataset: 'production',
   plugins: [structureTool()],
   basePath: '/playground',
-  types: schemaTypes,
+  schema: {
+    types: schemaTypes, // Use the imported array
+  },
 })
