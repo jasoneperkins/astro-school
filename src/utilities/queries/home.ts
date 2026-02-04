@@ -5,11 +5,18 @@ export const homepageQuery = `
     allPage(where: { slug: { current: { eq: "index" } } }) {
       pageInfo {
         title
-        slug
+        slug {
+          current
+        }
         subheading
         description
         author
         mainImage {
+          asset {
+            url
+          }
+        }
+        extraHeroImages {
           asset {
             url
           }

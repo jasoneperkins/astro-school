@@ -9,14 +9,6 @@ export default {
       type: 'pageInfo'
     },
     {
-      name: 'slug',
-      type: 'slug',
-      title: 'Slug',
-      options: {
-        source: (doc: any) => doc.pageInfo?.title
-      }
-    },
-    {
       name: 'content',
       title: 'Page Sections',
       type: 'array',

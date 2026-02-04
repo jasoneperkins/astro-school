@@ -1,17 +1,21 @@
 import { fetchGraphQL } from '@services/sanity'
 
 export const heroQuery = `
-  query GetHero {
-    allPage(where: { slug: { current: { eq: "home" } } }) {
-      heroSection {
-        heading
-        subheading
-        body
-        heroImages {
-          asset {
-            url
-            metadata {
-              lqip
+  query GetHero($slug: String!) {
+    allPage(where: { pageInfo: { slug: { current: { eq: $slug } } } }) {
+      content {
+        __typename
+        ... on HeroSection {
+          _type
+          title
+          subheading
+          body
+          heroImages {
+            asset {
+              url
+              metadata {
+                lqip
+              }
             }
           }
         }
