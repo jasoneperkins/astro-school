@@ -44,8 +44,8 @@ p:not(:last-child) {
 }
 
 p:last-child,
-header p,
-hgroup p {
+header > p:not(:last-child),
+hgroup > p:not(:last-child) {
   @apply mb-0;
 }
 

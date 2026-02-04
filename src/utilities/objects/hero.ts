@@ -1,7 +1,7 @@
 import { type Rule } from 'sanity'
 
 export default {
-  name: 'heroSection',
+  name: 'hero',
   title: 'Hero Section',
   type: 'object',
   fields: [
@@ -27,7 +27,20 @@ export default {
       name: 'heroImages',
       title: 'Floating Hero Images',
       type: 'array',
-      of: [{ type: 'image', options: { hotspot: true } }],
+      of: [
+        {
+          type: 'image',
+          options: { hotspot: true },
+          fields: [
+            {
+              name: 'alt',
+              type: 'string',
+              title: 'Alternative Text',
+              validation: (Rule: Rule) => Rule.required()
+            }
+          ]
+        }
+      ],
       validation: (Rule: Rule) =>
         Rule.max(4).error(
           'The homepage design supports a maximum of 4 floating images.'

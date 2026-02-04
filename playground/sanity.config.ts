@@ -10,14 +10,14 @@ import newsletter from '../src/utilities/documents/newsletter'
 
 // 2. Import Objects (The missing pieces causing your errors)
 import pageInfo from '../src/utilities/objects/pageInfo'
-import heroSection from '../src/utilities/objects/heroSection'
+import hero from '../src/utilities/objects/hero'
 import contentSection from '../src/utilities/objects/contentSection'
 import simpleHeading from '../src/utilities/objects/simpleHeading'
 import socials from '../src/utilities/objects/socials'
 
 export default defineConfig({
   name: 'default',
-  title: 'Temple Beit HaYam',
+  title: 'ECLC, Stuart Florida',
   projectId: 'nn95ygkm',
   dataset: 'production',
   plugins: [structureTool()],
@@ -32,7 +32,7 @@ export default defineConfig({
       newsletter,
       // Objects
       pageInfo,
-      heroSection,
+      hero,
       contentSection,
       simpleHeading,
       socials,

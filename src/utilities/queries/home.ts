@@ -14,6 +14,10 @@ export const homepageQuery = `
         mainImage {
           asset {
             url
+            _id
+            metadata {
+              lqip
+            }
           }
         }
         extraHeroImages {
@@ -24,7 +28,7 @@ export const homepageQuery = `
       }
       content {
         __typename
-        ... on HeroSection {
+        ... on Hero {
           _type
           title
           subheading

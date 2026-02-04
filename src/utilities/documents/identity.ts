@@ -12,6 +12,22 @@ export default {
       initialValue: 'Early Childhood Learning Center'
     },
     {
+      name: 'logo',
+      title: 'Organization Logo',
+      type: 'image',
+      options: {
+        hotspot: true
+      },
+      fields: [
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative Text',
+          validation: (Rule: Rule) => Rule.required()
+        }
+      ]
+    },
+    {
       name: 'email',
       title: 'Contact Email',
       type: 'string',

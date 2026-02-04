@@ -16,7 +16,6 @@
       "@objects/*": ["./src/utilities/objects/*"],
       "@queries/*": ["./src/utilities/queries/*"],
       "@registry/*": ["./src/utilities/registry/*"],
-      "@schemas/*": ["./src/utilities/schemas/*"],
       "@services/*": ["./src/utilities/services/*"],
       "@styles/*": ["./src/styles/*"]
     }

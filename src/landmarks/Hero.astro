@@ -2,11 +2,11 @@
 import {Image} from 'astro:assets'
 
 import {urlFor} from '@services/sanity'
-import type {HeroSection} from '@registry/sanity'
+import type {Hero} from '@registry/sanity'
 
 const {pathname} = Astro.url
 const {pageInfo} = Astro.props
-const {title, subheading, description, mainImage} = pageInfo as HeroSection
+const {title, subheading, description, mainImage} = pageInfo as Hero
 const backgroundUrl = `url("${mainImage?.src}")`
 ---
 

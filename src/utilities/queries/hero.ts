@@ -5,7 +5,7 @@ export const heroQuery = `
     allPage(where: { pageInfo: { slug: { current: { eq: $slug } } } }) {
       content {
         __typename
-        ... on HeroSection {
+        ... on Hero {
           _type
           title
           subheading
@@ -17,6 +17,7 @@ export const heroQuery = `
                 lqip
               }
             }
+            alt
           }
         }
       }

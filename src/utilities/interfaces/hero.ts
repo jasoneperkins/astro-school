@@ -1,7 +1,7 @@
 import type { SanityImage } from '@interfaces/sanityImage'
 
-export interface HeroSection {
-  _type: 'heroSection'
+export interface Hero {
+  _type: 'hero'
   title: string
   subheading?: string
   body?: string

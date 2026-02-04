@@ -4,7 +4,7 @@ import { schemaTypes } from '@registry/sanity'
 
 export default defineConfig({
   name: 'default',
-  title: 'Temple Beit HaYam',
+  title: 'ECLC, Stuart Florida',
   projectId: 'nn95ygkm',
   dataset: 'production',
   plugins: [structureTool()],
