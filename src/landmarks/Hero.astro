@@ -6,7 +6,8 @@ import type {Hero} from '@registry/sanity'
 
 const {pathname} = Astro.url
 const {pageInfo} = Astro.props
-const {title, subheading, description, mainImage} = pageInfo as Hero
+const {title, subheading, description, mainImage, extraHeroImages} =
+  pageInfo as Hero
 const backgroundUrl = `url("${mainImage?.src}")`
 ---
 
@@ -24,26 +25,30 @@ const backgroundUrl = `url("${mainImage?.src}")`
         <button class="btn btn-blue mt-4">Schedule a Tour</button>
       </div>
       <div class="half relative !col-end-[breakout-end] hidden content-center self-stretch lg:grid">
-        {/* <Image
-          src={homeHeroImage01}
-          alt=""
+        <Image
+          src={urlFor(mainImage).width(240).height(240).url()!}
+          alt={mainImage?.alt || ''}
+          inferSize
           class="animate-in fade-in slide-in-from-left-4 absolute top-20 left-0 z-2 size-60 rounded-full duration-1000"
         />
         <Image
-          src={homeHeroImage03}
-          alt=""
+          src={urlFor(extraHeroImages?.[0]).width(180).height(180).url()!}
+          alt={extraHeroImages?.[0]?.alt || ''}
+          inferSize
           class="animate-in fade-in slide-in-from-top-4 absolute top-45 right-0 z-2 size-45 rounded-full duration-1000"
         />
         <Image
-          src={homeHeroImage02}
-          alt=""
+          src={urlFor(extraHeroImages?.[1]).width(120).height(120).url()!}
+          alt={extraHeroImages?.[1]?.alt || ''}
+          inferSize
           class="animate-in fade-in slide-in-from-bottom-4 absolute top-100 left-30 z-2 size-30 rounded-full duration-1000"
         />
-          <Image
-            src={homeHeroImage04}
-            alt=""
-            class="animate-in fade-in slide-in-from-right-4 absolute top-120 right-10 z-2 size-40 rounded-full duration-1000"
-          /> */}
+        <Image
+          src={urlFor(extraHeroImages?.[2]).width(160).height(160).url()!}
+          alt={extraHeroImages?.[2]?.alt || ''}
+          inferSize
+          class="animate-in fade-in slide-in-from-right-4 absolute top-120 right-10 z-2 size-40 rounded-full duration-1000"
+        />
         <div class="absolute top-22 right-0 size-33 rounded-full bg-orange-300" />
         <div class="absolute top-70 left-50 size-15 rounded-full bg-orange-100" />
         <div class="absolute top-90 left-100 size-20 rounded-full bg-orange-200" />

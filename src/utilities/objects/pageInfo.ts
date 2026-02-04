@@ -60,6 +60,17 @@ export default {
       title: 'Content Creator',
       type: 'string',
       initialValue: 'ECLC Staff'
+    },
+    {
+      name: 'seoTitle',
+      title: 'SEO Title Override',
+      type: 'string',
+      description:
+        'Optional: Overrides the page title in the browser tab. Use this to keep titles short for Google.',
+      validation: (Rule: Rule) =>
+        Rule.max(60).warning(
+          'Titles longer than 60 characters may be truncated by Google.'
+        )
     }
   ]
 }

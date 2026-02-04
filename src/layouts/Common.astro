@@ -5,7 +5,7 @@ import Footer from '@landmarks/common/Footer.astro'
 import Hero from '@landmarks/Hero.astro'
 
 import {fetchGraphQL} from '@services/sanity'
-import {identityQuery} from '@queries/identity'
+import {fetchIdentity} from '@queries/identity'
 import type {PageInfo} from '@interfaces/pageInfo'
 import type {Identity} from '@interfaces/identity'
 
@@ -16,9 +16,8 @@ interface Props {
   pageInfo: PageInfo
 }
 
-const response = await fetchGraphQL<{Identity: Identity}>(identityQuery)
-const identity: Identity = response?.Identity || {
-  name: 'Loading...',
+const identity = (await fetchIdentity()) || {
+  name: 'Early Childhood Learning Center',
   email: '',
   phone: '',
   address: '',

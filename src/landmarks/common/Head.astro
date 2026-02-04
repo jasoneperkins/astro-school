@@ -13,10 +13,11 @@ const {href} = Astro.url
 const {pageInfo, identity} = Astro.props
 const {name: siteName} = identity as Identity
 const {
-  title = 'Temple Beit HaYam',
+  title = 'Early Childhood Learning Center',
   description = 'A nurturing preschool environment in Stuart, Florida.',
   mainImage,
-  author = siteName || 'Temple Beit HaYam'
+  author = 'ECLC Staff',
+  shortTitle
 } = pageInfo || {}
 
 const ogImageUrl = mainImage
@@ -29,13 +30,13 @@ const ogImageUrl = mainImage
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <SEO
-    title={title}
+    title={shortTitle || title}
     titleTemplate={`%s | ${siteName}`}
     description={description}
     canonical={href}
     openGraph={{
       basic: {
-        title: title,
+        title: shortTitle || title,
         type: 'website',
         image: ogImageUrl
       },
@@ -45,7 +46,7 @@ const ogImageUrl = mainImage
     }}
     twitter={{
       card: 'summary_large_image',
-      title: title,
+      title: shortTitle || title,
       description: description,
       image: ogImageUrl
     }}
