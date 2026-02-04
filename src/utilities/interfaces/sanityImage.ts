@@ -7,7 +7,7 @@ export interface SanityImage {
       lqip: string
     }
   }
-  alt: string
+  alt?: string
   hotspot?: {
     x: number
     y: number

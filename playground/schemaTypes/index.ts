@@ -1,26 +1,26 @@
 // Documents
-import page from '../../src/utilities/documents/page'
-import identity from '../../src/utilities/documents/identity'
 import classroom from '../../src/utilities/documents/classroom'
+import identity from '../../src/utilities/documents/identity'
 import newsletter from '../../src/utilities/documents/newsletter'
+import page from '../../src/utilities/documents/page'
 
 // Objects
-import pageInfo from '../../src/utilities/objects/pageInfo'
-import hero from '../../src/utilities/objects/hero'
 import contentSection from '../../src/utilities/objects/contentSection'
+import customImage from '../../src/utilities/objects/customImage'
+import hero from '../../src/utilities/objects/hero'
+import pageInfo from '../../src/utilities/objects/pageInfo'
 import simpleHeading from '../../src/utilities/objects/simpleHeading'
 import socials from '../../src/utilities/objects/socials'
-import customImage from '../../src/utilities/objects/customImage'
 
 export const schemaTypes = [
-  page,
-  identity,
   classroom,
+  identity,
   newsletter,
-  pageInfo,
-  hero,
+  page,
   contentSection,
+  customImage,
+  hero,
+  pageInfo,
   simpleHeading,
   socials,
-  customImage,
 ]
