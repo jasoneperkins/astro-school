@@ -14,7 +14,6 @@ import {homepageQuery} from '@queries/home'
 
 const response = await fetchGraphQL<any>(homepageQuery)
 const pageData = response.allPage[0]
-const identityData = response.Identity
 
 const {pageInfo} = pageData
 ---

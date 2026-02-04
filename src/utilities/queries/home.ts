@@ -2,7 +2,7 @@ import { fetchGraphQL } from '@services/sanity'
 
 export const homepageQuery = `
   query GetHomepage {
-    allPage(where: { slug: { current: { eq: "index" } } }) {
+    allPage(where: { pageInfo: { slug: { current: { eq: "index" } } } }) {
       pageInfo {
         title
         slug {
