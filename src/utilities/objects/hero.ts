@@ -1,3 +1,4 @@
+import { altField } from '@constants/altField'
 import { type Rule } from 'sanity'
 
 export default {
@@ -31,14 +32,7 @@ export default {
         {
           type: 'image',
           options: { hotspot: true },
-          fields: [
-            {
-              name: 'alt',
-              type: 'string',
-              title: 'Alternative Text',
-              validation: (Rule: Rule) => Rule.required()
-            }
-          ]
+          fields: [altField]
         }
       ],
       validation: (Rule: Rule) =>
