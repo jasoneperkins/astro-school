@@ -2,28 +2,44 @@
 import {Image} from 'astro:assets'
 import {Icon} from 'astro-icon/components'
 
+import type {Identity} from '@interfaces/identity'
+
 import '@styles/landmarks/common/header.css'
 
-import Logo from '@assets/images/temple-beit-hayam.webp'
+interface Props {
+  identity: Identity
+}
+
+const {identity} = Astro.props
+const {
+  logo,
+  name,
+  phone,
+  email,
+  address,
+  socials: {facebook, instagram}
+} = identity
 ---
 
 <header id="commonHeader" class="content">
   <address class="flex items-center justify-between py-3 not-italic">
     <div class="flex items-center gap-4">
-      <a href="tel:7722864374" class="flex items-center gap-x-1">
+      <a
+        href={`tel:${phone.replace(/\D/g, '')}`}
+        class="flex items-center gap-x-1">
         <Icon
           name="line-md:phone-twotone-loop"
           class="text-red-400"
           size={20}
         />
-        <span>772-286-4374</span>
+        <span>{phone}</span>
       </a>
-      <a href="mailto:misscindy@tbhfl.org" class="flex items-center gap-x-1">
+      <a href={`mailto:${email}`} class="flex items-center gap-x-1">
         <Icon name="line-md:email-filled" class="text-green-500" size={20} />
-        <span class="hidden lg:block">misscindy@tbhfl.org</span>
+        <span class="hidden lg:block">{email}</span>
       </a>
       <a
-        href="https://maps.app.goo.gl/YourMapLink"
+        href={`https://maps.google.com/?q=${address}`}
         class="flex items-center gap-x-1">
         <Icon
           name="line-md:map-marker-twotone-loop"
@@ -31,13 +47,16 @@ import Logo from '@assets/images/temple-beit-hayam.webp'
           size={20}
         />
         <span class="hidden lg:block">
-          951 SE Monterey Commons Blvd Stuart, Fl 34996
+          {address}
         </span>
       </a>
     </div>
     <div class="flex items-center gap-2">
-      <a href="https://facebook.com/YourPage">
+      <a href={facebook} aria-label="Facebook" target="_blank" rel="noopener">
         <Icon name="line-md:facebook" class="text-[#1877F2]" size={20} />
+      </a>
+      <a href={instagram} aria-label="Instagram" target="_blank" rel="noopener">
+        <Icon name="line-md:instagram" class="text-[#E1306C]" size={20} />
       </a>
     </div>
   </address>
@@ -45,8 +64,20 @@ import Logo from '@assets/images/temple-beit-hayam.webp'
   <nav
     class="flex items-center justify-between gap-x-8 py-3"
     aria-label="Main Navigation">
-    <a href="/" aria-label="Temple Beit Hayam Home">
-      <Image src={Logo} alt="" class="h-16 w-auto" aria-hidden="true" />
+    <a href="/" aria-label={`${name} Home`}>
+      {
+        logo?.asset?.url ? (
+          <Image
+            src={logo.asset.url}
+            alt={logo.alt || name}
+            width={200}
+            height={64}
+            class="h-16 w-auto"
+          />
+        ) : (
+          <span class="text-xl font-bold">{name}</span>
+        )
+      }
     </a>
 
     <ul class="hidden shrink basis-100 items-center justify-between lg:flex">

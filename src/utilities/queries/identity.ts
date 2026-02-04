@@ -5,6 +5,16 @@ export const identityQuery = `
   query GetIdentity {
     allIdentity {
       name
+      logo {
+        asset {
+          _id
+          url
+          metadata {
+            lqip
+          }
+        }
+        alt
+      }
       email
       phone
       address

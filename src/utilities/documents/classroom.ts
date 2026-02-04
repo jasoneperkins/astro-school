@@ -20,15 +20,24 @@ export default {
         source: 'title',
         maxLength: 96
       },
-      validation: (Rule) => Rule.required()
+      validation: (Rule: Rule) => Rule.required()
     },
     {
       name: 'mainImage',
       title: 'Main Photo',
       type: 'image',
       options: {
-        hotspot: true // Allows you to crop the image in the Studio
-      }
+        hotspot: true //
+      },
+      fields: [
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative Text',
+          description: 'Describe the image for screen readers.',
+          validation: (Rule: Rule) => Rule.required()
+        }
+      ]
     }
   ]
 }

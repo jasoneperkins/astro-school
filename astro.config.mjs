@@ -59,7 +59,7 @@ export default defineConfig({
     }
   },
   image: {
-    service: passthroughImageService()
+    domains: ['cdn.sanity.io']
   },
   integrations: [
     icon({

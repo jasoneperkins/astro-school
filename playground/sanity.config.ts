@@ -17,7 +17,7 @@ import socials from '../src/utilities/objects/socials'
 
 export default defineConfig({
   name: 'default',
-  title: 'Temple Beit HaYam',
+  title: 'ECLC, Stuart Florida',
   projectId: 'nn95ygkm',
   dataset: 'production',
   plugins: [structureTool()],
