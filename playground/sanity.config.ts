@@ -13,6 +13,7 @@ import pageInfo from '../src/utilities/objects/pageInfo'
 import heroSection from '../src/utilities/objects/heroSection'
 import contentSection from '../src/utilities/objects/contentSection'
 import simpleHeading from '../src/utilities/objects/simpleHeading'
+import socials from '../src/utilities/objects/socials'
 
 export default defineConfig({
   name: 'default',
@@ -34,6 +35,7 @@ export default defineConfig({
       heroSection,
       contentSection,
       simpleHeading,
+      socials,
     ],
   },
 })

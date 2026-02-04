@@ -17,7 +17,14 @@ interface Props {
 }
 
 const response = await fetchGraphQL<{Identity: Identity}>(identityQuery)
-const identity: Identity = response.Identity
+const identity: Identity = response?.Identity || {
+  name: 'Loading...',
+  email: '',
+  phone: '',
+  address: '',
+  officeHours: '',
+  socials: {facebook: '', instagram: ''}
+}
 
 const {pageInfo} = Astro.props
 ---

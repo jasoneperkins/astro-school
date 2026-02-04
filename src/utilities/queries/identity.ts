@@ -1,8 +1,9 @@
 import { fetchGraphQL } from '@services/sanity'
+import type { Identity } from '@interfaces/identity'
 
 export const identityQuery = `
   query GetIdentity {
-    Identity(id: "identity") {
+    allIdentity {
       name
       email
       phone
@@ -18,6 +19,6 @@ export const identityQuery = `
 `
 
 export async function fetchIdentity() {
-  const data = await fetchGraphQL<{ allPage: any[] }>(identityQuery)
-  return data.allPage[0]
+  const data = await fetchGraphQL<{ allIdentity: Identity[] }>(identityQuery)
+  return data?.allIdentity?.[0] || null
 }
