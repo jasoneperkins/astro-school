@@ -3,8 +3,8 @@ export interface SanityImage {
   asset: {
     _id: string
     url: string
-    metadata?: {
-      lqip: string // Add this for Astro image optimization
+    metadata: {
+      lqip: string
     }
   }
   alt: string

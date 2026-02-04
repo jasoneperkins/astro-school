@@ -1,15 +1,8 @@
+import type { SanityImage } from '@interfaces/sanityImage'
+
 export interface Identity {
   name: string
-  logo: {
-    asset: {
-      _id: string
-      url: string
-      metadata: {
-        lqip: string
-      }
-    }
-    alt?: string
-  }
+  logo: SanityImage
   email: string
   phone: string
   address: string

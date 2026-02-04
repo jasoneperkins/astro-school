@@ -19,11 +19,13 @@ export const homepageQuery = `
               lqip
             }
           }
+          alt
         }
         extraHeroImages {
           asset {
             url
           }
+          alt
         }
       }
       content {
@@ -37,6 +39,7 @@ export const homepageQuery = `
             asset {
               url
             }
+            alt
           }
         }
       }

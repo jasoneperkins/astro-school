@@ -47,13 +47,33 @@ export default {
       type: 'image',
       description:
         'Background for standard pages; one of the floating images for the homepage.',
-      options: { hotspot: true }
+      options: { hotspot: true },
+      fields: [
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative Text',
+          validation: (Rule: Rule) => Rule.required()
+        }
+      ]
     },
     {
       name: 'extraHeroImages',
       title: 'Additional Hero Images',
       type: 'array',
-      of: [{ type: 'image' }],
+      of: [
+        {
+          type: 'image',
+          fields: [
+            {
+              name: 'alt',
+              type: 'string',
+              title: 'Alternative Text',
+              validation: (Rule: Rule) => Rule.required()
+            }
+          ]
+        }
+      ],
       validation: (Rule: Rule) => Rule.max(3),
       description:
         'Used only for the homepage floating layout (Main Image + these 3).'
