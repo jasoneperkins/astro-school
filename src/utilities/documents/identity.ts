@@ -1,4 +1,3 @@
-import { altField } from '../constants/altField'
 import { type Rule } from 'sanity'
 
 export default {
@@ -15,11 +14,7 @@ export default {
     {
       name: 'logo',
       title: 'Organization Logo',
-      type: 'image',
-      options: {
-        hotspot: true
-      },
-      fields: [altField]
+      type: 'customImage'
     },
     {
       name: 'email',

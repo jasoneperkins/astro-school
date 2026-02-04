@@ -1,4 +1,3 @@
-import { altField } from '../constants/altField'
 import { type Rule } from 'sanity'
 
 export default {
@@ -34,13 +33,7 @@ export default {
       name: 'images',
       title: 'Section Images',
       type: 'array',
-      of: [
-        {
-          type: 'image',
-          options: { hotspot: true },
-          fields: [altField]
-        }
-      ]
+      of: [{ type: 'customImage' }]
     }
   ]
 }

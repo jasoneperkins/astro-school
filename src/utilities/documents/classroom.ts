@@ -26,11 +26,7 @@ export default {
     {
       name: 'mainImage',
       title: 'Main Photo',
-      type: 'image',
-      options: {
-        hotspot: true //
-      },
-      fields: [altField]
+      type: 'customImage'
     }
   ]
 }

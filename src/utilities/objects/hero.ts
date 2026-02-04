@@ -1,4 +1,3 @@
-import { altField } from '../constants/altField'
 import { type Rule } from 'sanity'
 
 export default {
@@ -28,13 +27,7 @@ export default {
       name: 'heroImages',
       title: 'Floating Hero Images',
       type: 'array',
-      of: [
-        {
-          type: 'image',
-          options: { hotspot: true },
-          fields: [altField]
-        }
-      ],
+      of: [{ type: 'customImage' }],
       validation: (Rule: Rule) =>
         Rule.max(4).error(
           'The homepage design supports a maximum of 4 floating images.'

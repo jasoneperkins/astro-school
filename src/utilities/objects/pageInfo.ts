@@ -1,4 +1,3 @@
-import { altField } from '../constants/altField'
 import { type Rule } from 'sanity'
 
 export default {
@@ -45,22 +44,13 @@ export default {
     {
       name: 'mainImage',
       title: 'Main Hero Image',
-      type: 'image',
-      description:
-        'Background for standard pages; one of the floating images for the homepage.',
-      options: { hotspot: true },
-      fields: [altField]
+      type: 'customImage'
     },
     {
       name: 'extraHeroImages',
       title: 'Additional Hero Images',
       type: 'array',
-      of: [
-        {
-          type: 'image',
-          fields: [altField]
-        }
-      ],
+      of: [{ type: 'customImage' }],
       validation: (Rule: Rule) => Rule.max(3),
       description:
         'Used only for the homepage floating layout (Main Image + these 3).'

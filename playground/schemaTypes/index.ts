@@ -10,6 +10,7 @@ import hero from '../../src/utilities/objects/hero'
 import contentSection from '../../src/utilities/objects/contentSection'
 import simpleHeading from '../../src/utilities/objects/simpleHeading'
 import socials from '../../src/utilities/objects/socials'
+import customImage from '../../src/utilities/objects/customImage'
 
 export const schemaTypes = [
   page,
@@ -21,4 +22,5 @@ export const schemaTypes = [
   contentSection,
   simpleHeading,
   socials,
+  customImage,
 ]

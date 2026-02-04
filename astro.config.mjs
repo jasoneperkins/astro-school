@@ -68,6 +68,7 @@ export default defineConfig({
           'chevron-small-down',
           'email-filled',
           'facebook',
+          'instagram',
           'map-marker-twotone-loop',
           'phone-twotone-loop',
           'sunny-twotone-loop'
