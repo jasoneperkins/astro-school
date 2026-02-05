@@ -89,7 +89,7 @@ const {logo, name, phone, email, address, socials} = identity
       }
     </a>
 
-    <ul class="hidden shrink basis-100 items-center justify-between lg:flex">
+    <ul class="hidden shrink basis-100 items-center justify-between lg:flex mb-0!">
       <li>
         <a href="/" class="transition-colors hover:text-blue-600">Home</a>
       </li>
@@ -137,36 +137,9 @@ const {logo, name, phone, email, address, socials} = identity
     <button
       id="menu-toggle"
       class="p-2 text-3xl text-blue-900 md:hidden"
-      aria-label="Open Menu">
-      <!-- <Icon name="ph:list-bold" /> -->
+      aria-label="Toggle Menu"
+      @click="$dispatch('toggle-drawer')">
+      <Icon name="line-md:menu-to-close-transition" />
     </button>
   </nav>
-  <!-- <div
-    id="drawer-overlay"
-    class="pointer-events-none fixed inset-0 z-50 bg-slate-900/50 opacity-0 transition-opacity duration-300 md:hidden">
-  </div>
-
-  <div
-    id="mobile-drawer"
-    class="fixed top-0 right-0 z-50 h-full w-4/5 max-w-sm translate-x-full bg-white shadow-2xl transition-transform duration-300 ease-in-out md:hidden">
-    <div class="p-6">
-      <div class="mb-8 flex justify-end">
-        <button
-          id="close-toggle"
-          class="p-2 text-3xl text-slate-500"
-          aria-label="Close Menu">
-          <Icon name="ph:x-bold" />
-        </button>
-      </div>
-
-      <nav>
-        <ul class="text-blue-900 flex flex-col gap-6 text-xl font-bold">
-          <li><a href="/about">About Us</a></li>
-          <li><a href="/classrooms">Classrooms</a></li>
-          <li><a href="/newsletters">Newsletters</a></li>
-          <li><a href="/contact" class="text-blue-600">Contact Us</a></li>
-        </ul>
-      </nav>
-    </div>
-  </div> -->
 </header>

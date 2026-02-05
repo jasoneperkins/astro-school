@@ -10,6 +10,7 @@
     "shipit": "npx rimraf dist && npx sanity graphql deploy --yes && npm run build && npx wrangler deploy"
   },
   "dependencies": {
+    "@astrojs/alpinejs": "^0.4.9",
     "@astrojs/cloudflare": "^12.6.12",
     "@astrojs/react": "^4.4.2",
     "@fontsource/love-ya-like-a-sister": "^5.2.8",
@@ -19,8 +20,10 @@
     "@sanity/client": "^7.14.1",
     "@sanity/image-url": "^2.0.3",
     "@tailwindcss/vite": "^4.1.18",
+    "@types/alpinejs": "^3.13.11",
     "@types/react": "^19.2.10",
     "@types/react-dom": "^19.2.3",
+    "alpinejs": "^3.15.8",
     "astro": "^5.17.1",
     "astro-icon": "^1.1.5",
     "astro-seo": "^1.1.0",

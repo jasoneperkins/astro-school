@@ -1,6 +1,7 @@
 ---
 import Head from '@landmarks/common/Head.astro'
 import Header from '@landmarks/common/Header.astro'
+import Drawer from '@landmarks/common/Drawer.astro'
 import Footer from '@landmarks/common/Footer.astro'
 import Hero from '@landmarks/Hero.astro'
 
@@ -30,6 +31,7 @@ const {pageInfo} = Astro.props
 
 <html lang="en-US">
   <Head {pageInfo} {identity} />
+  <Drawer {identity} />
   <body>
     <Header {identity} />
     <main>

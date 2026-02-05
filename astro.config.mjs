@@ -8,6 +8,8 @@ import react from '@astrojs/react'
 import sanity from '@sanity/astro'
 import tailwindcss from '@tailwindcss/vite'
 
+import alpinejs from '@astrojs/alpinejs'
+
 const env = loadEnv(process.env.NODE_ENV || 'development', process.cwd(), '')
 
 export default defineConfig({
@@ -66,10 +68,12 @@ export default defineConfig({
       include: {
         'line-md': [
           'chevron-small-down',
+          'close-to-menu-transition',
           'email-filled',
           'facebook',
           'instagram',
           'map-marker-twotone-loop',
+          'menu-to-close-transition',
           'phone-twotone-loop',
           'sunny-twotone-loop'
         ],
@@ -81,7 +85,8 @@ export default defineConfig({
       projectId: 'nn95ygkm',
       dataset: 'production',
       useCdn: false
-    })
+    }),
+    alpinejs()
   ],
   output: 'server',
   vite: {
