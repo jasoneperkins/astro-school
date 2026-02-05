@@ -1,5 +1,15 @@
 @theme {
   --font-scale: 1.1;
-  --font-sans: 'Poppins', 'sans-serif';
-  --font-sister: 'Love Ya Like A Sister', system-ui;
+  --font-sans:
+    'Poppins', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-sister: 'Love Ya Like A Sister', cursive;
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.font-sister {
+  font-family: var(--font-sister);
 }

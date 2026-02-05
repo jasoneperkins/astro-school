@@ -3,6 +3,7 @@
 @import 'tw-animate-css';
 @plugin '@tailwindcss/forms';
 @import '@fontsource/poppins';
+@import '@fontsource/love-ya-like-a-sister';
 
 /* abstracts */
 @import './abstracts/colors.css';
