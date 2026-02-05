@@ -8,23 +8,23 @@ const {pathname} = Astro.url
 const {pageInfo} = Astro.props
 const {title, subheading, description, mainImage, extraHeroImages} =
   pageInfo as Hero
-const backgroundUrl = `url("${mainImage?.src}")`
+const backgroundUrl = mainImage ? `url("${urlFor(mainImage).url()}")` : ''
 ---
 
 {
   pathname == '/' ? (
-    <header class="bg-gradient-white min-h-[760px] !items-center !py-10">
+    <header class="bg-gradient-white min-h-[760px] items-center! py-10!">
       <div class="half space-y-4">
         <hgroup>
           <h1 class="tagline">{title}</h1>
-          <p class="font-sister text-5xl !leading-[1.125] text-balance">
+          <p class="font-sister text-5xl leading-[1.125]! text-balance">
             {subheading}
           </p>
         </hgroup>
         <p>{description}</p>
         <button class="btn btn-blue mt-4">Schedule a Tour</button>
       </div>
-      <div class="half relative !col-end-[breakout-end] hidden content-center self-stretch lg:grid">
+      <div class="half relative col-end-[breakout-end]! hidden content-center self-stretch lg:grid">
         <Image
           src={urlFor(mainImage).width(240).height(240).url()!}
           alt={mainImage?.alt || ''}

@@ -1,19 +1,19 @@
 ---
 import Layout from '@layouts/Common.astro'
+
 import ContactForm from '@components/ContactForm.astro'
 import ItemCard from '@components/ItemCard.astro'
-
-import '@fontsource/love-ya-like-a-sister'
-import '@styles/pages/home.css'
 
 import {Image} from 'astro:assets'
 import {Icon} from 'astro-icon/components'
 
 import {fetchGraphQL} from '@services/sanity'
-import {homepageQuery} from '@queries/home'
+import {fetchPage} from '@queries/page'
 
-const response = await fetchGraphQL<any>(homepageQuery)
-const pageData = response.allPage[0]
+import '@fontsource/love-ya-like-a-sister'
+import '@styles/pages/home.css'
+
+const pageData = await fetchPage('index')
 
 const {pageInfo} = pageData
 ---

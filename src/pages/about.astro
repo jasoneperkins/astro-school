@@ -2,6 +2,11 @@
 import Layout from '@layouts/Common.astro'
 import {Image} from 'astro:assets'
 
+import {fetchGraphQL} from '@services/sanity'
+import {fetchPage} from '@queries/page'
+
+const pageData = await fetchPage('about')
+
 // Local Asset Imports
 import OurStory01 from '@images/man-kids-books.webp'
 import HowWeLearn01 from '@images/woman-kids-board-globe-table.webp'

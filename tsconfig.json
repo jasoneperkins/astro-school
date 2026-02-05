@@ -5,6 +5,7 @@
   "compilerOptions": {
     "jsx": "preserve",
     "skipLibCheck": true,
+    "types": ["node"],
     "paths": {
       "@assets/*": ["./src/assets/*"],
       "@components/*": ["./src/components/*"],

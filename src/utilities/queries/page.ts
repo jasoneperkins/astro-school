@@ -1,8 +1,8 @@
 import { fetchGraphQL } from '@services/sanity'
 
-export const homepageQuery = `
-  query GetHomepage {
-    allPage(where: { pageInfo: { slug: { current: { eq: "index" } } } }) {
+export const pageQuery = `
+query GetPageBySlug($slug: String!) {
+  allPage(where: { pageInfo: { slug: { current: { eq: $slug } } } }) {
       pageInfo {
         title
         slug {
@@ -47,7 +47,7 @@ export const homepageQuery = `
   }
 `
 
-export async function fetchHomepage() {
-  const data = await fetchGraphQL<{ allPage: any[] }>(homepageQuery)
-  return data.allPage[0]
+export async function fetchPage(slug: string = 'index') {
+  const data = await fetchGraphQL<{ allPage: any[] }>(pageQuery, { slug })
+  return data?.allPage?.[0]
 }

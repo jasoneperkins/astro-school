@@ -1,8 +1,8 @@
 ---
-import { Image } from 'astro:assets'
-import { Icon } from 'astro-icon/components'
+import {Image} from 'astro:assets'
+import {Icon} from 'astro-icon/components'
 
-import type { Identity } from '@interfaces/identity'
+import type {Identity} from '@interfaces/identity'
 
 import '@styles/landmarks/common/header.css'
 
@@ -10,15 +10,8 @@ interface Props {
   identity: Identity
 }
 
-const { identity } = Astro.props
-const {
-  logo,
-  name,
-  phone,
-  email,
-  address,
-  socials: { facebook, instagram }
-} = identity
+const {identity} = Astro.props
+const {logo, name, phone, email, address, socials} = identity
 ---
 
 <header id="commonHeader" class="content">
@@ -26,8 +19,7 @@ const {
     <div class="flex items-center gap-4">
       <a
         href={`tel:${phone.replace(/\D/g, '')}`}
-        class="flex items-center gap-x-1"
-      >
+        class="flex items-center gap-x-1">
         <Icon
           name="line-md:phone-twotone-loop"
           class="text-red-400"
@@ -41,8 +33,7 @@ const {
       </a>
       <a
         href={`https://maps.google.com/?q=${address}`}
-        class="flex items-center gap-x-1"
-      >
+        class="flex items-center gap-x-1">
         <Icon
           name="line-md:map-marker-twotone-loop"
           class="text-orange-500"
@@ -55,25 +46,23 @@ const {
     </div>
     <div class="flex items-center gap-2">
       {
-        facebook && (
+        socials?.facebook && (
           <a
-            href={facebook}
+            href={socials?.facebook}
             aria-label="Facebook"
             target="_blank"
-            rel="noopener"
-          >
+            rel="noopener">
             <Icon name="line-md:facebook" class="text-[#1877F2]" size={20} />
           </a>
         )
       }
       {
-        instagram && (
+        socials?.instagram && (
           <a
-            href={instagram}
+            href={socials?.instagram}
             aria-label="Instagram"
             target="_blank"
-            rel="noopener"
-          >
+            rel="noopener">
             <Icon name="line-md:instagram" class="text-[#E1306C]" size={20} />
           </a>
         )
@@ -83,8 +72,7 @@ const {
 
   <nav
     class="flex items-center justify-between gap-x-8 py-3"
-    aria-label="Main Navigation"
-  >
+    aria-label="Main Navigation">
     <a href="/" aria-label={`${name} Home`}>
       {
         logo?.asset?.url ? (
@@ -117,8 +105,7 @@ const {
           aria-expanded="false"
           aria-haspopup="true"
           aria-controls="classes-menu"
-          id="classes-button"
-        >
+          id="classes-button">
           Classrooms <Icon name="line-md:chevron-small-down" size={16} />
         </button>
         <!-- <ul
@@ -146,12 +133,11 @@ const {
         </a>
       </li>
     </ul>
-    <a href="/contact" class="btn text-nowrap max-md:!hidden">Contact Us</a>
+    <a href="/contact" class="btn text-nowrap max-md:hidden!">Contact Us</a>
     <button
       id="menu-toggle"
       class="p-2 text-3xl text-blue-900 md:hidden"
-      aria-label="Open Menu"
-    >
+      aria-label="Open Menu">
       <!-- <Icon name="ph:list-bold" /> -->
     </button>
   </nav>

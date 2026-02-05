@@ -10,18 +10,18 @@ interface Props {
 }
 
 const borderColors: Record<Props['color'], string> = {
-  red: 'hover:!border-t-red-500',
-  blue: 'hover:!border-t-blue-500',
-  green: 'hover:!border-t-green-500',
-  orange: 'hover:!border-t-orange-500'
+  red: 'hover:border-t-red-500!',
+  blue: 'hover:border-t-blue-500!',
+  green: 'hover:border-t-green-500!',
+  orange: 'hover:border-t-orange-500!'
 }
 
 const {title, description, icon, color} = Astro.props
 ---
 
-<div class={`classroom ${borderColors[color] || 'hover:!border-t-gray-500'}`}>
+<div class={`classroom ${borderColors[color] || 'hover:border-t-gray-500!'}`}>
   {icon && <Icon name={icon} class="size-10" />}
-  <h3 class="!text-lg">{title}</h3>
+  <h3 class="text-lg!">{title}</h3>
   <p class="tiny text-gray-500">
     {description}
   </p>
