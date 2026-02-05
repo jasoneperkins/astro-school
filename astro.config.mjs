@@ -86,7 +86,7 @@ export default defineConfig({
       useCdn: false
     }),
     alpinejs({
-      entrypoint: '/src/utilities/alpine'
+      entrypoint: 'src/utilities/plugins/alpine'
     })
   ],
   output: 'server',
