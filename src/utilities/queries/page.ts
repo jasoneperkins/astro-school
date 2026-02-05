@@ -28,9 +28,10 @@ query GetPageBySlug($slug: String!) {
           alt
         }
       }
-      content {
+      contentSections {
         __typename
         ... on Hero {
+          _key
           _type
           title
           subheading

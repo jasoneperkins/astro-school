@@ -3,6 +3,7 @@ import type { SanityImage } from '@interfaces/sanityImage'
 
 export interface ContentSection {
   _type: 'contentSection'
+  _key: string
   heading?: SimpleHeading
   sectionId: { current: string }
   body?: any[]

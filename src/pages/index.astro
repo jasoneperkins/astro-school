@@ -13,8 +13,10 @@ import {fetchPage} from '@queries/page'
 import '@styles/pages/home.css'
 
 const pageData = await fetchPage('index')
-
 const {pageInfo} = pageData
+const strongStart = pageInfo.contentSections.find(
+  section => section._key === '48d3ddd6f414'
+)
 ---
 
 <Layout {pageInfo}>
@@ -67,7 +69,7 @@ const {pageInfo} = pageData
         <p class="tagline">
           Big steps start here with play, music, and skills.
         </p>
-        <h2>A Strong Start for Your Child</h2>
+        <h2>{strongStart.title}</h2>
       </hgroup>
       <p>
         We help your child get ready for the road ahead. Our teachers make
