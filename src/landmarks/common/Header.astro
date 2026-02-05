@@ -89,7 +89,8 @@ const {logo, name, phone, email, address, socials} = identity
       }
     </a>
 
-    <ul class="hidden shrink basis-100 items-center justify-between lg:flex mb-0!">
+    <ul
+      class="mb-0! hidden shrink basis-100 items-center justify-between lg:flex">
       <li>
         <a href="/" class="transition-colors hover:text-blue-600">Home</a>
       </li>
@@ -139,7 +140,7 @@ const {logo, name, phone, email, address, socials} = identity
       class="p-2 text-3xl text-blue-900 md:hidden"
       aria-label="Toggle Menu"
       @click="$dispatch('toggle-drawer')">
-      <Icon name="line-md:menu-to-close-transition" />
+      <Icon name="line-md:close-to-menu-transition" />
     </button>
   </nav>
 </header>

@@ -1,7 +1,7 @@
 @reference "tailwindcss";
 
 #commonHeader {
-  @apply fixed top-0 z-100 w-full;
+  @apply fixed top-0 z-20 w-full;
   grid-area: hd;
   animation:
     add-shadow linear both,
