@@ -13,7 +13,7 @@ const backgroundUrl = mainImage ? `url("${urlFor(mainImage).url()}")` : ''
 
 {
   pathname == '/' ? (
-    <header class="bg-gradient-white pb-content-block min-h-[760px] items-center! pt-10!">
+    <header class="bg-gradient-white pb-content-block items-center! overflow-y-visible! pt-45">
       <div class="half space-y-4">
         <hgroup>
           <h1 class="tagline">{title}</h1>
@@ -26,35 +26,35 @@ const backgroundUrl = mainImage ? `url("${urlFor(mainImage).url()}")` : ''
           Schedule a Tour
         </button>
       </div>
-      <div class="half relative col-end-[breakout-end]! hidden content-center self-stretch lg:grid">
+      <div class="half relative col-end-[breakout-end]! hidden content-center self-stretch overflow-y-visible lg:grid">
         <Image
           src={urlFor(mainImage).width(240).height(240).url()!}
           alt={mainImage?.alt || ''}
           inferSize
-          class="animate-in fade-in zoom-in absolute top-20 left-0 z-2 size-60 rounded-full duration-1000 starting:opacity-0"
+          class="animate-in fade-in zoom-in absolute -top-15 left-0 z-2 size-60 rounded-full duration-1000 starting:opacity-0"
         />
         <Image
           src={urlFor(extraHeroImages?.[0]).width(180).height(180).url()!}
           alt={extraHeroImages?.[0]?.alt || ''}
           inferSize
-          class="animate-in fade-in zoom-in absolute top-45 right-0 z-2 size-45 rounded-full delay-150 duration-1000 starting:opacity-0"
+          class="animate-in fade-in zoom-in absolute top-0 right-0 z-2 size-45 rounded-full delay-150 duration-1000 starting:opacity-0"
         />
         <Image
           src={urlFor(extraHeroImages?.[1]).width(120).height(120).url()!}
           alt={extraHeroImages?.[1]?.alt || ''}
           inferSize
-          class="animate-in fade-in zoom-in absolute top-100 left-30 z-2 size-30 rounded-full delay-300 duration-1000 starting:opacity-0"
+          class="animate-in fade-in zoom-in absolute top-60 left-30 z-2 size-30 rounded-full delay-300 duration-1000 starting:opacity-0"
         />
         <Image
           src={urlFor(extraHeroImages?.[2]).width(160).height(160).url()!}
           alt={extraHeroImages?.[2]?.alt || ''}
           inferSize
-          class="animate-in fade-in zoom-in absolute top-120 right-10 z-2 size-40 rounded-full delay-450 duration-1000 starting:opacity-0"
+          class="animate-in fade-in zoom-in absolute top-70 right-10 z-2 size-40 rounded-full delay-450 duration-1000 starting:opacity-0"
         />
-        <div class="absolute top-22 right-0 size-33 rounded-full bg-orange-300" />
-        <div class="absolute top-70 left-50 size-15 rounded-full bg-orange-100" />
-        <div class="absolute top-90 left-100 size-20 rounded-full bg-orange-200" />
-        <div class="absolute top-140 left-60 size-10 rounded-full bg-orange-400" />
+        <div class="absolute -top-12 right-0 size-33 rounded-full bg-orange-300" />
+        <div class="absolute top-40 left-50 size-15 rounded-full bg-orange-100" />
+        <div class="absolute top-60 left-100 size-20 rounded-full bg-orange-200" />
+        <div class="absolute top-110 left-60 size-10 rounded-full bg-orange-400" />
       </div>
     </header>
   ) : (

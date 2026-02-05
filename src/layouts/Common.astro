@@ -31,13 +31,13 @@ const {pageInfo} = Astro.props
 
 <html lang="en-US">
   <Head {pageInfo} {identity} />
-  <Drawer {identity} />
-  <body>
+  <body x-data>
     <Header {identity} />
     <main>
       <Hero {pageInfo} />
       <slot />
     </main>
     <Footer {identity} />
+    <Drawer {identity} />
   </body>
 </html>
