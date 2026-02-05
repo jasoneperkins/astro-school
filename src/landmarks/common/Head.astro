@@ -17,9 +17,11 @@ const {
   description = 'A nurturing preschool environment in Stuart, Florida.',
   mainImage,
   author = 'ECLC Staff',
-  seoTitle
+  seoTitle,
+  slug
 } = pageInfo || {}
 const displayTitle = seoTitle || title || siteName
+const titleTemplate = slug?.current === 'index' ? undefined : `%s | ${siteName}`
 
 const ogImageUrl = mainImage
   ? urlFor(mainImage).width(1200).height(630).url()
@@ -32,7 +34,7 @@ const ogImageUrl = mainImage
 
   <SEO
     title={displayTitle}
-    titleTemplate={`%s | ${siteName}`}
+    titleTemplate={titleTemplate}
     description={description}
     canonical={href}
     openGraph={{
@@ -55,7 +57,7 @@ const ogImageUrl = mainImage
 
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <link rel="apple-touch-icon" href="icon.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
   <link rel="manifest" href="site.webmanifest" />
   <meta name="theme-color" content="#fafafa" />
