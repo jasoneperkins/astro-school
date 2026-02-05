@@ -5,41 +5,42 @@ body {
 }
 
 h1 {
-  @apply font-medium;
-  font-size: calc(1rem * pow(var(--font-scale), 9));
-  /* font-family: 'Love Ya Like A Sister', system-ui; */
+  @apply font-sister text-h1 leading-tight font-medium text-balance;
 }
 
 h2 {
-  font-size: calc(1rem * pow(var(--font-scale), 5));
+  @apply text-h2 font-sans leading-tight font-medium text-balance;
 }
 
 h3 {
-  font-size: calc(1rem * pow(var(--font-scale), 4));
+  @apply text-h3 font-sans leading-tight font-medium text-balance;
 }
 
 h4 {
-  font-size: calc(1rem * pow(var(--font-scale), 3));
+  @apply text-h4 font-sans leading-tight font-medium text-balance;
 }
 
 h5 {
-  font-size: calc(1rem * pow(var(--font-scale), 2));
+  @apply text-h5 font-sans leading-tight font-medium text-balance;
 }
 
 h6 {
-  font-size: calc(1rem * pow(var(--font-scale), 1));
+  @apply font-sans leading-tight font-medium text-balance;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  @apply leading-tight text-balance;
+.small {
+  @apply text-small;
 }
 
-p:not(:last-child) {
+.tiny {
+  @apply text-tiny;
+}
+
+.tagline {
+  @apply text-tiny font-bold tracking-widest text-blue-600 uppercase;
+}
+
+:is(p, ul, ol):not(:last-child) {
   @apply mb-6;
 }
 
@@ -49,25 +50,10 @@ hgroup > p:not(:last-child) {
   @apply mb-0;
 }
 
-header p,
-hgroup p {
-  @apply leading-relaxed;
+.font-sans {
+  font-family: var(--font-sans);
 }
 
-.small {
-  font-size: calc(1rem * pow(var(--font-scale), -1));
-}
-
-.tiny {
-  font-size: calc(1rem * pow(var(--font-scale), -2));
-}
-
-p,
-.small,
-.tiny {
-  @apply leading-relaxed;
-}
-
-.tagline {
-  @apply block text-sm font-bold tracking-widest text-blue-600 uppercase;
+.font-sister {
+  font-family: var(--font-sister);
 }
