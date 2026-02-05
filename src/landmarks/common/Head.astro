@@ -17,8 +17,9 @@ const {
   description = 'A nurturing preschool environment in Stuart, Florida.',
   mainImage,
   author = 'ECLC Staff',
-  shortTitle
+  seoTitle
 } = pageInfo || {}
+const displayTitle = seoTitle || title || siteName
 
 const ogImageUrl = mainImage
   ? urlFor(mainImage).width(1200).height(630).url()
@@ -30,13 +31,13 @@ const ogImageUrl = mainImage
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <SEO
-    title={shortTitle || title}
+    title={displayTitle}
     titleTemplate={`%s | ${siteName}`}
     description={description}
     canonical={href}
     openGraph={{
       basic: {
-        title: shortTitle || title,
+        title: displayTitle,
         type: 'website',
         image: ogImageUrl
       },
@@ -46,7 +47,7 @@ const ogImageUrl = mainImage
     }}
     twitter={{
       card: 'summary_large_image',
-      title: shortTitle || title,
+      title: displayTitle,
       description: description,
       image: ogImageUrl
     }}
