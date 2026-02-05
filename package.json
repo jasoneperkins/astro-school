@@ -10,6 +10,7 @@
     "shipit": "npx rimraf dist && npx sanity graphql deploy --yes && npm run build && npx wrangler deploy"
   },
   "dependencies": {
+    "@alpinejs/collapse": "^3.15.8",
     "@astrojs/alpinejs": "^0.4.9",
     "@astrojs/cloudflare": "^12.6.12",
     "@astrojs/react": "^4.4.2",

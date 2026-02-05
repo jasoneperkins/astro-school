@@ -2,13 +2,12 @@
 import { defineConfig, envField, passthroughImageService } from 'astro/config'
 import { loadEnv } from 'vite'
 
+import alpinejs from '@astrojs/alpinejs'
 import cloudflare from '@astrojs/cloudflare'
 import icon from 'astro-icon'
 import react from '@astrojs/react'
 import sanity from '@sanity/astro'
 import tailwindcss from '@tailwindcss/vite'
-
-import alpinejs from '@astrojs/alpinejs'
 
 const env = loadEnv(process.env.NODE_ENV || 'development', process.cwd(), '')
 
@@ -86,7 +85,9 @@ export default defineConfig({
       dataset: 'production',
       useCdn: false
     }),
-    alpinejs()
+    alpinejs({
+      entrypoint: '/src/utilities/alpine'
+    })
   ],
   output: 'server',
   vite: {
