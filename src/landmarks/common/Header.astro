@@ -24,9 +24,7 @@ const {logo, name, phone, email, address, socials} = identity
           name="line-md:phone-twotone-loop"
           class="text-red-400"
           size={20}
-        />
-        <span>{phone}</span>
-      </a>
+        />{phone}</a>
       <a href={`mailto:${email}`} class="flex items-center gap-x-1">
         <Icon name="line-md:email-filled" class="text-green-500" size={20} />
         <span class="hidden lg:block">{email}</span>
@@ -109,24 +107,6 @@ const {logo, name, phone, email, address, socials} = identity
           id="classes-button">
           Classrooms <Icon name="line-md:chevron-small-down" size={16} />
         </button>
-        <!-- <ul
-          id="classes-menu"
-          class="nav-dropdown-menu"
-          aria-labelledby="classes-button"
-          role="menu">
-          {
-            classrooms.map(classroom => (
-              <li role="none">
-                <a
-                  href={`/classrooms/${classroom.slug.current}`}
-                  class="nav-dropdown-item"
-                  role="menuitem">
-                  {classroom.title}
-                </a>
-              </li>
-            ))
-          }
-        </ul> -->
       </li>
       <li>
         <a href="/newsletters" class="transition-colors hover:text-blue-600">

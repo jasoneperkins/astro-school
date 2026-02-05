@@ -1,5 +1,6 @@
 ---
-// src/landmarks/common/Drawer.astro
+import ContactForm from '@components/ContactForm.astro'
+
 import {Icon} from 'astro-icon/components'
 import type {Identity} from '@interfaces/identity'
 
@@ -20,7 +21,7 @@ const {identity} = Astro.props
   role="dialog">
   <div
     x-show="isOpen"
-    x-transition.opacity.duration.300ms
+    x-transition.opacity
     @click="isOpen = false"
     class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm">
   </div>
@@ -31,64 +32,33 @@ const {identity} = Astro.props
     x-transition:enter-start="translate-x-full"
     x-transition:enter-end="translate-x-0"
     x-transition:leave="transition transform ease-in duration-200"
-    x-transition:leave-start="translate-x-0"
     x-transition:leave-end="translate-x-full"
-    class="fixed top-0 right-0 z-50 flex h-screen w-80 max-w-[80vw] flex-col bg-white shadow-2xl">
+    class="fixed top-0 right-0 z-50 flex h-screen w-80 max-w-[90vw] flex-col space-y-8 bg-white p-5 shadow-2xl">
     <div
-      class="flex items-center justify-between border-b border-slate-100 p-5">
-      <span class="text-lg font-bold text-blue-900">{identity.name}</span>
+      class="flex items-center justify-between overflow-y-auto border-b border-slate-100 py-5 text-blue-900">
+      <span class="text-lg font-bold">{identity.name}</span>
       <button
         @click="isOpen = false"
         class="p-2 text-3xl text-slate-500 transition-colors hover:text-blue-600">
         <Icon name="line-md:menu-to-close-transition" />
       </button>
     </div>
-
-    <nav class="flex-1 overflow-y-auto p-5">
+    <nav class="flex-1">
       <ul class="space-y-4">
         <li>
-          <a href="/" class="font-bold text-blue-900">Home</a>
+          <a href="/" class="font-bold">Home</a>
         </li>
         <li>
-          <a href="/about" class="font-bold text-blue-900">About Us</a>
-        </li>
-        <li class="nav-dropdown-group">
-          <button
-            type="button"
-            class="nav-dropdown-trigger flex items-center gap-1"
-            aria-expanded="false"
-            aria-haspopup="true"
-            aria-controls="classes-menu"
-            id="classes-button">
-            Classrooms <Icon name="line-md:chevron-small-down" size={16} />
-          </button>
-          <!-- <ul
-            id="classes-menu"
-            class="nav-dropdown-menu"
-            aria-labelledby="classes-button"
-            role="menu">
-            {
-              classrooms.map(classroom => (
-                <li role="none">
-                  <a
-                    href={`/classrooms/${classroom.slug.current}`}
-                    class="nav-dropdown-item"
-                    role="menuitem">
-                    {classroom.title}
-                  </a>
-                </li>
-              ))
-            }
-          </ul> -->
+          <a href="/about" class="font-bold">About Us</a>
         </li>
         <li>
-          <a href="/newsletters" class="font-bold text-blue-900">Newsletters</a>
+          <a href="/about" class="font-bold">Classrooms</a>
+        </li>
+        <li>
+          <a href="/newsletters" class="font-bold">Newsletters</a>
         </li>
       </ul>
     </nav>
-  </div>
-
-  <div class="border-t border-slate-100 bg-slate-50 p-5">
-    <p class="text-sm text-slate-500">{identity.phone}</p>
+    <ContactForm />
   </div>
 </aside>

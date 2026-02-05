@@ -5,7 +5,7 @@ import {urlFor} from '@services/sanity'
 import type {Hero} from '@registry/sanity'
 
 const {pathname} = Astro.url
-const {pageInfo} = Astro.props
+const {pageInfo = {}} = Astro.props
 const {title, subheading, description, mainImage, extraHeroImages} =
   pageInfo as Hero
 const backgroundUrl = mainImage ? `url("${urlFor(mainImage).url()}")` : ''
@@ -16,12 +16,12 @@ const backgroundUrl = mainImage ? `url("${urlFor(mainImage).url()}")` : ''
     <header class="bg-gradient-white pb-content-block items-center! overflow-y-visible! pt-45 min-h-145">
       <div class="half space-y-4">
         <hgroup>
-          <h1 class="tagline">{title}</h1>
-          <p class="font-sister text-5xl leading-[1.125]! text-balance">
+          {title && <h1 class="tagline">{title}</h1>}
+          {subheading && <p class="font-sister text-5xl leading-[1.125]! text-balance">
             {subheading}
-          </p>
+          </p>}
         </hgroup>
-        <p>{description}</p>
+        {description && <p>{description}</p>}
         <button class="btn btn-blue mt-4 animate-bounce">
           Schedule a Tour
         </button>

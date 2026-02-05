@@ -35,5 +35,15 @@ export default {
       type: 'array',
       of: [{ type: 'customImage' }]
     }
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'heading.heading' // Accesses the 'heading' string inside your 'simpleHeading' object
+    },
+    prepare({ title }: { title: string }) {
+      return {
+        title: title || 'Untitled Section'
+      }
+    }
+  }
 }

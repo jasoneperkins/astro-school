@@ -20,7 +20,7 @@ export default {
       name: 'showHeadingFirst',
       title: 'Display heading above subheading?',
       type: 'boolean',
-      initialValue: true,
+      initialValue: false,
       description:
         'If toggled off, the subheading will appear as an overline (above the main heading).'
     }
