@@ -12,7 +12,7 @@ export default {
       name: 'content',
       title: 'Page Sections',
       type: 'array',
-      of: [{ type: 'hero' }, { type: 'contentSection' }]
+      of: [{ type: 'contentSection' }]
     }
   ],
   preview: {

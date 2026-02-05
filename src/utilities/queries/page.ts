@@ -5,9 +5,7 @@ query GetPageBySlug($slug: String!) {
   allPage(where: { pageInfo: { slug: { current: { eq: $slug } } } }) {
       pageInfo {
         title
-        slug {
-          current
-        }
+        slug { current }
         subheading
         description
         author
@@ -30,13 +28,19 @@ query GetPageBySlug($slug: String!) {
       }
       contentSections {
         __typename
-        ... on Hero {
+        ... on ContentSection {
           _key
           _type
-          title
-          subheading
-          body
-          heroImages {
+          heading {
+            heading
+            subheading
+            showHeadingFirst
+          }
+          sectionId {
+            current
+          }
+          body: bodyRaw
+          images {
             asset {
               url
             }

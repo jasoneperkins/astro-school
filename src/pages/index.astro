@@ -13,8 +13,8 @@ import {fetchPage} from '@queries/page'
 import '@styles/pages/home.css'
 
 const pageData = await fetchPage('index')
-const {pageInfo} = pageData
-const strongStart = pageInfo.contentSections.find(
+const {contentSections} = pageData
+const strongStart = contentSections.find(
   section => section._key === '48d3ddd6f414'
 )
 ---
