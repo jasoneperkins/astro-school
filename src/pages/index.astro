@@ -9,17 +9,15 @@ import {Icon} from 'astro-icon/components'
 
 import {fetchGraphQL} from '@services/sanity'
 import {fetchPage} from '@queries/page'
+import {urlFor} from '@services/sanity'
 
 import '@styles/pages/home.css'
 
-const pageData = await fetchPage('index')
-const {contentSections} = pageData
-const strongStart = contentSections.find(
-  section => section._key === '48d3ddd6f414'
-)
+const {info, content} = await fetchPage('index')
+const strongStart = content.find(section => section._key === '48d3ddd6f414')
 ---
 
-<Layout {pageInfo}>
+<Layout {info}>
   <section aria-labelledby="classrooms-label">
     <header>
       <hgroup class="text-center">
@@ -58,18 +56,20 @@ const strongStart = contentSections.find(
   <!-- About/Introduction Section: A brief overview of who you are, what you do, and your mission. -->
   <section class="items-center bg-gray-50">
     <div class="half">
-      <!-- <Image
-        src={homeAboutUsImage01}
-        alt=""
-        class="aspect-square w-full max-w-md rounded-full object-cover shadow-lg"
-      /> -->
+      <Image
+        src={urlFor(strongStart.images[0]).width(640).height(440).url()!}
+        width="640"
+        height="440"
+        alt={strongStart.images[0]?.alt || 'Strong Start Image'}
+        class="rounded-3xl"
+      />
     </div>
     <div class="half">
       <hgroup>
         <p class="tagline">
-          Big steps start here with play, music, and skills.
+          {strongStart.heading.subTitle}
         </p>
-        <h2>{strongStart.title}</h2>
+        <h2>{strongStart.heading.title}</h2>
       </hgroup>
       <p>
         We help your child get ready for the road ahead. Our teachers make
@@ -78,11 +78,6 @@ const strongStart = contentSections.find(
         every child grow strong and smart in a caring Jewish setting.
       </p>
     </div>
-    <!-- <Image
-      src={giraffeImage}
-      alt=""
-      class="animate-in slide-in-from-top-8 absolute bottom-0 left-[48%] hidden h-50 w-auto duration-1500 lg:block"
-    /> -->
   </section>
   <!-- Services/Products Overview: A highlighted section showcasing what you offer, often with visual elements. -->
 

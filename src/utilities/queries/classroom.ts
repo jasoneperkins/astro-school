@@ -3,15 +3,16 @@ import type { Classroom } from '@interfaces/classroom'
 
 export const classroomQuery = `
   query GetAllClassrooms {
-    allClassroom {
+    info {
       title
-      slug {
-        current
-      }
-      mainImage {
+      slug { current }
+      subTitle
+      description
+      author
+      images {
         asset {
-          _id
           url
+          _id
           metadata {
             lqip
           }

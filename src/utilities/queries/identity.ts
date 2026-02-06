@@ -23,6 +23,12 @@ export const identityQuery = `
       socials {
         facebook
         instagram
+        twitter
+        linkedin
+        youtube
+        tiktok
+        pinterest
+        linkedin
       }
     }
   }

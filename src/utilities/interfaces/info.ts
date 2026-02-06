@@ -1,12 +1,12 @@
 import type { SanityImage } from '@interfaces/sanityImage'
 
-export interface PageInfo {
+export interface Info {
   title: string
   slug: {
     current: string
     _type: 'slug'
   }
-  subheading?: string
+  subTitle?: string
   description?: string
   mainImage?: SanityImage
   extraHeroImages?: SanityImage[]

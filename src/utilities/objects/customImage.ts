@@ -6,7 +6,7 @@ export default {
     {
       name: 'alt',
       type: 'string',
-      title: 'Alternative Text',
+      title: 'Alt Text',
       description:
         'Optional: Describe the image for accessibility. Leave blank for decorative images.'
     }

@@ -1,7 +1,7 @@
 import { type Rule } from 'sanity'
 
 export default {
-  name: 'pageInfo',
+  name: 'info',
   title: 'Page Information',
   type: 'object',
   fields: [
@@ -10,6 +10,13 @@ export default {
       title: 'Page Title',
       type: 'string',
       validation: (Rule: Rule) => Rule.required()
+    },
+    {
+      name: 'subTitle',
+      title: 'Hero Subtitle',
+      type: 'string',
+      description:
+        'The text that appears above the main title in certain pages.'
     },
     {
       name: 'slug',
@@ -21,13 +28,6 @@ export default {
         maxLength: 96
       },
       validation: (Rule: Rule) => Rule.required()
-    },
-    {
-      name: 'subheading',
-      title: 'Hero Subheading',
-      type: 'string',
-      description:
-        'The text that appears above the main title in certain pages.'
     },
     {
       name: 'description',
@@ -42,18 +42,13 @@ export default {
         )
     },
     {
-      name: 'mainImage',
-      title: 'Main Hero Image',
-      type: 'customImage'
-    },
-    {
-      name: 'extraHeroImages',
-      title: 'Additional Hero Images',
+      name: 'images',
+      title: 'Images',
       type: 'array',
       of: [{ type: 'customImage' }],
-      validation: (Rule: Rule) => Rule.max(3),
+      validation: (Rule: Rule) => Rule.max(15),
       description:
-        'Used only for the homepage floating layout (Main Image + these 3).'
+        'The first will be the main image. The rest are used for floating images and carousels.'
     },
     {
       name: 'author',

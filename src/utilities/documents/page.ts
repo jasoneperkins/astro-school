@@ -4,23 +4,24 @@ export default {
   title: 'Page',
   fields: [
     {
-      name: 'pageInfo',
+      name: 'info',
       title: 'Page Information',
-      type: 'pageInfo'
+      type: 'info'
     },
     {
       name: 'content',
-      title: 'Page Sections',
+      title: 'Content Sections',
       type: 'array',
-      of: [{ type: 'contentSection' }]
+      of: [{ type: 'content' }]
     }
   ],
   preview: {
-    select: {
-      title: 'pageInfo.title',
-      subtitle: 'pageInfo.slug.current'
+    selection: {
+      title: 'info.title',
+      subtitle: 'info.slug.current'
     },
-    prepare({ title, subtitle }) {
+    prepare(selection) {
+      const { title, subtitle } = selection
       return {
         title: title || 'Untitled Page',
         subtitle: subtitle ? `/${subtitle}` : 'No slug set'

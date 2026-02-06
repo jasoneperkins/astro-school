@@ -5,17 +5,18 @@ import Drawer from '@landmarks/common/Drawer.astro'
 import Footer from '@landmarks/common/Footer.astro'
 import Hero from '@landmarks/Hero.astro'
 
-import '@styles/global.css'
-import '@styles/layouts/common.css'
-
 import {fetchGraphQL} from '@services/sanity'
 import {fetchIdentity} from '@queries/identity'
-import type {PageInfo} from '@interfaces/pageInfo'
+
 import type {Identity} from '@interfaces/identity'
+import type {Info} from '@interfaces/info'
 
 interface Props {
-  pageInfo: PageInfo
+  info: Info
 }
+
+import '@styles/global.css'
+import '@styles/layouts/common.css'
 
 const identity = (await fetchIdentity()) || {
   name: 'Early Childhood Learning Center',
@@ -25,16 +26,15 @@ const identity = (await fetchIdentity()) || {
   officeHours: '',
   socials: {facebook: '', instagram: ''}
 }
-
-const {pageInfo} = Astro.props
+const {info: Info} = Astro.props
 ---
 
 <html lang="en-US">
-  <Head {pageInfo} {identity} />
+  <Head {info} {identity} />
   <body x-data>
     <Header {identity} />
     <main>
-      <Hero {pageInfo} />
+      <Hero {info} />
       <slot />
     </main>
     <Footer {identity} />

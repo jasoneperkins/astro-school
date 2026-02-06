@@ -2,24 +2,23 @@
 import {Image} from 'astro:assets'
 
 import {urlFor} from '@services/sanity'
-import type {Hero} from '@registry/sanity'
 
 const {pathname} = Astro.url
-const {pageInfo = {}} = Astro.props
-const {title, subheading, description, mainImage, extraHeroImages} =
-  pageInfo as Hero
-const backgroundUrl = mainImage ? `url("${urlFor(mainImage).url()}")` : ''
+const {title, subTitle, description, images} = Astro.props
+const backgroundUrl = images[0] ? `url("${urlFor(images[0]).url()}")` : ''
 ---
 
 {
   pathname == '/' ? (
-    <header class="bg-gradient-white pb-content-block items-center! overflow-y-visible! pt-45 min-h-145">
+    <header class="bg-gradient-white pb-content-block min-h-145 items-center! overflow-y-visible! pt-45">
       <div class="half space-y-4">
         <hgroup>
           {title && <h1 class="tagline">{title}</h1>}
-          {subheading && <p class="font-sister text-5xl leading-[1.125]! text-balance">
-            {subheading}
-          </p>}
+          {subTitle && (
+            <p class="font-sister text-5xl leading-[1.125]! text-balance">
+              {subTitle}
+            </p>
+          )}
         </hgroup>
         {description && <p>{description}</p>}
         <button class="btn btn-blue mt-4 animate-bounce">
@@ -28,26 +27,26 @@ const backgroundUrl = mainImage ? `url("${urlFor(mainImage).url()}")` : ''
       </div>
       <div class="half relative col-end-[breakout-end]! hidden content-center self-stretch overflow-y-visible lg:grid">
         <Image
-          src={urlFor(mainImage).width(240).height(240).url()!}
-          alt={mainImage?.alt || ''}
+          src={urlFor(images[0]).width(240).height(240).url()!}
+          alt={images[0]?.alt || ''}
           inferSize
           class="animate-in fade-in zoom-in absolute -top-15 left-0 z-2 size-60 rounded-full duration-1000 starting:opacity-0"
         />
         <Image
-          src={urlFor(extraHeroImages?.[0]).width(180).height(180).url()!}
-          alt={extraHeroImages?.[0]?.alt || ''}
+          src={urlFor(images[1]).width(180).height(180).url()!}
+          alt={images[1]?.alt || ''}
           inferSize
           class="animate-in fade-in zoom-in absolute top-0 right-0 z-2 size-45 rounded-full delay-150 duration-1000 starting:opacity-0"
         />
         <Image
-          src={urlFor(extraHeroImages?.[1]).width(120).height(120).url()!}
-          alt={extraHeroImages?.[1]?.alt || ''}
+          src={urlFor(images[2]).width(120).height(120).url()!}
+          alt={images[2]?.alt || ''}
           inferSize
           class="animate-in fade-in zoom-in absolute top-60 left-30 z-2 size-30 rounded-full delay-300 duration-1000 starting:opacity-0"
         />
         <Image
-          src={urlFor(extraHeroImages?.[2]).width(160).height(160).url()!}
-          alt={extraHeroImages?.[2]?.alt || ''}
+          src={urlFor(images[3]).width(160).height(160).url()!}
+          alt={images[3]?.alt || ''}
           inferSize
           class="animate-in fade-in zoom-in absolute top-70 right-10 z-2 size-40 rounded-full delay-450 duration-1000 starting:opacity-0"
         />
@@ -60,7 +59,7 @@ const backgroundUrl = mainImage ? `url("${urlFor(mainImage).url()}")` : ''
   ) : (
     <header
       class:list={[
-        mainImage ? 'bg-image' : 'bg-mesh',
+        images[0] ? 'bg-image' : 'bg-mesh',
         'pt-hero bg-gradient-white items-end bg-cover bg-center bg-no-repeat pb-2'
       ]}>
       <hgroup>

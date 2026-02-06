@@ -1,26 +1,32 @@
 ---
 import Layout from '@layouts/Common.astro'
+
+import ContactForm from '@components/ContactForm.astro'
+import ItemCard from '@components/ItemCard.astro'
+
 import {Image} from 'astro:assets'
+import {Icon} from 'astro-icon/components'
 
 import {fetchGraphQL} from '@services/sanity'
 import {fetchPage} from '@queries/page'
+import {urlFor} from '@services/sanity'
 
-const pageData = await fetchPage('about')
+const {pathname} = Astro.url
+const {pageInfo, content} = await fetchPage(pathname.slice(1).current)
+const {title, subTitle, description, mainImage, author, seoTitle} = pageInfo
 
 // Local Asset Imports
-import OurStory01 from '@images/man-kids-books.webp'
-import HowWeLearn01 from '@images/woman-kids-board-globe-table.webp'
-import PhilosophyImg from '@images/girl-teacher-decorations.webp'
-import mainImage from '@images/woman-girl-homework.webp'
-
-const title = 'About Us'
+// import OurStory01 from '@images/man-kids-books.webp'
+// import HowWeLearn01 from '@images/woman-kids-board-globe-table.webp'
+// import PhilosophyImg from '@images/girl-teacher-decorations.webp'
+// import mainImage from '@images/woman-girl-homework.webp'
 ---
 
-<Layout {title} {mainImage}>
-  <section class="items-center">
+<Layout {pageInfo}>
+  <!-- <section class="items-center">
     <div class="half relative">
       <Image
-        src={OurStory01}
+        src={urlFor(mainImage).width(400).height(400).fit('crop').url()}
         alt="Teacher reading to children"
         class="rounded-full"
       />
@@ -42,9 +48,9 @@ const title = 'About Us'
         family feels welcome and included.
       </p>
     </div>
-  </section>
+  </section> -->
 
-  <section class="breakout border-y border-gray-200 bg-gray-100 text-center">
+  <!-- <section class="breakout border-y border-gray-200 bg-gray-100 text-center">
     <header>
       <hgroup>
         <h2>Our Core Values</h2>
@@ -82,9 +88,9 @@ const title = 'About Us'
         </p>
       </div>
     </div>
-  </section>
+  </section> -->
 
-  <section class="items-center">
+  <!-- <section class="items-center">
     <div class="half">
       <header>
         <hgroup class="flex flex-col-reverse">
@@ -106,9 +112,9 @@ const title = 'About Us'
         class="aspect-square w-full max-w-md rounded-full object-cover shadow-lg"
       />
     </div>
-  </section>
+  </section> -->
 
-  <section class="breakout bg-blue-900 py-20 text-white">
+  <!-- <section class="breakout bg-blue-900 py-20 text-white">
     <div
       class="mx-auto grid max-w-6xl grid-cols-2 gap-12 text-center lg:grid-cols-4">
       <div>
@@ -140,9 +146,9 @@ const title = 'About Us'
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
-  <section class="items-center">
+  <!-- <section class="items-center">
     <div class="half">
       <header>
         <hgroup class="flex flex-col-reverse">
@@ -163,5 +169,5 @@ const title = 'About Us'
         class="rounded-tr-4xl rounded-bl-4xl shadow-lg"
       />
     </div>
-  </section>
+  </section> -->
 </Layout>

@@ -1,11 +1,15 @@
 ---
 import Layout from '@layouts/Common.astro'
 
-const title = 'Not Found'
+const info = {
+  title: 'Not Found',
+  description: 'The page you are looking for does not exist.',
+  slug: Astro.url.pathname.slice(1) || '404',
+}
 ---
 
-<Layout>
+<Layout {info}>
   <header>
-    <h1>{title}</h1>
+    <h1>{info.title}</h1>
   </header>
 </Layout>

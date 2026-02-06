@@ -9,7 +9,7 @@ import contentSection from '../../src/utilities/objects/contentSection'
 import customImage from '../../src/utilities/objects/customImage'
 import hero from '../../src/utilities/objects/hero'
 import pageInfo from '../../src/utilities/objects/pageInfo'
-import simpleHeading from '../../src/utilities/objects/simpleHeading'
+import contentHeading from '../../src/utilities/objects/contentHeading'
 import socials from '../../src/utilities/objects/socials'
 
 export const schemaTypes = [
@@ -21,6 +21,6 @@ export const schemaTypes = [
   customImage,
   hero,
   pageInfo,
-  simpleHeading,
+  contentHeading,
   socials,
 ]

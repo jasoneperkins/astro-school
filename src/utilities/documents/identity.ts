@@ -25,7 +25,11 @@ export default {
     {
       name: 'phone',
       title: 'Phone Number',
-      type: 'string'
+      type: 'string',
+      validation: (Rule: Rule) =>
+        Rule.regex(/^[0-9+\-\s()]+$/, {
+          name: 'phone number'
+        }).warning('Use only digits, spaces, +, -, and parentheses')
     },
     {
       name: 'address',

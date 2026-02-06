@@ -1,24 +1,22 @@
 import { type Rule } from 'sanity'
 
 export default {
-  name: 'contentSection',
+  name: 'section',
   title: 'Content Section',
   type: 'object',
   fields: [
     {
       name: 'heading',
       title: 'Heading',
-      type: 'simpleHeading'
+      type: 'heading'
     },
     {
-      name: 'sectionId',
+      name: 'slug',
       title: 'Section ID / Slug',
       type: 'slug',
-      description:
-        'Used for anchor links. Generate this from the heading above.',
+      description: 'Used for anchor links. Generate this from the title above.',
       options: {
-        // This tells Sanity to look inside the heading object for the string
-        source: (doc: any, options: any) => options.parent?.heading?.heading,
+        source: (doc: any, options: any) => options.parent?.heading?.title,
         maxLength: 96
       },
       validation: (Rule: Rule) => Rule.required()
@@ -38,7 +36,7 @@ export default {
   ],
   preview: {
     select: {
-      title: 'heading.heading' // Accesses the 'heading' string inside your 'simpleHeading' object
+      title: 'heading.title'
     },
     prepare({ title }: { title: string }) {
       return {

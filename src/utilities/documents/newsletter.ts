@@ -17,7 +17,7 @@ export default {
       title: 'Publish Date',
       type: 'date',
       initialValue: new Date().toISOString().split('T')[0],
-      validation: (Rule) => Rule.required()
+      validation: (Rule: Rule) => Rule.required()
     },
     {
       name: 'pdfFile',

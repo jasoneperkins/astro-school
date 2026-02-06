@@ -2,14 +2,14 @@ import { fetchGraphQL } from '@services/sanity'
 
 export const pageQuery = `
 query GetPageBySlug($slug: String!) {
-  allPage(where: { pageInfo: { slug: { current: { eq: $slug } } } }) {
-      pageInfo {
+  allPage(where: { info: { slug: { current: { eq: $slug } } } }) {
+      info {
         title
         slug { current }
-        subheading
+        subTitle
         description
         author
-        mainImage {
+        images {
           asset {
             url
             _id
@@ -19,22 +19,16 @@ query GetPageBySlug($slug: String!) {
           }
           alt
         }
-        extraHeroImages {
-          asset {
-            url
-          }
-          alt
-        }
       }
-      contentSections {
+      content {
         __typename
-        ... on ContentSection {
+        ... on section {
           _key
           _type
           heading {
-            heading
-            subheading
-            showHeadingFirst
+            title
+            subTitle
+            showTitleFirst
           }
           sectionId {
             current
@@ -43,6 +37,10 @@ query GetPageBySlug($slug: String!) {
           images {
             asset {
               url
+              _id
+              metadata {
+                lqip
+              }
             }
             alt
           }
