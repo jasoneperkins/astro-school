@@ -1,0 +1,10 @@
+@reference "tailwindcss";
+
+label {
+  @apply text-white;
+}
+
+input,
+textarea {
+  @apply text-gray-700 placeholder-gray-400;
+}

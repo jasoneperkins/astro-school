@@ -14,5 +14,21 @@
   },
   "observability": {
     "enabled": true
-  }
+  },
+  "routes": [
+    {
+      "pattern": "eclcstuart.com",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.eclcstuart.com",
+      "custom_domain": true
+    }
+  ],
+  "send_email": [
+    {
+      "name": "LEADS_EMAIL",
+      "destination_address": "misscindy@tbhfl.org"
+    }
+  ]
 }

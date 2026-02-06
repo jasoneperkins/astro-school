@@ -1,59 +1,92 @@
 ---
-import {actions} from 'astro:actions'
-
+import { actions } from 'astro:actions'
 import '@styles/components/contactForm.css'
 
 interface Props {
   formTitle?: string
-  context?: string // e.g., "Registration Page" or "Summer Camp"
+  context?: string
   submitText?: string
 }
 
-const {formTitle = 'Contact Us', context = 'General', submitText = 'Contact Us'} = Astro.props
+const { formTitle = 'Contact Us', context = 'General', submitText = 'Contact Us' } = Astro.props
 const result = Astro.getActionResult(actions.contactForm)
 ---
 
-{
-  result?.data?.success ? (
-    <div class="success-state" role="alert">
-      <h3>Message Sent!</h3>
-      <p>
-        Shalom! Your message has been sent to Miss Cindy. We'll be in touch
-        soon.
+<div class="contact-container">
+  {result?.data?.success ? (
+    <div class="success-state p-6 text-center border-2 border-green-200 bg-green-50 rounded-lg" role="alert">
+      <h3 class="text-xl font-bold text-green-800">Message Sent!</h3>
+      <p class="text-green-700 mt-2">
+        Shalom! Your message has been sent to Miss Cindy. We'll be in touch soon.
       </p>
     </div>
   ) : (
-    <hgroup>
-      <h3>{formTitle}</h3>
-    </hgroup>
-    <form method="POST" action={actions.contactForm} class="contactForm w-xs md:w-xl max-w-full">
-      {/* Hidden field to let Miss Cindy know where the email came from */}
-      <input type="hidden" name="sourceContext" value={context} />
+    <div 
+      class="form-wrapper" 
+      x-data="{ loading: false }" 
+      @submit="loading = true"
+    >
+      <h3 class="text-2xl font-semibold mb-4">{formTitle}</h3>
+      
+      <form 
+        method="POST" 
+        action={actions.contactForm} 
+        class="contact-form grid grid-cols-1 gap-y-4"
+      >
+        <input type="hidden" name="sourceContext" value={context} />
 
-      <div>
-        <label for="parentName">Parent Name</label>
-        <input type="text" id="parentName" name="parentName" required />
-      </div>
+        <div class="field-group">
+          <label for="parentName" class="block text-sm font-medium">Parent Name</label>
+          <input 
+            type="text" 
+            id="parentName" 
+            name="parentName" 
+            required 
+            class="form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+          />
+        </div>
 
-      <div>
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" required />
-      </div>
+        <div class="field-group">
+          <label for="email" class="block text-sm font-medium">Email Address</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            required 
+            class="form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+          />
+        </div>
 
-      <div class="col-span-full">
-        <label for="message">Your Message</label>
-        <textarea id="message" name="message" rows="4" required />
-      </div>
+        <div class="field-group col-span-full">
+          <label for="message" class="block text-sm font-medium">Your Message</label>
+          <textarea 
+            id="message" 
+            name="message" 
+            rows="4" 
+            required 
+            class="form-textarea mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+          ></textarea>
+        </div>
 
-      <button type="submit" class="btn">
-        {submitText}
-      </button>
+        <button 
+          type="submit" 
+          class="submit-btn w-full bg-blue-600 text-white py-3 px-4 rounded-md font-medium transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          :disabled="loading"
+        >
+          <span x-show="!loading">{submitText}</span>
+          <span x-show="loading" x-cloak>Sending...</span>
+        </button>
 
-      {result?.error && (
-        <p class="error-text">
-          Sorry, there was an error. Please try again or call the office.
-        </p>
-      )}
-    </form>
-  )
-}
+        {result?.error && (
+          <p class="error-text mt-4 p-3 bg-red-50 text-red-700 border border-red-200 rounded text-sm">
+            {result.error.message || "Sorry, there was an error. Please try again or call the office."}
+          </p>
+        )}
+      </form>
+    </div>
+  )}
+</div>
+
+<style>
+  [x-cloak] { display: none !important; }
+</style>

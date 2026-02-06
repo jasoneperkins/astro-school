@@ -91,6 +91,14 @@ export default defineConfig({
   ],
   output: 'server',
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    ssr: {
+      external: ['cloudflare:email', 'mimetext']
+    },
+    build: {
+      rollupOptions: {
+        external: ['cloudflare:email', 'mimetext']
+      }
+    }
   }
 })
