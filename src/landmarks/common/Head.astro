@@ -1,30 +1,30 @@
 ---
 import {SEO} from 'astro-seo'
 import {urlFor} from '@services/sanity'
-import type {PageInfo} from '@interfaces/pageInfo'
+import type {Info} from '@interfaces/info'
 import type {Identity} from '@interfaces/identity'
 
 interface Props {
-  pageInfo: PageInfo
+  info: Info
   identity: Identity
 }
 
 const {href} = Astro.url
-const {pageInfo, identity} = Astro.props
+const {info, identity} = Astro.props
 const {name: siteName} = identity as Identity
 const {
   title = 'Early Childhood Learning Center',
   description = 'A nurturing preschool environment in Stuart, Florida.',
-  mainImage,
+  images,
   author = 'ECLC Staff',
   seoTitle,
   slug
-} = pageInfo || {}
+} = info || {}
 const displayTitle = seoTitle || title || siteName
 const titleTemplate = slug?.current === 'index' ? undefined : `%s | ${siteName}`
 
-const ogImageUrl = mainImage
-  ? urlFor(mainImage).width(1200).height(630).url()
+const ogImageUrl = images?.[0]
+  ? urlFor(images[0]).width(1200).height(630).url()
   : '/default-og.jpg'
 ---
 

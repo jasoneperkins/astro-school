@@ -12,7 +12,7 @@ export default {
       name: 'content',
       title: 'Content Sections',
       type: 'array',
-      of: [{ type: 'content' }]
+      of: [{ type: 'section' }]
     }
   ],
   preview: {

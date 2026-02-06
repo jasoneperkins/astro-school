@@ -3,21 +3,23 @@ import type { Classroom } from '@interfaces/classroom'
 
 export const classroomQuery = `
   query GetAllClassrooms {
-    info {
-      title
-      slug { current }
-      subTitle
-      description
-      author
-      images {
-        asset {
-          url
-          _id
-          metadata {
-            lqip
+    allClassroom {
+      info {
+        title
+        slug { current }
+        subTitle
+        description
+        author
+        images {
+          asset {
+            url
+            _id
+            metadata {
+              lqip
+            }
           }
+          alt
         }
-        alt
       }
     }
   }

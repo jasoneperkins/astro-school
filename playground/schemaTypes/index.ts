@@ -5,11 +5,10 @@ import newsletter from '../../src/utilities/documents/newsletter'
 import page from '../../src/utilities/documents/page'
 
 // Objects
-import contentSection from '../../src/utilities/objects/contentSection'
 import customImage from '../../src/utilities/objects/customImage'
-import hero from '../../src/utilities/objects/hero'
-import pageInfo from '../../src/utilities/objects/pageInfo'
-import contentHeading from '../../src/utilities/objects/contentHeading'
+import heading from '../../src/utilities/objects/heading'
+import info from '../../src/utilities/objects/info'
+import section from '../../src/utilities/objects/section'
 import socials from '../../src/utilities/objects/socials'
 
 export const schemaTypes = [
@@ -17,10 +16,9 @@ export const schemaTypes = [
   identity,
   newsletter,
   page,
-  contentSection,
+  section,
   customImage,
-  hero,
-  pageInfo,
-  contentHeading,
+  info,
+  heading,
   socials,
 ]

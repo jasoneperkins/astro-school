@@ -8,7 +8,6 @@ query GetPageBySlug($slug: String!) {
         slug { current }
         subTitle
         description
-        author
         images {
           asset {
             url
@@ -22,7 +21,7 @@ query GetPageBySlug($slug: String!) {
       }
       content {
         __typename
-        ... on section {
+        ... on Section {
           _key
           _type
           heading {
@@ -30,7 +29,7 @@ query GetPageBySlug($slug: String!) {
             subTitle
             showTitleFirst
           }
-          sectionId {
+          slug {
             current
           }
           body: bodyRaw

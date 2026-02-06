@@ -4,7 +4,7 @@ import {Image} from 'astro:assets'
 import {urlFor} from '@services/sanity'
 
 const {pathname} = Astro.url
-const {title, subTitle, description, images} = Astro.props
+const {info: {title, subTitle, description, images}} = Astro.props
 const backgroundUrl = images[0] ? `url("${urlFor(images[0]).url()}")` : ''
 ---
 
@@ -12,14 +12,14 @@ const backgroundUrl = images[0] ? `url("${urlFor(images[0]).url()}")` : ''
   pathname == '/' ? (
     <header class="bg-gradient-white pb-content-block min-h-145 items-center! overflow-y-visible! pt-45">
       <div class="half space-y-4">
-        <hgroup>
-          {title && <h1 class="tagline">{title}</h1>}
+        {title && <hgroup>
+          {title && <h1 class="tagline font-sans">{title}</h1>}
           {subTitle && (
             <p class="font-sister text-5xl leading-[1.125]! text-balance">
               {subTitle}
             </p>
           )}
-        </hgroup>
+        </hgroup>}
         {description && <p>{description}</p>}
         <button class="btn btn-blue mt-4 animate-bounce">
           Schedule a Tour

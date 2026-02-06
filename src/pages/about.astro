@@ -12,8 +12,8 @@ import {fetchPage} from '@queries/page'
 import {urlFor} from '@services/sanity'
 
 const {pathname} = Astro.url
-const {pageInfo, content} = await fetchPage(pathname.slice(1).current)
-const {title, subTitle, description, mainImage, author, seoTitle} = pageInfo
+const {info, content} = await fetchPage('about')
+const {title, subTitle, description, images, author, seoTitle} = info
 
 // Local Asset Imports
 // import OurStory01 from '@images/man-kids-books.webp'
@@ -22,7 +22,7 @@ const {title, subTitle, description, mainImage, author, seoTitle} = pageInfo
 // import mainImage from '@images/woman-girl-homework.webp'
 ---
 
-<Layout {pageInfo}>
+<Layout {info}>
   <!-- <section class="items-center">
     <div class="half relative">
       <Image

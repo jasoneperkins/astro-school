@@ -28,7 +28,6 @@ export const identityQuery = `
         youtube
         tiktok
         pinterest
-        linkedin
       }
     }
   }

@@ -8,8 +8,7 @@ export interface Info {
   }
   subTitle?: string
   description?: string
-  mainImage?: SanityImage
-  extraHeroImages?: SanityImage[]
+  images: SanityImage[]
   author?: string
   seoTitle?: string
 }

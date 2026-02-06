@@ -11,10 +11,12 @@ import {fetchGraphQL} from '@services/sanity'
 import {fetchPage} from '@queries/page'
 import {urlFor} from '@services/sanity'
 
+import type {Section} from '@interfaces/section'
+
 import '@styles/pages/home.css'
 
 const {info, content} = await fetchPage('index')
-const strongStart = content.find(section => section._key === '48d3ddd6f414')
+const strongStart = content?.find((section: Section) => section._key === '48d3ddd6f414')
 ---
 
 <Layout {info}>
@@ -56,20 +58,20 @@ const strongStart = content.find(section => section._key === '48d3ddd6f414')
   <!-- About/Introduction Section: A brief overview of who you are, what you do, and your mission. -->
   <section class="items-center bg-gray-50">
     <div class="half">
-      <Image
+      {strongStart?.images?.[0] && <Image
         src={urlFor(strongStart.images[0]).width(640).height(440).url()!}
         width="640"
         height="440"
         alt={strongStart.images[0]?.alt || 'Strong Start Image'}
         class="rounded-3xl"
-      />
+      />}
     </div>
     <div class="half">
       <hgroup>
-        <p class="tagline">
-          {strongStart.heading.subTitle}
-        </p>
-        <h2>{strongStart.heading.title}</h2>
+        {strongStart?.heading?.subTitle && <p class="tagline">
+          {strongStart?.heading?.subTitle}
+        </p>}
+        {strongStart?.heading?.title && <h2>{strongStart?.heading?.title}</h2>}
       </hgroup>
       <p>
         We help your child get ready for the road ahead. Our teachers make

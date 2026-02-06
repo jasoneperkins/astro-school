@@ -11,5 +11,10 @@ export interface Identity {
   socials?: {
     facebook?: string
     instagram?: string
+    twitter?: string
+    linkedin?: string
+    youtube?: string
+    tiktok?: string
+    pinterest?: string
   }
 }

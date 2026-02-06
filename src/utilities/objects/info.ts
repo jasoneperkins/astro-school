@@ -7,13 +7,13 @@ export default {
   fields: [
     {
       name: 'title',
-      title: 'Page Title',
+      title: 'Title',
       type: 'string',
       validation: (Rule: Rule) => Rule.required()
     },
     {
       name: 'subTitle',
-      title: 'Hero Subtitle',
+      title: 'Subtitle',
       type: 'string',
       description:
         'The text that appears above the main title in certain pages.'
@@ -31,7 +31,7 @@ export default {
     },
     {
       name: 'description',
-      title: 'Page Description / Intro Text',
+      title: 'Description / Intro Text',
       type: 'text',
       rows: 3,
       description:
@@ -52,7 +52,7 @@ export default {
     },
     {
       name: 'author',
-      title: 'Content Creator',
+      title: 'Content Author',
       type: 'string',
       initialValue: 'ECLC Staff'
     },

@@ -11,7 +11,6 @@ export default {
     { name: 'linkedin', type: 'url', title: 'LinkedIn' },
     { name: 'youtube', type: 'url', title: 'YouTube' },
     { name: 'tiktok', type: 'url', title: 'TikTok' },
-    { name: 'pinterest', type: 'url', title: 'Pinterest' },
-    { name: 'linkedin', type: 'url', title: 'LinkedIn' }
+    { name: 'pinterest', type: 'url', title: 'Pinterest' }
   ]
 }

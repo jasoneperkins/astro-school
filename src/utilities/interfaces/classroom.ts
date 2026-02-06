@@ -1,10 +1,6 @@
-import type { SanityImage } from '@interfaces/sanityImage'
+import type { Info } from '@interfaces/info'
 
 export interface Classroom {
   _type: 'classroom'
-  title: string //
-  slug: {
-    current: string //
-  }
-  mainImage?: SanityImage
+  info: Info
 }
