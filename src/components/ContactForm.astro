@@ -40,14 +40,13 @@ const {
         <input type="hidden" name="sourceContext" value={context} />
 
         <div>
-          <label for="parentName" class="block text-sm font-medium">
+          <label for="parentName">
             Parent Name
           </label>
           <input
             type="text"
             id="parentName"
             name="parentName"
-            class="form-input mt-1 block w-full rounded-md border-gray-300"
             required
           />
         </div>
@@ -72,14 +71,12 @@ const {
             id="message"
             name="message"
             rows="4"
-            class="form-textarea mt-1 block w-full rounded-md border-gray-300"
             required>
           </textarea>
         </div>
 
         <button
           type="submit"
-          class="submit-btn w-full rounded-md bg-blue-600 py-3 text-white transition-opacity disabled:opacity-50"
           :disabled="state === 'loading'">
           <span x-show="state !== 'loading'">{submitText}</span>
           <span x-show="state === 'loading'" x-cloak>
@@ -96,12 +93,3 @@ const {
     </div>
   </template>
 </div>
-
-<script>
-  import {contactHandler} from '@logic/contactHandler'
-
-  document.addEventListener('alpine:init', () => {
-    // @ts-ignore
-    Alpine.data('contactHandler', contactHandler)
-  })
-</script>
