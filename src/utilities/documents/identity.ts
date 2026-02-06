@@ -63,7 +63,7 @@ export default {
       name: 'socials',
       title: 'Social Media Accounts',
       type: 'Socials'
-    }
+    },
     { name: 'facebook', type: 'url', title: 'Facebook', group: 'socials' },
     { name: 'instagram', type: 'url', title: 'Instagram', group: 'socials' },
     { name: 'twitter', type: 'url', title: 'Twitter', group: 'socials' },

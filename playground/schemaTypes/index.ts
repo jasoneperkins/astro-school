@@ -1,24 +1,16 @@
 // Documents
-import classroom from '../../src/utilities/documents/classroom'
-import identity from '../../src/utilities/documents/identity'
-import newsletter from '../../src/utilities/documents/newsletter'
-import page from '../../src/utilities/documents/page'
+import Classroom from '../../src/utilities/documents/classroom'
+import Identity from '../../src/utilities/documents/identity'
+import Newsletter from '../../src/utilities/documents/newsletter'
+import Page from '../../src/utilities/documents/page'
 
 // Objects
-import CustomImage from '../../src/utilities/objects/CustomImage'
-import heading from '../../src/utilities/objects/heading'
-import info from '../../src/utilities/objects/info'
-import section from '../../src/utilities/objects/section'
-import socials from '../../src/utilities/objects/socials'
+import CustomImage from '../../src/utilities/objects/customImage'
+import Heading from '../../src/utilities/objects/heading'
+import Info from '../../src/utilities/objects/info'
+import Section from '../../src/utilities/objects/section'
 
-export const schemaTypes = [
-  classroom,
-  identity,
-  newsletter,
-  page,
-  section,
-  CustomImage,
-  info,
-  heading,
-  socials,
-]
+const documentTypes = [Classroom, Identity, Newsletter, Page]
+const objectTypes = [CustomImage, Heading, Info, Section]
+
+export const schemaTypes = [...documentTypes, ...objectTypes]

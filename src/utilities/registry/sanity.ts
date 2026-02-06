@@ -1,34 +1,34 @@
 // Document Imports
-import classroom from '@documents/classroom'
-import identity from '@documents/identity'
-import newsletter from '@documents/newsletter'
-import page from '@documents/page'
+import Classroom from '@documents/classroom'
+import Identity from '@documents/identity'
+import Newsletter from '@documents/newsletter'
+import Page from '@documents/page'
 
 // Interface Imports
-import type { Classroom } from '@interfaces/classroom'
-import type { CustomImage } from '@interfaces/customImage'
-import type { Heading } from '@interfaces/heading'
-import type { Identity } from '@interfaces/identity'
-import type { Info } from '@interfaces/info'
-import type { Newsletter } from '@interfaces/newsletter'
-import type { Section } from '@interfaces/section'
+import type { Classroom as ClassroomInterface } from '@interfaces/classroom'
+import type { Heading as HeadingInterface } from '@interfaces/heading'
+import type { Identity as IdentityInterface } from '@interfaces/identity'
+import type { Info as InfoInterface } from '@interfaces/info'
+import type { Newsletter as NewsletterInterface } from '@interfaces/newsletter'
+import type { CustomImage as CustomImageInterface } from '@interfaces/customImage'
+import type { Section as SectionInterface } from '@interfaces/section'
 
 // Object Imports
-import customImage from '@objects/customImage'
-import heading from '@objects/heading'
-import info from '@objects/info'
-import section from '@objects/section'
+import CustomImage from '@objects/customImage'
+import Heading from '@objects/heading'
+import Info from '@objects/info'
+import Section from '@objects/section'
 
-const documentTypes = [classroom, identity, newsletter, page]
-const objectTypes = [customImage, heading, info, section]
+const documentTypes = [Classroom, Identity, Newsletter, Page]
+const objectTypes = [CustomImage, Heading, Info, Section]
 
 export const schemaTypes = [...objectTypes, ...documentTypes]
 export type {
-  Classroom,
-  CustomImage,
-  Heading,
-  Identity,
-  Info,
-  Newsletter,
-  Section
+  ClassroomInterface as Classroom,
+  HeadingInterface as Heading,
+  IdentityInterface as Identity,
+  InfoInterface as Info,
+  NewsletterInterface as Newsletter,
+  CustomImageInterface as CustomImage,
+  SectionInterface as Section
 }
