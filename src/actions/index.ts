@@ -12,33 +12,58 @@ export const server = {
       message: z.string()
     }),
     handler: async (input, context) => {
-      // Dynamic imports prevent Vite from choking during build/dev
       const { EmailMessage } = await import('cloudflare:email')
       const { createMimeMessage } = await import('mimetext')
-
       const runtime = context.locals.runtime
 
       if (!runtime?.env?.LEADS_EMAIL) {
-        throw new Error('Email service is not available in this environment.')
+        throw new Error('Email service not found in runtime.')
       }
 
-      const msg = createMimeMessage()
-      msg.setSender({ name: 'ECLC Leads', addr: 'leads@eclcstuart.com' })
-      msg.setRecipient('misscindy@tbhfl.org')
-      msg.setSubject(`New Lead: ${input.parentName}`)
-      msg.addMessage({
+      const adminMsg = createMimeMessage()
+      adminMsg.setSender({ name: 'ECLC Website', addr: 'leads@eclcstuart.com' })
+      adminMsg.setRecipient('misscindy@tbhfl.org')
+      adminMsg.setSubject(`New Website Lead: ${input.parentName}`)
+      adminMsg.addMessage({
         contentType: 'text/plain',
-        data: `Parent: ${input.parentName}\nEmail: ${input.email}\nContext: ${input.sourceContext}\n\n${input.message}`
+        data: `New Lead Details:\n\nParent: ${input.parentName}\nEmail: ${input.email}\nPage: ${input.sourceContext}\n\nMessage:\n${input.message}`
       })
 
-      const emailResponse = new EmailMessage(
-        'leads@eclcstuart.com',
-        'misscindy@tbhfl.org',
-        msg.asRaw()
-      )
+      const parentMsg = createMimeMessage()
+      parentMsg.setSender({
+        name: 'Early Childhood Learning Center',
+        addr: 'leads@eclcstuart.com'
+      })
+      parentMsg.setRecipient(input.email)
+      parentMsg.setSubject(`We've received your inquiry!`)
+      parentMsg.addMessage({
+        contentType: 'text/plain',
+        data: `Shalom ${input.parentName},\n\nThank you for reaching out to the Early Childhood Learning Center. We have received your message regarding "${input.sourceContext}" and Miss Cindy will be in touch with you shortly.\n\nWarmly,\nECLC Staff`
+      })
 
-      await runtime.env.LEADS_EMAIL.send(emailResponse)
-      return { success: true }
+      try {
+        await Promise.all([
+          runtime.env.LEADS_EMAIL.send(
+            new EmailMessage(
+              'leads@eclcstuart.com',
+              'misscindy@tbhfl.org',
+              adminMsg.asRaw()
+            )
+          ),
+          runtime.env.LEADS_EMAIL.send(
+            new EmailMessage(
+              'leads@eclcstuart.com',
+              input.email,
+              parentMsg.asRaw()
+            )
+          )
+        ])
+
+        return { success: true }
+      } catch (err) {
+        console.error('Email dispatch failed:', err)
+        return { success: false }
+      }
     }
   })
 }

@@ -14,8 +14,8 @@ import {urlFor} from '@services/sanity'
 
 import type {Section} from '@interfaces/section'
 
-const {pathname} = Astro.url
-console.log(pathname.slice(1))
+// const {pathname} = Astro.url
+// console.log(pathname.slice(1))
 const {info, content} = await fetchPage('about')
 
 const mission = content?.find(
