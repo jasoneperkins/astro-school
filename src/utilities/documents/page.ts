@@ -6,7 +6,7 @@ export default {
     {
       name: 'info',
       title: 'Page Information',
-      type: 'info'
+      type: 'Info'
     },
     {
       name: 'content',
@@ -20,7 +20,7 @@ export default {
       title: 'info.title',
       subtitle: 'info.slug.current'
     },
-    prepare(selection) {
+    prepare(selection: { title?: string; subtitle?: string }) {
       const { title, subtitle } = selection
       return {
         title: title || 'Untitled Page',

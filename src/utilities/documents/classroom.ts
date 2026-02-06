@@ -6,7 +6,7 @@ export default {
     {
       name: 'info',
       title: 'Classroom Information',
-      type: 'info'
+      type: 'Info'
     }
   ]
 }
