@@ -1,7 +1,7 @@
 import { type Rule } from 'sanity'
 
 export default {
-  name: 'info',
+  name: 'Info',
   title: 'Page Information',
   type: 'object',
   fields: [
@@ -45,7 +45,7 @@ export default {
       name: 'images',
       title: 'Images',
       type: 'array',
-      of: [{ type: 'customImage' }],
+      of: [{ type: 'CustomImage' }],
       validation: (Rule: Rule) => Rule.max(15),
       description:
         'The first will be the main image. The rest are used for floating images and carousels.'

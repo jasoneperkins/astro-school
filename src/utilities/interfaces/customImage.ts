@@ -1,5 +1,6 @@
-export interface SanityImage {
-  _type: 'image'
+export interface CustomImage {
+  // Matches the capitalized 'name' in your object schema
+  _type: 'CustomImage'
   asset: {
     _id: string
     url: string

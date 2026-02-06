@@ -1,5 +1,5 @@
 export interface Newsletter {
-  _type: 'newsletter'
+  _type: 'Newsletter'
   title: string
   publishDate: string
   pdfFile?: {

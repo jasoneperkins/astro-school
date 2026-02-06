@@ -1,5 +1,5 @@
 export default {
-  name: 'customImage',
+  name: 'CustomImage',
   title: 'Image with Alt Text',
   type: 'image',
   fields: [

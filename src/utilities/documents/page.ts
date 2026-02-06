@@ -1,5 +1,5 @@
 export default {
-  name: 'page',
+  name: 'Page',
   type: 'document',
   title: 'Page',
   fields: [
@@ -12,7 +12,7 @@ export default {
       name: 'content',
       title: 'Content Sections',
       type: 'array',
-      of: [{ type: 'section' }]
+      of: [{ type: 'Section' }]
     }
   ],
   preview: {

@@ -1,7 +1,7 @@
 import { type Rule } from 'sanity'
 
 export default {
-  name: 'socials',
+  name: 'Socials',
   title: 'Social Media Accounts',
   type: 'object',
   fields: [

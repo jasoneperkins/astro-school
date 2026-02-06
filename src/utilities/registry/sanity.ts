@@ -14,14 +14,14 @@ import type { SanityImage } from '@interfaces/sanityImage'
 import type { Section } from '@interfaces/section'
 
 // Object Imports
-import customImage from '@objects/customImage'
+import CustomImage from '@objects/CustomImage'
 import heading from '@objects/heading'
 import info from '@objects/info'
 import section from '@objects/section'
 import socials from '@objects/socials'
 
 const documentTypes = [classroom, identity, newsletter, page]
-const objectTypes = [customImage, heading, info, section, socials]
+const objectTypes = [CustomImage, heading, info, section, socials]
 
 export const schemaTypes = [...objectTypes, ...documentTypes]
 export type {

@@ -1,5 +1,5 @@
 export default {
-  name: 'classroom',
+  name: 'Classroom',
   title: 'Classroom',
   type: 'document',
   fields: [

@@ -1,11 +1,11 @@
+import type { CustomImage } from '@interfaces/customImage'
 import type { Heading } from '@interfaces/heading'
-import type { SanityImage } from '@interfaces/sanityImage'
 
 export interface Section {
-  _type: 'section'
+  _type: 'Section'
   _key: string
   heading?: Heading
   bodyRaw?: any[]
-  images?: SanityImage[]
+  images?: CustomImage[]
   slug: { current: string }
 }

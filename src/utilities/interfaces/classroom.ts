@@ -1,6 +1,6 @@
 import type { Info } from '@interfaces/info'
 
 export interface Classroom {
-  _type: 'classroom'
+  _type: 'Classroom'
   info: Info
 }

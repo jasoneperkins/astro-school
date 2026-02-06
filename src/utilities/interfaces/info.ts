@@ -1,6 +1,7 @@
-import type { SanityImage } from '@interfaces/sanityImage'
+import type { CustomImage } from '@interfaces/customImage'
 
 export interface Info {
+  _type: 'Info'
   title: string
   slug: {
     current: string
@@ -8,7 +9,7 @@ export interface Info {
   }
   subTitle?: string
   description?: string
-  images: SanityImage[]
+  images: CustomImage[]
   author?: string
   seoTitle?: string
 }

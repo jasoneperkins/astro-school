@@ -1,8 +1,9 @@
-import type { SanityImage } from '@interfaces/sanityImage'
+import type { CustomImage } from '@interfaces/customImage'
 
 export interface Identity {
+  _type: 'Identity'
   name: string
-  logo: SanityImage
+  logo: CustomImage
   email: string
   phone: string
   address: string

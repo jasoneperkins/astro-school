@@ -1,7 +1,7 @@
 import { type Rule } from 'sanity'
 
 export default {
-  name: 'heading',
+  name: 'Heading',
   title: 'Content Heading',
   type: 'object',
   fields: [

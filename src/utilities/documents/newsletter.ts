@@ -1,7 +1,7 @@
 import { type Rule } from 'sanity'
 
 export default {
-  name: 'newsletter',
+  name: 'Newsletter',
   title: 'Newsletter',
   type: 'document',
   fields: [

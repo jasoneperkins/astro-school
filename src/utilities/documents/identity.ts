@@ -1,7 +1,7 @@
 import { type Rule } from 'sanity'
 
 export default {
-  name: 'identity',
+  name: 'Identity',
   title: 'Identity / Contact Info',
   type: 'document',
   fields: [
@@ -14,7 +14,7 @@ export default {
     {
       name: 'logo',
       title: 'Organization Logo',
-      type: 'customImage'
+      type: 'CustomImage'
     },
     {
       name: 'email',

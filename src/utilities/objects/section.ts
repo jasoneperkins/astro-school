@@ -1,7 +1,7 @@
 import { type Rule } from 'sanity'
 
 export default {
-  name: 'section',
+  name: 'Section',
   title: 'Content Section',
   type: 'object',
   fields: [
@@ -31,7 +31,7 @@ export default {
       name: 'images',
       title: 'Section Images',
       type: 'array',
-      of: [{ type: 'customImage' }]
+      of: [{ type: 'CustomImage' }]
     }
   ],
   preview: {

@@ -1,5 +1,5 @@
 export interface Heading {
-  _type: 'heading'
+  _type: 'Heading'
   title: string
   subTitle?: string
   showTitleFirst: boolean
