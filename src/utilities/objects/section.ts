@@ -22,6 +22,14 @@ export default {
       validation: (Rule: Rule) => Rule.required()
     },
     {
+      name: 'showHeader',
+      title: 'Show Section Header',
+      type: 'boolean',
+      initialValue: true,
+      description:
+        'If disabled, the header will be hidden but still available for screen readers.'
+    },
+    {
       name: 'body',
       title: 'Body Text',
       type: 'array',

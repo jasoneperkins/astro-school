@@ -14,9 +14,9 @@ import {urlFor} from '@services/sanity'
 
 import type {Section} from '@interfaces/section'
 
-// const {pathname} = Astro.url
+const {pathname} = Astro.url
+console.log(pathname.slice(1))
 const {info, content} = await fetchPage('about')
-const {title, subTitle, description, images, author, seoTitle} = info
 
 const mission = content?.find(
   (section: Section) => section._key === '5da2bb5455ff'
@@ -41,8 +41,8 @@ const values = content?.find(
       <section class="items-center">
         <div class="half relative">
           <Image
-            src={urlFor(mission.images[0]).width(640).height(640).url()!}
-            alt={mission.images[0]?.alt || ''}
+            src={urlFor(mission.images?.[0]).width(640).height(640).url()!}
+            alt={mission.images?.[0]?.alt || ''}
             width="640"
             height="640"
             class="rounded-full"
@@ -50,17 +50,17 @@ const values = content?.find(
           <div class="absolute top-2 right-6 -z-10 size-36 rounded-full bg-linear-35 from-orange-500 to-orange-200" />
         </div>
         <div class="half">
-          {mission.heading.title && (
+          {mission?.heading?.title && (
             <header>
               <hgroup class="flex flex-col-reverse">
                 <h2>{mission.heading.title}</h2>
-                {mission.heading?.subTitle && (
+                {mission?.heading?.subTitle && (
                   <p class="tagline">{mission.heading.subTitle}</p>
                 )}
               </hgroup>
             </header>
           )}
-          {mission.body && <PortableText value={mission.body} />}
+          {mission?.body && <PortableText value={mission.body} />}
         </div>
       </section>
     )
@@ -127,19 +127,17 @@ Inclusion, Dignity, Growth, and Community with individual icons. -->
           )}
           {values?.body && <PortableText value={values.body} />}
         </div>
-        {
-          values?.images[0] && (
-            <div class="half flex justify-center lg:justify-end">
-              <Image
-                src={urlFor(values?.images[0]).width(640).height(640).url()!}
-                alt="Learning through play"
-                width="640"
-                height="640"
-                class="aspect-square w-full max-w-md rounded-full object-cover shadow-lg"
-              />
-            </div>
-          )
-        }
+        {values?.images?.[0] && (
+          <div class="half flex justify-center lg:justify-end">
+            <Image
+              src={urlFor(values?.images[0]).width(640).height(640).url()!}
+              alt="Learning through play"
+              width="640"
+              height="640"
+              class="aspect-square w-full max-w-md rounded-full object-cover shadow-lg"
+            />
+          </div>
+        )}
       </section>
     )
   }

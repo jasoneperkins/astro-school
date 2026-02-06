@@ -32,6 +32,7 @@ query GetPageBySlug($slug: String!) {
             showTitleFirst
           }
           slug { current }
+          showHeader
           body: bodyRaw
           images {
             _type
