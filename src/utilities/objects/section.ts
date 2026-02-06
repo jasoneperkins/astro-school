@@ -8,7 +8,7 @@ export default {
     {
       name: 'heading',
       title: 'Heading',
-      type: 'heading'
+      type: 'Heading'
     },
     {
       name: 'slug',

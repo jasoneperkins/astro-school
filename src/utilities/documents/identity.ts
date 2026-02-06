@@ -53,7 +53,7 @@ export default {
     {
       name: 'socials',
       title: 'Social Media Accounts',
-      type: 'socials'
+      type: 'Socials'
     }
   ]
 }
