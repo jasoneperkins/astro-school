@@ -1,47 +1,44 @@
 import { fetchGraphQL } from '@services/sanity'
+import type { Page } from '@interfaces/page'
 
 export const pageQuery = `
 query GetPageBySlug($slug: String!) {
-  allPage(where: { info: { slug: { current: { eq: $slug } } } }) {
-      info {
-        title
-        slug { current }
-        subTitle
-        description
-        images {
-          asset {
-            url
-            _id
-            metadata {
-              lqip
-            }
-          }
-          alt
-        }
-        author
-        seoTitle
-      }
-      content {
-        __typename
-        ... on Section {
-          _key
+  allPages(where: { info: { slug: { current: { eq: $slug } } } }) {
+        info {
           _type
+          title
+          slug { current }
+          subTitle
+          description
+          images {
+            _type
+            asset {
+              url
+              _id
+              metadata { lqip }
+            }
+            alt
+          }
+          author
+          seoTitle
+        }
+        content {
+        ... on Section {
+          _type
+          _key
           heading {
             title
             subTitle
             showTitleFirst
           }
-          slug {
-            current
-          }
+          slug { current }
           body: bodyRaw
           images {
+            _type
             asset {
               url
               _id
-              metadata {
-                lqip
-              }
+              metadata { lqip }
             }
             alt
           }
@@ -51,7 +48,14 @@ query GetPageBySlug($slug: String!) {
   }
 `
 
-export async function fetchPage(slug: string = 'index') {
-  const data = await fetchGraphQL<{ allPage: any[] }>(pageQuery, { slug })
-  return data?.allPage?.[0]
+export async function fetchPage(slug: string = 'index'): Promise<Page> {
+  const data = await fetchGraphQL<any>(pageQuery, { slug })
+  const pageData = data?.allPages?.[0] || data?.allPage?.[0]
+  return (
+    pageData || {
+      info: { title: '', slug: { current: slug } },
+      content: [],
+      _type: 'Page'
+    }
+  )
 }

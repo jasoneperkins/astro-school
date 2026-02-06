@@ -9,9 +9,7 @@ export const identityQuery = `
         asset {
           _id
           url
-          metadata {
-            lqip
-          }
+          metadata { lqip }
         }
         alt
       }
@@ -20,6 +18,7 @@ export const identityQuery = `
       address
       officeHours
       licenseNumber
+      # Fields are now queried directly on Identity
       facebook
       instagram
       twitter
