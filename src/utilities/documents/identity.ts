@@ -4,11 +4,16 @@ export default {
   name: 'Identity',
   title: 'Identity / Contact Info',
   type: 'document',
+  groups: [
+    { name: 'contact', title: 'Contact Details' },
+    { name: 'socials', title: 'Social Media' }
+  ],
   fields: [
     {
       name: 'name',
       title: 'Organization Name',
       type: 'string',
+      group: 'contact',
       initialValue: 'Early Childhood Learning Center'
     },
     {
@@ -20,12 +25,14 @@ export default {
       name: 'email',
       title: 'Contact Email',
       type: 'string',
+      group: 'contact',
       validation: (Rule: Rule) => Rule.email()
     },
     {
       name: 'phone',
       title: 'Phone Number',
       type: 'string',
+      group: 'contact',
       validation: (Rule: Rule) =>
         Rule.regex(/^[0-9+\-\s()]+$/, {
           name: 'phone number'
@@ -35,14 +42,16 @@ export default {
       name: 'address',
       title: 'Physical Address',
       type: 'text',
-      rows: 3
+      rows: 3,
+      group: 'contact'
     },
     {
       name: 'officeHours',
       title: 'Office Hours',
       type: 'string',
       description: 'e.g., Monday – Friday, 8:00 AM – 4:00 PM',
-      initialValue: 'Mon-Fri: 8:00 AM - 5:30 PM'
+      initialValue: 'Mon-Fri: 8:00 AM - 5:30 PM',
+      group: 'contact'
     },
     {
       name: 'licenseNumber',
@@ -55,5 +64,12 @@ export default {
       title: 'Social Media Accounts',
       type: 'Socials'
     }
+    { name: 'facebook', type: 'url', title: 'Facebook', group: 'socials' },
+    { name: 'instagram', type: 'url', title: 'Instagram', group: 'socials' },
+    { name: 'twitter', type: 'url', title: 'Twitter', group: 'socials' },
+    { name: 'linkedin', type: 'url', title: 'LinkedIn', group: 'socials' },
+    { name: 'youtube', type: 'url', title: 'YouTube', group: 'socials' },
+    { name: 'tiktok', type: 'url', title: 'TikTok', group: 'socials' },
+    { name: 'pinterest', type: 'url', title: 'Pinterest', group: 'socials' }
   ]
 }
