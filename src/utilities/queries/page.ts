@@ -3,7 +3,7 @@ import type { Page } from '@interfaces/page'
 
 export const pageQuery = `
 query GetPageBySlug($slug: String!) {
-  allPages(where: { info: { slug: { current: { eq: $slug } } } }) {
+  allPage(where: { info: { slug: { current: { eq: $slug } } } }) {
         info {
           _type
           title
@@ -50,7 +50,7 @@ query GetPageBySlug($slug: String!) {
 
 export async function fetchPage(slug: string = 'index'): Promise<Page> {
   const data = await fetchGraphQL<any>(pageQuery, { slug })
-  const pageData = data?.allPages?.[0] || data?.allPage?.[0]
+  const pageData = data?.allPage?.[0]
   return (
     pageData || {
       info: { title: '', slug: { current: slug } },
