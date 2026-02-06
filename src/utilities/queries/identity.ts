@@ -20,15 +20,13 @@ export const identityQuery = `
       address
       officeHours
       licenseNumber
-      socials {
-        facebook
-        instagram
-        twitter
-        linkedin
-        youtube
-        tiktok
-        pinterest
-      }
+      facebook
+      instagram
+      twitter
+      linkedin
+      youtube
+      tiktok
+      pinterest
     }
   }
 `
