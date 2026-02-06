@@ -6,11 +6,12 @@ import Page from '@documents/page'
 
 // Interface Imports
 import type { Classroom as ClassroomInterface } from '@interfaces/classroom'
+import type { CustomImage as CustomImageInterface } from '@interfaces/customImage'
 import type { Heading as HeadingInterface } from '@interfaces/heading'
 import type { Identity as IdentityInterface } from '@interfaces/identity'
 import type { Info as InfoInterface } from '@interfaces/info'
 import type { Newsletter as NewsletterInterface } from '@interfaces/newsletter'
-import type { CustomImage as CustomImageInterface } from '@interfaces/customImage'
+import type { Page as PageInterface } from '@interfaces/page'
 import type { Section as SectionInterface } from '@interfaces/section'
 
 // Object Imports
@@ -25,10 +26,11 @@ const objectTypes = [CustomImage, Heading, Info, Section]
 export const schemaTypes = [...objectTypes, ...documentTypes]
 export type {
   ClassroomInterface as Classroom,
+  CustomImageInterface as CustomImage,
   HeadingInterface as Heading,
   IdentityInterface as Identity,
   InfoInterface as Info,
   NewsletterInterface as Newsletter,
-  CustomImageInterface as CustomImage,
+  PageInterface as Page,
   SectionInterface as Section
 }

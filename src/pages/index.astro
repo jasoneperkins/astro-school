@@ -6,6 +6,7 @@ import ItemCard from '@components/ItemCard.astro'
 
 import {Image} from 'astro:assets'
 import {Icon} from 'astro-icon/components'
+import {PortableText} from 'astro-portabletext'
 
 import {fetchGraphQL} from '@services/sanity'
 import {fetchPage} from '@queries/page'
@@ -16,73 +17,91 @@ import type {Section} from '@interfaces/section'
 import '@styles/pages/home.css'
 
 const {info, content} = await fetchPage('index')
-const strongStart = content?.find((section: Section) => section._key === '48d3ddd6f414')
+
+const classrooms = content?.find(
+  (section: Section) => section._key === '45dcb5a3c7e2'
+)
+const introduction = content?.find(
+  (section: Section) => section._key === 'dc8bfb64e0a0'
+)
+const benefits = content?.find(
+  (section: Section) => section._key === '1f4fb8af196a'
+)
 ---
 
 <Layout {info}>
-  <section aria-labelledby="classrooms-label">
-    <header>
-      <hgroup class="text-center">
-        <h2 id="classrooms-label">A Place for Every Stage</h2>
-        <p>Tailored learning environments for your child's growing needs.</p>
-      </hgroup>
-    </header>
-    <div
-      class="grid grid-cols-1 justify-center gap-2 md:grid-cols-2 lg:grid-cols-4">
-      <ItemCard
-        title="Toddlers"
-        description="A gentle introduction to social play and discovery."
-        icon="lucide:baby"
-        color="red"
-      />
-      <ItemCard
-        title="Terrific Twos"
-        description="Building independence through curiosity and hands-on learning."
-        icon="lucide:blocks"
-        color="blue"
-      />
-      <ItemCard
-        title={"Preschool 3's"}
-        description="Developing confidence and early academic foundations."
-        icon="lucide:palette"
-        color="green"
-      />
-      <ItemCard
-        title="VPK"
-        description="Preparing our oldest students for a successful transition to Kindergarten."
-        icon="lucide:graduation-cap"
-        color="orange"
-      />
-    </div>
-  </section>
+  {
+    classrooms && (
+      <section aria-labelledby="classrooms-label">
+        <header>
+          <hgroup class="text-center">
+            {classrooms?.heading?.title && (
+              <h2 id="classrooms-label">{classrooms?.heading?.title}</h2>
+            )}
+            {classrooms?.heading?.subTitle && (
+              <p>{classrooms?.heading?.subTitle}</p>
+            )}
+          </hgroup>
+        </header>
+        <div class="grid grid-cols-1 justify-center gap-2 md:grid-cols-2 lg:grid-cols-4">
+          <ItemCard
+            title="Toddlers"
+            description="A gentle introduction to social play and discovery."
+            icon="lucide:baby"
+            color="red"
+          />
+          <ItemCard
+            title="Terrific Twos"
+            description="Building independence through curiosity and hands-on learning."
+            icon="lucide:blocks"
+            color="blue"
+          />
+          <ItemCard
+            title={"Preschool 3's"}
+            description="Developing confidence and early academic foundations."
+            icon="lucide:palette"
+            color="green"
+          />
+          <ItemCard
+            title="VPK"
+            description="Preparing our oldest students for a successful transition to Kindergarten."
+            icon="lucide:graduation-cap"
+            color="orange"
+          />
+        </div>
+      </section>
+    )
+  }
   <!-- About/Introduction Section: A brief overview of who you are, what you do, and your mission. -->
-  <section class="items-center bg-gray-50">
-    <div class="half">
-      {strongStart?.images?.[0] && <Image
-        src={urlFor(strongStart.images[0]).width(640).height(440).url()!}
-        width="640"
-        height="440"
-        alt={strongStart.images[0]?.alt || 'Strong Start Image'}
-        class="rounded-3xl"
-      />}
-    </div>
-    <div class="half">
-      <hgroup>
-        {strongStart?.heading?.subTitle && <p class="tagline">
-          {strongStart?.heading?.subTitle}
-        </p>}
-        {strongStart?.heading?.title && <h2>{strongStart?.heading?.title}</h2>}
-      </hgroup>
-      <p>
-        We help your child get ready for the road ahead. Our teachers make
-        learning fun with reading, math, and art. We also have yoga, gardening,
-        and music every week! From our tiny toddlers to our VPK stars, we help
-        every child grow strong and smart in a caring Jewish setting.
-      </p>
-    </div>
-  </section>
+  {
+    introduction && (
+      <section class="items-center bg-gray-50">
+        <div class="half">
+          {introduction?.images?.[0] && (
+            <Image
+              src={urlFor(introduction.images[0]).width(640).height(440).url()!}
+              width="640"
+              height="440"
+              alt={introduction.images[0]?.alt || ''}
+              class="rounded-3xl"
+            />
+          )}
+        </div>
+        <div class="half">
+          <hgroup>
+            {introduction?.heading?.subTitle && (
+              <p class="tagline">{introduction?.heading?.subTitle}</p>
+            )}
+            {introduction?.heading?.title && (
+              <h2>{introduction?.heading?.title}</h2>
+            )}
+          </hgroup>
+          {introduction?.body && <PortableText value={introduction.body} />}
+        </div>
+      </section>
+    )
+  }
   <!-- Services/Products Overview: A highlighted section showcasing what you offer, often with visual elements. -->
-
   <section>
     <header>
       <hgroup class="text-center">

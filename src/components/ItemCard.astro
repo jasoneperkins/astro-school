@@ -1,6 +1,6 @@
 ---
 import {Icon} from 'astro-icon/components'
-import '@styles/components/classroomCards.css'
+import '@styles/components/itemCards.css'
 
 interface Props {
   title: string
@@ -19,7 +19,8 @@ const borderColors: Record<Props['color'], string> = {
 const {title, description, icon, color} = Astro.props
 ---
 
-<div class={`classroom ${borderColors[color] || 'hover:border-t-gray-500!'}`}>
+<div
+  class={`classroom animate-in fade-in slide-in-from-bottom-15 starting:opacity-0 ${borderColors[color] || 'hover:border-t-gray-500!'}`}>
   {icon && <Icon name={icon} class="size-10" />}
   <h3 class="text-lg!">{title}</h3>
   <p class="tiny text-gray-500">

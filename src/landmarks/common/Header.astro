@@ -11,7 +11,7 @@ interface Props {
 }
 
 const {identity} = Astro.props
-const {logo, name, phone, email, address, socials} = identity
+const {logo, name, phone, email, address, facebook, instagram} = identity
 ---
 
 <header id="commonHeader" class="content">
@@ -44,9 +44,9 @@ const {logo, name, phone, email, address, socials} = identity
     </div>
     <div class="flex items-center gap-2">
       {
-        socials?.facebook && (
+        facebook && (
           <a
-            href={socials?.facebook}
+            href={facebook}
             aria-label="Facebook"
             target="_blank"
             rel="noopener">
@@ -55,9 +55,9 @@ const {logo, name, phone, email, address, socials} = identity
         )
       }
       {
-        socials?.instagram && (
+        instagram && (
           <a
-            href={socials?.instagram}
+            href={instagram}
             aria-label="Instagram"
             target="_blank"
             rel="noopener">

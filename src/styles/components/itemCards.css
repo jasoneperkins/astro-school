@@ -1,0 +1,6 @@
+@reference "tailwindcss";
+
+.classroom {
+  @apply relative space-y-2 rounded-md border border-transparent bg-white p-6 transition-all duration-250 ease-in hover:-translate-y-4 hover:border-t-4 hover:shadow-2xl hover:shadow-gray-200 starting:opacity-0;
+  animation-delay: calc(sibling-index() * 0.25s);
+}

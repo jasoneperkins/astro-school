@@ -12,6 +12,7 @@
 
 /* base */
 @import './base/backgrounds.css';
+@import './base/colors.css';
 @import './base/content.css';
 @import './base/typography.css';
 

@@ -37,7 +37,7 @@ h6 {
 }
 
 .tagline {
-  @apply text-tiny font-bold tracking-widest text-blue-600 uppercase;
+  @apply text-tiny font-bold tracking-widest uppercase;
 }
 
 :is(p, ul, ol):not(:last-child) {

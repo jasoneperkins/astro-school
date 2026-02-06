@@ -4,52 +4,64 @@ import {Image} from 'astro:assets'
 import {urlFor} from '@services/sanity'
 
 const {pathname} = Astro.url
-const {info: {title, subTitle, description, images}} = Astro.props
-const backgroundUrl = images[0] ? `url("${urlFor(images[0]).url()}")` : ''
+const {
+  info: {title, subTitle, description, images = []}
+} = Astro.props
+const backgroundUrl = images?.[0] ? `url("${urlFor(images[0]).url()}")` : ''
 ---
 
 {
   pathname == '/' ? (
     <header class="bg-gradient-white pb-content-block min-h-145 items-center! overflow-y-visible! pt-45">
       <div class="half space-y-4">
-        {title && <hgroup>
-          {title && <h1 class="tagline font-sans">{title}</h1>}
-          {subTitle && (
-            <p class="font-sister text-5xl leading-[1.125]! text-balance">
-              {subTitle}
-            </p>
-          )}
-        </hgroup>}
+        {title && (
+          <hgroup>
+            {title && <h1 class="tagline font-sans">{title}</h1>}
+            {subTitle && (
+              <p class="font-sister text-5xl leading-[1.125]! text-balance">
+                {subTitle}
+              </p>
+            )}
+          </hgroup>
+        )}
         {description && <p>{description}</p>}
         <button class="btn btn-blue mt-4 animate-bounce">
           Schedule a Tour
         </button>
       </div>
       <div class="half relative col-end-[breakout-end]! hidden content-center self-stretch overflow-y-visible lg:grid">
-        <Image
-          src={urlFor(images[0]).width(240).height(240).url()!}
-          alt={images[0]?.alt || ''}
-          inferSize
-          class="animate-in fade-in zoom-in absolute -top-15 left-0 z-2 size-60 rounded-full duration-1000 starting:opacity-0"
-        />
-        <Image
-          src={urlFor(images[1]).width(180).height(180).url()!}
-          alt={images[1]?.alt || ''}
-          inferSize
-          class="animate-in fade-in zoom-in absolute top-0 right-0 z-2 size-45 rounded-full delay-150 duration-1000 starting:opacity-0"
-        />
-        <Image
-          src={urlFor(images[2]).width(120).height(120).url()!}
-          alt={images[2]?.alt || ''}
-          inferSize
-          class="animate-in fade-in zoom-in absolute top-60 left-30 z-2 size-30 rounded-full delay-300 duration-1000 starting:opacity-0"
-        />
-        <Image
-          src={urlFor(images[3]).width(160).height(160).url()!}
-          alt={images[3]?.alt || ''}
-          inferSize
-          class="animate-in fade-in zoom-in absolute top-70 right-10 z-2 size-40 rounded-full delay-450 duration-1000 starting:opacity-0"
-        />
+        {images[0] && (
+          <Image
+            src={urlFor(images[0]).width(240).height(240).url()!}
+            alt={images[0]?.alt || ''}
+            inferSize
+            class="animate-in fade-in zoom-in absolute -top-15 left-0 z-2 size-60 rounded-full duration-1000 starting:opacity-0"
+          />
+        )}
+        {images[1] && (
+          <Image
+            src={urlFor(images[1]).width(180).height(180).url()!}
+            alt={images[1]?.alt || ''}
+            inferSize
+            class="animate-in fade-in zoom-in absolute top-0 right-0 z-2 size-45 rounded-full delay-150 duration-1000 starting:opacity-0"
+          />
+        )}
+        {images[2] && (
+          <Image
+            src={urlFor(images[2]).width(120).height(120).url()!}
+            alt={images[2]?.alt || ''}
+            inferSize
+            class="animate-in fade-in zoom-in absolute top-60 left-30 z-2 size-30 rounded-full delay-300 duration-1000 starting:opacity-0"
+          />
+        )}
+        {images[3] && (
+          <Image
+            src={urlFor(images[3]).width(160).height(160).url()!}
+            alt={images[3]?.alt || ''}
+            inferSize
+            class="animate-in fade-in zoom-in absolute top-70 right-10 z-2 size-40 rounded-full delay-450 duration-1000 starting:opacity-0"
+          />
+        )}
         <div class="absolute -top-12 right-0 size-33 rounded-full bg-orange-300" />
         <div class="absolute top-40 left-50 size-15 rounded-full bg-orange-100" />
         <div class="absolute top-60 left-100 size-20 rounded-full bg-orange-200" />
@@ -59,10 +71,10 @@ const backgroundUrl = images[0] ? `url("${urlFor(images[0]).url()}")` : ''
   ) : (
     <header
       class:list={[
-        images[0] ? 'bg-image' : 'bg-mesh',
+        images?.[0] ? 'bg-image' : 'bg-mesh',
         'pt-hero bg-gradient-white items-end bg-cover bg-center bg-no-repeat pb-2'
       ]}>
-      <hgroup>
+      <hgroup class="text-center">
         <h1>{title}</h1>
       </hgroup>
     </header>
