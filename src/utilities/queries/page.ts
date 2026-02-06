@@ -18,6 +18,8 @@ query GetPageBySlug($slug: String!) {
           }
           alt
         }
+        author
+        seoTitle
       }
       content {
         __typename

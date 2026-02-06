@@ -20,8 +20,8 @@ export default {
       title: 'info.title',
       subtitle: 'info.slug.current'
     },
-    prepare(selection) {
-      const { title, subtitle } = selection
+    prepare(select) {
+      const { title, subtitle } = select
       return {
         title: title || 'Untitled Page',
         subtitle: subtitle ? `/${subtitle}` : 'No slug set'
