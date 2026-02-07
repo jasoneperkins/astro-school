@@ -6,6 +6,7 @@ export default {
   type: 'document',
   groups: [
     { name: 'contact', title: 'Contact Details' },
+    { name: 'seo', title: 'SEO Defaults' },
     { name: 'socials', title: 'Social Media' }
   ],
   fields: [
@@ -65,6 +66,13 @@ export default {
     { name: 'linkedin', type: 'url', title: 'LinkedIn', group: 'socials' },
     { name: 'youtube', type: 'url', title: 'YouTube', group: 'socials' },
     { name: 'tiktok', type: 'url', title: 'TikTok', group: 'socials' },
-    { name: 'pinterest', type: 'url', title: 'Pinterest', group: 'socials' }
+    { name: 'pinterest', type: 'url', title: 'Pinterest', group: 'socials' },
+    {
+      name: 'defaultSeo',
+      title: 'Default SEO',
+      type: 'seo', // Uses the object we made in Step 1
+      group: 'seo',
+      description: 'Used for any page that does not have its own SEO set.'
+    }
   ]
 }

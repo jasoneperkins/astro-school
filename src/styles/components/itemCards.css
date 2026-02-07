@@ -1,6 +1,24 @@
 @reference "tailwindcss";
+@import 'tw-animate-css';
 
-.classroom {
-  @apply relative space-y-2 rounded-md border border-transparent bg-white p-6 transition-all duration-250 ease-in hover:-translate-y-4 hover:border-t-4 hover:shadow-2xl hover:shadow-gray-200 starting:opacity-0;
-  animation-delay: calc(sibling-index() * 0.25s);
+.item {
+  @apply relative flex flex-col rounded-lg border-0 bg-white duration-300 ease-in;
+  @apply hover:translate-x-2 hover:border-t-0 hover:border-r-0 hover:border-b-0 hover:border-l-4 hover:shadow-lg;
+  @apply md:hover:translate-x-0 md:hover:-translate-y-2 md:hover:border-t-4 md:hover:border-r-0 md:hover:border-b-0 md:hover:border-l-0 md:hover:shadow-2xl;
+  animation: slide-reveal linear both;
+  animation-timeline: view();
+  animation-range: entry 10% cover 30%;
+}
+
+@keyframes slide-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(5rem);
+    filter: blur(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }

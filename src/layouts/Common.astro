@@ -32,8 +32,13 @@ const {info} = Astro.props
 <html lang="en-US">
   <Head {info} {identity} />
   <body x-data="{ isDrawerOpen: false }">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-white focus:p-4 focus:text-blue-900">
+      Skip to content
+    </a>
     <Header {identity} />
-    <main>
+    <main id="main-content">
       <Hero {info} />
       <slot />
     </main>

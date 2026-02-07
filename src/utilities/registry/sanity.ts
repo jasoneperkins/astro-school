@@ -19,9 +19,10 @@ import CustomImage from '@objects/customImage'
 import Heading from '@objects/heading'
 import Info from '@objects/info'
 import Section from '@objects/section'
+import Seo from '@objects/seo'
 
 const documentTypes = [Classroom, Identity, Newsletter, Page]
-const objectTypes = [CustomImage, Heading, Info, Section]
+const objectTypes = [CustomImage, Heading, Info, Section, Seo]
 
 export const schemaTypes = [...objectTypes, ...documentTypes]
 export type {

@@ -1,6 +1,6 @@
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
-import {schemaTypes} from './schemaTypes' // Import the unified array
+import {schemaTypes} from './schemaTypes'
 
 export default defineConfig({
   name: 'default',

@@ -3,6 +3,7 @@ import {SEO} from 'astro-seo'
 import {urlFor} from '@services/sanity'
 import type {Info} from '@interfaces/info'
 import type {Identity} from '@interfaces/identity'
+import {ClientRouter} from 'astro:transitions'
 
 interface Props {
   info: Info
@@ -65,4 +66,5 @@ const isLive = false
   <link rel="manifest" href="site.webmanifest" />
   <meta name="theme-color" content="#fafafa" />
   <meta name="generator" content={Astro.generator} />
+  <ClientRouter />
 </head>

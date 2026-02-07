@@ -16,6 +16,7 @@ const {identity} = Astro.props
 <aside
   id="mobile-drawer"
   x-show="isDrawerOpen"
+  x-trap.noscroll="isDrawerOpen"
   x-cloak
   class="fixed inset-0 z-50 md:hidden"
   aria-modal="true"
@@ -35,40 +36,52 @@ const {identity} = Astro.props
     x-transition:enter-end="translate-x-0"
     x-transition:leave="transition transform ease-in duration-200"
     x-transition:leave-end="translate-x-full"
-    class="fixed top-0 right-0 z-50 flex h-screen w-80 max-w-[90vw] flex-col space-y-8 bg-white p-5 shadow-2xl">
+    class="fixed top-0 right-0 z-50 flex h-screen w-fit max-w-[90vw] flex-col space-y-8 bg-white p-5 shadow-2xl">
     <div
-      class="flex items-center justify-between border-b border-slate-100 py-5 text-blue-900">
+      class="flex items-center justify-between gap-2 border-b border-slate-100 py-5 text-blue-900">
       <button
         @click="isDrawerOpen = false"
         aria-label="Close Menu"
-        class="p-2 text-3xl text-slate-500 transition-colors hover:text-blue-600">
+        class="p-0 text-xl text-slate-500 transition-colors hover:text-blue-600">
         <Icon name="line-md:menu-to-close-transition" aria-hidden="true" />
       </button>
-      <span class="text-lg font-bold">{identity.name}</span>
+      <span class="text-lg">{identity.name}</span>
     </div>
     <nav aria-label="Mobile Navigation">
-      <ul class="space-y-4">
+      <ul>
         <li>
-          <a href="/" @click="isDrawerOpen = false">Home</a>
+          <a href="/" @click="isDrawerOpen = false">
+            <Icon name="lucide:home" size={20} aria-hidden="true" />Home
+          </a>
         </li>
         <li>
-          <a href="/about" @click="isDrawerOpen = false">About Us</a>
+          <a href="/about" @click="isDrawerOpen = false">
+            <Icon name="lucide:smile" size={20} aria-hidden="true" />About Us
+          </a>
         </li>
         <li>
-          <a href="#" @click="isDrawerOpen = false">Classrooms</a>
+          <a href="#" @click="isDrawerOpen = false">
+            <Icon name="lucide:blocks" size={20} aria-hidden="true" />Classrooms
+          </a>
         </li>
         <li>
-          <a href="#" @click="isDrawerOpen = false">Newsletters</a>
+          <a href="#" @click="isDrawerOpen = false">
+            <Icon
+              name="lucide:scroll-text"
+              size={20}
+              aria-hidden="true"
+            />Newsletters
+          </a>
         </li>
       </ul>
     </nav>
-    <section aria-labelledby="contact-heading">
+    <div aria-labelledby="contact-heading">
       <header>
         <hgroup>
           <h3 id="contact-heading">Contact Us</h3>
         </hgroup>
       </header>
       <ContactForm context="Mobile Drawer" theme="light" btnColor="blue" />
-    </section>
+    </div>
   </div>
 </aside>

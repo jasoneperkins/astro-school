@@ -14,9 +14,11 @@
   },
   "dependencies": {
     "@alpinejs/collapse": "^3.15.8",
+    "@alpinejs/focus": "^3.15.8",
     "@astrojs/alpinejs": "^0.4.9",
     "@astrojs/cloudflare": "^12.6.12",
     "@astrojs/react": "^4.4.2",
+    "@astrojs/sitemap": "^3.7.0",
     "@fontsource/love-ya-like-a-sister": "^5.2.8",
     "@fontsource/poppins": "^5.2.7",
     "@iconify-json/lucide": "^1.2.87",

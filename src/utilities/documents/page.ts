@@ -2,17 +2,29 @@ export default {
   name: 'Page',
   type: 'document',
   title: 'Page',
+  groups: [
+    { name: 'content', title: 'Content', default: true },
+    { name: 'seo', title: 'SEO' }
+  ],
   fields: [
     {
       name: 'info',
       title: 'Page Information',
-      type: 'Info'
+      type: 'Info',
+      group: 'content'
     },
     {
       name: 'content',
       title: 'Content Sections',
       type: 'array',
-      of: [{ type: 'Section' }]
+      of: [{ type: 'Section' }],
+      group: 'content'
+    },
+    {
+      name: 'seo',
+      title: 'SEO Overrides',
+      type: 'seo',
+      group: 'seo'
     }
   ],
   preview: {

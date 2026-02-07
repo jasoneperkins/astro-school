@@ -7,6 +7,7 @@ import cloudflare from '@astrojs/cloudflare'
 import icon from 'astro-icon'
 import react from '@astrojs/react'
 import sanity from '@sanity/astro'
+import sitemap from '@astrojs/sitemap'
 import tailwindcss from '@tailwindcss/vite'
 
 const env = loadEnv(process.env.NODE_ENV || 'development', process.cwd(), '')
@@ -63,6 +64,9 @@ export default defineConfig({
     domains: ['cdn.sanity.io']
   },
   integrations: [
+    alpinejs({
+      entrypoint: '/src/utilities/plugins/alpine'
+    }),
     icon({
       include: {
         'line-md': [
@@ -76,7 +80,15 @@ export default defineConfig({
           'phone-twotone-loop',
           'sunny-twotone-loop'
         ],
-        lucide: ['baby', 'blocks', 'palette', 'graduation-cap']
+        lucide: [
+          'baby',
+          'blocks',
+          'graduation-cap',
+          'home',
+          'palette',
+          'scroll-text',
+          'smile'
+        ]
       }
     }),
     react(),
@@ -85,15 +97,23 @@ export default defineConfig({
       dataset: 'production',
       useCdn: false
     }),
-    alpinejs({
-      entrypoint: '/src/utilities/plugins/alpine'
-    })
+    sitemap()
   ],
   output: 'server',
+  site: 'https://www.eclcstuart.com',
   vite: {
     plugins: [tailwindcss()],
     ssr: {
-      external: ['cloudflare:email', 'mimetext']
+      external: [
+        'cloudflare:email',
+        'mimetext',
+        'node:buffer',
+        'node:stream',
+        'crypto',
+        'stream',
+        'buffer',
+        'path'
+      ]
     },
     build: {
       rollupOptions: {

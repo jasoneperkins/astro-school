@@ -9,8 +9,9 @@ import CustomImage from '../../src/utilities/objects/customImage'
 import Heading from '../../src/utilities/objects/heading'
 import Info from '../../src/utilities/objects/info'
 import Section from '../../src/utilities/objects/section'
+import Seo from '../../src/utilities/objects/seo'
 
 const documentTypes = [Classroom, Identity, Newsletter, Page]
-const objectTypes = [CustomImage, Heading, Info, Section]
+const objectTypes = [CustomImage, Heading, Info, Section, Seo]
 
 export const schemaTypes = [...documentTypes, ...objectTypes]
