@@ -26,6 +26,7 @@ const titleTemplate = slug?.current === 'index' ? undefined : `%s | ${siteName}`
 const ogImageUrl = images?.[0]
   ? urlFor(images[0]).width(1200).height(630).url()
   : '/default-og.jpg'
+const isLive = false
 ---
 
 <head>
@@ -53,6 +54,8 @@ const ogImageUrl = images?.[0]
       description: description,
       image: ogImageUrl
     }}
+    noindex={!isLive}
+    nofollow={!isLive}
   />
 
   <link rel="icon" href="/favicon.ico" sizes="any" />
