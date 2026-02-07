@@ -24,18 +24,28 @@ const {logo, name, phone, email, address, facebook, instagram} = identity
           name="line-md:phone-twotone-loop"
           class="text-red-400"
           size={20}
-        />{phone}</a>
+          aria-hidden="true"
+        />{phone}
+      </a>
       <a href={`mailto:${email}`} class="flex items-center gap-x-1">
-        <Icon name="line-md:email-filled" class="text-green-500" size={20} />
+        <Icon
+          name="line-md:email-filled"
+          class="text-green-500"
+          size={20}
+          aria-hidden="true"
+        />
         <span class="hidden lg:block">{email}</span>
       </a>
       <a
-        href={`https://maps.google.com/?q=${address}`}
+        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`}
+        target="_blank"
+        rel="noopener noreferrer"
         class="flex items-center gap-x-1">
         <Icon
           name="line-md:map-marker-twotone-loop"
           class="text-orange-500"
           size={20}
+          aria-hidden="true"
         />
         <span class="hidden lg:block">
           {address}
@@ -76,10 +86,11 @@ const {logo, name, phone, email, address, facebook, instagram} = identity
         logo?.asset?.url ? (
           <Image
             src={logo.asset.url}
-            alt={logo.alt || name}
+            alt={logo.alt || `${name} logo`}
             width={200}
             height={64}
             class="h-16 w-auto"
+            loading="eager"
           />
         ) : (
           <span class="text-xl font-bold">{name}</span>
@@ -88,39 +99,31 @@ const {logo, name, phone, email, address, facebook, instagram} = identity
     </a>
 
     <ul
-      class="mb-0! hidden shrink basis-40 items-center justify-between lg:flex">
+      class="mb-0! hidden shrink basis-100 items-center justify-between md:flex">
       <li>
-        <a href="/" class="transition-colors hover:text-blue-600">Home</a>
+        <a href="/">Home</a>
       </li>
       <li>
-        <a href="/about" class="transition-colors hover:text-blue-600">
-          About Us
-        </a>
-      </li>
-      <!-- <li class="nav-dropdown-group">
-        <button
-          type="button"
-          class="nav-dropdown-trigger flex items-center gap-1"
-          aria-expanded="false"
-          aria-haspopup="true"
-          aria-controls="classes-menu"
-          id="classes-button">
-          Classrooms <Icon name="line-md:chevron-small-down" size={16} />
-        </button>
+        <a href="/about" class="">About Us</a>
       </li>
       <li>
-        <a href="/newsletters" class="transition-colors hover:text-blue-600">
-          Newsletters
-        </a>
-      </li> -->
+        <a href="#">Classrooms</a>
+      </li>
+      <li>
+        <a href="#">Newsletter</a>
+      </li>
     </ul>
-    <a href="/contact" class="btn text-nowrap max-md:hidden!">Contact Us</a>
+    <a href="/contact" class="btn btn-blue text-nowrap max-md:hidden!">
+      Contact Us
+    </a>
     <button
       id="menu-toggle"
-      class="p-2 text-3xl text-blue-900 md:hidden"
+      class="p-2 text-3xl text-blue-700 md:hidden"
       aria-label="Toggle Menu"
-      @click="$dispatch('toggle-drawer')">
-      <Icon name="line-md:close-to-menu-transition" />
+      aria-controls="mobile-drawer"
+      :aria-expanded="isDrawerOpen"
+      @click="isDrawerOpen = !isDrawerOpen">
+      <Icon name="line-md:close-to-menu-transition" aria-hidden="true" />
     </button>
   </nav>
 </header>

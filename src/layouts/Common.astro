@@ -31,7 +31,7 @@ const {info} = Astro.props
 
 <html lang="en-US">
   <Head {info} {identity} />
-  <body x-data>
+  <body x-data="{ isDrawerOpen: false }">
     <Header {identity} />
     <main>
       <Hero {info} />
@@ -39,5 +39,5 @@ const {info} = Astro.props
     </main>
     <Footer {identity} />
     <Drawer {identity} />
-  </body>
+  </bodyx-data="{>
 </html>

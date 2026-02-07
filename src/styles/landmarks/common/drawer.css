@@ -1,0 +1,5 @@
+@reference "tailwindcss";
+
+#mobile-drawer nav ul a {
+  @apply font-bold;
+}

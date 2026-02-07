@@ -10,6 +10,10 @@
   animation-range: 2px 50px;
 }
 
+nav ul a {
+  @apply transition-colors hover:text-blue-600;
+}
+
 @keyframes add-shadow {
   from {
     box-shadow: none;
