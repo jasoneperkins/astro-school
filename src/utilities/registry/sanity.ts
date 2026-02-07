@@ -13,6 +13,7 @@ import type { Info as InfoInterface } from '@interfaces/info'
 import type { Newsletter as NewsletterInterface } from '@interfaces/newsletter'
 import type { Page as PageInterface } from '@interfaces/page'
 import type { Section as SectionInterface } from '@interfaces/section'
+import type { Seo as SeoInterface } from '@interfaces/seo'
 
 // Object Imports
 import CustomImage from '@objects/customImage'
@@ -33,5 +34,6 @@ export type {
   InfoInterface as Info,
   NewsletterInterface as Newsletter,
   PageInterface as Page,
-  SectionInterface as Section
+  SectionInterface as Section,
+  SeoInterface as Seo
 }

@@ -5,8 +5,8 @@ export default {
   title: 'Identity / Contact Info',
   type: 'document',
   groups: [
+    { name: 'identity', title: 'Business Details' },
     { name: 'contact', title: 'Contact Details' },
-    { name: 'seo', title: 'SEO Defaults' },
     { name: 'socials', title: 'Social Media' }
   ],
   fields: [
@@ -14,13 +14,14 @@ export default {
       name: 'name',
       title: 'Organization Name',
       type: 'string',
-      group: 'contact',
+      group: 'identity',
       initialValue: 'Early Childhood Learning Center'
     },
     {
       name: 'logo',
       title: 'Organization Logo',
-      type: 'CustomImage'
+      type: 'CustomImage',
+      group: 'identity'
     },
     {
       name: 'email',
@@ -58,7 +59,8 @@ export default {
       name: 'licenseNumber',
       title: 'State License Number',
       type: 'string',
-      description: 'DCF License #'
+      description: 'DCF License #',
+      group: 'contact'
     },
     { name: 'facebook', type: 'url', title: 'Facebook', group: 'socials' },
     { name: 'instagram', type: 'url', title: 'Instagram', group: 'socials' },
@@ -66,13 +68,6 @@ export default {
     { name: 'linkedin', type: 'url', title: 'LinkedIn', group: 'socials' },
     { name: 'youtube', type: 'url', title: 'YouTube', group: 'socials' },
     { name: 'tiktok', type: 'url', title: 'TikTok', group: 'socials' },
-    { name: 'pinterest', type: 'url', title: 'Pinterest', group: 'socials' },
-    {
-      name: 'defaultSeo',
-      title: 'Default SEO',
-      type: 'seo', // Uses the object we made in Step 1
-      group: 'seo',
-      description: 'Used for any page that does not have its own SEO set.'
-    }
+    { name: 'pinterest', type: 'url', title: 'Pinterest', group: 'socials' }
   ]
 }

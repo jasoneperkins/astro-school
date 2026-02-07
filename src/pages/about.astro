@@ -15,7 +15,7 @@ import {urlFor} from '@services/sanity'
 import type {Section} from '@interfaces/section'
 
 const {pathname} = Astro.url
-const {info, content} = await fetchPage(pathname.slice(1))
+const {info, content, seo} = await fetchPage(pathname.slice(1))
 
 const mission = content?.find(
   (section: Section) => section._key === '5da2bb5455ff'
@@ -23,15 +23,9 @@ const mission = content?.find(
 const values = content?.find(
   (section: Section) => section._key === '7b82e68a29d9'
 )
-
-// Local Asset Imports
-// import OurStory01 from '@images/man-kids-books.webp'
-// import HowWeLearn01 from '@images/woman-kids-board-globe-table.webp'
-// import PhilosophyImg from '@images/girl-teacher-decorations.webp'
-// import mainImage from '@images/woman-girl-homework.webp'
 ---
 
-<Layout {info}>
+<Layout {info} {seo}>
   <!-- Our Mission (Introduction Section): Focus on the inclusive environment and the
   Reform Jewish setting. This is a great spot for an image of the Temple or a
   welcoming classroom scene. -->

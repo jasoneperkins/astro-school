@@ -1,26 +1,26 @@
 ---
 import {SEO} from 'astro-seo'
 import {urlFor} from '@services/sanity'
+import {ClientRouter} from 'astro:transitions'
+
 import type {Info} from '@interfaces/info'
 import type {Identity} from '@interfaces/identity'
-import {ClientRouter} from 'astro:transitions'
+import type {Seo} from '@interfaces/seo'
 
 interface Props {
   info: Info
   identity: Identity
+  seo: Seo
 }
 
 const {href} = Astro.url
-const {info, identity} = Astro.props
-const {name: siteName} = identity as Identity
-const {
-  title = 'Early Childhood Learning Center',
-  description = 'A nurturing preschool environment in Stuart, Florida.',
-  images,
-  author = 'ECLC Staff',
-  slug
-} = info || {}
-const displayTitle = title || siteName
+const {info, identity, seo} = Astro.props
+
+const {title, subTitle, slug, publishDate, images, author} = info
+const {name: siteName, email, phone, address} = identity
+const {metaTitle, metaDescription, shareImage, noIndex} = seo
+
+const displayTitle = metaTitle || title || siteName
 const titleTemplate = slug?.current === 'index' ? undefined : `%s | ${siteName}`
 
 const ogImageUrl = images?.[0]
@@ -36,7 +36,7 @@ const isLive = false
   <SEO
     title={displayTitle}
     titleTemplate={titleTemplate}
-    description={description}
+    description={metaDescription}
     canonical={href}
     openGraph={{
       basic: {
@@ -51,7 +51,7 @@ const isLive = false
     twitter={{
       card: 'summary_large_image',
       title: displayTitle,
-      description: description,
+      description: metaDescription,
       image: ogImageUrl
     }}
     noindex={!isLive}

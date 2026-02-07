@@ -22,25 +22,27 @@ query GetPageBySlug($slug: String!) {
           author
         }
         content {
-        ... on Section {
-          _type
-          _key
-          heading {
-            title
-            subTitle
-            showTitleFirst
-          }
-          slug { current }
-          showHeader
-          body: bodyRaw
-          images {
+          ... on Section {
             _type
-            asset {
-              url
-              _id
-              metadata { lqip }
+            _key
+            name
+            heading {
+              title
+              subTitle
+              showTitleFirst
             }
-            alt
+            slug { current }
+            showHeader
+            body: bodyRaw
+            images {
+              _type
+              asset {
+                url
+                _id
+                metadata { lqip }
+              }
+              alt
+            }
           }
         }
         seo {

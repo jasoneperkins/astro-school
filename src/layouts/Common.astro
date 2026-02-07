@@ -18,19 +18,12 @@ interface Props {
 import '@styles/global.css'
 import '@styles/layouts/common.css'
 
-const identity = (await fetchIdentity()) || {
-  name: 'Early Childhood Learning Center',
-  email: '',
-  phone: '',
-  address: '',
-  officeHours: '',
-  socials: {facebook: '', instagram: ''}
-}
-const {info} = Astro.props
+const identity = (await fetchIdentity()) as Identity || {}
+const {info, seo} = Astro.props
 ---
 
 <html lang="en-US">
-  <Head {info} {identity} />
+  <Head {info} {identity} {seo} />
   <body x-data="{ isDrawerOpen: false }">
     <a
       href="#main-content"

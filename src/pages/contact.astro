@@ -12,13 +12,20 @@ import {fetchGraphQL} from '@services/sanity'
 import {fetchPage} from '@queries/page'
 import {urlFor} from '@services/sanity'
 
+import type {Info} from '@interfaces/info'
 import type {Section} from '@interfaces/section'
+import type {Seo} from '@interfaces/seo'
+
+interface Props {
+  info: Info
+  seo: Seo
+}
 
 const {pathname} = Astro.url
-const {info, content} = await fetchPage(pathname.slice(1))
+const {info, content, seo} = await fetchPage(pathname.slice(1))
 ---
 
-<Layout {info}>
+<Layout {info} {seo}>
   <section>
     <div class="half bg-gray-50 p-12">
       <header>
