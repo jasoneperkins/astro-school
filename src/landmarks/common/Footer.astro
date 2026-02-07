@@ -22,34 +22,35 @@ const currentYear = new Date().getFullYear()
     class="grid grid-cols-1 gap-x-2 gap-y-6 py-8 md:grid-cols-2 lg:grid-cols-4">
     <div>
       <h2 class="mb-4 text-lg! text-white!">Quick Links</h2>
-      <nav>
+      <nav aria-label="Footer Quick Links">
         <ul class="space-y-3 text-sm">
           <li><a href="/">Home</a></li>
           <li><a href="/about">About Us</a></li>
-          <li><a href="/classrooms">Classrooms</a></li>
-          <li><a href="/newsletters">Newsletters</a></li>
+          <li><a href="#">Classrooms</a></li>
+          <li><a href="#">Newsletters</a></li>
         </ul>
       </nav>
     </div>
     <div>
       <h2 class="mb-4 text-lg! text-white!">Programs</h2>
-      <nav>
+      <nav aria-label="Footer Programs">
         <ul class="space-y-3 text-sm">
-          <li><a href="">Toddlers (12-24 Months)</a></li>
-          <li><a href="">Terrific Twos (24-36 Months)</a></li>
-          <li><a href="">Preschool 3's</a></li>
-          <li><a href="">VPK / Pathfinders</a></li>
+          <li><a href="#">Toddlers (12-24 Months)</a></li>
+          <li><a href="#">Terrific Twos (24-36 Months)</a></li>
+          <li><a href="#">Preschool 3's</a></li>
+          <li><a href="#">VPK / Pathfinders</a></li>
         </ul>
       </nav>
     </div>
     <div class="md:col-span-2">
       <h2 class="mb-4 text-lg! text-white!">Contact Us</h2>
-      <address>
+      <address class="not-italic">
         <ul class="grid space-y-3 gap-x-4 text-sm md:grid-cols-2">
           <div>
             <li>
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3548.808007653033!2d-80.22421092420284!3d27.19377044795511!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88dedd9a976322d1%3A0xf15d64231fbc707a!2sTemple%20Beit%20HaYam!5e0!3m2!1sen!2sus!4v1769640905935!5m2!1sen!2sus"
+                src={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`}
+                title={`Map showing location of ${name}`}
                 width="100%"
                 height="150"
                 style="border:0;"
@@ -61,25 +62,42 @@ const currentYear = new Date().getFullYear()
           </div>
           <div class="space-y-4">
             <li>
-              <a href="tel:7722864374" class="flex gap-x-1">
-                <Icon name="line-md:phone-twotone-loop" class="text-lg" />
+              <a href={`tel:${phone.replace(/\D/g, '')}`} class="flex gap-x-1">
+                <Icon
+                  name="line-md:phone-twotone-loop"
+                  aria-hidden="true"
+                  class="text-lg"
+                />
                 {phone}
               </a>
             </li>
             <li>
               <a href={`mailto:${email}`} class="flex gap-x-1">
-                <Icon name="line-md:email-filled" class="text-lg" />
+                <Icon
+                  name="line-md:email-filled"
+                  aria-hidden="true"
+                  class="text-lg"
+                />
                 {email}
               </a>
             </li>
             <li class="flex gap-x-1">
-              <Icon name="line-md:sunny-twotone-loop" class="text-lg" />
+              <Icon
+                name="line-md:sunny-twotone-loop"
+                aria-hidden="true"
+                class="text-lg"
+              />
               {officeHours}
             </li>
             <li class="flex gap-x-1">
-              <a href="mailto:misscindy@tbhfl.org" class="flex gap-x-1">
+              <a
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex gap-x-1">
                 <Icon
                   name="line-md:map-marker-twotone-loop"
+                  aria-hidden="true"
                   class="text-lg lg:text-2xl"
                 />
                 {address}
@@ -90,9 +108,10 @@ const currentYear = new Date().getFullYear()
       </address>
     </div>
   </div>
-  <address class="tiny flex flex-wrap gap-2 justify-between border-t border-t-white/30 py-4">
+  <address
+    class="tiny flex flex-wrap justify-between gap-2 border-t border-t-white/30 py-4 not-italic">
     <p class="mb-0!">
-      &copy; {currentYear}
+      © {currentYear}
       {name}. All rights reserved.
     </p>
     <p>Licensed by the State of Florida.</p>
