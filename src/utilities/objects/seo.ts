@@ -2,7 +2,7 @@ import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'seo',
-  title: 'SEO',
+  title: 'SEO & Social',
   type: 'object',
   fields: [
     defineField({
@@ -10,7 +10,7 @@ export default defineType({
       title: 'Meta Title',
       type: 'string',
       description:
-        'Overwrites the default page title. Recommended: 50-60 characters.',
+        'Overwrites the default page title. (Recommended: 50-60 chars)',
       validation: (Rule) =>
         Rule.max(60).warning('Longer titles may be truncated.')
     }),
@@ -20,16 +20,24 @@ export default defineType({
       type: 'text',
       rows: 3,
       description:
-        'Overwrites the default description. Recommended: 150-160 characters.',
+        'Overwrites the default description. (Recommended: 150-160 chars)',
       validation: (Rule) =>
         Rule.max(160).warning('Longer descriptions may be truncated.')
     }),
     defineField({
       name: 'shareImage',
       title: 'Social Share Image',
-      type: 'image',
-      description: 'Image used for social media previews.',
-      options: { hotspot: true }
+      type: 'CustomImage',
+      description:
+        'Image used for social media previews (Facebook, Twitter, LinkedIn).'
+    }),
+    defineField({
+      name: 'noIndex',
+      title: 'Hide from Search Engines (noindex)',
+      type: 'boolean',
+      initialValue: false,
+      description:
+        'Enable this to hide this page from Google (e.g. for "Thank You" or internal pages).'
     })
   ]
 })

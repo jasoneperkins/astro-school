@@ -7,9 +7,9 @@ query GetPageBySlug($slug: String!) {
         info {
           _type
           title
-          slug { current }
           subTitle
-          description
+          slug { current }
+          publishDate
           images {
             _type
             asset {
@@ -20,7 +20,6 @@ query GetPageBySlug($slug: String!) {
             alt
           }
           author
-          seoTitle
         }
         content {
         ... on Section {
@@ -43,6 +42,20 @@ query GetPageBySlug($slug: String!) {
             }
             alt
           }
+        }
+        seo {
+          metaTitle
+          metaDescription
+          shareImage {
+            _type
+            asset {
+              url
+              _id
+              metadata { lqip }
+            }
+            alt
+          }
+          noIndex
         }
       }
     }

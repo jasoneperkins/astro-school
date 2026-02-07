@@ -7,8 +7,9 @@ export default {
   fields: [
     {
       name: 'title',
-      title: 'Title',
+      title: 'Internal Title',
       type: 'string',
+      description: 'Used for H1 headings and internal reference.',
       validation: (Rule: Rule) => Rule.required()
     },
     {
@@ -22,50 +23,35 @@ export default {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
-      description: 'Used to generate the URL for this page.',
+      description: 'The URL path for this page.',
       options: {
-        source: 'title', // Automatically generates the slug based on the Page Title
+        source: (doc: any) => doc.info?.title, // Update source to look inside info object
         maxLength: 96
       },
       validation: (Rule: Rule) => Rule.required()
     },
     {
-      name: 'description',
-      title: 'Description / Intro Text',
-      type: 'text',
-      rows: 3,
-      description:
-        'This serves as the page description in search engines and displays on the homepage.',
-      validation: (Rule: Rule) =>
-        Rule.max(160).warning(
-          'Longer descriptions will be truncated by search engines.'
-        )
+      name: 'publishDate',
+      title: 'Publish Date',
+      type: 'date',
+      initialValue: new Date().toISOString().split('T')[0],
+      validation: (Rule: Rule) => Rule.required(),
+      group: 'info'
     },
     {
       name: 'images',
-      title: 'Images',
+      title: 'Page Images',
       type: 'array',
       of: [{ type: 'CustomImage' }],
       validation: (Rule: Rule) => Rule.max(15),
       description:
-        'The first will be the main image. The rest are used for floating images and carousels.'
+        'The first image is the Main/Hero image. Others are for galleries.'
     },
     {
       name: 'author',
       title: 'Content Author',
       type: 'string',
       initialValue: 'ECLC Staff'
-    },
-    {
-      name: 'seoTitle',
-      title: 'SEO Title Override',
-      type: 'string',
-      description:
-        'Optional: Overrides the page title in the browser tab. Use this to keep titles short for Google.',
-      validation: (Rule: Rule) =>
-        Rule.max(60).warning(
-          'Titles longer than 60 characters may be truncated by Google.'
-        )
     }
   ]
 }

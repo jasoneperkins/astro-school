@@ -1,3 +1,5 @@
+import { type Rule } from 'sanity'
+
 export default {
   name: 'CustomImage',
   title: 'Image with Alt Text',

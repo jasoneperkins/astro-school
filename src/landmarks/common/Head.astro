@@ -18,10 +18,9 @@ const {
   description = 'A nurturing preschool environment in Stuart, Florida.',
   images,
   author = 'ECLC Staff',
-  seoTitle,
   slug
 } = info || {}
-const displayTitle = seoTitle || title || siteName
+const displayTitle = title || siteName
 const titleTemplate = slug?.current === 'index' ? undefined : `%s | ${siteName}`
 
 const ogImageUrl = images?.[0]

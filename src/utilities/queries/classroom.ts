@@ -5,21 +5,21 @@ export const classroomQuery = `
   query GetAllClassrooms {
     allClassroom {
       info {
+        _type
         title
-        slug { current }
         subTitle
-        description
-        author
+        slug { current }
+        publishDate
         images {
+          _type
           asset {
             url
             _id
-            metadata {
-              lqip
-            }
+            metadata { lqip }
           }
           alt
         }
+        author
       }
     }
   }

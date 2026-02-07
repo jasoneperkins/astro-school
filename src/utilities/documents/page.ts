@@ -3,15 +3,16 @@ export default {
   type: 'document',
   title: 'Page',
   groups: [
-    { name: 'content', title: 'Content', default: true },
-    { name: 'seo', title: 'SEO' }
+    { name: 'info', title: 'Page Info', default: true },
+    { name: 'content', title: 'Page Content' },
+    { name: 'seo', title: 'SEO & Social' }
   ],
   fields: [
     {
       name: 'info',
       title: 'Page Information',
       type: 'Info',
-      group: 'content'
+      group: 'info'
     },
     {
       name: 'content',

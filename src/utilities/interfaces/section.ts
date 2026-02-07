@@ -5,8 +5,8 @@ export interface Section {
   _type: 'Section'
   _key: string
   heading?: Heading
+  slug: { current: string }
   showHeader?: boolean
   body?: any[]
   images?: CustomImage[]
-  slug: { current: string }
 }
