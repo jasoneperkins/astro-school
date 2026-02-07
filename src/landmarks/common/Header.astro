@@ -60,7 +60,12 @@ const {logo, name, phone, email, address, facebook, instagram} = identity
             aria-label="Facebook"
             target="_blank"
             rel="noopener">
-            <Icon name="line-md:facebook" class="text-[#1877F2]" size={20} />
+            <Icon
+              name="line-md:facebook"
+              class="text-[#1877F2]"
+              size={20}
+              aria-hidden="true"
+            />
           </a>
         )
       }
@@ -71,7 +76,7 @@ const {logo, name, phone, email, address, facebook, instagram} = identity
             aria-label="Instagram"
             target="_blank"
             rel="noopener">
-            <Icon name="line-md:instagram" class="text-[#E1306C]" size={20} />
+            <Icon name="line-md:instagram" class="text-[#E1306C]" size={20} aria-hidden="true" />
           </a>
         )
       }
