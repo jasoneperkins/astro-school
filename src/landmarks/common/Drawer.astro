@@ -52,22 +52,23 @@ const {identity} = Astro.props
           <a href="/" @click="isDrawerOpen = false">Home</a>
         </li>
         <li>
-          <a href="/about" @click="isDrawerOpen = false">
-            About Us
-          </a>
+          <a href="/about" @click="isDrawerOpen = false">About Us</a>
         </li>
         <li>
-          <a href="#" @click="isDrawerOpen = false">
-            Classrooms
-          </a>
+          <a href="#" @click="isDrawerOpen = false">Classrooms</a>
         </li>
         <li>
-          <a href="#" @click="isDrawerOpen = false">
-            Newsletters
-          </a>
+          <a href="#" @click="isDrawerOpen = false">Newsletters</a>
         </li>
       </ul>
     </nav>
-    <ContactForm />
+    <section aria-labelledby="contact-heading">
+      <header>
+        <hgroup>
+          <h3 id="contact-heading">Contact Us</h3>
+        </hgroup>
+      </header>
+      <ContactForm context="Mobile Drawer" theme="light" btnColor="blue" />
+    </section>
   </div>
 </aside>

@@ -1,25 +1,29 @@
 ---
-import {actions} from 'astro:actions'
-
 import '@styles/components/contactForm.css'
 
 interface Props {
-  formTitle?: string
   context?: string
   submitText?: string
+  theme?: 'light' | 'dark'
+  btnColor?: 'blue' | 'green' | 'orange' | 'red' | 'white'
 }
 
 const {
-  formTitle = 'Contact Us',
   context = 'General',
-  submitText = 'Contact Us'
+  submitText = 'Send Message',
+  theme = 'light',
+  btnColor = 'blue'
 } = Astro.props
+
+const labelClass = theme === 'light' ? 'text-gray-700' : 'text-white'
+const buttonClass = `btn btn-${btnColor} w-full justify-center`
 ---
 
 <div class="contact-container" x-data="contactHandler">
   <template x-if="state === 'success'">
     <div
-      class="success-state animate-fade-in rounded-lg border-2 border-green-200 bg-green-50 p-6 text-center">
+      class="success-state animate-fade-in rounded-lg border-2 border-green-200 bg-green-50 p-6 text-center"
+      role="alert">
       <h3 class="text-xl font-bold text-green-800">Message Sent!</h3>
       <p class="mt-2 text-green-700">
         Shalom! Your message has been sent to Miss Cindy. We'll be in touch
@@ -30,17 +34,16 @@ const {
 
   <template x-if="state !== 'success'">
     <div class="form-wrapper">
-      <h3 class="mb-4 text-center text-2xl font-semibold md:text-left">
-        {formTitle}
-      </h3>
-
       <form
         @submit.prevent="submitForm"
-        class="contactForm grid grid-cols-1 gap-y-4">
+        class="contactForm grid grid-cols-1 gap-y-4"
+        novalidate>
         <input type="hidden" name="sourceContext" value={context} />
 
         <div>
-          <label for="parentName">
+          <label
+            for="parentName"
+            class={`block text-sm font-medium ${labelClass}`}>
             Parent Name
           </label>
           <input
@@ -48,11 +51,13 @@ const {
             id="parentName"
             name="parentName"
             required
+            autocomplete="name"
+            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
           />
         </div>
 
         <div>
-          <label for="email">
+          <label for="email" class={`block text-sm font-medium ${labelClass}`}>
             Email Address
           </label>
           <input
@@ -60,34 +65,40 @@ const {
             id="email"
             name="email"
             required
+            autocomplete="email"
+            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
           />
         </div>
 
         <div class="col-span-full">
-          <label for="message">
+          <label
+            for="message"
+            class={`block text-sm font-medium ${labelClass}`}>
             Your Message
           </label>
           <textarea
             id="message"
             name="message"
             rows="4"
-            required>
+            required
+            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
           </textarea>
         </div>
 
         <button
           type="submit"
-          :disabled="state === 'loading'">
+          :disabled="state === 'loading'"
+          class={buttonClass}>
           <span x-show="state !== 'loading'">{submitText}</span>
-          <span x-show="state === 'loading'" x-cloak>
-            Sending to Miss Cindy...
-          </span>
+          <span x-show="state === 'loading'" x-cloak>Sending...</span>
         </button>
 
         <p
           x-show="state === 'error'"
           class="mt-2 text-center text-sm text-red-600"
-          x-cloak>Something went wrong. Please try again or call the office.
+          role="alert"
+          x-cloak>
+          Something went wrong. Please try again or call the office.
         </p>
       </form>
     </div>

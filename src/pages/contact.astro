@@ -20,7 +20,14 @@ const {info, content} = await fetchPage(pathname.slice(1))
 
 <Layout {info}>
   <section>
-    <div class="half bg-gray-100 p-12"><ContactForm /></div>
+    <div class="half bg-gray-100 p-12">
+      <header>
+        <hgroup>
+          <h2>Send a Message</h2>
+        </hgroup>
+      </header>
+      <ContactForm context="Contact Page" theme="light" btnColor="green" />
+    </div>
     <div class="half space-y-4">
       <hgroup>
         <h2>Visit Us</h2>

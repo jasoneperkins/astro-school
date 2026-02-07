@@ -1,35 +1,35 @@
 @reference "tailwindcss";
 
 .btn {
-  /* Base styles: Shared across all buttons */
-  @apply flex w-fit rounded-full border px-6 py-3 leading-tight font-medium;
-  @apply cursor-pointer;
+  @apply flex w-fit cursor-pointer rounded-full border px-6 py-3 leading-tight font-medium;
   @apply transition-all duration-300 ease-out;
   @apply hover:scale-102 hover:shadow-md hover:brightness-110;
   @apply active:scale-98;
+  @apply disabled:cursor-not-allowed disabled:opacity-50 disabled:grayscale;
 }
 
-/* Primary Blue */
+/* Color Variants */
 .btn-blue {
-  @apply border-blue-700 bg-blue-700 text-white;
+  @apply border-blue-600 bg-blue-600 text-white;
 }
 
-/* Growth Green */
 .btn-green {
-  @apply border-green-700 bg-green-700 text-white;
+  @apply border-green-600 bg-green-600 text-white;
 }
 
-/* Alert Red */
-.btn-red {
-  @apply border-red-700 bg-red-700 text-white;
-}
-
-/* Warm Orange */
 .btn-orange {
-  @apply border-orange-700 bg-orange-700 text-white;
+  @apply border-orange-600 bg-orange-600 text-white;
 }
 
-/* Secondary / Outline Style */
+.btn-red {
+  @apply border-red-600 bg-red-600 text-white;
+}
+
+.btn-white {
+  @apply border-white bg-white text-blue-900;
+}
+
+/* Outline Variant */
 .btn-outline {
   @apply border-gray-400 bg-transparent text-gray-700;
   @apply hover:border-gray-500 hover:bg-gray-50;
