@@ -46,19 +46,25 @@ const {identity} = Astro.props
       </button>
       <span class="text-lg font-bold">{identity.name}</span>
     </div>
-    <nav>
+    <nav aria-label="Mobile Navigation">
       <ul class="space-y-4">
         <li>
-          <a href="/" class="font-bold">Home</a>
+          <a href="/" @click="isDrawerOpen = false">Home</a>
         </li>
         <li>
-          <a href="/about" class="font-bold">About Us</a>
+          <a href="/about" @click="isDrawerOpen = false">
+            About Us
+          </a>
         </li>
         <li>
-          <a href="#" class="font-bold">Classrooms</a>
+          <a href="#" @click="isDrawerOpen = false">
+            Classrooms
+          </a>
         </li>
         <li>
-          <a href="#" class="">Newsletters</a>
+          <a href="#" @click="isDrawerOpen = false">
+            Newsletters
+          </a>
         </li>
       </ul>
     </nav>
