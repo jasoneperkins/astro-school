@@ -14,9 +14,8 @@ import {urlFor} from '@services/sanity'
 
 import type {Section} from '@interfaces/section'
 
-// const {pathname} = Astro.url
-// console.log(pathname.slice(1))
-const {info, content} = await fetchPage('about')
+const {pathname} = Astro.url
+const {info, content} = await fetchPage(pathname.slice(1))
 
 const mission = content?.find(
   (section: Section) => section._key === '5da2bb5455ff'

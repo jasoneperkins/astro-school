@@ -2,6 +2,7 @@
 import Layout from '@layouts/Common.astro'
 
 import ContactForm from '@components/ContactForm.astro'
+import ItemCard from '@components/ItemCard.astro'
 
 import {Image} from 'astro:assets'
 import {Icon} from 'astro-icon/components'
@@ -13,17 +14,13 @@ import {urlFor} from '@services/sanity'
 
 import type {Section} from '@interfaces/section'
 
-// const {pathname} = Astro.url
-// console.log(pathname.slice(1))
-const {info, content} = await fetchPage('contact')
-
-import mainImage from '@images/children-writing.webp'
-
-const title = 'Contact Us'
+const {pathname} = Astro.url
+const {info, content} = await fetchPage(pathname.slice(1))
 ---
 
 <Layout {info}>
   <section>
+    <div class="half bg-gray-100 p-12"><ContactForm /></div>
     <div class="half space-y-4">
       <hgroup>
         <h2>Visit Us</h2>
@@ -45,79 +42,6 @@ const title = 'Contact Us'
         class="btn mt-8">
         Get Directions
       </a>
-    </div>
-    <div class="half">
-      <form action="https://api.web3forms.com/submit" method="POST">
-        <input
-          type="hidden"
-          name="access_key"
-          value="ff1dce2e-dc26-4b91-96bb-d5ed1896af2d"
-        />
-        <input
-          type="hidden"
-          name="subject"
-          value="New Contact from Temple Beit HaYam Website"
-        />
-        <input
-          type="hidden"
-          name="redirect"
-          value="https://jasoneperkins.com/"
-        />
-        <div class="space-y-6">
-          <div>
-            <label
-              for="name"
-              class="mb-1 block text-sm font-medium text-slate-700">
-              Full Name
-            </label>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              required
-              placeholder="John Doe"
-              class="w-full rounded-lg border border-slate-300 px-4 py-3 transition outline-none focus:border-transparent focus:ring-2 focus:ring-blue-600"
-            />
-          </div>
-          <div>
-            <label
-              for="email"
-              class="mb-1 block text-sm font-medium text-slate-700">
-              Email Address
-            </label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              required
-              placeholder="name@example.com"
-              class="w-full rounded-lg border border-slate-300 px-4 py-3 transition outline-none focus:border-transparent focus:ring-2 focus:ring-blue-600"
-            />
-          </div>
-          <div>
-            <label
-              for="message"
-              class="mb-1 block text-sm font-medium text-slate-700">
-              Message
-            </label>
-            <textarea
-              name="message"
-              id="message"
-              rows="5"
-              required
-              placeholder="How can we help you?"
-              class="w-full resize-none rounded-lg border border-slate-300 px-4 py-3 transition outline-none focus:border-transparent focus:ring-2 focus:ring-blue-600">
-            </textarea>
-          </div>
-        </div>
-        <input
-          type="checkbox"
-          name="botcheck"
-          class="hidden"
-          style="display: none;"
-        />
-        <button type="submit" class="btn mt-6">Send Message</button>
-      </form>
     </div>
   </section>
   <section>
