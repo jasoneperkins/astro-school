@@ -1,5 +1,4 @@
 # public/robots.txt
 User-agent: *
-Disallow: /
 
 Sitemap: https://www.eclcstuart.com/sitemap-0.xml

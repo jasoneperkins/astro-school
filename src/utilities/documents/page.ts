@@ -1,4 +1,6 @@
-export default {
+import { defineType, defineField } from 'sanity'
+
+export default defineType({
   name: 'Page',
   type: 'document',
   title: 'Page',
@@ -9,31 +11,31 @@ export default {
     { name: 'social', title: 'Social' }
   ],
   fields: [
-    {
+    defineField({
       name: 'info',
       title: 'Page Information',
       type: 'Info',
       group: 'info'
-    },
-    {
+    }),
+    defineField({
       name: 'content',
       title: 'Content Sections',
       type: 'array',
       of: [{ type: 'Section' }],
       group: 'content'
-    },
-    {
+    }),
+    defineField({
       name: 'seo',
       title: 'Search Engine Optimization',
       type: 'seo',
       group: 'seo'
-    },
-    {
+    }),
+    defineField({
       name: 'social',
       title: 'Social Sharing',
       type: 'social',
       group: 'social'
-    }
+    })
   ],
   preview: {
     select: {
@@ -48,4 +50,4 @@ export default {
       }
     }
   }
-}
+})

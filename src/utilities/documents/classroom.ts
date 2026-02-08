@@ -1,6 +1,6 @@
-import { type Rule } from 'sanity'
+import { defineType, defineField } from 'sanity'
 
-export default {
+export default defineType({
   name: 'Classroom',
   title: 'Classroom',
   type: 'document',
@@ -11,30 +11,30 @@ export default {
     { name: 'social', title: 'Social' }
   ],
   fields: [
-    {
+    defineField({
       name: 'info',
       title: 'Classroom Information',
       type: 'Info'
-    },
-    {
+    }),
+    defineField({
       name: 'content',
       title: 'Content Sections',
       type: 'array',
       of: [{ type: 'Section' }],
       group: 'content'
-    },
-    {
+    }),
+    defineField({
       name: 'seo',
       title: 'SEO Overrides',
       type: 'seo',
       group: 'seo'
-    },
-    {
+    }),
+    defineField({
       name: 'social',
       title: 'Social Sharing',
       type: 'social',
       group: 'social'
-    }
+    })
   ],
   preview: {
     select: {
@@ -49,4 +49,4 @@ export default {
       }
     }
   }
-}
+})
