@@ -105,5 +105,16 @@ const isLive = import.meta.env.PROD // Only respect noIndex in production
   <link rel="manifest" href="site.webmanifest" />
   <meta name="theme-color" content="#fafafa" />
   <meta name="generator" content={Astro.generator} />
+
+  {
+    pageMainImage && (
+      <link
+        rel="preload"
+        as="image"
+        href={urlFor(pageMainImage).width(1200).url()}
+      />
+    )
+  }
+
   <ClientRouter />
 </head>

@@ -4,7 +4,7 @@ import { createImageUrlBuilder } from '@sanity/image-url'
 const builder = createImageUrlBuilder(sanityClient)
 
 export function urlFor(source: any) {
-  return builder.image(source)
+  return builder.image(source).auto('format').quality(80)
 }
 
 export async function fetchGraphQL<T>(

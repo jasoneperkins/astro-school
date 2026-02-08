@@ -10,5 +10,6 @@ export interface Info {
   }
   publishDate: Date
   images: CustomImage[] | null
+  description?: string
   author?: string
 }
