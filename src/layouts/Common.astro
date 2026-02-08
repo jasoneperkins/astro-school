@@ -10,15 +10,17 @@ import {fetchIdentity} from '@queries/identity'
 
 import type {Identity} from '@interfaces/identity'
 import type {Info} from '@interfaces/info'
+import type {Seo} from '@interfaces/seo'
 
 interface Props {
   info: Info
+  seo?: Seo
 }
 
 import '@styles/global.css'
 import '@styles/layouts/common.css'
 
-const identity = (await fetchIdentity()) as Identity || {}
+const identity = ((await fetchIdentity()) as Identity) || {}
 const {info, seo} = Astro.props
 ---
 

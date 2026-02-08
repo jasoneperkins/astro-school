@@ -46,8 +46,20 @@ query GetPageBySlug($slug: String!) {
       }
     }
     seo {
+      # Basic
       metaTitle
       metaDescription
+      breadcrumbsTitle
+      canonicalUrl
+      
+      # Robots & Schema
+      noIndex
+      noFollow
+      schemaType
+
+      # Open Graph
+      shareTitle
+      shareDescription
       shareImage {
         _type
         asset {
@@ -57,7 +69,20 @@ query GetPageBySlug($slug: String!) {
         }
         alt
       }
-      noIndex
+
+      # Twitter
+      twitterTitle
+      twitterDescription
+      twitterCardType
+      twitterImage {
+        _type
+        asset {
+          url
+          _id
+          metadata { lqip }
+        }
+        alt
+      }
     }
   }
 }

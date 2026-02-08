@@ -12,11 +12,13 @@ import {fetchGraphQL} from '@services/sanity'
 import {fetchPage} from '@queries/page'
 import {urlFor} from '@services/sanity'
 
+import type {Info} from '@interfaces/info'
 import type {Section} from '@interfaces/section'
+import type {SEO} from '@interfaces/seo'
 
 import '@styles/pages/home.css'
 
-const {info, content} = await fetchPage('index')
+const {info, content, seo} = await fetchPage('index')
 
 const classrooms = content?.find(
   (section: Section) => section._key === '45dcb5a3c7e2'
@@ -29,7 +31,7 @@ const benefits = content?.find(
 )
 ---
 
-<Layout {info}>
+<Layout {info} {seo}>
   {
     classrooms && (
       <section aria-labelledby="classrooms-label">

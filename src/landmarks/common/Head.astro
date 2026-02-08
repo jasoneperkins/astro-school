@@ -6,6 +6,7 @@ import {ClientRouter} from 'astro:transitions'
 import type {Info} from '@interfaces/info'
 import type {Identity} from '@interfaces/identity'
 import type {Seo} from '@interfaces/seo'
+import type {CustomImage} from '@interfaces/customImage'
 
 interface Props {
   info: Info
@@ -16,17 +17,47 @@ interface Props {
 const {href} = Astro.url
 const {info, identity, seo} = Astro.props
 
-const {title, subTitle, slug, publishDate, images, author} = info
-const {name: siteName, email, phone, address} = identity
-const {metaTitle, metaDescription, shareImage, noIndex} = seo
+const {title, slug, images, author} = info
+const {name: siteName} = identity
+const {
+  metaTitle,
+  metaDescription,
+  canonicalUrl,
+  noIndex = false,
+  noFollow = false,
+  shareTitle,
+  shareDescription,
+  shareImage,
+  twitterTitle,
+  twitterDescription,
+  twitterImage,
+  twitterCardType = 'summary_large_image'
+} = seo || {}
 
 const displayTitle = metaTitle || title || siteName
 const titleTemplate = slug?.current === 'index' ? undefined : `%s | ${siteName}`
 
-const ogImageUrl = images?.[0]
-  ? urlFor(images[0]).width(1200).height(630).url()
-  : '/default-og.jpg'
-const isLive = false
+const displayDescription = metaDescription || ''
+
+// 5. Logic: Social Text Fallbacks
+// If no specific social title is set, fall back to the main SEO title
+const ogTitle = shareTitle || displayTitle
+const ogDescription = shareDescription || displayDescription
+const twTitle = twitterTitle || ogTitle
+const twDescription = twitterDescription || ogDescription
+
+const getImgUrl = (image?: CustomImage, width = 1200, height = 630) =>
+  image ? urlFor(image).width(width).height(height).url() : undefined
+
+// Priority: Specific Social Image -> Page Main Image -> Default Site Image
+const pageMainImage = images?.[0]
+const ogImageUrl =
+  getImgUrl(shareImage, 1200, 630) ||
+  getImgUrl(pageMainImage, 1200, 630) ||
+  '/default-og.jpg'
+const twImageUrl = getImgUrl(twitterImage, 1200, 600) || ogImageUrl
+
+const isLive = import.meta.env.PROD // Only respect noIndex in production
 ---
 
 <head>
@@ -36,26 +67,33 @@ const isLive = false
   <SEO
     title={displayTitle}
     titleTemplate={titleTemplate}
-    description={metaDescription}
-    canonical={href}
+    description={displayDescription}
+    canonical={canonicalUrl || href}
+    noindex={noIndex || !isLive}
+    nofollow={noFollow || !isLive}
     openGraph={{
       basic: {
-        title: displayTitle,
-        type: 'website',
+        title: ogTitle,
+        type: 'website', // You could map schemaType here if you wanted dynamic types
         image: ogImageUrl
       },
-      article: {
-        authors: [author]
+      optional: {
+        description: ogDescription,
+        siteName: siteName
+      },
+      image: {
+        alt: ogTitle
       }
     }}
     twitter={{
-      card: 'summary_large_image',
-      title: displayTitle,
-      description: metaDescription,
-      image: ogImageUrl
+      card: twitterCardType,
+      site: '@yourtwitterhandle', // Optional: Add to Identity schema if needed
+      creator: author,
+      title: twTitle,
+      description: twDescription,
+      image: twImageUrl,
+      imageAlt: twTitle
     }}
-    noindex={!isLive}
-    nofollow={!isLive}
   />
 
   <link rel="icon" href="/favicon.ico" sizes="any" />
