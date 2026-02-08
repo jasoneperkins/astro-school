@@ -18,7 +18,6 @@ export const identityQuery = `
       address
       officeHours
       licenseNumber
-      # Fields are now queried directly on Identity
       facebook
       instagram
       twitter

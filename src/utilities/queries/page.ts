@@ -70,6 +70,10 @@ export async function fetchPage(slug: string = 'index'): Promise<Page> {
     pageData || {
       info: { title: '', slug: { current: slug } },
       content: [],
+      seo: {
+        metaTitle: '',
+        metaDescription: ''
+      },
       _type: 'Page'
     }
   )

@@ -13,7 +13,8 @@ export default {
     {
       name: 'info',
       title: 'Classroom Information',
-      type: 'Info'
+      type: 'Info',
+      group: 'info'
     },
     {
       name: 'pdfFile',
