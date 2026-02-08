@@ -5,6 +5,7 @@ import Newsletter from '../../src/utilities/documents/newsletter'
 import Page from '../../src/utilities/documents/page'
 
 // Objects
+import AssetExtension from '../../src/utilities/objects/assetExtension'
 import CustomImage from '../../src/utilities/objects/customImage'
 import Heading from '../../src/utilities/objects/heading'
 import Info from '../../src/utilities/objects/info'
@@ -13,6 +14,6 @@ import Seo from '../../src/utilities/objects/seo'
 import Social from '../../src/utilities/objects/social'
 
 const documentTypes = [Classroom, Identity, Newsletter, Page]
-const objectTypes = [CustomImage, Heading, Info, Section, Seo, Social]
+const objectTypes = [AssetExtension, CustomImage, Heading, Info, Section, Seo, Social]
 
 export const schemaTypes = [...documentTypes, ...objectTypes]

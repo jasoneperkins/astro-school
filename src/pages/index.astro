@@ -30,6 +30,12 @@ const introduction = content?.find(
 const benefits = content?.find(
   (section: Section) => section._key === '1f4fb8af196a'
 )
+
+const giraffImage = urlFor(
+  'image-74ac48a28f4b41ac5af29687d875a4075966c9d8-616x1201-webp'
+)
+  .width(500)
+  .url()
 ---
 
 <Layout {info} {seo} {social}>
@@ -105,6 +111,17 @@ const benefits = content?.find(
           </hgroup>
           {introduction?.body && <PortableText value={introduction.body} />}
         </div>
+        <Image
+          src={urlFor(
+            'image-74ac48a28f4b41ac5af29687d875a4075966c9d8-616x1201-webp'
+          )
+            .height(150)
+            .url()}
+          alt="Hardcoded site asset"
+          width={76.9167}
+          height={150}
+          class="absolute bottom-0 left-[50%] z-10 hidden md:block"
+        />
       </section>
     )
   }
