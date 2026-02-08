@@ -5,13 +5,23 @@
   grid-area: hd;
   animation:
     add-shadow linear both,
-    add-background linear both;
+    add-background linear both,
+    slide-up linear both;
   animation-timeline: scroll();
   animation-range: 2px 50px;
 }
 
 nav ul a {
   @apply transition-colors hover:text-blue-600;
+}
+
+@keyframes slide-up {
+  from {
+    top: 0;
+  }
+  to {
+    top: -50px;
+  }
 }
 
 @keyframes add-shadow {

@@ -6,16 +6,18 @@ import {ClientRouter} from 'astro:transitions'
 import type {Info} from '@interfaces/info'
 import type {Identity} from '@interfaces/identity'
 import type {Seo} from '@interfaces/seo'
+import type {Social} from '@interfaces/social'
 import type {CustomImage} from '@interfaces/customImage'
 
 interface Props {
   info: Info
   identity: Identity
   seo: Seo
+  social?: Social
 }
 
 const {href} = Astro.url
-const {info, identity, seo} = Astro.props
+const {info, identity, seo, social} = Astro.props
 
 const {title, slug, images, author} = info
 const {name: siteName} = identity
@@ -24,7 +26,9 @@ const {
   metaDescription,
   canonicalUrl,
   noIndex = false,
-  noFollow = false,
+  noFollow = false
+} = seo || {}
+const {
   shareTitle,
   shareDescription,
   shareImage,
@@ -32,15 +36,13 @@ const {
   twitterDescription,
   twitterImage,
   twitterCardType = 'summary_large_image'
-} = seo || {}
+} = social || {}
 
 const displayTitle = metaTitle || title || siteName
 const titleTemplate = slug?.current === 'index' ? undefined : `%s | ${siteName}`
 
 const displayDescription = metaDescription || ''
 
-// 5. Logic: Social Text Fallbacks
-// If no specific social title is set, fall back to the main SEO title
 const ogTitle = shareTitle || displayTitle
 const ogDescription = shareDescription || displayDescription
 const twTitle = twitterTitle || ogTitle

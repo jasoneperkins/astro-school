@@ -10,8 +10,9 @@ import Heading from '../../src/utilities/objects/heading'
 import Info from '../../src/utilities/objects/info'
 import Section from '../../src/utilities/objects/section'
 import Seo from '../../src/utilities/objects/seo'
+import Social from '../../src/utilities/objects/social'
 
 const documentTypes = [Classroom, Identity, Newsletter, Page]
-const objectTypes = [CustomImage, Heading, Info, Section, Seo]
+const objectTypes = [CustomImage, Heading, Info, Section, Seo, Social]
 
 export const schemaTypes = [...documentTypes, ...objectTypes]

@@ -56,7 +56,8 @@ query GetPageBySlug($slug: String!) {
       noIndex
       noFollow
       schemaType
-
+    }
+    social {
       # Open Graph
       shareTitle
       shareDescription

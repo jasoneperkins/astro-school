@@ -4,25 +4,25 @@ import Layout from '@layouts/Common.astro'
 import ContactForm from '@components/ContactForm.astro'
 import ItemCard from '@components/ItemCard.astro'
 
-import {Image} from 'astro:assets'
-import {Icon} from 'astro-icon/components'
-import {PortableText} from 'astro-portabletext'
+import { Image } from 'astro:assets'
+import { Icon } from 'astro-icon/components'
+import { PortableText } from 'astro-portabletext'
 
-import {fetchGraphQL} from '@services/sanity'
-import {fetchPage} from '@queries/page'
-import {urlFor} from '@services/sanity'
+import { fetchGraphQL } from '@services/sanity'
+import { fetchPage } from '@queries/page'
+import { urlFor } from '@services/sanity'
 
-import type {Info} from '@interfaces/info'
-import type {Section} from '@interfaces/section'
-import type {Seo} from '@interfaces/seo'
+import type { Info } from '@interfaces/info'
+import type { Section } from '@interfaces/section'
+import type { Seo } from '@interfaces/seo'
 
 interface Props {
   info: Info
   seo: Seo
 }
 
-const {pathname} = Astro.url
-const {info, content, seo} = await fetchPage(pathname.slice(1))
+const { pathname } = Astro.url
+const { info, content, seo } = await fetchPage(pathname.slice(1))
 ---
 
 <Layout {info} {seo}>
@@ -53,20 +53,22 @@ const {info, content, seo} = await fetchPage(pathname.slice(1))
       <a
         href="https://www.google.com/maps/dir/?api=1&destination=Temple+Beit+HaYam+Stuart+FL"
         target="_blank"
-        class="btn mt-8">
+        class="btn mt-8"
+      >
         Get Directions
       </a>
     </div>
   </section>
-  <section>
+  <section class="fullwidth !pt-0">
     <iframe
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3548.808007653033!2d-80.22421092420284!3d27.19377044795511!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88dedd9a976322d1%3A0xf15d64231fbc707a!2sTemple%20Beit%20HaYam!5e0!3m2!1sen!2sus!4v1769640905935!5m2!1sen!2sus"
       width="100%"
       height="300"
-      style="border:0;"
+      style="border:0; border-radius: 1rem;"
       allowfullscreen=""
       loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade">
+      referrerpolicy="no-referrer-when-downgrade"
+    >
     </iframe>
   </section>
 </Layout>

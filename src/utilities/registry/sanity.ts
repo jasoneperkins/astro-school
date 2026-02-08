@@ -14,6 +14,7 @@ import type { Newsletter as NewsletterInterface } from '@interfaces/newsletter'
 import type { Page as PageInterface } from '@interfaces/page'
 import type { Section as SectionInterface } from '@interfaces/section'
 import type { Seo as SeoInterface } from '@interfaces/seo'
+import type { Social as SocialInterface } from '@interfaces/social'
 
 // Object Imports
 import CustomImage from '@objects/customImage'
@@ -21,9 +22,10 @@ import Heading from '@objects/heading'
 import Info from '@objects/info'
 import Section from '@objects/section'
 import Seo from '@objects/seo'
+import Social from '@objects/social'
 
 const documentTypes = [Classroom, Identity, Newsletter, Page]
-const objectTypes = [CustomImage, Heading, Info, Section, Seo]
+const objectTypes = [CustomImage, Heading, Info, Section, Seo, Social]
 
 export const schemaTypes = [...objectTypes, ...documentTypes]
 export type {
@@ -35,5 +37,6 @@ export type {
   NewsletterInterface as Newsletter,
   PageInterface as Page,
   SectionInterface as Section,
-  SeoInterface as Seo
+  SeoInterface as Seo,
+  SocialInterface as Social
 }

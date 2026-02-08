@@ -11,15 +11,4 @@ export interface Seo {
   noIndex?: boolean
   noFollow?: boolean
   schemaType?: 'WebPage' | 'Article' | 'FAQPage' | 'AboutPage' | 'ContactPage'
-
-  // Open Graph / Facebook
-  shareTitle?: string
-  shareDescription?: string
-  shareImage?: CustomImage
-
-  // Twitter
-  twitterTitle?: string
-  twitterDescription?: string
-  twitterImage?: CustomImage
-  twitterCardType?: 'summary_large_image' | 'summary'
 }

@@ -5,36 +5,39 @@ import Drawer from '@landmarks/common/Drawer.astro'
 import Footer from '@landmarks/common/Footer.astro'
 import Hero from '@landmarks/Hero.astro'
 
-import {fetchGraphQL} from '@services/sanity'
-import {fetchIdentity} from '@queries/identity'
+import { fetchGraphQL } from '@services/sanity'
+import { fetchIdentity } from '@queries/identity'
 
-import type {Identity} from '@interfaces/identity'
-import type {Info} from '@interfaces/info'
-import type {Seo} from '@interfaces/seo'
+import type { Identity } from '@interfaces/identity'
+import type { Info } from '@interfaces/info'
+import type { Seo } from '@interfaces/seo'
+import type { Social } from '@interfaces/social'
 
 interface Props {
   info: Info
   seo?: Seo
+  social?: Social
 }
 
 import '@styles/global.css'
 import '@styles/layouts/common.css'
 
 const identity = ((await fetchIdentity()) as Identity) || {}
-const {info, seo} = Astro.props
+const { info, seo, social } = Astro.props
 ---
 
 <html lang="en-US">
-  <Head {info} {identity} {seo} />
+  <Head {info} {identity} {seo} {social} />
   <body x-data="{ isDrawerOpen: false }">
     <a
       href="#main-content"
-      class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-white focus:p-4 focus:text-blue-900">
+      class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-white focus:p-4 focus:text-blue-900"
+    >
       Skip to content
     </a>
     <Header {identity} />
     <main id="main-content">
-      <Hero {info} />
+      <Hero {info} {seo} />
       <slot />
     </main>
     <Footer {identity} />

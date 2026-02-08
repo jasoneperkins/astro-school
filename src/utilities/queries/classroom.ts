@@ -32,7 +32,8 @@ export const classroomQuery = `
         noIndex
         noFollow
         schemaType
-  
+      }
+      social {
         # Open Graph
         shareTitle
         shareDescription

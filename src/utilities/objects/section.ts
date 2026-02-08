@@ -6,6 +6,12 @@ export default {
   type: 'object',
   fields: [
     {
+      name: 'name',
+      title: 'Name',
+      type: 'string',
+      validation: (Rule: Rule) => Rule.required()
+    },
+    {
       name: 'heading',
       title: 'Heading',
       type: 'Heading'

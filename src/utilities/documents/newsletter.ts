@@ -7,7 +7,8 @@ export default {
   groups: [
     { name: 'info', title: 'Page Info', default: true },
     { name: 'content', title: 'Page Content' },
-    { name: 'seo', title: 'SEO & Social' }
+    { name: 'seo', title: 'SEO & Social' },
+    { name: 'social', title: 'Social' }
   ],
   fields: [
     {
@@ -36,6 +37,12 @@ export default {
       title: 'SEO Overrides',
       type: 'seo',
       group: 'seo'
+    },
+    {
+      name: 'social',
+      title: 'Social Sharing',
+      type: 'social',
+      group: 'social'
     }
   ],
   preview: {

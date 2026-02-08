@@ -3,9 +3,10 @@ export default {
   type: 'document',
   title: 'Page',
   groups: [
-    { name: 'info', title: 'Page Info', default: true },
-    { name: 'content', title: 'Page Content' },
-    { name: 'seo', title: 'SEO & Social' }
+    { name: 'info', title: 'Info', default: true },
+    { name: 'content', title: 'Content' },
+    { name: 'seo', title: 'SEO' },
+    { name: 'social', title: 'Social' }
   ],
   fields: [
     {
@@ -23,9 +24,15 @@ export default {
     },
     {
       name: 'seo',
-      title: 'SEO Overrides',
+      title: 'Search Engine Optimization',
       type: 'seo',
       group: 'seo'
+    },
+    {
+      name: 'social',
+      title: 'Social Sharing',
+      type: 'social',
+      group: 'social'
     }
   ],
   preview: {

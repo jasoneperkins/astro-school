@@ -14,11 +14,12 @@ import {urlFor} from '@services/sanity'
 
 import type {Info} from '@interfaces/info'
 import type {Section} from '@interfaces/section'
-import type {SEO} from '@interfaces/seo'
+import type {Seo} from '@interfaces/seo'
+import type {Social} from '@interfaces/social'
 
 import '@styles/pages/home.css'
 
-const {info, content, seo} = await fetchPage('index')
+const {info, content, seo, social} = await fetchPage('index')
 
 const classrooms = content?.find(
   (section: Section) => section._key === '45dcb5a3c7e2'
@@ -31,7 +32,7 @@ const benefits = content?.find(
 )
 ---
 
-<Layout {info} {seo}>
+<Layout {info} {seo} {social}>
   {
     classrooms && (
       <section aria-labelledby="classrooms-label">

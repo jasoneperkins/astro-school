@@ -1,5 +1,6 @@
 import type { CustomImage } from '@interfaces/customImage'
 import type { Heading } from '@interfaces/heading'
+import type { PortableTextBlock } from 'sanity'
 
 export interface Section {
   _type: 'Section'
@@ -8,6 +9,6 @@ export interface Section {
   heading?: Heading
   slug: { current: string }
   showHeader?: boolean
-  body?: any[]
+  body?: PortableTextBlock[]
   images?: CustomImage[]
 }
