@@ -11,6 +11,7 @@
 @import './abstracts/spacing.css';
 
 /* base */
+@import './base/animate.css';
 @import './base/backgrounds.css';
 @import './base/colors.css';
 @import './base/content.css';

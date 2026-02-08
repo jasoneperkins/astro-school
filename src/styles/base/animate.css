@@ -16,10 +16,10 @@
   animation-timeline: scroll(x);
 }
 
-@utility animate-start-* {
+@utility start-* {
   animation-range: --value(--animate-start-*);
 }
 
-@utility animate-end-* {
+@utility end-* {
   animation-range: --value(--animate-end-*);
 }
