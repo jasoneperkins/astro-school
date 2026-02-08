@@ -3,10 +3,10 @@
 #commonHeader {
   @apply fixed top-0 z-20 w-full;
   grid-area: hd;
-  animation:
-    add-shadow linear both,
-    add-background linear both,
-    slide-up linear both;
+  animation-name: add-shadow, add-background, slide-up;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+  animation-duration: 1ms; /* Compatibility for scroll-driven animations */
   animation-timeline: scroll();
   animation-range: 2px 50px;
 }

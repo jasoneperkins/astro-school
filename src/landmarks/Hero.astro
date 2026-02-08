@@ -1,22 +1,22 @@
 ---
-import { Image } from 'astro:assets'
+import {Image} from 'astro:assets'
 
-import { urlFor } from '@services/sanity'
+import {urlFor} from '@services/sanity'
 
-import type { Info } from '@interfaces/info'
-import type { Seo } from '@interfaces/seo'
+import type {Info} from '@interfaces/info'
+import type {Seo} from '@interfaces/seo'
 
 interface Props {
   info: Info
   seo?: Seo
 }
 
-const { pathname } = Astro.url
+const {pathname} = Astro.url
 const {
-  info: { title, subTitle, description, images = [] },
+  info: {title, subTitle, description, images = []},
   seo
 } = Astro.props
-const { metaDescription } = seo || {}
+const {metaDescription} = seo || {}
 const backgroundUrl = images?.[0]
   ? `url("${urlFor(images[0]).width(1200).url()}")`
   : ''
@@ -81,14 +81,29 @@ const backgroundUrl = images?.[0]
         <div class="absolute top-60 left-100 size-20 rounded-full bg-orange-200" />
         <div class="absolute top-110 left-60 size-10 rounded-full bg-orange-400" />
       </div>
+      <nav id="absolute bottom-0">
+        <ul class="flex flex-col md:flex-row gap-x-8 gap-y-2 text-sm">
+          <li>
+            <a href="#">Toddlers</a>
+          </li>
+          <li>
+            <a href="#">Terrific 2s</a>
+          </li>
+          <li>
+            <a href="#">Thriving 3s</a>
+          </li>
+          <li>
+            <a href="#">VPK</a>
+          </li>
+        </ul>
+      </nav>
     </header>
   ) : (
     <header
       class:list={[
         images?.[0] ? 'bg-image' : 'bg-mesh',
         'pt-hero bg-gradient-white items-end bg-cover bg-center bg-no-repeat pb-2'
-      ]}
-    >
+      ]}>
       <hgroup class="text-center">
         <p class="tagline">{subTitle}</p>
         <h1>{title}</h1>
@@ -97,7 +112,7 @@ const backgroundUrl = images?.[0]
   )
 }
 
-<style define:vars={{ backgroundUrl }}>
+<style define:vars={{backgroundUrl}}>
   .bg-image {
     background-image: var(--backgroundUrl);
   }

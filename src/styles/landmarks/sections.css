@@ -19,6 +19,10 @@
     @apply col-[fullwidth];
   }
 
+  &.screen > * {
+    @apply col-[screen];
+  }
+
   @variant lg {
     :nth-child(1 of .half) {
       grid-column-end: center;
