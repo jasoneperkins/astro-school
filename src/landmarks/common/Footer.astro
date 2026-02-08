@@ -3,6 +3,7 @@ import { Icon } from 'astro-icon/components'
 
 import { fetchGraphQL } from '@services/sanity'
 import type { Identity } from '@interfaces/identity'
+import MapFacade from '@components/MapFacade.astro'
 
 import '@styles/landmarks/common/footer.css'
 
@@ -47,20 +48,13 @@ const currentYear = new Date().getFullYear()
     <div class="md:col-span-2">
       <h2 class="mb-4 text-lg! text-white!">Contact Us</h2>
       <address class="grid space-y-3 gap-x-4 text-sm not-italic md:grid-cols-2">
-        <iframe
-          src={`https://maps.google.com/maps?q=${encodeURIComponent(address)}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
-          title={`Map showing location of ${name}`}
-          width="100%"
-          height="150"
-          style="border:0;"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-        >
-        </iframe>
+        <MapFacade {address} {name} />
         <ul class="space-y-4">
           <li>
-            <a href={`tel:${phone.replace(/\D/g, '')}`} class="flex gap-x-1">
+            <a
+              href={`tel:${phone.replace(/\D/g, '')}`}
+              class="flex gap-x-1"
+              aria-label={`Call us at ${phone}`}>
               <Icon
                 name="line-md:phone-twotone-loop"
                 aria-hidden="true"
@@ -70,7 +64,10 @@ const currentYear = new Date().getFullYear()
             </a>
           </li>
           <li>
-            <a href={`mailto:${email}`} class="flex gap-x-1">
+            <a
+              href={`mailto:${email}`}
+              class="flex gap-x-1"
+              aria-label={`Email us at ${email}`}>
               <Icon
                 name="line-md:email-filled"
                 aria-hidden="true"
@@ -93,7 +90,7 @@ const currentYear = new Date().getFullYear()
               target="_blank"
               rel="noopener noreferrer"
               class="flex gap-x-1"
-            >
+              aria-label={`Visit us at ${address}`}>
               <Icon
                 name="line-md:map-marker-twotone-loop"
                 aria-hidden="true"
