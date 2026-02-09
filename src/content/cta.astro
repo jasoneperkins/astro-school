@@ -7,13 +7,14 @@ import {PortableText} from 'astro-portabletext'
 
 import {urlFor} from '@services/sanity'
 
-const {content} = Astro.props
 const {
-  heading = {title: 'Contact Us', subTitle: ''},
-  slug = {current: 'cta'},
+  heading = {title: 'Benefits', subTitle: ''},
+  slug = {current: 'benefits'},
   body = [],
-  images = []
-} = content
+  images = [],
+  cards = [],
+  cardAlign = 'left'
+} = Astro.props
 ---
 
 <section

@@ -1,19 +1,18 @@
 ---
 import IconCard from '@components/IconCard.astro'
 
-import { PortableText } from 'astro-portabletext'
+import {PortableText} from 'astro-portabletext'
 
-import { urlFor } from '@services/sanity'
+import {urlFor} from '@services/sanity'
 
-const { content } = Astro.props
 const {
-  heading = { title: 'Services', subTitle: '' },
-  slug = { current: 'services' },
+  heading = {title: 'Benefits', subTitle: ''},
+  slug = {current: 'benefits'},
   body = [],
   images = [],
   cards = [],
   cardAlign = 'left'
-} = content
+} = Astro.props
 ---
 
 <section aria-labelledby="services-label">

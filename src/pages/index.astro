@@ -5,7 +5,7 @@ import ContactForm from '@components/ContactForm.astro'
 import IconCard from '@components/IconCard.astro'
 
 import Benefits from '@content/benefits.astro'
-import Cta from '@content/Cta.astro'
+import Cta from '@content/cta.astro'
 import Services from '@content/services.astro'
 import Solutions from '@content/solutions.astro'
 
@@ -56,8 +56,8 @@ const giraffImage = urlFor(
 ---
 
 <Layout {info} {seo} {social}>
-  {benefits && <Benefits content={benefits} />}
-  {solutions && <Solutions content={solutions} />}
-  {services && <Services content={services} />}
-  {cta && <Cta content={cta} />}
+  {benefits && <Benefits {...benefits} />}
+  {solutions && <Solutions {...solutions} />}
+  {services && <Services {...services} />}
+  {cta && <Cta {...cta} />}
 </Layout>
