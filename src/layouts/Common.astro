@@ -7,6 +7,7 @@ import Hero from '@landmarks/Hero.astro'
 
 import { fetchGraphQL } from '@services/sanity'
 import { fetchIdentity } from '@queries/identity'
+import { fetchClassrooms } from '@queries/classroom'
 
 import type { Identity } from '@interfaces/identity'
 import type { Info } from '@interfaces/info'
@@ -23,11 +24,12 @@ import '@styles/global.css'
 import '@styles/layouts/common.css'
 
 const identity = ((await fetchIdentity()) as Identity) || {}
+const classrooms = await fetchClassrooms()
 const { info, seo, social } = Astro.props
 ---
 
 <html lang="en-US">
-  <Head {info} {identity} {seo} {social} />
+  <Head {info} {identity} seo={seo || {}} {social} />
   <body x-data="{ isDrawerOpen: false }">
     <a
       href="#main-content"
@@ -35,12 +37,12 @@ const { info, seo, social } = Astro.props
     >
       Skip to content
     </a>
-    <Header {identity} />
+    <Header {identity} {classrooms} />
     <main id="main-content">
       <Hero {info} {seo} />
       <slot />
     </main>
     <Footer {identity} />
-    <Drawer {identity} />
+    <Drawer {identity} {classrooms} />
   </body>
 </html>

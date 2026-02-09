@@ -1,0 +1,43 @@
+---
+import IconCard from '@components/IconCard.astro'
+
+import { PortableText } from 'astro-portabletext'
+
+import { urlFor } from '@services/sanity'
+
+const { content } = Astro.props
+const {
+  heading = { title: 'Services', subTitle: '' },
+  slug = { current: 'services' },
+  body = [],
+  images = [],
+  cards = [],
+  cardAlign = 'left'
+} = content
+---
+
+<section aria-labelledby="services-label">
+  <header>
+    <hgroup class="text-center">
+      {heading?.title && <h2 id="services-label">{heading?.title}</h2>}
+      {heading?.subTitle && <p>{heading?.subTitle}</p>}
+    </hgroup>
+  </header>
+  {
+    cards?.length && (
+      <ul class="grid grid-cols-1 justify-center gap-2 md:grid-cols-2 lg:grid-cols-4">
+        {cards.map((card: any) => (
+          <li>
+            <IconCard
+              title={card.title}
+              description={card.description}
+              sanityIcon={card.icon}
+              color={card.color}
+              align={cardAlign}
+            />
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</section>

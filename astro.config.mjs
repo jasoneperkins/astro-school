@@ -83,6 +83,7 @@ export default defineConfig({
         lucide: [
           'baby',
           'blocks',
+          'chevron-down',
           'graduation-cap',
           'home',
           'palette',

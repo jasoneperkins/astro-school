@@ -10,6 +10,7 @@
       "@assets/*": ["./src/assets/*"],
       "@components/*": ["./src/components/*"],
       "@constants/*": ["./src/utilities/constants/*"],
+      "@content/*": ["./src/content/*"],
       "@documents/*": ["./src/utilities/documents/*"],
       "@images/*": ["./src/assets/images/*"],
       "@interfaces/*": ["./src/utilities/interfaces/*"],

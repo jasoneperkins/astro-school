@@ -1,0 +1,16 @@
+---
+interface Props {
+  url: string;
+  class?: string;
+}
+
+const { url, class: className } = Astro.props;
+---
+
+<img 
+  src={url} 
+  class={className} 
+  alt="" 
+  aria-hidden="true" 
+  loading="lazy" 
+/>

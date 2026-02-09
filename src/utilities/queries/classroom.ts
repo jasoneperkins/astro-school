@@ -1,9 +1,20 @@
 import { fetchGraphQL } from '@services/sanity'
 import type { Classroom } from '@interfaces/classroom'
 
-export const classroomQuery = `
+export const allClassroomsQuery = `
   query GetAllClassrooms {
     allClassroom {
+      info {
+        title
+        slug { current }
+      }
+    }
+  }
+`
+
+export const classroomBySlugQuery = `
+  query GetClassroomBySlug($slug: String!) {
+    allClassroom(where: { info: { slug: { current: { eq: $slug } } } }) {
       info {
         _type
         title
@@ -65,7 +76,25 @@ export const classroomQuery = `
   }
 `
 
-export async function fetchClassrooms() {
-  const data = await fetchGraphQL<{ allClassroom: Classroom[] }>(classroomQuery)
+export async function fetchClassrooms(): Promise<Classroom[]> {
+  const data = await fetchGraphQL<{ allClassroom: Classroom[] }>(
+    allClassroomsQuery
+  )
   return data?.allClassroom || []
+}
+
+export async function fetchClassroom(slug: string): Promise<Classroom> {
+  const data = await fetchGraphQL<any>(classroomBySlugQuery, { slug })
+  const classroomData = data?.allClassroom?.[0]
+  return (
+    classroomData || {
+      info: { title: '', slug: { current: slug } },
+      content: [],
+      seo: {
+        metaTitle: '',
+        metaDescription: ''
+      },
+      _type: 'Classroom'
+    }
+  )
 }

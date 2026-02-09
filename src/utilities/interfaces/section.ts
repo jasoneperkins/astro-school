@@ -1,5 +1,6 @@
 import type { CustomImage } from '@interfaces/customImage'
 import type { Heading } from '@interfaces/heading'
+import type { IconCard } from '@interfaces/iconCard'
 import type { PortableTextBlock } from 'sanity'
 
 export interface Section {
@@ -11,4 +12,6 @@ export interface Section {
   showHeader?: boolean
   body?: PortableTextBlock[]
   images?: CustomImage[]
+  cards?: IconCard[]
+  cardAlign?: 'left' | 'center'
 }

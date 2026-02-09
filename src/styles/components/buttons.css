@@ -10,27 +10,39 @@
 
 /* Color Variants */
 .btn-blue {
-  @apply border-blue-600 bg-blue-600 text-white;
+  @apply border-blue bg-blue text-white;
 }
 
 .btn-green {
-  @apply border-green-600 bg-green-600 text-white;
+  @apply border-green bg-green text-white;
 }
 
 .btn-orange {
-  @apply border-orange-600 bg-orange-600 text-white;
+  @apply border-orange bg-orange text-white;
 }
 
 .btn-red {
-  @apply border-red-600 bg-red-600 text-white;
+  @apply border-red bg-red text-white;
+}
+
+.btn-purple {
+  @apply border-purple bg-purple text-white;
+}
+
+.btn-teal {
+  @apply border-teal bg-teal text-white;
+}
+
+.btn-yellow {
+  @apply border-yellow bg-yellow text-gray-900;
 }
 
 .btn-white {
-  @apply border-white bg-white text-blue-900;
+  @apply text-blue border-white bg-white;
 }
 
 /* Outline Variant */
 .btn-outline {
-  @apply border-gray-400 bg-transparent text-gray-700;
-  @apply hover:border-gray-500 hover:bg-gray-50;
+  @apply border-gray/40 text-gray/70 bg-transparent;
+  @apply hover:border-gray/50 hover:bg-gray/5;
 }

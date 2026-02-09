@@ -19,13 +19,24 @@ import type { Social as SocialInterface } from '@interfaces/social'
 // Object Imports
 import CustomImage from '@objects/customImage'
 import Heading from '@objects/heading'
+import Icon from '@objects/icon'
+import IconCard from '@objects/iconCard'
 import Info from '@objects/info'
 import Section from '@objects/section'
 import Seo from '@objects/seo'
 import Social from '@objects/social'
 
 const documentTypes = [Classroom, Identity, Newsletter, Page]
-const objectTypes = [CustomImage, Heading, Info, Section, Seo, Social]
+const objectTypes = [
+  CustomImage,
+  Heading,
+  Icon,
+  IconCard,
+  Info,
+  Section,
+  Seo,
+  Social
+]
 
 export const schemaTypes = [...objectTypes, ...documentTypes]
 export type {

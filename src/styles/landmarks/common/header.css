@@ -6,13 +6,14 @@
   animation-name: add-shadow, add-background, slide-up;
   animation-timing-function: linear;
   animation-fill-mode: both;
-  animation-duration: 1ms; /* Compatibility for scroll-driven animations */
+  animation-duration: 1ms;
   animation-timeline: scroll();
   animation-range: 2px 50px;
 }
 
-nav ul a {
-  @apply transition-colors hover:text-blue-600;
+nav ul a,
+nav ul button {
+  @apply cursor-pointer transition-colors hover:text-blue-600;
 }
 
 @keyframes slide-up {
@@ -44,4 +45,13 @@ nav ul a {
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
   }
+}
+
+.submenu {
+  @apply border-gray/10 rounded-xl border bg-white/95 p-6 shadow-2xl backdrop-blur-md;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.submenu a {
+  @apply text-gray/90 hover:bg-blue/5 hover:text-blue block rounded-lg px-3 py-2 transition-all duration-200 hover:translate-x-1;
 }

@@ -2,7 +2,7 @@
 import Layout from '@layouts/Common.astro'
 
 import ContactForm from '@components/ContactForm.astro'
-import ItemCard from '@components/ItemCard.astro'
+import IconCard from '@components/IconCard.astro'
 
 import {Image} from 'astro:assets'
 import {Icon} from 'astro-icon/components'
@@ -22,6 +22,9 @@ const mission = content?.find(
 )
 const values = content?.find(
   (section: Section) => section._key === '7b82e68a29d9'
+)
+const coreValuesSection = content?.find(
+  (section: Section) => section.name === 'values' || section.name === 'core-values'
 )
 ---
 
@@ -72,30 +75,44 @@ Inclusion, Dignity, Growth, and Community with individual icons. -->
           </hgroup>
         </header>
         <div class="mt-8 grid grid-cols-1 justify-center gap-8 text-slate-800 md:grid-cols-2 lg:grid-cols-4">
-          <div class="border-t-4 border-red-500 bg-white px-4 py-8 shadow-sm transition-shadow hover:shadow-md">
-            <h3 class="mb-2 text-2xl font-bold">Inclusion</h3>
-            <p class="text-sm text-slate-800">
-              Welcoming all families and faiths into our community.
-            </p>
-          </div>
-          <div class="border-t-4 border-blue-500 bg-white px-4 py-8 shadow-sm transition-shadow hover:shadow-md">
-            <h3 class="mb-2 text-2xl font-bold">Dignity</h3>
-            <p class="text-sm text-slate-800">
-              Treating every child with the respect they deserve.
-            </p>
-          </div>
-          <div class="border-t-4 border-green-500 bg-white px-4 py-8 shadow-sm transition-shadow hover:shadow-md">
-            <h3 class="mb-2 text-2xl font-bold">Growth</h3>
-            <p class="text-sm text-slate-800">
-              Nurturing both the heart and the mind of every student.
-            </p>
-          </div>
-          <div class="border-t-4 border-orange-500 bg-white px-4 py-8 shadow-sm transition-shadow hover:shadow-md">
-            <h3 class="mb-2 text-2xl font-bold">Community</h3>
-            <p class="text-sm text-slate-800">
-              Building lasting relationships beyond the classroom.
-            </p>
-          </div>
+          {coreValuesSection?.cards?.length ? (
+            coreValuesSection.cards.map((card: any) => (
+              <IconCard
+                title={card.title}
+                description={card.description}
+                sanityIcon={card.icon}
+                color={card.color}
+                align={coreValuesSection.cardAlign}
+              />
+            ))
+          ) : (
+            <>
+              <IconCard
+                title="Inclusion"
+                description="Welcoming all families and faiths into our community."
+                color="red"
+                align="center"
+              />
+              <IconCard
+                title="Dignity"
+                description="Treating every child with the respect they deserve."
+                color="blue"
+                align="center"
+              />
+              <IconCard
+                title="Growth"
+                description="Nurturing both the heart and the mind of every student."
+                color="green"
+                align="center"
+              />
+              <IconCard
+                title="Community"
+                description="Building lasting relationships beyond the classroom."
+                color="orange"
+                align="center"
+              />
+            </>
+          )}
         </div>
       </section>
     )

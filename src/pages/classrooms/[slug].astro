@@ -1,11 +1,23 @@
 ---
 import Layout from '@layouts/Common.astro'
+import { fetchClassroom, fetchClassrooms } from '@queries/classroom'
 
-const title = 'Classroom'
+export async function getStaticPaths() {
+  const classrooms = await fetchClassrooms()
+
+  return classrooms.map((classroom) => ({
+    params: { slug: classroom.info.slug.current },
+    props: { slug: classroom.info.slug.current }
+  }))
+}
+
+const { slug } = Astro.params
+const classroom = await fetchClassroom(slug)
 ---
 
-<Layout>
+<Layout info={classroom.info} seo={classroom.seo} social={classroom.social}>
   <header>
-    <h1>{title}</h1>
+    <h1>{classroom.info.title}</h1>
+    {classroom.info.subTitle && <p>{classroom.info.subTitle}</p>}
   </header>
 </Layout>

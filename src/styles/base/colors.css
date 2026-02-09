@@ -1,7 +1,7 @@
 body {
-  @apply text-gray-800;
+  @apply text-gray;
 }
 
 .tagline {
-  @apply text-blue-700;
+  @apply text-blue;
 }

@@ -3,14 +3,16 @@ import ContactForm from '@components/ContactForm.astro'
 
 import {Icon} from 'astro-icon/components'
 import type {Identity} from '@interfaces/identity'
+import type {Classroom} from '@interfaces/classroom'
 
 import '@styles/landmarks/common/drawer.css'
 
 interface Props {
   identity: Identity
+  classrooms: Classroom[]
 }
 
-const {identity} = Astro.props
+const {identity, classrooms} = Astro.props
 ---
 
 <aside
@@ -48,7 +50,7 @@ const {identity} = Astro.props
       <span class="text-lg">{identity.name}</span>
     </div>
     <nav aria-label="Mobile Navigation">
-      <ul>
+      <ul x-data="{ isClassroomsOpen: false }">
         <li>
           <a href="/" @click="isDrawerOpen = false">
             <Icon name="lucide:home" size={20} aria-hidden="true" />Home
@@ -60,9 +62,39 @@ const {identity} = Astro.props
           </a>
         </li>
         <li>
-          <a href="#" @click="isDrawerOpen = false">
-            <Icon name="lucide:blocks" size={20} aria-hidden="true" />Classrooms
-          </a>
+          <button
+            class="flex w-full items-center justify-between gap-2 text-left"
+            @click="isClassroomsOpen = !isClassroomsOpen">
+            <span class="flex items-center gap-2">
+              <Icon
+                name="lucide:blocks"
+                size={20}
+                aria-hidden="true"
+              />Classrooms
+            </span>
+            <Icon
+              name="lucide:chevron-down"
+              class="size-4 transition-transform"
+              :class="isClassroomsOpen ? 'rotate-180' : ''"
+            />
+          </button>
+          <ul
+            x-show="isClassroomsOpen"
+            x-collapse
+            class="mt-2 space-y-2 border-l border-slate-200 pl-8">
+            {
+              classrooms.map(classroom => (
+                <li>
+                  <a
+                    href={`/classrooms/${classroom.info.slug.current}`}
+                    @click="isDrawerOpen = false"
+                    class="text-sm">
+                    {classroom.info.title}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
         </li>
         <li>
           <a href="#" @click="isDrawerOpen = false">

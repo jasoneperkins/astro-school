@@ -8,7 +8,7 @@ export default defineConfig({
   title: 'ECLC, Stuart Florida',
   projectId: 'nn95ygkm',
   dataset: 'production',
-  plugins: [media(), structureTool()],
+  plugins: [structureTool(), media()],
   basePath: '/playground',
   schema: {
     types: schemaTypes,

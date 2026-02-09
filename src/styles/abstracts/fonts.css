@@ -6,7 +6,7 @@
   --font-scale: 1.1;
 
   /* Fluid Typography Tokens */
-  --text-h1: clamp(2.25rem, 6vw, calc(1rem * pow(var(--font-scale), 9)));
+  --text-h1: clamp(2.25rem, 8vw, calc(1rem * pow(var(--font-scale), 13)));
   --text-h2: clamp(1.85rem, 4vw, calc(1rem * pow(var(--font-scale), 5)));
   --text-h3: clamp(1.5rem, 3vw, calc(1rem * pow(var(--font-scale), 4)));
   --text-h4: clamp(1.25rem, 2vw, calc(1rem * pow(var(--font-scale), 3)));

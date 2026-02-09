@@ -1,65 +1,11 @@
 @theme {
-  /* Lochmara Palette */
-  --color-blue-50: #f0f7fc;
-  --color-blue-100: #dff0f9;
-  --color-blue-200: #b8daf2;
-  --color-blue-300: #7abce6;
-  --color-blue-400: #349ad4;
-  --color-blue-500: #007ec7;
-  --color-blue-600: #00659f;
-  --color-blue-700: #00588b;
-  --color-blue-800: #004a75;
-  --color-blue-900: #063e61;
-
-  /* Maroon Flush Palette */
-  --color-red-50: #fff0f2;
-  --color-red-100: #ffe3e8;
-  --color-red-200: #ffcbd6;
-  --color-red-300: #ffa0b5;
-  --color-red-400: #ff6b8f;
-  --color-red-500: #fc376c;
-  --color-red-600: #ea1457;
-  --color-red-700: #d10b4e;
-  --color-red-800: #a50c44;
-  --color-red-900: #8d0e41;
-  --color-red-950: #4f021f;
-
-  /* Shamrock Palette */
-  --color-green-50: #eefbf6;
-  --color-green-100: #d5f6e6;
-  --color-green-200: #afebd2;
-  --color-green-300: #7bdab8;
-  --color-green-400: #4ac49d;
-  --color-green-500: #22a781;
-  --color-green-600: #148768;
-  --color-green-700: #106c56;
-  --color-green-800: #0f5645;
-  --color-green-900: #0e463a;
-  --color-green-950: #062822;
-
-  /* Pumpkin Palette */
-  --color-orange-50: #fff7ed;
-  --color-orange-100: #ffedd5;
-  --color-orange-200: #fed6aa;
-  --color-orange-300: #fdb974;
-  --color-orange-400: #fb903c;
-  --color-orange-500: #f9731a;
-  --color-orange-600: #ea560c;
-  --color-orange-700: #c23f0c;
-  --color-orange-800: #9a3312;
-  --color-orange-900: #7c2c12;
-  --color-orange-950: #431307;
-
-  /* Bismark Palette */
-  --color-gray-50: #f4f6f7;
-  --color-gray-100: #e2e8eb;
-  --color-gray-200: #c8d3d9;
-  --color-gray-300: #a2b4be;
-  --color-gray-400: #758c9b;
-  --color-gray-500: #5a7181;
-  --color-gray-600: #4d5f6d;
-  --color-gray-700: #43505b;
-  --color-gray-800: #3c454e;
-  --color-gray-900: #353c44;
-  --color-gray-950: #20252c;
+  /* Base Colors (OKLCH) */
+  --color-blue: oklch(0.49 0.12 244.27); /* Lochmara */
+  --color-gray: oklch(44.47% 0.035 241.6); /* Bismark */
+  --color-green: oklch(49.92% 0.145 163.77); /* Shamrock */
+  --color-orange: oklch(56.9% 0.231 40.8); /* Pumpkin */
+  --color-purple: oklch(52% 0.18 295); /* Affair */
+  --color-red: oklch(53.28% 0.245 15.54); /* Maroon Flush */
+  --color-teal: oklch(58% 0.12 185); /* Tradewind */
+  --color-yellow: oklch(78% 0.16 90); /* Galliano */
 }

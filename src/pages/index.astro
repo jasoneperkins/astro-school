@@ -2,7 +2,14 @@
 import Layout from '@layouts/Common.astro'
 
 import ContactForm from '@components/ContactForm.astro'
-import ItemCard from '@components/ItemCard.astro'
+import IconCard from '@components/IconCard.astro'
+
+import Benefits from '@content/benefits.astro'
+import Cta from '@content/Cta.astro'
+import Services from '@content/services.astro'
+import Solutions from '@content/solutions.astro'
+
+import '@styles/pages/home.css'
 
 import {Image} from 'astro:assets'
 import {Icon} from 'astro-icon/components'
@@ -17,18 +24,27 @@ import type {Section} from '@interfaces/section'
 import type {Seo} from '@interfaces/seo'
 import type {Social} from '@interfaces/social'
 
-import '@styles/pages/home.css'
+interface Props {
+  info: Info
+  content: Section[]
+  seo: Seo
+  social: Social
+}
 
-const {info, content, seo, social} = await fetchPage('index')
+const homePage = await fetchPage('index')
+const {info, content, seo, social} = homePage
 
-const classrooms = content?.find(
-  (section: Section) => section._key === '45dcb5a3c7e2'
+const cta = content?.find(
+  (section: Section) => section.name === 'call-to-action'
 )
-const introduction = content?.find(
-  (section: Section) => section._key === 'dc8bfb64e0a0'
+const solutions = content?.find(
+  (section: Section) => section.name === 'solutions'
 )
 const benefits = content?.find(
-  (section: Section) => section._key === '1f4fb8af196a'
+  (section: Section) => section.name === 'benefits'
+)
+const services = content?.find(
+  (section: Section) => section.name === 'services'
 )
 
 const giraffImage = urlFor(
@@ -40,137 +56,8 @@ const giraffImage = urlFor(
 ---
 
 <Layout {info} {seo} {social}>
-  {
-    classrooms && (
-      <section aria-labelledby="classrooms-label">
-        <header>
-          <hgroup class="text-center">
-            {classrooms?.heading?.title && (
-              <h2 id="classrooms-label">{classrooms?.heading?.title}</h2>
-            )}
-            {classrooms?.heading?.subTitle && (
-              <p>{classrooms?.heading?.subTitle}</p>
-            )}
-          </hgroup>
-        </header>
-        <div class="grid grid-cols-1 justify-center gap-2 md:grid-cols-2 lg:grid-cols-4">
-          <ItemCard
-            title="Toddlers"
-            description="A gentle introduction to social play and discovery."
-            icon="lucide:baby"
-            color="red"
-            align="center"
-          />
-          <ItemCard
-            title="Terrific Twos"
-            description="Building independence through curiosity and hands-on learning."
-            icon="lucide:blocks"
-            color="blue"
-            align="center"
-          />
-          <ItemCard
-            title={"Preschool 3's"}
-            description="Developing confidence and early academic foundations."
-            icon="lucide:palette"
-            color="green"
-            align="center"
-          />
-          <ItemCard
-            title="VPK"
-            description="Preparing our oldest students for a successful transition to Kindergarten."
-            icon="lucide:graduation-cap"
-            color="orange"
-            align="center"
-          />
-        </div>
-      </section>
-    )
-  }
-  <!-- About/Introduction Section: A brief overview of who you are, what you do, and your mission. -->
-  {
-    introduction && (
-      <section class="items-center bg-gray-50">
-        <div class="half">
-          {introduction?.images?.[0] && (
-            <Image
-              src={urlFor(introduction.images[0]).width(640).height(440).url()!}
-              width="640"
-              height="440"
-              alt={introduction.images[0]?.alt || ''}
-              class="rounded-3xl"
-            />
-          )}
-        </div>
-        <div class="half">
-          <hgroup>
-            {introduction?.heading?.subTitle && (
-              <p class="tagline">{introduction?.heading?.subTitle}</p>
-            )}
-            {introduction?.heading?.title && (
-              <h2>{introduction?.heading?.title}</h2>
-            )}
-          </hgroup>
-          {introduction?.body && <PortableText value={introduction.body} />}
-        </div>
-        <Image
-          src={urlFor(
-            'image-74ac48a28f4b41ac5af29687d875a4075966c9d8-616x1201-webp'
-          )
-            .height(150)
-            .url()}
-          alt="Hardcoded site asset"
-          width={76.9167}
-          height={150}
-          class="absolute bottom-0 left-[50%] z-10 hidden md:block"
-        />
-      </section>
-    )
-  }
-  <!-- Services/Products Overview: A highlighted section showcasing what you offer, often with visual elements. -->
-  <section>
-    <header>
-      <hgroup class="text-center">
-        <h2>How We Help Your Child Bloom</h2>
-        <p>
-          We provide the tools and space for your child to explore their unique
-          talents
-        </p>
-      </hgroup>
-    </header>
-    <div class="grid grid-cols-1 justify-center gap-2 md:grid-cols-3">
-      <ItemCard
-        title="Expressing Creativity"
-        description="Kids express themselves through fun art, music, and dance."
-        icon="lucide:graduation-cap"
-        color="green"
-      />
-      <ItemCard
-        title="Growing Strong & Healthy"
-        description="Safe outdoor play helps children grow strong and healthy."
-        icon="lucide:graduation-cap"
-        color="orange"
-      />
-      <ItemCard
-        title="Kind Hearts & Good Friends"
-        description="Children learn to be kind and make good friends."
-        icon="lucide:graduation-cap"
-        color="blue"
-      />
-    </div>
-  </section>
-  <!-- Social Proof/Trust Signals: Testimonials, client logos, reviews, or case studies to build credibility. -->
-  <!-- Features -->
-  <!-- Call to Action (CTA) Section: A clear, repeated instruction for what the user should do next (e.g., "Contact Us," "Buy Now"). -->
-  <section
-    class="bg-gradient-blue bg-cover bg-fixed bg-center bg-no-repeat text-white">
-    <!-- style=`background-image: url(${bgContactUs.src})` -->
-    <div class="mx-auto max-w-prose">
-      <ContactForm
-        theme="dark"
-        submitText="Send us a message"
-        btnColor="white"
-      />
-    </div>
-  </section>
-  <!-- FAQs -->
+  {benefits && <Benefits content={benefits} />}
+  {solutions && <Solutions content={solutions} />}
+  {services && <Services content={services} />}
+  {cta && <Cta content={cta} />}
 </Layout>

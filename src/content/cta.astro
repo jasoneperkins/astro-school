@@ -1,0 +1,30 @@
+---
+import ContactForm from '@components/ContactForm.astro'
+import IconCard from '@components/IconCard.astro'
+
+import {Image} from 'astro:assets'
+import {PortableText} from 'astro-portabletext'
+
+import {urlFor} from '@services/sanity'
+
+const {content} = Astro.props
+const {
+  heading = {title: 'Contact Us', subTitle: ''},
+  slug = {current: 'cta'},
+  body = [],
+  images = []
+} = content
+---
+
+<section
+  id={slug?.current}
+  class="bg-gradient-blue bg-cover bg-fixed bg-center bg-no-repeat text-white">
+  <div class="mx-auto max-w-prose">
+    <hgroup class="text-center">
+      {heading?.subTitle && <p class="tagline">{heading?.subTitle}</p>}
+      {heading?.title && <h2>{heading?.title}</h2>}
+    </hgroup>
+    {body && <PortableText value={body} />}
+    <ContactForm theme="dark" submitText="Send us a message" btnColor="white" />
+  </div>
+</section>

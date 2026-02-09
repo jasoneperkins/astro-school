@@ -1,0 +1,60 @@
+---
+import ContactForm from '@components/ContactForm.astro'
+import IconCard from '@components/IconCard.astro'
+
+import {Image} from 'astro:assets'
+import {PortableText} from 'astro-portabletext'
+
+import {urlFor} from '@services/sanity'
+
+const {content} = Astro.props
+const {
+  heading = {title: 'Solutions', subTitle: ''},
+  slug = {current: 'solutions'},
+  body = [],
+  images = [],
+  cards = [],
+  cardAlign = 'left'
+} = content
+
+const giraffe = urlFor(
+  'image-74ac48a28f4b41ac5af29687d875a4075966c9d8-616x1201-webp'
+)
+  .width(77)
+  .height(150)
+  .url()
+---
+
+<section class="items-center bg-gray-50">
+  <div class="half">
+    {
+      images?.[0] && (
+        <Image
+          src={urlFor(images[0]).width(640).height(440).url()!}
+          width="640"
+          height="440"
+          alt={images[0]?.alt || ''}
+          class="rounded-3xl"
+        />
+      )
+    }
+  </div>
+  <div class="half">
+    <hgroup>
+      {heading?.subTitle && <p class="tagline">{heading?.subTitle}</p>}
+      {heading?.title && <h2>{heading?.title}</h2>}
+    </hgroup>
+    {body && <PortableText value={body} />}
+  </div>
+  {
+    giraffe && (
+      <Image
+        src={giraffe}
+        width={77}
+        height={150}
+        alt=""
+        class="absolute bottom-0 left-[53%]"
+      />
+    )
+  }
+</section>

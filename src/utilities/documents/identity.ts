@@ -5,7 +5,7 @@ export default defineType({
   title: 'Identity / Contact Info',
   type: 'document',
   groups: [
-    { name: 'identity', title: 'Business Details' },
+    { name: 'identity', title: 'Business Details', default: true },
     { name: 'contact', title: 'Contact Details' },
     { name: 'socials', title: 'Social Media' }
   ],

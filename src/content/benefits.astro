@@ -1,0 +1,45 @@
+---
+import ContactForm from '@components/ContactForm.astro'
+import IconCard from '@components/IconCard.astro'
+
+import {Image} from 'astro:assets'
+import {PortableText} from 'astro-portabletext'
+
+import {urlFor} from '@services/sanity'
+
+const {content} = Astro.props
+const {
+  heading = {title: 'Benefits', subTitle: ''},
+  slug = {current: 'benefits'},
+  body = [],
+  images = [],
+  cards = [],
+  cardAlign = 'left'
+} = content
+---
+
+<section>
+  <header>
+    <hgroup class="text-center">
+      <h2>{heading?.title}</h2>
+      <p>
+        {heading?.subTitle}
+      </p>
+    </hgroup>
+  </header>
+  {
+    cards?.length && (
+      <div class="grid grid-cols-1 justify-center gap-2 md:grid-cols-3">
+        {cards.map((card: any) => (
+          <IconCard
+            title={card.title}
+            description={card.description}
+            sanityIcon={card.icon}
+            color={card.color}
+            align={cardAlign}
+          />
+        ))}
+      </div>
+    )
+  }
+</section>

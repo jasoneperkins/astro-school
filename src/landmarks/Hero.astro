@@ -24,7 +24,7 @@ const backgroundUrl = images?.[0]
 
 {
   pathname == '/' ? (
-    <header class="bg-gradient-white pb-content-block min-h-145 items-center! overflow-y-visible! pt-45">
+    <header class="bg-gradient-white pb-content-block min-h-145 items-center! overflow-y-visible! pt-48">
       <div class="half space-y-4">
         {title && (
           <hgroup>
@@ -37,9 +37,7 @@ const backgroundUrl = images?.[0]
           </hgroup>
         )}
         {metaDescription && <p>{metaDescription}</p>}
-        <button class="btn btn-blue mt-4 animate-bounce">
-          Schedule a Tour
-        </button>
+        <button class="btn btn-blue mt-4 animate-bounce">Come Meet Us</button>
       </div>
       <div class="half relative col-end-[breakout-end]! hidden content-center self-stretch overflow-y-visible lg:grid">
         {images?.[0] && (
@@ -82,7 +80,7 @@ const backgroundUrl = images?.[0]
         <div class="absolute top-110 left-60 size-10 rounded-full bg-orange-400" />
       </div>
       <nav id="absolute bottom-0">
-        <ul class="flex flex-col md:flex-row gap-x-8 gap-y-2 text-sm">
+        <ul class="flex flex-col gap-x-8 gap-y-2 text-sm md:flex-row">
           <li>
             <a href="#">Toddlers</a>
           </li>

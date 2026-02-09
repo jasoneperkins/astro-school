@@ -8,12 +8,24 @@ import Page from '../../src/utilities/documents/page'
 import AssetExtension from '../../src/utilities/objects/assetExtension'
 import CustomImage from '../../src/utilities/objects/customImage'
 import Heading from '../../src/utilities/objects/heading'
+import Icon from '../../src/utilities/objects/icon'
+import IconCard from '../../src/utilities/objects/iconCard'
 import Info from '../../src/utilities/objects/info'
 import Section from '../../src/utilities/objects/section'
 import Seo from '../../src/utilities/objects/seo'
 import Social from '../../src/utilities/objects/social'
 
 const documentTypes = [Classroom, Identity, Newsletter, Page]
-const objectTypes = [AssetExtension, CustomImage, Heading, Info, Section, Seo, Social]
+const objectTypes = [
+  AssetExtension,
+  CustomImage,
+  Heading,
+  Icon,
+  IconCard,
+  Info,
+  Section,
+  Seo,
+  Social,
+]
 
 export const schemaTypes = [...documentTypes, ...objectTypes]

@@ -3,18 +3,20 @@ import {Image} from 'astro:assets'
 import {Icon} from 'astro-icon/components'
 
 import type {Identity} from '@interfaces/identity'
+import type {Classroom} from '@interfaces/classroom'
 
 import '@styles/landmarks/common/header.css'
 
 interface Props {
   identity: Identity
+  classrooms: Classroom[]
 }
 
-const {identity} = Astro.props
+const {identity, classrooms} = Astro.props
 const {logo, name, phone, email, address, facebook, instagram} = identity
 ---
 
-<header id="commonHeader" class="content">
+<header id="commonHeader" class="content overflow-y-visible!">
   <address class="flex items-center justify-between py-3 not-italic">
     <div class="flex items-center gap-4">
       <a
@@ -121,15 +123,43 @@ const {logo, name, phone, email, address, facebook, instagram} = identity
       <li>
         <a href="/about" class="">About Us</a>
       </li>
-      <li>
-        <a href="#">Classrooms</a>
+      <li
+        class="group relative"
+        x-data="{ isSubmenuOpen: false }"
+        @mouseenter="isSubmenuOpen = true"
+        @mouseleave="isSubmenuOpen = false">
+        <button
+          class="flex items-center gap-1 transition-colors hover:text-blue-600"
+          :class="isSubmenuOpen ? 'text-blue-600' : ''"
+          aria-haspopup="true"
+          :aria-expanded="isSubmenuOpen">
+          Classrooms
+          <Icon name="lucide:chevron-down" class="size-4" />
+        </button>
+        <ul
+          x-show="isSubmenuOpen"
+          x-transition
+          x-cloak
+          class="submenu absolute top-full left-0 z-50 min-w-48 space-y-2 bg-white p-4 shadow-xl ring-1 ring-slate-200">
+          {
+            classrooms.map(classroom => (
+              <li>
+                <a
+                  href={`/classrooms/${classroom.info.slug.current}`}
+                  class="block text-sm whitespace-nowrap hover:text-blue-600">
+                  {classroom.info.title}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
       </li>
       <li>
         <a href="#">Newsletter</a>
       </li>
     </ul>
     <a href="/contact" class="btn btn-blue text-nowrap max-md:hidden!">
-      Contact Us
+      Schedule a Visit
     </a>
     <button
       id="menu-toggle"
