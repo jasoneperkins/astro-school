@@ -16,11 +16,13 @@ import Seo from '../../src/utilities/objects/seo'
 import Social from '../../src/utilities/objects/social'
 import EventPoster from '../../src/utilities/objects/eventPoster'
 import VocabularyCard from '../../src/utilities/objects/vocabularyCard'
+import CustomText from '../../src/utilities/objects/customText'
 
 const documentTypes = [Classroom, Identity, Newsletter, Page]
 const objectTypes = [
   AssetExtension,
   CustomImage,
+  CustomText,
   EventPoster,
   Heading,
   Icon,

@@ -11,7 +11,7 @@ export default defineType({
       type: 'string',
       description: 'Used for H1 headings and internal reference.',
       hidden: ({ document }) => document?._type === 'Newsletter',
-      validation: (Rule: Rule) =>
+      validation: (Rule) =>
         Rule.custom((value, context) => {
           if (context.document?._type === 'Newsletter') return true
           return value ? true : 'Title is required'
@@ -23,7 +23,7 @@ export default defineType({
       type: 'date',
       hidden: ({ document }) => document?._type !== 'Newsletter',
       description: 'Select the Monday for this newsletter.',
-      validation: (Rule: Rule) =>
+      validation: (Rule) =>
         Rule.custom((value, context) => {
           if (context.document?._type !== 'Newsletter') return true
           if (!value) return 'Date is required'
@@ -59,7 +59,7 @@ export default defineType({
         },
         maxLength: 96
       },
-      validation: (Rule: Rule) => Rule.required()
+      validation: (Rule) => Rule.required()
     }),
     defineField({
       name: 'publishDate',
@@ -67,14 +67,14 @@ export default defineType({
       type: 'date',
       initialValue: new Date().toISOString().split('T')[0],
       hidden: ({ document }) => document?._type === 'Newsletter', // Hide for newsletters as we use title
-      validation: (Rule: Rule) => Rule.required()
+      validation: (Rule) => Rule.required()
     }),
     defineField({
       name: 'images',
       title: 'Page Images',
       type: 'array',
       of: [{ type: 'CustomImage' }],
-      validation: (Rule: Rule) => Rule.max(15),
+      validation: (Rule) => Rule.max(15),
       description:
         'The first image is the Main/Hero image. Others are for galleries.'
     }),
