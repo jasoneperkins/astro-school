@@ -3,6 +3,7 @@
     'Poppins', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   --font-sister: 'Love Ya Like A Sister', cursive;
+  --font-merriweather: 'Merriweather Variable', serif;
   --font-scale: 1.1;
 
   /* Fluid Typography Tokens */

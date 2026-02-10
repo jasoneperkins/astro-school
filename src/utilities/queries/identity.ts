@@ -13,6 +13,18 @@ export const identityQuery = `
         }
         alt
       }
+      eventPosters {
+        image {
+          asset {
+            _id
+            url
+            metadata { lqip }
+          }
+          alt
+        }
+        caption
+        eventDate
+      }
       email
       phone
       address

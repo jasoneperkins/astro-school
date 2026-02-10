@@ -27,16 +27,16 @@ const {
 } = Astro.props
 
 const borderColors: Record<string, string> = {
-  red: 'hover:border-red/50!',
-  blue: 'hover:border-blue/50!',
-  green: 'hover:border-green/50!',
-  orange: 'hover:border-orange/50!',
-  purple: 'hover:border-purple/50!',
-  yellow: 'hover:border-yellow/50!',
-  teal: 'hover:border-teal/50!'
+  red: 'hover:border-red-600/50!',
+  blue: 'hover:border-blue-600/50!',
+  green: 'hover:border-green-600/50!',
+  orange: 'hover:border-orange-500/50!',
+  purple: 'hover:border-purple-600/50!',
+  yellow: 'hover:border-yellow-500/50!',
+  teal: 'hover:border-teal-600/50!'
 }
 
-const borderColorClass = borderColors[color] || 'hover:border-gray/50!'
+const borderColorClass = borderColors[color] || 'hover:border-gray-500/50!'
 const alignClass =
   align === 'center' ? 'text-center items-center' : 'text-left items-start'
 ---

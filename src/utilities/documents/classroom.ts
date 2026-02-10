@@ -7,7 +7,7 @@ export default defineType({
   groups: [
     { name: 'info', title: 'Page Info', default: true },
     { name: 'content', title: 'Page Content' },
-    { name: 'seo', title: 'SEO & Social' },
+    { name: 'seo', title: 'SEO' },
     { name: 'social', title: 'Social' }
   ],
   fields: [

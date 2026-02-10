@@ -1,0 +1,51 @@
+---
+import { Image } from 'astro:assets'
+import '@styles/components/itemCards.css'
+
+interface Props {
+  title: string
+  description?: string
+  image?: {
+    asset: {
+      url: string
+      metadata?: {
+        lqip?: string
+      }
+    }
+    alt?: string
+  }
+  href: string
+}
+
+const { title, description, image, href } = Astro.props
+---
+
+<a href={href} class="item group hover:border-blue-600/50! flex flex-col overflow-hidden">
+  {
+    image?.asset?.url && (
+      <div class="aspect-video w-full overflow-hidden bg-gray-100">
+        <img
+          src={image.asset.url}
+          alt={image.alt || title}
+          class="size-full object-cover transition-transform duration-500 group-hover:scale-105"
+          loading="lazy"
+        />
+      </div>
+    )
+  }
+  <div class="flex flex-1 flex-col gap-2 p-6">
+    <h3 class="font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+      {title}
+    </h3>
+    {description && (
+      <p class="text-sm leading-relaxed text-gray-800 line-clamp-3">
+        {description}
+      </p>
+    )}
+    <div class="mt-auto pt-4">
+      <span class="text-xs font-bold uppercase tracking-wider text-blue-600">
+        Read Newsletter &rarr;
+      </span>
+    </div>
+  </div>
+</a>

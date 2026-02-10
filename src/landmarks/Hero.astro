@@ -28,16 +28,16 @@ const backgroundUrl = images?.[0]
       <div class="half space-y-4">
         {title && (
           <hgroup>
-            {title && <h1 class="tagline font-sans">{title}</h1>}
+            <h1 class="tagline font-sans">{title}</h1>
             {subTitle && (
-              <p class="font-sister text-5xl leading-[1.125]! text-balance">
+              <p class="text-h1 font-merriweather leading-[1.125]! text-balance">
                 {subTitle}
               </p>
             )}
           </hgroup>
         )}
         {metaDescription && <p>{metaDescription}</p>}
-        <button class="btn btn-blue mt-4 animate-bounce">Come Meet Us</button>
+        <button class="btn btn-blue mt-4">Come Meet Us</button>
       </div>
       <div class="half relative col-end-[breakout-end]! hidden content-center self-stretch overflow-y-visible lg:grid">
         {images?.[0] && (
@@ -79,22 +79,6 @@ const backgroundUrl = images?.[0]
         <div class="absolute top-60 left-100 size-20 rounded-full bg-orange-200" />
         <div class="absolute top-110 left-60 size-10 rounded-full bg-orange-400" />
       </div>
-      <nav id="absolute bottom-0">
-        <ul class="flex flex-col gap-x-8 gap-y-2 text-sm md:flex-row">
-          <li>
-            <a href="#">Toddlers</a>
-          </li>
-          <li>
-            <a href="#">Terrific 2s</a>
-          </li>
-          <li>
-            <a href="#">Thriving 3s</a>
-          </li>
-          <li>
-            <a href="#">VPK</a>
-          </li>
-        </ul>
-      </nav>
     </header>
   ) : (
     <header

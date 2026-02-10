@@ -4,6 +4,7 @@
 @plugin '@tailwindcss/forms';
 @import '@fontsource/poppins';
 @import '@fontsource/love-ya-like-a-sister';
+@import '@fontsource-variable/merriweather';
 
 /* abstracts */
 @import './abstracts/colors.css';
@@ -29,6 +30,7 @@
 
 /* components */
 @import './components/buttons.css';
+@import './components/contactForm.css';
 @import './components/forms.css';
 
 [x-cloak] {

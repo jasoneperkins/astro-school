@@ -1,13 +1,54 @@
 ---
 import Layout from '@layouts/Common.astro'
+import ImageCard from '@components/ImageCard.astro'
+import { fetchNewsletters } from '@queries/newsletter'
 
-import mainImage from '@images/children-graph-paper-table.webp'
+const newsletters = await fetchNewsletters()
 
-const title = 'Newsletters'
+// Sort newsletters by week in descending order (most recent first)
+const sortedNewsletters = newsletters.sort((a, b) => {
+  const dateA = a.info.week ? new Date(a.info.week).getTime() : 0
+  const dateB = b.info.week ? new Date(b.info.week).getTime() : 0
+  return dateB - dateA
+})
+
+const pageInfo = {
+  title: 'Our Newsletters',
+  description: 'Stay updated with the latest news and galleries from ECLC.'
+}
+
+const seo = {
+  metaTitle: 'Newsletters | ECLC',
+  metaDescription: 'Browse our weekly newsletters and see what we have been up to.'
+}
+
+export const prerender = true
 ---
 
-<Layout {info}>
-  <section>
-    <h2>Hello</h2>
-  </section>
+<Layout info={pageInfo} seo={seo}>
+  <div class="py-content-block">
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {
+        sortedNewsletters.map((newsletter) => {
+          const { info } = newsletter
+          const formattedDate = info.week 
+            ? new Date(info.week).toLocaleDateString('en-US', { 
+                month: 'long', 
+                day: 'numeric', 
+                year: 'numeric', 
+                timeZone: 'UTC' 
+              })
+            : 'Untitled Newsletter'
+          
+          return (
+            <ImageCard
+              title={formattedDate}
+              image={info.images?.[0]}
+              href={`/newsletters/${info.slug.current}`}
+            />
+          )
+        })
+      }
+    </div>
+  </div>
 </Layout>

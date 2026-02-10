@@ -14,6 +14,8 @@ interface Props {
 
 const {identity, classrooms} = Astro.props
 const {logo, name, phone, email, address, facebook, instagram} = identity
+
+const currentPath = Astro.url.pathname
 ---
 
 <header id="commonHeader" class="content overflow-y-visible!">
@@ -118,10 +120,17 @@ const {logo, name, phone, email, address, facebook, instagram} = identity
     <ul
       class="mb-0! hidden shrink basis-100 items-center justify-between md:flex">
       <li>
-        <a href="/">Home</a>
+        <a href="/" aria-current={currentPath === '/' ? 'page' : undefined}>
+          Home
+        </a>
       </li>
       <li>
-        <a href="/about" class="">About Us</a>
+        <a
+          href="/about"
+          class=""
+          aria-current={currentPath === '/about' ? 'page' : undefined}>
+          About Us
+        </a>
       </li>
       <li
         class="group relative"

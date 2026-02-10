@@ -5,9 +5,9 @@ export default defineType({
   title: 'Newsletter',
   type: 'document',
   groups: [
-    { name: 'info', title: 'Page Info', default: true },
-    { name: 'content', title: 'Page Content' },
-    { name: 'seo', title: 'SEO & Social' },
+    { name: 'newsletter_info', title: 'Newsletter Info', default: true },
+    { name: 'newsletter_content', title: 'Newsletter Content' },
+    { name: 'seo', title: 'SEO' },
     { name: 'social', title: 'Social' }
   ],
   fields: [
@@ -15,22 +15,37 @@ export default defineType({
       name: 'info',
       title: 'Classroom Information',
       type: 'Info',
-      group: 'info'
-    }),
-    defineField({
-      name: 'pdfFile',
-      title: 'PDF Attachment',
-      type: 'file',
-      options: { accept: '.pdf' },
-      description: 'Upload the PDF version for parents to download.',
-      group: 'info'
+      group: 'newsletter_info'
     }),
     defineField({
       name: 'content',
-      title: 'Content Sections',
+      title: 'Newsletter Content',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'text',
+          title: 'Newsletter Text',
+          type: 'text',
+          rows: 10,
+          description:
+            'Enter the main text for the newsletter. Use multiple paragraphs.'
+        }),
+        defineField({
+          name: 'carousel',
+          title: 'Image Carousel',
+          type: 'array',
+          of: [{ type: 'CustomImage' }],
+          description: 'Add images to be displayed in a carousel.'
+        })
+      ],
+      group: 'newsletter_content'
+    }),
+    defineField({
+      name: 'vocabularyCards',
+      title: 'Jewish Vocabulary Cards',
       type: 'array',
-      of: [{ type: 'Section' }],
-      group: 'content'
+      of: [{ type: 'VocabularyCard' }],
+      group: 'newsletter_content'
     }),
     defineField({
       name: 'seo',
@@ -47,14 +62,24 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: 'info.title',
-      subtitle: 'info.slug.current'
+      week: 'info.week',
+      slug: 'info.slug.current'
     },
-    prepare(selection: { title?: string; subtitle?: string }) {
-      const { title, subtitle } = selection
+    prepare(selection: any) {
+      const { week, slug } = selection
+      if (!week) return { title: 'New Newsletter', subtitle: slug || '' }
+
+      const date = new Date(week)
+      const formattedDate = date.toLocaleDateString('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+        timeZone: 'UTC'
+      })
+
       return {
-        title: title || 'Untitled Page',
-        subtitle: subtitle ? `/${subtitle}` : 'No slug set'
+        title: formattedDate,
+        subtitle: slug ? `/newsletters/${slug}` : 'No slug set'
       }
     }
   }

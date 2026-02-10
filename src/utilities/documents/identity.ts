@@ -24,6 +24,15 @@ export default defineType({
       group: 'identity'
     }),
     defineField({
+      name: 'eventPosters',
+      title: 'Event Posters',
+      type: 'array',
+      of: [{ type: 'EventPoster' }],
+      description:
+        'Upload posters for upcoming events. Only current or future events will be displayed.',
+      group: 'identity'
+    }),
+    defineField({
       name: 'email',
       title: 'Contact Email',
       type: 'string',

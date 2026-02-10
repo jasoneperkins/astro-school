@@ -1,15 +1,16 @@
 import type { Info } from '@interfaces/info'
-import type { Section } from '@interfaces/section'
 import type { Seo } from '@interfaces/seo'
+import type { CustomImage } from '@interfaces/customImage'
+import type { VocabularyCard } from '@interfaces/vocabularyCard'
 
 export interface Newsletter {
   _type: 'Newsletter'
   info: Info
-  pdfFile?: {
-    asset: {
-      url: string
-    }
+  content: {
+    text: string
+    carousel: CustomImage[]
   }
-  content: Section[]
+  vocabularyCards: VocabularyCard[]
   seo?: Seo
+  social?: any // Added social to match schema
 }

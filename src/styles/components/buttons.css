@@ -1,7 +1,7 @@
 @reference "tailwindcss";
 
 .btn {
-  @apply flex w-fit cursor-pointer rounded-full border px-6 py-3 leading-tight font-medium;
+  @apply flex w-fit cursor-pointer rounded-md border px-6 py-3 leading-tight font-medium;
   @apply transition-all duration-300 ease-out;
   @apply hover:scale-102 hover:shadow-md hover:brightness-110;
   @apply active:scale-98;
@@ -10,39 +10,39 @@
 
 /* Color Variants */
 .btn-blue {
-  @apply border-blue bg-blue text-white;
+  @apply border-blue-600 bg-blue-600 text-white;
 }
 
 .btn-green {
-  @apply border-green bg-green text-white;
+  @apply border-green-600 bg-green-600 text-white;
 }
 
 .btn-orange {
-  @apply border-orange bg-orange text-white;
+  @apply border-orange-500 bg-orange-500 text-white;
 }
 
 .btn-red {
-  @apply border-red bg-red text-white;
+  @apply border-red-600 bg-red-600 text-white;
 }
 
 .btn-purple {
-  @apply border-purple bg-purple text-white;
+  @apply border-purple-600 bg-purple-600 text-white;
 }
 
 .btn-teal {
-  @apply border-teal bg-teal text-white;
+  @apply border-teal-600 bg-teal-600 text-white;
 }
 
 .btn-yellow {
-  @apply border-yellow bg-yellow text-gray-900;
+  @apply border-yellow-500 bg-yellow-500 text-gray-900;
 }
 
 .btn-white {
-  @apply text-blue border-white bg-white;
+  @apply border-white bg-white text-blue-600;
 }
 
 /* Outline Variant */
 .btn-outline {
-  @apply border-gray/40 text-gray/70 bg-transparent;
-  @apply hover:border-gray/50 hover:bg-gray/5;
+  @apply border-gray-200 bg-transparent text-gray-600;
+  @apply hover:border-gray-300 hover:bg-gray-50;
 }

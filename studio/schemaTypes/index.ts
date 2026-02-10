@@ -14,11 +14,14 @@ import Info from '../../src/utilities/objects/info'
 import Section from '../../src/utilities/objects/section'
 import Seo from '../../src/utilities/objects/seo'
 import Social from '../../src/utilities/objects/social'
+import EventPoster from '../../src/utilities/objects/eventPoster'
+import VocabularyCard from '../../src/utilities/objects/vocabularyCard'
 
 const documentTypes = [Classroom, Identity, Newsletter, Page]
 const objectTypes = [
   AssetExtension,
   CustomImage,
+  EventPoster,
   Heading,
   Icon,
   IconCard,
@@ -26,6 +29,7 @@ const objectTypes = [
   Section,
   Seo,
   Social,
+  VocabularyCard,
 ]
 
 export const schemaTypes = [...documentTypes, ...objectTypes]

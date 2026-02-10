@@ -1,0 +1,14 @@
+---
+interface Props {
+  class?: string
+}
+
+const { class: className } = Astro.props
+import '@styles/components/carousel.css'
+---
+
+<div class={`carousel-wrapper ${className || ''}`}>
+  <div class="carousel-track">
+    <slot />
+  </div>
+</div>

@@ -10,14 +10,40 @@ export default defineType({
       title: 'Internal Title',
       type: 'string',
       description: 'Used for H1 headings and internal reference.',
-      validation: (Rule: Rule) => Rule.required()
+      hidden: ({ document }) => document?._type === 'Newsletter',
+      validation: (Rule: Rule) =>
+        Rule.custom((value, context) => {
+          if (context.document?._type === 'Newsletter') return true
+          return value ? true : 'Title is required'
+        })
+    }),
+    defineField({
+      name: 'week',
+      title: 'Newsletter Week',
+      type: 'date',
+      hidden: ({ document }) => document?._type !== 'Newsletter',
+      description: 'Select the Monday for this newsletter.',
+      validation: (Rule: Rule) =>
+        Rule.custom((value, context) => {
+          if (context.document?._type !== 'Newsletter') return true
+          if (!value) return 'Date is required'
+          const date = new Date(value)
+          const day = date.getUTCDay()
+          return day === 1 ? true : 'Newsletters must start on a Monday'
+        })
     }),
     defineField({
       name: 'subTitle',
       title: 'Subtitle',
       type: 'string',
-      description:
-        'The text that appears above the main title in certain pages.'
+      description: 'Hidden branding subtitle.',
+      hidden: true,
+      initialValue: ({ document }) => {
+        if (document?._type === 'Newsletter') {
+          return 'The ECLC Newsletter for the Week of'
+        }
+        return ''
+      }
     }),
     defineField({
       name: 'slug',
@@ -25,7 +51,12 @@ export default defineType({
       type: 'slug',
       description: 'The URL path for this page.',
       options: {
-        source: (doc: any) => doc.info?.title, // Update source to look inside info object
+        source: (doc: any) => {
+          if (doc._type === 'Newsletter') {
+            return doc.info?.week
+          }
+          return doc.info?.title
+        },
         maxLength: 96
       },
       validation: (Rule: Rule) => Rule.required()
@@ -35,6 +66,7 @@ export default defineType({
       title: 'Publish Date',
       type: 'date',
       initialValue: new Date().toISOString().split('T')[0],
+      hidden: ({ document }) => document?._type === 'Newsletter', // Hide for newsletters as we use title
       validation: (Rule: Rule) => Rule.required()
     }),
     defineField({

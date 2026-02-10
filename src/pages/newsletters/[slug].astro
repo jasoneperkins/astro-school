@@ -1,0 +1,152 @@
+---
+import Layout from '@layouts/Common.astro'
+import Carousel from '@components/Carousel.astro'
+
+import {fetchNewsletter, fetchNewsletters} from '@queries/newsletter'
+import {fetchIdentity} from '@queries/identity'
+
+import type {Newsletter} from '@interfaces/newsletter'
+import type {Identity} from '@interfaces/identity'
+
+import '@styles/components/vocabularyCards.css'
+
+export async function getStaticPaths() {
+  const newsletters = await fetchNewsletters()
+
+  return newsletters.map(newsletter => ({
+    params: {slug: newsletter.info.slug.current},
+    props: {slug: newsletter.info.slug.current}
+  }))
+}
+
+const { slug } = Astro.params
+const newsletter = (await fetchNewsletter(slug!)) as Newsletter
+const identity = (await fetchIdentity()) as Identity
+const { info, seo, social, content, vocabularyCards } = newsletter
+const { week } = info
+
+const getNewsletterTitle = (dateStr: string) => {
+  const startDate = new Date(dateStr)
+  const endDate = new Date(startDate)
+  endDate.setUTCDate(startDate.getUTCDate() + 4)
+
+  const format = (d: Date) =>
+    d.toLocaleDateString('en-US', {
+      month: 'long',
+      day: 'numeric',
+      timeZone: 'UTC'
+    })
+  return `${format(startDate)} to ${format(endDate)}`
+}
+
+const pageInfo = {
+  ...info,
+  title: week 
+    ? `Newsletter for the Week of ${new Date(week).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}`
+    : info.title,
+  subTitle: info.subTitle || 'The ECLC Newsletter for the Week of'
+}
+
+// Filter event posters to show only those on or after today
+const today = new Date().toISOString().split('T')[0]
+const eventPosters = identity?.eventPosters
+  ?.filter(poster => poster.eventDate >= today)
+  ?.sort((a, b) => a.eventDate.localeCompare(b.eventDate))
+  ?.slice(0, 3) || []
+
+export const prerender = true
+---
+
+<Layout info={pageInfo} seo={seo} social={social}>
+  <div class="grid-cols-content-3/5 py-content-block flex flex-col gap-16">
+    {
+      content?.text && (
+        <div class="half prose prose-lg max-w-prose">
+          {content.text.split('\n\n').map((para) => (
+            <p>{para}</p>
+          ))}
+        </div>
+      )
+    }
+
+    {
+      info?.images && info.images.length > 0 && (
+        <div class="half grid grid-cols-1 gap-8 md:grid-cols-2">
+          {info.images.map((img) => (
+            <figure class="overflow-hidden rounded-xl shadow-md">
+              <img 
+                src={img.asset.url} 
+                alt={img.alt || ''} 
+                class="aspect-square w-full object-cover"
+              />
+            </figure>
+          ))}
+        </div>
+      )
+    }
+  </div>
+
+  {
+    newsletter.content?.carousel && newsletter.content.carousel.length > 0 && (
+      <section class="max-w-full overflow-hidden rounded-2xl bg-gray-50 py-12">
+        <div class="px-4">
+          <h2 class="mb-8 text-center text-3xl font-bold">
+            Photos from this Week
+          </h2>
+          <Carousel>
+            {newsletter.content.carousel.map((img) => (
+              <div class="carousel-item">
+                <img src={img.asset.url} alt={img.alt || ''} />
+              </div>
+            ))}
+          </Carousel>
+        </div>
+      </section>
+    )
+  }
+
+  {
+    newsletter.vocabularyCards && newsletter.vocabularyCards.length > 0 && (
+      <section>
+        <h2 class="mb-8 text-center text-3xl font-bold">Jewish Vocabulary</h2>
+        <div class="vocabulary-cards">
+          {newsletter.vocabularyCards.map((card) => (
+            <div class="flashcard-container" tabindex="0">
+              <div class="flashcard">
+                <div class="card-front">
+                  <h3>{card.word}</h3>
+                </div>
+                <div class="card-back">
+                  <p>{card.definition}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  {
+    eventPosters.length > 0 && (
+      <section class="max-w-full overflow-hidden rounded-2xl bg-blue-50 py-12">
+        <div class="px-4">
+          <h2 class="mb-8 text-center text-3xl font-bold">Upcoming Events</h2>
+          <Carousel>
+            {eventPosters.map((poster) => (
+              <div class="carousel-item relative">
+                <img src={poster.image.asset.url} alt={poster.caption || poster.image.alt || ''} />
+                {poster.caption && (
+                  <div class="absolute bottom-0 left-0 right-0 bg-black/60 p-4 text-white backdrop-blur-sm">
+                    <p class="text-sm font-medium">{poster.caption}</p>
+                    <p class="text-xs opacity-80">{new Date(poster.eventDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </Carousel>
+        </div>
+      </section>
+    )
+  }
+</Layout>
