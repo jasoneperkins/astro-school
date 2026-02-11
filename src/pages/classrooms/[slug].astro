@@ -1,5 +1,6 @@
 ---
 import Layout from '@layouts/Common.astro'
+import ImageCard from '@components/ImageCard.astro'
 
 import { PortableText } from 'astro-portabletext'
 import { fetchClassroom, fetchClassrooms } from '@queries/classroom'
@@ -27,10 +28,15 @@ export async function getStaticPaths() {
 const { slug } = Astro.params
 const { info, content, seo, social } = await fetchClassroom(slug)
 
+const allClassrooms = await fetchClassrooms()
+const otherClassrooms = allClassrooms
+  .filter((c) => c.info.slug.current !== slug)
+  .sort((a, b) => (a.info.age || 0) - (b.info.age || 0))
+
 export const prerender = true
 ---
 
-<Layout info={info} seo={seo} social={social}>
+<Layout {info} {content} {seo} {social}>
   {
     content?.map((section) => (
       <section>
@@ -38,4 +44,21 @@ export const prerender = true
       </section>
     ))
   }
+
+  <section class="content py-content-block">
+    <header class="mb-12 text-center">
+      <h2>More Classrooms</h2>
+    </header>
+    <div class="flex flex-wrap justify-center gap-6">
+      {
+        otherClassrooms.map((classroom) => (
+          <ImageCard
+            title={classroom.info.title}
+            image={classroom.info.images?.[0]}
+            href={`/classrooms/${classroom.info.slug.current}`}
+          />
+        ))
+      }
+    </div>
+  </section>
 </Layout>

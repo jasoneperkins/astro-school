@@ -6,7 +6,13 @@ export const allClassroomsQuery = `
     allClassroom {
       info {
         title
+        age
         slug { current }
+        images {
+          asset {
+            url
+          }
+        }
       }
     }
   }
@@ -19,6 +25,7 @@ export const classroomBySlugQuery = `
         _type
         title
         subTitle
+        age
         slug { current }
         publishDate
         images {

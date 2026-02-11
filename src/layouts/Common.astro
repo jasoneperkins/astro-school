@@ -24,7 +24,9 @@ import '@styles/global.css'
 import '@styles/layouts/common.css'
 
 const identity = ((await fetchIdentity()) as Identity) || {}
-const classrooms = await fetchClassrooms()
+const classrooms = (await fetchClassrooms()).sort(
+  (a, b) => (a.info.age || 0) - (b.info.age || 0)
+)
 const { info, seo, social } = Astro.props
 ---
 

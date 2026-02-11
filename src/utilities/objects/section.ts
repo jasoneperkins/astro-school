@@ -12,10 +12,11 @@ export default defineType({
   fields: [
     defineField({
       name: 'name',
-      title: 'Name',
+      title: 'Type',
       type: 'string',
       options: {
         list: [
+          { title: 'Content', value: 'content' },
           { title: 'Advantages', value: 'advantages' },
           { title: 'Benefits', value: 'benefits' },
           { title: 'Call to Action', value: 'call-to-action' },
@@ -31,6 +32,7 @@ export default defineType({
         ],
         layout: 'dropdown'
       },
+      initialValue: 'content',
       validation: (Rule: Rule) => Rule.required()
     }),
     defineField({

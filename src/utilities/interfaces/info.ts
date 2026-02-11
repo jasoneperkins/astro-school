@@ -13,4 +13,5 @@ export interface Info {
   images: CustomImage[] | null
   description?: string
   author?: string
+  age?: number
 }

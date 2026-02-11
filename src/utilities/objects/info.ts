@@ -7,7 +7,7 @@ export default defineType({
   fields: [
     defineField({
       name: 'title',
-      title: 'Internal Title',
+      title: 'Title',
       type: 'string',
       description: 'Used for H1 headings and internal reference.',
       hidden: ({ document }) => document?._type === 'Newsletter',
@@ -83,6 +83,13 @@ export default defineType({
       title: 'Content Author',
       type: 'string',
       initialValue: 'ECLC Staff'
+    }),
+    defineField({
+      name: 'age',
+      title: 'Classroom Age',
+      type: 'number',
+      description: 'Used for sorting classrooms in navigation.',
+      hidden: ({ document }) => document?._type !== 'Classroom'
     })
   ]
 })
