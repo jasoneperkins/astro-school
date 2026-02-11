@@ -24,7 +24,7 @@ const alignmentClass =
 const headerClass = `text-2xl font-bold ${theme === 'light' ? 'text-gray-900' : 'text-white'}`
 ---
 
-<div class="contact-container" x-data={`contactHandler('${initialMode}')`}>
+<div x-data={`contactHandler('${initialMode}')`} class="w-2xl max-w-[90vw]">
   <template x-if="state === 'success'">
     <div
       class={`success-state animate-fade-in rounded-lg border-2 p-6 text-center ${
@@ -58,8 +58,7 @@ const headerClass = `text-2xl font-bold ${theme === 'light' ? 'text-gray-900' : 
       <header class={`mb-4 ${alignmentClass}`}>
         <h2
           class={headerClass}
-          x-text="mode === 'tour' ? 'Come Meet Us' : 'Contact Us'"
-        >
+          x-text="mode === 'tour' ? 'Come Meet Us' : 'Contact Us'">
         </h2>
       </header>
       <form
@@ -160,7 +159,7 @@ const headerClass = `text-2xl font-bold ${theme === 'light' ? 'text-gray-900' : 
           <button
             type="button"
             @click="toggleMode"
-            class={`btn btn-ghost @md:w-fit! w-full! justify-center text-sm font-medium transition-colors ${theme === 'light' ? 'text-gray-500 hover:text-gray-900' : 'text-white/70 hover:text-white'}`}
+            class={`btn btn-ghost @md:w-fit! w-full! justify-center items-center text-sm font-medium transition-colors ${theme === 'light' ? 'text-gray-500 hover:text-gray-900' : 'text-white/70 hover:text-white'}`}
             x-text="mode === 'message' ? 'or schedule a tour' : 'or send us a message'">
           </button>
         </div>
