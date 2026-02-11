@@ -81,6 +81,7 @@ export const classroomBySlugQuery = `
             quote
             author
             title
+            rating
             image {
               _type
               asset {

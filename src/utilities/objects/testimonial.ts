@@ -26,6 +26,16 @@ export default defineType({
       validation: (Rule) => Rule.required()
     }),
     defineField({
+      name: 'rating',
+      title: 'Star Rating',
+      type: 'number',
+      initialValue: 5,
+      options: {
+        list: [1, 2, 3, 4, 5]
+      },
+      validation: (Rule) => Rule.required().min(1).max(5)
+    }),
+    defineField({
       name: 'image',
       title: 'Author Image',
       type: 'CustomImage'

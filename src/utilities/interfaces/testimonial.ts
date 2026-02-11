@@ -6,5 +6,6 @@ export interface Testimonial {
   quote: string
   author: string
   title: string
+  rating: number
   image?: CustomImage
 }

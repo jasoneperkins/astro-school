@@ -63,6 +63,7 @@ export const pageQuery = `
             quote
             author
             title
+            rating
             image {
               _type
               asset {
