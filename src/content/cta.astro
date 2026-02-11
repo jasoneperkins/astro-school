@@ -19,12 +19,12 @@ const {
 
 <section
   id={slug?.current}
-  class="bg-gradient-blue bg-cover bg-fixed bg-center bg-no-repeat text-white">
-  <div class="mx-auto max-w-prose">
-    <hgroup class="text-center">
+  class="bg-gradient-blue justify-items-center bg-cover bg-fixed bg-center bg-no-repeat text-white">
+  <div class="w-lg max-w-full">
+    <!-- <hgroup class="text-center">
       {heading?.subTitle && <p class="tagline">{heading?.subTitle}</p>}
       {heading?.title && <h2>{heading?.title}</h2>}
-    </hgroup>
+    </hgroup> -->
     {body && <PortableText value={body} />}
     <ContactForm theme="dark" submitText="Send us a message" btnColor="white" />
   </div>

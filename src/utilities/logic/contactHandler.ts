@@ -1,8 +1,10 @@
 import { actions } from 'astro:actions'
 
-export const contactHandler = () => ({
+export const contactHandler = (
+  initialMode: 'message' | 'tour' = 'message'
+) => ({
   state: 'idle',
-  mode: 'message' as 'message' | 'tour',
+  mode: initialMode,
   toggleMode() {
     this.mode = this.mode === 'message' ? 'tour' : 'message'
     this.state = 'idle'

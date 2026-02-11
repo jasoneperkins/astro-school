@@ -1,47 +1,70 @@
 ---
-
 interface Props {
   context?: string
   submitText?: string
   theme?: 'light' | 'dark'
   btnColor?: 'blue' | 'green' | 'orange' | 'red' | 'white'
+  initialMode?: 'message' | 'tour'
+  align?: 'left' | 'center'
 }
 
 const {
   context = 'General',
   submitText = 'Send Message',
   theme = 'light',
-  btnColor = 'blue'
+  btnColor = 'blue',
+  initialMode = 'message',
+  align = 'left'
 } = Astro.props
 
 const labelClass = theme === 'light' ? 'text-gray-700' : 'text-white'
-const buttonClass = `btn btn-${btnColor} w-full justify-center`
+const buttonClass = `btn btn-${btnColor} @md:w-fit! w-full! justify-center`
+const alignmentClass =
+  align === 'center' ? 'text-center justify-center' : 'text-left justify-start'
+const headerClass = `text-2xl font-bold ${theme === 'light' ? 'text-gray-900' : 'text-white'}`
 ---
 
-<div class="contact-container" x-data="contactHandler">
+<div class="contact-container" x-data={`contactHandler('${initialMode}')`}>
   <template x-if="state === 'success'">
     <div
-      class="success-state animate-fade-in rounded-lg border-2 border-green-200 bg-green-50 p-6 text-center"
+      class={`success-state animate-fade-in rounded-lg border-2 p-6 text-center ${
+        theme === 'light'
+          ? 'border-green-200 bg-green-50'
+          : 'border-green-900/30 bg-green-900/20'
+      }`}
       role="alert">
-      <h3 class="text-xl font-bold text-green-800" x-text="mode === 'tour' ? 'Tour Requested!' : 'Message Sent!'"></h3>
-      <p class="mt-2 text-green-700" x-show="mode === 'message'">
+      <h3
+        class={`text-xl font-bold ${theme === 'light' ? 'text-green-800' : 'text-green-400'}`}
+        x-text="mode === 'tour' ? 'Tour Requested!' : 'Message Sent!'">
+      </h3>
+      <p
+        class={`mt-2 ${theme === 'light' ? 'text-green-700' : 'text-green-300/90'}`}
+        x-show="mode === 'message'">
         Shalom! Your message has been sent to Miss Cindy. We'll be in touch
         soon.
       </p>
-      <p class="mt-2 text-green-700" x-show="mode === 'tour'" x-cloak>
-        Shalom! Your tour request has been sent to Miss Cindy. She will be in touch soon to confirm your time.
+      <p
+        class={`mt-2 ${theme === 'light' ? 'text-green-700' : 'text-green-300/90'}`}
+        x-show="mode === 'tour'"
+        x-cloak>
+        Shalom! Your tour request has been sent to Miss Cindy. She will be in
+        touch soon to confirm your time.
       </p>
     </div>
   </template>
 
   <template x-if="state !== 'success'">
     <div class="form-wrapper">
-      <header class="mb-4 text-center" x-show="mode !== 'message'" x-cloak>
-        <h2 class="text-2xl font-bold text-gray-900">Come Meet Us</h2>
+      <header class={`mb-4 ${alignmentClass}`}>
+        <h2
+          class={headerClass}
+          x-text="mode === 'tour' ? 'Come Meet Us' : 'Contact Us'"
+        >
+        </h2>
       </header>
       <form
         @submit.prevent="submitForm"
-        class="contactForm grid grid-cols-1 gap-y-4"
+        class="contactForm @container grid grid-cols-1 gap-y-4"
         novalidate>
         <input type="hidden" name="sourceContext" value={context} />
 
@@ -75,34 +98,36 @@ const buttonClass = `btn btn-${btnColor} w-full justify-center`
           />
         </div>
 
-        <div x-show="mode === 'tour'" x-cloak class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div>
-            <label for="tourDate" class={`block text-sm font-medium ${labelClass}`}>
-              Preferred Date (Mon-Fri)
-            </label>
-            <input
-              type="date"
-              id="tourDate"
-              name="tourDate"
-              :required="mode === 'tour'"
-              @change="const date = new Date($el.value); if(date.getUTCDay() === 0 || date.getUTCDay() === 6) { $el.value = ''; alert('Tours are only available Monday through Friday.') }"
-              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-            />
-          </div>
-          <div>
-            <label for="tourTime" class={`block text-sm font-medium ${labelClass}`}>
-              Preferred Time (9am-4pm)
-            </label>
-            <input
-              type="time"
-              id="tourTime"
-              name="tourTime"
-              min="09:00"
-              max="16:00"
-              :required="mode === 'tour'"
-              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-            />
-          </div>
+        <div x-show="mode === 'tour'" x-cloak>
+          <label
+            for="tourDate"
+            class={`block text-sm font-medium ${labelClass}`}>
+            Preferred Date (Mon-Fri)
+          </label>
+          <input
+            type="date"
+            id="tourDate"
+            name="tourDate"
+            :required="mode === 'tour'"
+            @change="const date = new Date($el.value); if(date.getUTCDay() === 0 || date.getUTCDay() === 6) { $el.value = ''; alert('Tours are only available Monday through Friday.') }"
+            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+          />
+        </div>
+        <div x-show="mode === 'tour'" x-cloak>
+          <label
+            for="tourTime"
+            class={`block text-sm font-medium ${labelClass}`}>
+            Preferred Time (9am-4pm)
+          </label>
+          <input
+            type="time"
+            id="tourTime"
+            name="tourTime"
+            min="09:00"
+            max="16:00"
+            :required="mode === 'tour'"
+            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+          />
         </div>
 
         <div class="col-span-full">
@@ -120,35 +145,34 @@ const buttonClass = `btn btn-${btnColor} w-full justify-center`
           </textarea>
         </div>
 
-        <div class="flex flex-col gap-3 sm:flex-row">
+        <div class={`flex flex-wrap gap-4 col-span-full ${alignmentClass}`}>
           <button
             type="submit"
             :disabled="state === 'loading'"
             class={buttonClass}>
             <span
               x-show="state !== 'loading'"
-              x-text={`mode === 'tour' ? 'Schedule Tour' : '${submitText}'`}
-            ></span>
+              x-text={`mode === 'tour' ? 'Schedule Tour' : '${submitText}'`}>
+            </span>
             <span x-show="state === 'loading'" x-cloak>Sending...</span>
           </button>
 
           <button
             type="button"
             @click="toggleMode"
-            class={`btn btn-ghost w-full justify-center text-sm font-medium transition-colors ${theme === 'light' ? 'text-gray-500 hover:text-gray-900' : 'text-white/70 hover:text-white'}`}
-            x-text="mode === 'message' ? 'or schedule a tour' : 'or send us a message'"
-          >
+            class={`btn btn-ghost @md:w-fit! w-full! justify-center text-sm font-medium transition-colors ${theme === 'light' ? 'text-gray-500 hover:text-gray-900' : 'text-white/70 hover:text-white'}`}
+            x-text="mode === 'message' ? 'or schedule a tour' : 'or send us a message'">
           </button>
         </div>
-
-        <p
-          x-show="state === 'error'"
-          class="mt-2 text-center text-sm text-red-600"
-          role="alert"
-          x-cloak>
-          Something went wrong. Please try again or call the office.
-        </p>
       </form>
+
+      <p
+        x-show="state === 'error'"
+        class="mt-2 text-center text-sm text-red-600"
+        role="alert"
+        x-cloak>
+        Something went wrong. Please try again or call the office.
+      </p>
     </div>
   </template>
 </div>

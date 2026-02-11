@@ -1,0 +1,60 @@
+---
+import ImageCard from '@components/ImageCard.astro'
+
+import {PortableText} from 'astro-portabletext'
+
+import {urlFor} from '@services/sanity'
+import {fetchNewsletters} from '@queries/newsletter'
+
+const {
+  heading = {title: 'Newsletters', subTitle: ''},
+  slug = {current: 'newsletters'},
+  body = [],
+  images = []
+} = Astro.props
+
+const newsletters = await fetchNewsletters()
+
+// Sort newsletters by week in descending order (most recent first)
+const sortedNewsletters = newsletters
+  .sort((a, b) => {
+    const dateA = a.info.week ? new Date(a.info.week).getTime() : 0
+    const dateB = b.info.week ? new Date(b.info.week).getTime() : 0
+    return dateB - dateA
+  })
+  .slice(0, 3)
+---
+
+<section aria-labelledby={slug.current}>
+  <header>
+    <hgroup class="text-center">
+      {heading?.title && <h2 id={slug.current}>{heading?.title}</h2>}
+      {heading?.subTitle && <p>{heading?.subTitle}</p>}
+    </hgroup>
+  </header>
+  <div class="content py-content-block">
+    <div class="flex flex-wrap justify-center gap-6">
+      {
+        sortedNewsletters.map(newsletter => {
+          const {info} = newsletter
+          const formattedDate = info.week
+            ? new Date(info.week).toLocaleDateString('en-US', {
+                month: 'long',
+                day: 'numeric',
+                year: 'numeric',
+                timeZone: 'UTC'
+              })
+            : 'Untitled Newsletter'
+
+          return (
+            <ImageCard
+              title={formattedDate}
+              image={info.images?.[0]}
+              href={`/newsletters/${info.slug.current}`}
+            />
+          )
+        })
+      }
+    </div>
+  </div>
+</section>
