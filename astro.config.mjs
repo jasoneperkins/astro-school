@@ -88,8 +88,10 @@ export default defineConfig({
           'home',
           'palette',
           'scroll-text',
-          'smile'
-        ]
+          'smile',
+          'star'
+        ],
+        mdi: ['star', 'star-outline']
       }
     }),
     react(),

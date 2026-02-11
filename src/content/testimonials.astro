@@ -1,60 +1,90 @@
 ---
-import { urlFor } from '@services/sanity'
-import { Icon } from 'astro-icon/components'
-import type { Testimonial } from '@interfaces/testimonial'
-import type { Heading } from '@interfaces/heading'
+import {urlFor} from '@services/sanity'
+import {Icon} from 'astro-icon/components'
+import {PortableText} from 'astro-portabletext'
+import type {Testimonial} from '@interfaces/testimonial'
+import type {Heading} from '@interfaces/heading'
 
 interface Props {
   heading?: Heading
-  slug?: { current: string }
+  slug?: {current: string}
+  body?: any
   testimonials?: Testimonial[]
 }
 
 const {
-  heading = { title: 'Testimonials', subTitle: '' },
-  slug = { current: 'testimonials' },
+  heading = {title: 'Testimonials', subTitle: ''},
+  slug = {current: 'testimonials'},
+  body,
   testimonials = []
 } = Astro.props
+
+const background = `url(https://cdn.sanity.io/images/nn95ygkm/production/c099e8e136fe864dd51cc2d300285c2340eba035-1920x1156.webp)`
 ---
 
-<section id={slug?.current} class="content py-content-block">
-  {heading?.title && (
-    <header class="mb-12 text-center">
-      <hgroup>
-        <h2 id={slug.current}>{heading.title}</h2>
-        {heading?.subTitle && <p class="tagline">{heading.subTitle}</p>}
-      </hgroup>
-    </header>
-  )}
-
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    {testimonials.map((testimonial) => (
-      <figure class="flex flex-col rounded-2xl bg-white p-8 shadow-md ring-1 ring-gray-200">
-        <div class="mb-4 flex gap-1">
-          {[...Array(5)].map((_, i) => (
-            <Icon
-              name="lucide:star"
-              class={`h-5 w-5 ${i < testimonial.rating ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`}
-            />
-          ))}
-        </div>
-        <blockquote class="flex-1 text-lg font-medium leading-7 text-gray-900 italic">
-          <p>“{testimonial.quote}”</p>
-        </blockquote>
-        <figcaption class="mt-8 flex items-center gap-x-4 border-t border-gray-100 pt-6">
-          {testimonial.image && (
-            <img
-              src={urlFor(testimonial.image).width(100).height(100).url()}
-              alt={testimonial.author}
-              class="h-12 w-12 rounded-full bg-gray-50 object-cover"
-            />
-          )}
-          <div>
-            <div class="font-semibold text-gray-900">{testimonial.author}</div>
-            <div class="text-sm leading-6 text-gray-600">{testimonial.title}</div>
-          </div>
-        </figcaption>
-      </figure>
-    ))}
+<section
+  aria-labelledby={slug?.current}
+  class="bg-[url(https://cdn.sanity.io/images/nn95ygkm/production/c099e8e136fe864dd51cc2d300285c2340eba035-1920x1156.webp)]"
+  style="border-image: linear-gradient(to top, rgba(244,246,247, 0.7), rgba(244,246,247, 0.7)) fill 1;">
+  <div class="half">
+    {
+      heading?.title && (
+        <header>
+          <hgroup>
+            <h2 id={slug.current}>{heading.title}</h2>
+            {heading?.subTitle && <p class="tagline">{heading.subTitle}</p>}
+          </hgroup>
+        </header>
+      )
+    }
+    {body && <PortableText value={body} />}
+  </div>
+  <div class="half col-end-[fullwidth]!">
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {
+        testimonials.map(testimonial => (
+          <figure class="row-span-3 grid grid-rows-subgrid rounded-2xl bg-white p-8 ring-1 ring-gray-100 hover:shadow-md">
+            <div class="flex gap-1">
+              {[...Array(5)].map((_, i) => (
+                <Icon
+                  name={
+                    i < testimonial.rating ? 'mdi:star' : 'mdi:star-outline'
+                  }
+                  class="h-5 w-5 text-yellow-400"
+                />
+              ))}
+            </div>
+            <blockquote class="flex-1 text-sm font-medium text-gray-900 italic">
+              <p>
+                “
+                {
+                  testimonial.quote && testimonial.quote.split(' ').length > 20
+                    ? testimonial.quote.split(' ').slice(0, 20).join(' ') + '...'
+                    : testimonial.quote || ''
+                }
+                ”
+              </p>
+            </blockquote>
+            <figcaption class="flex items-center gap-x-4 border-t border-gray-100 pt-4">
+              {testimonial.image && (
+                <img
+                  src={urlFor(testimonial.image).width(100).height(100).url()}
+                  alt={testimonial.author}
+                  class="h-12 w-12 rounded-full bg-gray-50 object-cover"
+                />
+              )}
+              <div>
+                <div class="font-semibold text-gray-900">
+                  {testimonial.author}
+                </div>
+                <div class="text-sm leading-6 text-gray-600">
+                  {testimonial.title}
+                </div>
+              </div>
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
   </div>
 </section>

@@ -2,14 +2,14 @@
 import ContactForm from '@components/ContactForm.astro'
 import IconCard from '@components/IconCard.astro'
 
-import { Image } from 'astro:assets'
-import { PortableText } from 'astro-portabletext'
+import {Image} from 'astro:assets'
+import {PortableText} from 'astro-portabletext'
 
-import { urlFor } from '@services/sanity'
+import {urlFor} from '@services/sanity'
 
 const {
-  heading = { title: 'Benefits', subTitle: '' },
-  slug = { current: 'benefits' },
+  heading = {title: 'Benefits', subTitle: ''},
+  slug = {current: 'benefits'},
   body = [],
   images = [],
   cards = [],
@@ -55,7 +55,7 @@ const giraffe = urlFor(
         width={77}
         height={150}
         alt=""
-        class="absolute hidden lg:block left-[53%] lg:bottom-[-3.2rem] xl:bottom-0"
+        class="absolute left-[53%] hidden lg:bottom-[-3.2rem] lg:block xl:bottom-0"
       />
     )
   }

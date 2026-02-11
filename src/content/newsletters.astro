@@ -32,7 +32,6 @@ const sortedNewsletters = newsletters
       {heading?.subTitle && <p class="tagline">{heading?.subTitle}</p>}
     </hgroup>
   </header>}
-  <div class="content py-content-block">
     <div class="flex flex-wrap justify-center gap-6">
       {
         sortedNewsletters.map(newsletter => {
@@ -56,5 +55,4 @@ const sortedNewsletters = newsletters
         })
       }
     </div>
-  </div>
 </section>

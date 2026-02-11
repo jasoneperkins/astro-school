@@ -48,6 +48,7 @@
   },
   "devDependencies": {
     "@iconify-json/line-md": "^1.2.14",
+    "@iconify-json/mdi": "^1.2.3",
     "@tailwindcss/forms": "^0.5.11",
     "prettier": "^3.8.1",
     "prettier-plugin-astro": "^0.14.1",
