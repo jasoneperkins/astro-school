@@ -121,17 +121,42 @@ export const pageQuery = `
 `
 
 export async function fetchPage(slug: string): Promise<Page> {
-  const data = await fetchGraphQL<any>(pageQuery, { slug })
-  const pageData = data?.allPage?.[0]
-  return (
-    pageData || {
-      info: { title: '', slug: { current: slug } },
+  try {
+    const data = await fetchGraphQL<any>(pageQuery, { slug })
+    const pageData = data?.allPage?.[0]
+    if (!pageData) {
+      console.warn(`No page found for slug: ${slug}`)
+    }
+    return (
+      pageData || {
+        info: {
+          _type: 'Info',
+          title: '',
+          slug: { current: slug, _type: 'slug' },
+          publishDate: '',
+          images: []
+        },
+        content: [],
+        seo: {
+          metaTitle: '',
+          metaDescription: ''
+        },
+        _type: 'Page'
+      }
+    )
+  } catch (err: any) {
+    console.error(`Error fetching page "${slug}":`, err.message)
+    return {
+      info: {
+        title: 'Error Loading Page',
+        slug: { current: slug, _type: 'slug' }
+      },
       content: [],
       seo: {
-        metaTitle: '',
-        metaDescription: ''
+        metaTitle: 'Error',
+        metaDescription: 'Page load failure'
       },
       _type: 'Page'
     }
-  )
+  }
 }

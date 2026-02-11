@@ -46,17 +46,19 @@ const alignClass =
     {
       (sanityIcon || icon) && (
         <div class={`${align === 'center' ? 'mx-auto' : ''}`}>
-          {sanityIcon ? (
+          {sanityIcon?.asset?.url ? (
             <CustomIcon
               url={sanityIcon.asset.url}
               class="size-14"
             />
           ) : (
-            <Icon
-              name={icon!}
-              class="size-10 text-black"
-              aria-hidden="true"
-            />
+            icon && (
+              <Icon
+                name={icon!}
+                class="size-10 text-black"
+                aria-hidden="true"
+              />
+            )
           )}
         </div>
       )
