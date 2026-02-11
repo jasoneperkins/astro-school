@@ -2,20 +2,20 @@
 import Layout from '@layouts/Common.astro'
 import Carousel from '@components/Carousel.astro'
 
-import {fetchNewsletter, fetchNewsletters} from '@queries/newsletter'
-import {fetchIdentity} from '@queries/identity'
+import { fetchNewsletter, fetchNewsletters } from '@queries/newsletter'
+import { fetchIdentity } from '@queries/identity'
 
-import type {Newsletter} from '@interfaces/newsletter'
-import type {Identity} from '@interfaces/identity'
+import type { Newsletter } from '@interfaces/newsletter'
+import type { Identity } from '@interfaces/identity'
 
 import '@styles/components/vocabularyCards.css'
 
 export async function getStaticPaths() {
   const newsletters = await fetchNewsletters()
 
-  return newsletters.map(newsletter => ({
-    params: {slug: newsletter.info.slug.current},
-    props: {slug: newsletter.info.slug.current}
+  return newsletters.map((newsletter) => ({
+    params: { slug: newsletter.info.slug.current },
+    props: { slug: newsletter.info.slug.current }
   }))
 }
 
@@ -30,123 +30,197 @@ const getNewsletterTitle = (dateStr: string) => {
   const endDate = new Date(startDate)
   endDate.setUTCDate(startDate.getUTCDate() + 4)
 
-  const format = (d: Date) =>
+  const formatMonthDay = (d: Date) =>
     d.toLocaleDateString('en-US', {
       month: 'long',
       day: 'numeric',
       timeZone: 'UTC'
     })
-  return `${format(startDate)} to ${format(endDate)}`
+
+  const formatFull = (d: Date) =>
+    d.toLocaleDateString('en-US', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric',
+      timeZone: 'UTC'
+    })
+
+  if (startDate.getUTCFullYear() === endDate.getUTCFullYear()) {
+    return `${formatMonthDay(startDate)} through ${formatFull(endDate)}`
+  }
+
+  return `${formatFull(startDate)} through ${formatFull(endDate)}`
 }
 
 const pageInfo = {
   ...info,
-  title: week 
-    ? `Newsletter for the Week of ${new Date(week).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}`
-    : info.title,
+  title: week ? getNewsletterTitle(week) : info.title,
   subTitle: info.subTitle || 'The ECLC Newsletter for the Week of'
 }
 
 // Filter event posters to show only those on or after today
 const today = new Date().toISOString().split('T')[0]
-const eventPosters = identity?.eventPosters
-  ?.filter(poster => poster.eventDate >= today)
-  ?.sort((a, b) => a.eventDate.localeCompare(b.eventDate))
-  ?.slice(0, 3) || []
+const eventPosters =
+  identity?.eventPosters
+    ?.filter((poster) => poster.eventDate >= today)
+    ?.sort((a, b) => a.eventDate.localeCompare(b.eventDate))
+    ?.slice(0, 3) || []
 
 export const prerender = true
 ---
 
 <Layout info={pageInfo} seo={seo} social={social}>
-  <div class="grid-cols-content-3/5 py-content-block flex flex-col gap-16">
-    {
-      content?.text && (
-        <div class="half prose prose-lg max-w-prose">
-          {content.text.split('\n\n').map((para) => (
-            <p>{para}</p>
-          ))}
-        </div>
-      )
-    }
-
-    {
-      info?.images && info.images.length > 0 && (
-        <div class="half grid grid-cols-1 gap-8 md:grid-cols-2">
-          {info.images.map((img) => (
-            <figure class="overflow-hidden rounded-xl shadow-md">
-              <img 
-                src={img.asset.url} 
-                alt={img.alt || ''} 
-                class="aspect-square w-full object-cover"
-              />
-            </figure>
-          ))}
-        </div>
-      )
-    }
-  </div>
-
-  {
-    newsletter.content?.carousel && newsletter.content.carousel.length > 0 && (
-      <section class="max-w-full overflow-hidden rounded-2xl bg-gray-50 py-12">
-        <div class="px-4">
-          <h2 class="mb-8 text-center text-3xl font-bold">
-            Photos from this Week
-          </h2>
-          <Carousel>
-            {newsletter.content.carousel.map((img) => (
-              <div class="carousel-item">
-                <img src={img.asset.url} alt={img.alt || ''} />
-              </div>
+  <div
+    x-data="{ 
+      modalImgSrc: '', 
+      modalImgAlt: '',
+      openModal(e) {
+        if (e.target.tagName !== 'IMG') return;
+        this.modalImgSrc = e.target.src;
+        this.modalImgAlt = e.target.alt;
+        this.$refs.posterLightbox.showPopover();
+      }
+    }"
+  >
+    <div
+      class="content grid-cols-content-75 py-content-block gap-content grid-rows-[repeat(3,_min-content)] gap-y-4"
+    >
+      {
+        content?.text && (
+          <div class="half prose prose-lg">
+            {content.text.split('\n\n').map((para) => (
+              <p>{para}</p>
             ))}
-          </Carousel>
-        </div>
-      </section>
-    )
-  }
-
-  {
-    newsletter.vocabularyCards && newsletter.vocabularyCards.length > 0 && (
-      <section>
-        <h2 class="mb-8 text-center text-3xl font-bold">Jewish Vocabulary</h2>
-        <div class="vocabulary-cards">
-          {newsletter.vocabularyCards.map((card) => (
-            <div class="flashcard-container" tabindex="0">
-              <div class="flashcard">
-                <div class="card-front">
-                  <h3>{card.word}</h3>
-                </div>
-                <div class="card-back">
-                  <p>{card.definition}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-    )
-  }
-
-  {
-    eventPosters.length > 0 && (
-      <section class="max-w-full overflow-hidden rounded-2xl bg-blue-50 py-12">
-        <div class="px-4">
-          <h2 class="mb-8 text-center text-3xl font-bold">Upcoming Events</h2>
-          <Carousel>
-            {eventPosters.map((poster) => (
-              <div class="carousel-item relative">
-                <img src={poster.image.asset.url} alt={poster.caption || poster.image.alt || ''} />
-                {poster.caption && (
-                  <div class="absolute bottom-0 left-0 right-0 bg-black/60 p-4 text-white backdrop-blur-sm">
-                    <p class="text-sm font-medium">{poster.caption}</p>
-                    <p class="text-xs opacity-80">{new Date(poster.eventDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}</p>
+          </div>
+        )
+      }
+      {
+        newsletter.content?.carousel &&
+          newsletter.content.carousel.length > 0 && (
+            <article class="py-6 col-start-[content-start]! col-end-[center]! overflow-hidden rounded-2xl">
+              <header>
+                <hgroup>
+                  <h2>Photos from this Week</h2>
+                </hgroup>
+              </header>
+              <Carousel>
+                {newsletter.content.carousel.map((img) => (
+                  <div class="carousel-item">
+                    <img src={img.asset.url} alt={img.alt || ''} />
                   </div>
-                )}
-              </div>
-            ))}
-          </Carousel>
-        </div>
-      </section>
-    )
-  }
+                ))}
+              </Carousel>
+            </article>
+          )
+      }
+      {
+        newsletter.vocabularyCards && newsletter.vocabularyCards.length > 0 && (
+          <article class="col-start-[content-start]! col-end-[center]!">
+            <header>
+              <hgroup>
+                <h2>Jewish Vocabulary</h2>
+                <p class="tagline">Words to know this week!</p>
+              </hgroup>
+            </header>
+            <div class="vocabulary-cards">
+              {newsletter.vocabularyCards.map((card) => (
+                <div class="flashcard-container" tabindex="0">
+                  <div class="flashcard">
+                    <div class="card-front">
+                      <h3>{card.word}</h3>
+                    </div>
+                    <div class="card-back">
+                      <p>{card.definition}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </article>
+        )
+      }
+      {
+        eventPosters.length > 0 && (
+          <aside class="half row-span-full">
+            <header>
+              <hgroup>
+                <h2 class="text-3xl">Upcoming Events</h2>
+              </hgroup>
+            </header>
+            <ul
+              class="flex list-none flex-col gap-6 p-0 outline-none!"
+              @click="openModal"
+            >
+              {eventPosters.map((poster) => (
+                <li class="shadow-subtle flex flex-col gap-4 overflow-hidden rounded-xl border border-gray-100 bg-white p-4">
+                  <div class="flex items-start gap-4">
+                    <div class="flex min-w-16 flex-col items-center justify-center rounded-lg bg-blue-100 p-2 text-center">
+                      <span class="text-xs font-bold text-blue-700 uppercase">
+                        {new Date(poster.eventDate).toLocaleDateString('en-US', {
+                          month: 'short',
+                          timeZone: 'UTC'
+                        })}
+                      </span>
+                      <span class="text-xl leading-none font-black text-blue-900">
+                        {new Date(poster.eventDate).toLocaleDateString('en-US', {
+                          day: 'numeric',
+                          timeZone: 'UTC'
+                        })}
+                      </span>
+                    </div>
+                    <div>
+                      {poster.caption && (
+                        <h3 class="text-lg! font-medium text-gray-900">
+                          {poster.caption}
+                        </h3>
+                      )}
+                      <p class="mt-1 text-xs tracking-wider text-gray-500 uppercase">
+                        {new Date(poster.eventDate).toLocaleDateString('en-US', {
+                          weekday: 'long',
+                          year: 'numeric',
+                          timeZone: 'UTC'
+                        })}
+                      </p>
+                    </div>
+                  </div>
+                  <img
+                    src={poster.image.asset.url}
+                    alt={poster.caption || poster.image.alt || ''}
+                    class="h-48 w-full cursor-zoom-in rounded-lg object-cover transition-transform hover:scale-[1.02]"
+                  />
+                </li>
+              ))}
+            </ul>
+          </aside>
+        )
+      }
+    </div>
+
+    <div
+      id="poster-lightbox"
+      class="lightbox-popover"
+      popover
+      x-ref="posterLightbox"
+    >
+      <img :src="modalImgSrc" :alt="modalImgAlt" />
+      <button
+        class="close-btn"
+        @click="$refs.posterLightbox.hidePopover()"
+        aria-label="Close modal"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><path d="M18 6 6 18M6 6l12 12"></path></svg
+        >
+      </button>
+    </div>
+  </div>
 </Layout>

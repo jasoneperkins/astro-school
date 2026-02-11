@@ -1,21 +1,16 @@
 ---
 import Layout from '@layouts/Common.astro'
 
-import ContactForm from '@components/ContactForm.astro'
-import IconCard from '@components/IconCard.astro'
-
 import Benefits from '@content/benefits.astro'
 import Cta from '@content/cta.astro'
 import Services from '@content/services.astro'
 import Solutions from '@content/solutions.astro'
 
+import ContactForm from '@components/ContactForm.astro'
+import IconCard from '@components/IconCard.astro'
+
 import '@styles/pages/home.css'
 
-import {Image} from 'astro:assets'
-import {Icon} from 'astro-icon/components'
-import {PortableText} from 'astro-portabletext'
-
-import {fetchGraphQL} from '@services/sanity'
 import {fetchPage} from '@queries/page'
 import {urlFor} from '@services/sanity'
 

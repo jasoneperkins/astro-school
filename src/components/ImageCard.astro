@@ -20,7 +20,10 @@ interface Props {
 const { title, description, image, href } = Astro.props
 ---
 
-<a href={href} class="item group hover:border-blue-600/50! flex flex-col overflow-hidden">
+<a
+  href={href}
+  class="item group hover:border-blue-600/50! flex h-full min-w-[160px] max-w-[320px] flex-1 basis-[240px] flex-col overflow-hidden"
+>
   {
     image?.asset?.url && (
       <div class="aspect-video w-full overflow-hidden bg-gray-100">

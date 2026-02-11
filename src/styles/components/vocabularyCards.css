@@ -1,14 +1,12 @@
+@reference "tailwindcss";
+
 .vocabulary-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 2rem;
-  padding: 2rem 0;
+  @apply grid gap-2;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
 }
 
 .flashcard-container {
-  perspective: 1000px;
-  height: 200px;
-  cursor: pointer;
+  @apply aspect-video cursor-pointer perspective-distant;
 }
 
 .flashcard {
@@ -44,7 +42,6 @@
 .card-front {
   background-color: white;
   color: #1a1a1a;
-  border: 4px solid #3b82f6; /* Use a base blue */
 }
 
 .card-back {

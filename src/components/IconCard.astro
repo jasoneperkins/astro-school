@@ -41,8 +41,8 @@ const alignClass =
   align === 'center' ? 'text-center items-center' : 'text-left items-start'
 ---
 
-<article class={`item group ${borderColorClass} ${alignClass}`}>
-  <div class="flex w-full flex-col gap-3 p-6">
+<article class={`item group h-full ${borderColorClass} ${alignClass}`}>
+  <div class="flex w-full h-full flex-col gap-3 p-6">
     {
       (sanityIcon || icon) && (
         <div class={`${align === 'center' ? 'mx-auto' : ''}`}>

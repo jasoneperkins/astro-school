@@ -25,6 +25,7 @@ export default defineType({
           { title: 'News', value: 'news' },
           { title: 'Services', value: 'services' },
           { title: 'Steps', value: 'steps' },
+          { title: 'Summary', value: 'summary' },
           { title: 'Solutions', value: 'solutions' },
           { title: 'Testimonials', value: 'testimonials' }
         ],

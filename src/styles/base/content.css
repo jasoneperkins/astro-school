@@ -24,7 +24,22 @@
 }
 
 @utility grid-cols-content-* {
-  --split: --value(--aspect-ratio-*, ratio, [ratio]);
+  options: {
+    types: [ratio, number];
+  }
+
+  --val-ratio: --value(ratio);
+  --val-num: --value(number);
+
+  --col-left-ratio: calc(var(--val-ratio) * var(--content-width));
+  --col-right-ratio: calc((1 - var(--val-ratio)) * var(--content-width));
+
+  --fixed-side: calc(var(--val-num) * 0.25rem);
+  --col-left-num: calc(var(--content-width) - var(--fixed-side));
+  --col-right-num: var(--fixed-side);
+
+  --col-left: var(--col-left-ratio, var(--col-left-num));
+  --col-right: var(--col-right-ratio, var(--col-right-num));
 
   grid-template-columns:
     [screen-start]
@@ -34,9 +49,9 @@
     [breakout-start]
     var(--breakout-width)
     [content-start]
-    calc(var(--split) * var(--content-width))
+    var(--col-left)
     [center]
-    calc((1 - var(--split)) * var(--content-width))
+    var(--col-right)
     [content-end]
     var(--breakout-width)
     [breakout-end]

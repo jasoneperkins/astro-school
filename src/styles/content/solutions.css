@@ -1,0 +1,3 @@
+#giraffe {
+  bottom: clamp(-5.125rem, -10.25rem + 12.8125vw, 0rem);
+}
