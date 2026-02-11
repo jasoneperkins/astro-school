@@ -23,6 +23,14 @@ const background = `url(https://cdn.sanity.io/images/nn95ygkm/production/c099e8e
 ---
 
 <section
+  x-data={`{ 
+    open: false, 
+    active: null, 
+    testimonials: ${JSON.stringify(testimonials.map(t => ({
+      ...t,
+      imageUrl: t.image ? urlFor(t.image).width(200).height(200).url() : null
+    })))} 
+  }`}
   aria-labelledby={slug?.current}
   class="bg-[url(https://cdn.sanity.io/images/nn95ygkm/production/c099e8e136fe864dd51cc2d300285c2340eba035-1920x1156.webp)]"
   style="border-image: linear-gradient(to top, rgba(244,246,247, 0.7), rgba(244,246,247, 0.7)) fill 1;">
@@ -42,13 +50,16 @@ const background = `url(https://cdn.sanity.io/images/nn95ygkm/production/c099e8e
   <div class="half col-end-[fullwidth]!">
     <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
       {
-        testimonials.map(testimonial => (
-          <figure class="row-span-3 grid grid-rows-subgrid rounded-2xl bg-white p-8 ring-1 ring-gray-100 hover:shadow-md">
+        testimonials.map((testimonial, index) => (
+          <button
+            type="button"
+            @click={`active = testimonials[${index}]; open = true`}
+            class="row-span-3 grid grid-rows-subgrid rounded-2xl bg-white p-8 text-left ring-1 ring-gray-100 transition-all hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
             <div class="flex gap-1">
               {[...Array(5)].map((_, i) => (
                 <Icon
                   name={
-                    i < testimonial.rating ? 'mdi:star' : 'mdi:star-outline'
+                    i < (testimonial.rating || 0) ? 'mdi:star' : 'mdi:star-outline'
                   }
                   class="h-5 w-5 text-yellow-400"
                 />
@@ -82,9 +93,84 @@ const background = `url(https://cdn.sanity.io/images/nn95ygkm/production/c099e8e
                 </div>
               </div>
             </figcaption>
-          </figure>
+          </button>
         ))
       }
     </div>
   </div>
+
+  <template x-teleport="body">
+    <div
+      x-show="open"
+      class="fixed inset-0 z-100 flex items-center justify-center p-4 sm:p-6"
+      x-cloak>
+      <!-- Backdrop -->
+      <div
+        x-show="open"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="transition ease-in duration-200"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0"
+        class="fixed inset-0 bg-gray-500/75 backdrop-blur-sm"
+        @click="open = false"
+        aria-hidden="true">
+      </div>
+
+      <!-- Popover Content -->
+      <div
+        x-show="open"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0 scale-95"
+        x-transition:enter-end="opacity-100 scale-100"
+        x-transition:leave="transition ease-in duration-200"
+        x-transition:leave-start="opacity-100 scale-100"
+        x-transition:leave-end="opacity-0 scale-95"
+        class="relative w-full max-w-2xl transform overflow-hidden rounded-3xl bg-white p-8 shadow-2xl ring-1 ring-gray-900/5 sm:p-12"
+        @click.away="open = false">
+        
+        <button
+          type="button"
+          @click="open = false"
+          class="absolute top-6 right-6 text-gray-400 hover:text-gray-500 focus:outline-none">
+          <span class="sr-only">Close</span>
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        <div x-show="active" class="flex flex-col gap-8">
+          <div class="flex items-center gap-6">
+            <template x-if="active?.imageUrl">
+              <img
+                :src="active.imageUrl"
+                :alt="active.author"
+                class="h-20 w-20 rounded-full bg-gray-50 object-cover shadow-md"
+              />
+            </template>
+            <div>
+              <h3 class="text-2xl font-bold text-gray-900" x-text="active.author"></h3>
+              <p class="text-lg text-gray-600" x-text="active.title"></p>
+              <div class="mt-2 flex gap-1">
+                <template x-for="i in 5">
+                   <svg 
+                    class="h-6 w-6" 
+                    :class="i <= active.rating ? 'text-yellow-400' : 'text-gray-200'"
+                    fill="currentColor" 
+                    viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                </template>
+              </div>
+            </div>
+          </div>
+
+          <blockquote class="text-xl leading-relaxed text-gray-900 italic">
+            <p x-text="'“ ' + active.quote + ' ”'"></p>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </template>
 </section>
