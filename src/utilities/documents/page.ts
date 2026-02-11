@@ -2,8 +2,8 @@ import { defineType, defineField } from 'sanity'
 
 export default defineType({
   name: 'Page',
-  type: 'document',
   title: 'Page',
+  type: 'document',
   groups: [
     { name: 'info', title: 'Info', default: true },
     { name: 'content', title: 'Content' },
@@ -32,7 +32,7 @@ export default defineType({
     }),
     defineField({
       name: 'social',
-      title: 'Social Sharing',
+      title: 'Social Sharing Optimization',
       type: 'social',
       group: 'social'
     })

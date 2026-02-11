@@ -1,27 +1,41 @@
 ---
 import Layout from '@layouts/Common.astro'
-import {fetchClassroom, fetchClassrooms} from '@queries/classroom'
+
+import { PortableText } from 'astro-portabletext'
+import { fetchClassroom, fetchClassrooms } from '@queries/classroom'
+
+import type { Classroom } from '@interfaces/classroom'
+import type { Seo } from '@interfaces/seo'
+import type { Social } from '@interfaces/social'
+
+interface Props {
+  info: Classroom['info']
+  content: Classroom['content']
+  seo: Seo
+  social: Social
+}
 
 export async function getStaticPaths() {
   const classrooms = await fetchClassrooms()
 
-  return classrooms.map(({info}) => ({
-    params: {slug: info.slug.current},
-    props: {slug: info.slug.current}
+  return classrooms.map(({ info }) => ({
+    params: { slug: info.slug.current },
+    props: { slug: info.slug.current }
   }))
 }
 
-const {slug} = Astro.params
-const {info, seo, social} = await fetchClassroom(slug)
+const { slug } = Astro.params
+const { info, content, seo, social } = await fetchClassroom(slug)
 
 export const prerender = true
 ---
 
 <Layout info={info} seo={seo} social={social}>
-  <div class="content py-content-block">
-    <header>
-      <h1>{info.title}</h1>
-      {info.subTitle && <p>{info.subTitle}</p>}
-    </header>
-  </div>
+  {
+    content?.map((section) => (
+      <section>
+        <PortableText value={section.body} />
+      </section>
+    ))
+  }
 </Layout>

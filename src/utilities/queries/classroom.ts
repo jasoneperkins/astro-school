@@ -32,6 +32,44 @@ export const classroomBySlugQuery = `
         }
         author
       }
+      content {
+        ... on Section {
+          _type
+          _key
+          name
+          heading {
+            title
+            subTitle
+            showTitleFirst
+          }
+          slug { current }
+          showHeader
+          body: bodyRaw
+          images {
+            _type
+            asset {
+              url
+              _id
+              metadata { lqip }
+            }
+            alt
+          }
+          cards {
+            _key
+            title
+            description
+            color
+            icon {
+              asset {
+                url
+                _id
+              }
+              alt
+            }
+          }
+          cardAlign
+        }
+      }
       seo {
         # Basic
         metaTitle

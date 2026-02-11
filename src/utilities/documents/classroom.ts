@@ -14,7 +14,8 @@ export default defineType({
     defineField({
       name: 'info',
       title: 'Classroom Information',
-      type: 'Info'
+      type: 'Info',
+      group: 'info'
     }),
     defineField({
       name: 'content',
@@ -25,13 +26,13 @@ export default defineType({
     }),
     defineField({
       name: 'seo',
-      title: 'SEO Overrides',
+      title: 'Search Engine Optimization',
       type: 'seo',
       group: 'seo'
     }),
     defineField({
       name: 'social',
-      title: 'Social Sharing',
+      title: 'Social Sharing Optimization',
       type: 'social',
       group: 'social'
     })
