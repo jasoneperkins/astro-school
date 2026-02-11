@@ -1,10 +1,10 @@
 @reference "tailwindcss";
 
 #mobile-drawer nav ul li {
-  @apply -mx-2 p-2 duration-500 hover:bg-amber-50;
+  @apply -mx-2 p-2 duration-500 hover:bg-orange-50;
 
   a {
-    @apply hover:text-amber-700;
+    @apply hover:text-orange-700;
   }
 }
 

@@ -101,6 +101,9 @@ export default defineConfig({
     sitemap()
   ],
   output: 'server',
+  build: {
+    inlineStylesheets: 'always'
+  },
   site: 'https://www.eclcstuart.com',
   vite: {
     plugins: [tailwindcss()],

@@ -28,7 +28,7 @@ const {identity, classrooms} = Astro.props
     x-show="isDrawerOpen"
     x-transition.opacity
     @click="isDrawerOpen = false"
-    class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm">
+    class="fixed inset-0 bg-gray-900/50 backdrop-blur-sm">
   </div>
 
   <div
@@ -40,11 +40,11 @@ const {identity, classrooms} = Astro.props
     x-transition:leave-end="translate-x-full"
     class="fixed top-0 right-0 z-50 flex h-screen w-fit max-w-[90vw] flex-col space-y-8 bg-white p-5 shadow-2xl">
     <div
-      class="flex items-center justify-between gap-2 border-b border-slate-300 py-5 text-blue-900">
+      class="flex items-center justify-between gap-2 border-b border-gray-300 py-5 text-blue-900">
       <button
         @click="isDrawerOpen = false"
         aria-label="Close Menu"
-        class="p-0 text-xl text-slate-500 transition-colors hover:text-blue-600">
+        class="p-0 text-xl text-gray-500 transition-colors hover:text-blue-600">
         <Icon name="line-md:menu-to-close-transition" aria-hidden="true" />
       </button>
       <span class="text-lg">{identity.name}</span>
@@ -81,7 +81,7 @@ const {identity, classrooms} = Astro.props
           <ul
             x-show="isClassroomsOpen"
             x-collapse
-            class="mt-2 space-y-2 border-l border-slate-200 pl-8">
+            class="mt-2 space-y-2 border-l border-gray-300 pl-8">
             {
               classrooms.map(classroom => (
                 <li>
@@ -97,7 +97,7 @@ const {identity, classrooms} = Astro.props
           </ul>
         </li>
         <li>
-          <a href="#" @click="isDrawerOpen = false">
+          <a href="/newsletters" @click="isDrawerOpen = false">
             <Icon
               name="lucide:scroll-text"
               size={20}
