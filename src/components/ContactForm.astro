@@ -54,7 +54,7 @@ const headerClass = `text-2xl font-bold ${theme === 'light' ? 'text-gray-900' : 
   </template>
 
   <template x-if="state !== 'success'">
-    <div class="form-wrapper">
+    <div class="form-wrapper @container">
       <header class={`mb-4 ${alignmentClass}`}>
         <h2
           class={headerClass}
@@ -63,7 +63,7 @@ const headerClass = `text-2xl font-bold ${theme === 'light' ? 'text-gray-900' : 
       </header>
       <form
         @submit.prevent="submitForm"
-        class="contactForm @container grid grid-cols-1 @lg:grid-cols-2 gap-y-4 gap-x-4"
+        class="contactForm grid grid-cols-1 gap-x-4 gap-y-4 @lg:grid-cols-2"
         novalidate>
         <input type="hidden" name="sourceContext" value={context} />
 

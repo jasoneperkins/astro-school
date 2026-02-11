@@ -37,7 +37,6 @@ export default defineType({
       title: 'Subtitle',
       type: 'string',
       description: 'Hidden branding subtitle.',
-      hidden: true,
       initialValue: ({ document }) => {
         if (document?._type === 'Newsletter') {
           return 'The ECLC Newsletter for the Week of'
