@@ -10,9 +10,15 @@ Whenever the user asks to "send to git" or "deploy to github", follow these step
    git add .
    ```
 3. **Generate a commit message**: Analyze all changes made since the last commit (using `git diff --cached`) and summarize them into a descriptive commit message.
-4. **Commit and Push**:
+4. **Deploy Sanity**:
    ```powershell
-   git commit -m "Your descriptive message here"
+   cd studio
+   npx sanity graphql deploy --yes
+   cd ..
+   npm run studio:deploy
+   ```
+5. **Push to GitHub**:
+   ```powershell
    git push
    ```
 

@@ -2,7 +2,7 @@
 @import 'tw-animate-css';
 
 .item {
-  @apply relative flex flex-col rounded-lg border border-gray-200 bg-white duration-300 ease-in;
+  @apply relative flex flex-col rounded-lg border border-gray-100 bg-white duration-300 ease-in;
   @apply hover:translate-x-2 hover:shadow-lg;
   @apply md:hover:translate-x-0 md:hover:-translate-y-2 md:hover:shadow-2xl;
   animation: slide-reveal linear both;
