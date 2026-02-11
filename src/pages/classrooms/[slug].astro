@@ -2,6 +2,7 @@
 import Layout from '@layouts/Common.astro'
 import ContactForm from '@components/ContactForm.astro'
 import ImageCard from '@components/ImageCard.astro'
+import Testimonials from '@content/testimonials.astro'
 
 import {PortableText} from 'astro-portabletext'
 import {fetchClassroom, fetchClassrooms} from '@queries/classroom'
@@ -39,18 +40,23 @@ export const prerender = true
 
 <Layout {info} {content} {seo} {social}>
   {
-    content?.map(section => (
-      <section class="content grid-cols-content-100">
-        <div class="half">
-          <PortableText value={section.body as any} />
-        </div>
-        <div class="half">
-          <article class="bg-blue-800 p-10 rounded-lg">
-            <ContactForm theme="dark" initialMode="tour" />
-          </article>
-        </div>
-      </section>
-    ))
+    content?.map(section => {
+      if (section.name === 'testimonials') {
+        return <Testimonials {...section} />
+      }
+      return (
+        <section class="content grid-cols-content-100">
+          <div class="half">
+            <PortableText value={section.body as any} />
+          </div>
+          <div class="half">
+            <article class="bg-blue-800 p-10 rounded-lg">
+              <ContactForm theme="dark" initialMode="tour" />
+            </article>
+          </div>
+        </section>
+      )
+    })
   }
 
   <section class="content py-content-block pt-0!">

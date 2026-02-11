@@ -33,7 +33,7 @@ export default defineType({
         layout: 'dropdown'
       },
       initialValue: 'content',
-      validation: (Rule: Rule) => Rule.required()
+      validation: (Rule) => Rule.required()
     }),
     defineField({
       name: 'heading',
@@ -50,7 +50,7 @@ export default defineType({
         source: (doc: any, options: any) => options.parent?.heading?.title,
         maxLength: 96
       },
-      validation: (Rule: Rule) => Rule.required(),
+      validation: (Rule) => Rule.required(),
       group: 'content'
     }),
     defineField({
@@ -95,6 +95,13 @@ export default defineType({
       },
       initialValue: 'left',
       group: 'advanced'
+    }),
+    defineField({
+      name: 'testimonials',
+      title: 'Section Testimonials',
+      type: 'array',
+      of: [{ type: 'Testimonial' }],
+      group: 'content'
     })
   ],
   preview: {

@@ -26,12 +26,12 @@ const sortedNewsletters = newsletters
 ---
 
 <section aria-labelledby={slug.current}>
-  <header>
+  {heading?.title && <header>
     <hgroup class="text-center">
-      {heading?.title && <h2 id={slug.current}>{heading?.title}</h2>}
-      {heading?.subTitle && <p>{heading?.subTitle}</p>}
+      <h2 id={slug.current}>{heading.title}</h2>
+      {heading?.subTitle && <p class="tagline">{heading?.subTitle}</p>}
     </hgroup>
-  </header>
+  </header>}
   <div class="content py-content-block">
     <div class="flex flex-wrap justify-center gap-6">
       {

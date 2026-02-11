@@ -15,7 +15,20 @@ const {
   cards = [],
   cardAlign = 'left'
 } = Astro.props
+
+const bgImage = `url(${urlFor(
+  'image-2acca93019024a1ec108b946d21c755bea8bc566-607x435-webp'
+)
+  .format('webp')
+  .quality(60)
+  .url()})`
 ---
+
+<style define:vars={{bgImage}}>
+  section {
+    background-image: var(--bgImage);
+  }
+</style>
 
 <section
   id={slug?.current}

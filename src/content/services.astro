@@ -15,10 +15,10 @@ const {
 } = Astro.props
 ---
 
-<section aria-labelledby="services-label">
+<section aria-labelledby={slug.current}>
   <header>
     <hgroup class="text-center">
-      {heading?.title && <h2 id="services-label">{heading?.title}</h2>}
+      {heading?.title && <h2 id={slug.current}>{heading?.title}</h2>}
       {heading?.subTitle && <p>{heading?.subTitle}</p>}
     </hgroup>
   </header>

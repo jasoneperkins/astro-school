@@ -17,6 +17,7 @@ import Social from '../../src/utilities/objects/social'
 import EventPoster from '../../src/utilities/objects/eventPoster'
 import VocabularyCard from '../../src/utilities/objects/vocabularyCard'
 import CustomText from '../../src/utilities/objects/customText'
+import Testimonial from '../../src/utilities/objects/testimonial'
 
 const documentTypes = [Classroom, Identity, Newsletter, Page]
 const objectTypes = [
@@ -31,6 +32,7 @@ const objectTypes = [
   Section,
   Seo,
   Social,
+  Testimonial,
   VocabularyCard,
 ]
 

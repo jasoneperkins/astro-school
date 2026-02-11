@@ -57,6 +57,22 @@ export const pageQuery = `
             }
           }
           cardAlign
+          testimonials {
+            _type
+            _key
+            quote
+            author
+            title
+            image {
+              _type
+              asset {
+                url
+                _id
+                metadata { lqip }
+              }
+              alt
+            }
+          }
         }
       }
       seo {
