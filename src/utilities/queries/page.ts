@@ -148,8 +148,11 @@ export async function fetchPage(slug: string): Promise<Page> {
     console.error(`Error fetching page "${slug}":`, err.message)
     return {
       info: {
+        _type: 'Info',
         title: 'Error Loading Page',
-        slug: { current: slug, _type: 'slug' }
+        slug: { current: slug, _type: 'slug' },
+        publishDate: '',
+        images: []
       },
       content: [],
       seo: {
