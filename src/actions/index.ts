@@ -9,13 +9,17 @@ export const server = {
       parentName: z.string(),
       email: z.string().email(),
       sourceContext: z.string(),
-      message: z.string()
+      message: z.string(),
+      tourDate: z.string().optional(),
+      tourTime: z.string().optional()
     }),
     handler: async (input, context) => {
       const { Resend } = await import('resend')
       const runtime = context.locals.runtime
 
-      // Access the secret you just set in Wrangler
+      const isTour = !!(input.tourDate && input.tourTime)
+      const leadType = isTour ? 'Tour Request' : 'New Lead'
+
       const resend = new Resend(runtime.env.RESEND_API_KEY)
 
       try {
@@ -24,15 +28,17 @@ export const server = {
           resend.emails.send({
             from: 'ECLC Leads <leads@eclcstuart.com>',
             to: 'misscindy@tbhfl.org',
-            subject: `New Lead: ${input.parentName}`,
-            text: `Parent: ${input.parentName}\nEmail: ${input.email}\nContext: ${input.sourceContext}\n\n${input.message}`
+            subject: `${leadType}: ${input.parentName}`,
+            text: `Parent: ${input.parentName}\nEmail: ${input.email}\nContext: ${input.sourceContext}\n${isTour ? `Preferred Date: ${input.tourDate}\nPreferred Time: ${input.tourTime}\n` : ''}\nMessage: ${input.message}`
           }),
-          // Thank You to Parent (This will now work!)
+          // Thank You to Parent
           resend.emails.send({
             from: 'Early Childhood Learning Center <leads@eclcstuart.com>',
             to: input.email,
-            subject: "We've received your inquiry!",
-            text: `Shalom ${input.parentName},\n\nThank you for reaching out. Miss Cindy has received your message and will be in touch with you shortly.\n\nWarmly,\nECLC Staff`
+            subject: isTour
+              ? "We've received your tour request!"
+              : "We've received your inquiry!",
+            text: `Shalom ${input.parentName},\n\nThank you for reaching out. Miss Cindy has received your ${isTour ? 'tour request' : 'message'} and will be in touch with you shortly to confirm.\n\nWarmly,\nECLC Staff`
           })
         ])
 

@@ -49,14 +49,14 @@ export const prerender = true
     <header class="mb-12 text-center">
       <h2>More Classrooms</h2>
     </header>
-    <div class="flex flex-wrap justify-center gap-6">
+    <div class="flex flex-wrap gap-6">
       {
         otherClassrooms.map((classroom) => (
           <ImageCard
             title={classroom.info.title}
             image={classroom.info.images?.[0]}
             href={`/classrooms/${classroom.info.slug.current}`}
-            cta="Explore Classroom"
+            cta="Explore Our Classroom"
           />
         ))
       }

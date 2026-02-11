@@ -2,6 +2,11 @@ import { actions } from 'astro:actions'
 
 export const contactHandler = () => ({
   state: 'idle',
+  mode: 'message' as 'message' | 'tour',
+  toggleMode() {
+    this.mode = this.mode === 'message' ? 'tour' : 'message'
+    this.state = 'idle'
+  },
   async submitForm(e: SubmitEvent) {
     this.state = 'loading'
     try {
