@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets'
+import { urlFor } from '@services/sanity'
 import '@styles/components/itemCards.css'
 
 interface Props {
@@ -19,18 +19,22 @@ interface Props {
 }
 
 const { title, description, image, href, cta = 'Read Newsletter' } = Astro.props
+
+const imageUrl = image?.asset?.url
+  ? urlFor(image.asset.url).width(640).height(360).url()
+  : null
 ---
 
 <a
   href={href}
-  class="item group hover:border-blue-600/50! flex h-full min-w-[160px] max-w-[320px] flex-1 basis-[240px] flex-col overflow-hidden"
+  class="item group flex h-full min-w-[160px] max-w-[320px] flex-1 basis-[240px] flex-col overflow-hidden"
 >
   {
-    image?.asset?.url && (
+    imageUrl && (
       <div class="aspect-video w-full overflow-hidden bg-gray-100">
         <img
-          src={image.asset.url}
-          alt={image.alt || title}
+          src={imageUrl}
+          alt={image?.alt || title}
           class="size-full object-cover transition-transform duration-500 group-hover:scale-105"
           loading="lazy"
         />
