@@ -15,9 +15,10 @@ interface Props {
     alt?: string
   }
   href: string
+  cta?: string
 }
 
-const { title, description, image, href } = Astro.props
+const { title, description, image, href, cta = 'Read Newsletter' } = Astro.props
 ---
 
 <a
@@ -47,7 +48,7 @@ const { title, description, image, href } = Astro.props
     )}
     <div class="mt-auto pt-4">
       <span class="text-xs font-bold uppercase tracking-wider text-blue-600">
-        Read Newsletter &rarr;
+        {cta} &rarr;
       </span>
     </div>
   </div>
