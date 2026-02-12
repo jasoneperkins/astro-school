@@ -14,7 +14,8 @@
   gap: 1.25rem;
   padding: 0.5rem 0;
   scrollbar-width: none;
-  height: var(--carousel-height, 25rem);
+  height: var(--carousel-height, auto);
+  min-height: min-content;
 }
 
 .carousel-track::-webkit-scrollbar {
@@ -25,7 +26,7 @@
   display: flex;
   justify-content: flex-end;
   gap: 0.75rem;
-  padding-right: 0.5rem;
+  padding-right: 1.5rem;
 }
 
 .nav-btn {
@@ -63,10 +64,8 @@
 .carousel-item {
   flex: 0 0 auto;
   height: 100%;
-  scroll-snap-align: center;
+  scroll-snap-align: start;
   border-radius: 1rem;
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
   transition: transform 0.3s ease;
   cursor: zoom-in;
 }
@@ -78,7 +77,7 @@
 }
 
 .carousel-item:hover {
-  transform: scale(1.02);
+  transform: scale(1.01);
 }
 
 /* Lightbox styles moved to lightbox.css */

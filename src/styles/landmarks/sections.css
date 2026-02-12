@@ -11,16 +11,18 @@
     @apply col-[content];
   }
 
-  &.breakout > * {
-    @apply col-[breakout];
-  }
+  @variant md {
+    &.breakout > * {
+      @apply col-[breakout];
+    }
 
-  &.fullwidth > * {
-    @apply col-[fullwidth];
-  }
+    &.fullwidth > * {
+      @apply col-[fullwidth];
+    }
 
-  &.screen > * {
-    @apply col-[screen];
+    &.screen > * {
+      @apply col-[screen];
+    }
   }
 
   @variant lg {

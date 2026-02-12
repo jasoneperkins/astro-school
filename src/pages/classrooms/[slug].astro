@@ -60,10 +60,12 @@ export const prerender = true
   }
 
   <section class="content py-content-block pt-0!">
-    <header class="mb-12 text-center">
-      <h2>More Classrooms</h2>
+    <header>
+      <hgroup>
+        <h2>More Classrooms</h2>
+      </hgroup>
     </header>
-    <div class="flex flex-wrap gap-6">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
       {
         otherClassrooms.map(classroom => (
           <ImageCard
