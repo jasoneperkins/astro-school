@@ -19,7 +19,7 @@ import VocabularyCard from '../../src/utilities/objects/vocabularyCard'
 import CustomText from '../../src/utilities/objects/customText'
 import Testimonial from '../../src/utilities/objects/testimonial'
 
-const documentTypes = [Classroom, Identity, Newsletter, Page]
+const documentTypes = [Identity, Page, Classroom, Newsletter]
 const objectTypes = [
   AssetExtension,
   CustomImage,

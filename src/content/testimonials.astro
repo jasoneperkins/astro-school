@@ -20,8 +20,6 @@ const {
   body,
   testimonials = []
 } = Astro.props
-
-const background = `url(https://cdn.sanity.io/images/nn95ygkm/production/c099e8e136fe864dd51cc2d300285c2340eba035-1920x1156.webp)`
 ---
 
 <section
@@ -35,9 +33,7 @@ const background = `url(https://cdn.sanity.io/images/nn95ygkm/production/c099e8e
       }))
     )} 
   }`}
-  aria-labelledby={slug?.current}
-  class="bg-[url(https://cdn.sanity.io/images/nn95ygkm/production/c099e8e136fe864dd51cc2d300285c2340eba035-1920x1156.webp)]"
-  style="border-image: linear-gradient(to top, rgba(244,246,247, 0.7), rgba(244,246,247, 0.7)) fill 1;">
+  aria-labelledby={slug?.current}>
   <div class="half">
     {
       heading?.title && (

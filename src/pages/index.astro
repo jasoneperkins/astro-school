@@ -2,10 +2,14 @@
 // layout
 import Layout from '@layouts/Common.astro'
 
+// styles
+import '@styles/pages/home.css'
+
 // content sections
 import Benefits from '@content/benefits.astro'
 import Cta from '@content/cta.astro'
-import Services from '@content/services.astro'
+import Faqs from '@content/faqs.astro'
+import Features from '@content/features.astro'
 import Solutions from '@content/solutions.astro'
 import Newsletters from '@content/newsletters.astro'
 import Testimonials from '@content/testimonials.astro'
@@ -14,10 +18,7 @@ import Testimonials from '@content/testimonials.astro'
 import ContactForm from '@components/ContactForm.astro'
 import IconCard from '@components/IconCard.astro'
 
-// styles
-import '@styles/pages/home.css'
-
-// queries
+// utilities
 import {fetchPage} from '@queries/page'
 import {urlFor} from '@services/sanity'
 
@@ -40,20 +41,21 @@ const homePage = await fetchPage('index')
 const {info, content, seo, social} = homePage
 
 // content
-const cta = content?.find(
-  (section: Section) => section.name === 'call-to-action'
-)
-const solutions = content?.find(
-  (section: Section) => section.name === 'solutions'
-)
 const benefits = content?.find(
   (section: Section) => section.name === 'benefits'
 )
-const services = content?.find(
-  (section: Section) => section.name === 'services'
+const cta = content?.find(
+  (section: Section) => section.name === 'call-to-action'
 )
+const features = content?.find(
+  (section: Section) => section.name === 'features'
+)
+const faqs = content?.find((section: Section) => section.name === 'faqs')
 const newsletters = content?.find(
-  (section: Section) => section._key === 'd4fa8d2b9207'
+  (section: Section) => section.name === 'newsletters'
+)
+const solutions = content?.find(
+  (section: Section) => section.name === 'solutions'
 )
 const testimonials = content?.find(
   (section: Section) => section.name === 'testimonials'
@@ -61,10 +63,12 @@ const testimonials = content?.find(
 ---
 
 <Layout {info} {seo} {social}>
-  {benefits && <Benefits {...benefits} />}
   {solutions && <Solutions {...solutions} />}
-  {services && <Services {...services} />}
+  {benefits && <Benefits {...benefits} />}
   {testimonials && <Testimonials {...testimonials} />}
+  {features && <Features {...features} />}
+  {faqs && <Faqs {...faqs} />}
+  <!-- {services && <Services {...services} />} -->
   {cta && <Cta {...cta} />}
   {newsletters && <Newsletters {...newsletters} />}
 </Layout>

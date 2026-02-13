@@ -1,0 +1,9 @@
+[[queues.producers]]
+queue = "gemini-analysis-queue"
+binding = "GEMINI_QUEUE"
+
+[[queues.consumers]]
+queue = "gemini-analysis-queue"
+max_concurrency = 1
+max_batch_size = 1
+# max_retries and retry_delay often use defaults on Free plan

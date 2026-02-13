@@ -38,7 +38,8 @@ const {identity, classrooms} = Astro.props
     x-transition:enter-end="translate-x-0"
     x-transition:leave="transition transform ease-in duration-200"
     x-transition:leave-end="translate-x-full"
-    class="fixed top-0 right-0 z-50 flex h-screen w-fit max-w-[90vw] flex-col space-y-8 bg-white p-5 shadow-2xl">
+    class="fixed top-0 right-0 z-50 flex h-screen w-fit max-w-[90vw] flex-col space-y-8 overflow-y-scroll bg-white p-5 shadow-2xl"
+    style="scrollbar-width: thin; scrollbar-color: var(--color-blue-400) var(--color-blue-900);">
     <div
       class="flex items-center justify-between gap-2 border-b border-gray-300 py-5 text-blue-900">
       <button
@@ -107,13 +108,6 @@ const {identity, classrooms} = Astro.props
         </li>
       </ul>
     </nav>
-    <div aria-labelledby="contact-heading">
-      <header>
-        <hgroup>
-          <h3 id="contact-heading">Contact Us</h3>
-        </hgroup>
-      </header>
-      <ContactForm context="Mobile Drawer" theme="light" btnColor="blue" />
-    </div>
+    <ContactForm context="Mobile Drawer" theme="light" btnColor="blue" />
   </div>
 </aside>

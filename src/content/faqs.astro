@@ -1,0 +1,17 @@
+---
+const {
+  heading = {title: 'FAQs', subTitle: ''},
+  slug = {current: 'faqs'},
+  body = [],
+  images = [],
+} = Astro.props
+---
+
+<section aria-labelledby={slug.current}>
+  <header>
+    <hgroup class="text-center">
+      {heading?.title && <h2 id={slug.current}>{heading?.title}</h2>}
+      {heading?.subTitle && <p>{heading?.subTitle}</p>}
+    </hgroup>
+  </header>
+</section>
